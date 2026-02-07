@@ -113,7 +113,7 @@ This class implements both Skip-gram and CBOW architectures:
 Training is performed using optimized Cython routines with BLAS operations for maximum speed.
 
 If ``sentences`` is provided at initialization, training starts immediately. Otherwise, call
-:meth:`train` later with the sentences to train on.
+``train()`` later with the sentences to train on.
 
 Features:
 - CBOW and Skip-gram architectures
