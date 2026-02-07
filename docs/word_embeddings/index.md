@@ -147,7 +147,7 @@ Features:
 - `max_vocab_size` (int): Maximum vocabulary size to keep, keeping the most frequent words.
   None means no limit (keep all words above min_word_count).
 - `epochs` (int): Number of training iterations over the corpus (default: 1).
-- `batch_size` (int): Number of sentences to process per batch (default: 10000).
+- `batch_size` (int): Maximum words per training batch (default: 10000).
 - `callbacks` (list of callable): Callback functions to call after each epoch.
 - `calculate_loss` (bool): Whether to calculate and return the final loss (default: True).
 - `total_examples` (int): Total number of training examples per epoch. When provided 
@@ -200,15 +200,15 @@ get_vector(word: str, normalize: bool = False)
 
 Get the vector for a word.
 
-Parameters
-----------
-
 **Parameters:**
 - `word`: Input word.
 - `normalize`: If True, return the normalized vector (unit length).
 
 **Returns:**
-Word vector.
+Word vector as numpy array of shape (vector_size,).
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary.
 
 <h4 id="word2vec-most_similar">Word2Vec.most_similar()</h4>
 
@@ -232,6 +232,10 @@ save(path: str)
 ```
 
 Save the model to a file.
+
+Saves all model parameters, vocabulary, and trained vectors. Training-specific
+parameters (alpha, min_alpha, epochs, etc.) are not saved as they are only
+needed during training, not inference.
 
 **Parameters:**
 - `path`: Path to save the model.
@@ -442,7 +446,7 @@ Note: The combined corpus is NOT saved to reduce file size.
 <h4 id="temprefword2vec-train">TempRefWord2Vec.train()</h4>
 
 ```python
-train(sentences: Optional[List[str]] = None)
+train(sentences: Optional[List[List[str]]] = None)
 ```
 
 Train the TempRefWord2Vec model using the preprocessed combined corpus.
