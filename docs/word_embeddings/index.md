@@ -110,7 +110,7 @@ This class implements both Skip-gram and CBOW architectures:
 - CBOW (sg=0): Each training example is (input_indices, output_idx) where inputs are context words
   and output is the center word.
 
-Training is performed using optimized Cython routines with BLAS operations for maximum speed.
+Training is performed using optimized Cython routines with BLAS operations.
 
 If ``sentences`` is provided at initialization, training starts immediately. Otherwise, call
 ``train()`` later with the sentences to train on.
