@@ -79,7 +79,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 
 ```python
 Word2Vec(
-    sentences: Optional[List[List[str]]] = None,
+    sentences: Union[List[List[str]], collections.abc.Iterable[List[str]], NoneType] = None,
     vector_size: int = 100,
     window: int = 5,
     min_word_count: int = 5,
@@ -125,8 +125,12 @@ Features:
 - Vocabulary size restriction with max_vocab_size parameter
 
 **Parameters:**
-- `sentences` (list of list of str): Tokenized sentences for training. If provided,
-  training starts immediately during initialization.
+- `sentences` (list or iterable of list of str): Tokenized sentences for training. 
+  Can be a list (fast path) or any iterable including generators (streaming path).
+  If provided, training starts immediately during initialization.
+  
+  Note: Single-use generators will only work for 1 epoch. For multi-epoch training,
+  use a list or restartable iterable.
 - `vector_size` (int): Dimensionality of the word vectors (default: 100).
 - `window` (int): Maximum distance between the current and predicted word (default: 5).
 - `min_word_count` (int): Ignores all words with frequency lower than this (default: 5).
