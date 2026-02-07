@@ -79,7 +79,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 
 ```python
 Word2Vec(
-    sentences: Union[List[List[str]], collections.abc.Iterable[List[str]], NoneType] = None,
+    sentences: Union[List[List[str]], Iterable[List[str]], NoneType] = None,
     vector_size: int = 100,
     window: int = 5,
     min_word_count: int = 5,
@@ -179,7 +179,7 @@ similar = model.wv.most_similar('喜欢', topn=5)  # Same as above
 <h4 id="word2vec-build_vocab">Word2Vec.build_vocab()</h4>
 
 ```python
-build_vocab(sentences: collections.abc.Iterable[typing.List[str]])
+build_vocab(sentences: Iterable[List[str]])
 ```
 
 Build vocabulary from sentences.
@@ -257,7 +257,7 @@ Cosine similarity between the two words (float between -1 and 1).
 <h4 id="word2vec-train">Word2Vec.train()</h4>
 
 ```python
-train(sentences: Union[List[List[str]], collections.abc.Iterable[List[str]]])
+train(sentences: Union[List[List[str]], Iterable[List[str]]])
 ```
 
 Train word2vec model on given sentences.
