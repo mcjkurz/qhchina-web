@@ -51,7 +51,7 @@ sentences = segmenter.segment("深度学习正在改变世界。自然语言处�
 
 <!-- API-START -->
 
-<h3 id="segmentationwrapper">SegmentationWrapper</h3>
+<h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper</h3>
 
 ```python
 SegmentationWrapper(
@@ -80,7 +80,7 @@ Base segmentation wrapper class that can be extended for different segmentation 
 - `sentence_end_pattern`: Regular expression pattern for sentence endings (default: 
   Chinese and English punctuation).
 
-<h4 id="segmentationwrapper-close">SegmentationWrapper.close()</h4>
+<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close()</h4>
 
 ```python
 close()
@@ -88,7 +88,7 @@ close()
 
 Clean up resources. Call this when done with the segmenter.
 
-<h4 id="segmentationwrapper-reset_user_dict">SegmentationWrapper.reset_user_dict()</h4>
+<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict()</h4>
 
 ```python
 reset_user_dict()
@@ -99,7 +99,7 @@ Reset the user dictionary to default state.
 This clears any custom words that were added via user_dict.
 Subclasses should override this method to implement backend-specific reset logic.
 
-<h4 id="segmentationwrapper-segment">SegmentationWrapper.segment()</h4>
+<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment()</h4>
 
 ```python
 segment(text: str)
@@ -117,7 +117,7 @@ contains tokens for a line, sentence, or chunk respectively
 
 <br>
 
-<h3 id="spacysegmenter">SpacySegmenter</h3>
+<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter</h3>
 
 ```python
 SpacySegmenter(
@@ -152,7 +152,7 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="spacysegmenter-reset_user_dict">SpacySegmenter.reset_user_dict()</h4>
+<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict()</h4>
 
 ```python
 reset_user_dict()
@@ -165,7 +165,7 @@ Note: This resets to an empty user dictionary, not the original state if one was
 
 <br>
 
-<h3 id="pkusegmenter">PKUSegmenter</h3>
+<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter</h3>
 
 ```python
 PKUSegmenter(
@@ -210,7 +210,7 @@ which will reinitialize the segmenter.
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="pkusegmenter-reset_user_dict">PKUSegmenter.reset_user_dict()</h4>
+<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict()</h4>
 
 ```python
 reset_user_dict()
@@ -224,7 +224,7 @@ global state.
 
 <br>
 
-<h3 id="jiebasegmenter">JiebaSegmenter</h3>
+<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter</h3>
 
 ```python
 JiebaSegmenter(
@@ -253,7 +253,7 @@ Segmentation wrapper for Jieba Chinese text segmentation.
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="jiebasegmenter-reset_user_dict">JiebaSegmenter.reset_user_dict()</h4>
+<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict()</h4>
 
 ```python
 reset_user_dict()
@@ -266,7 +266,7 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
 
 <br>
 
-<h3 id="bertsegmenter">BertSegmenter</h3>
+<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter</h3>
 
 ```python
 BertSegmenter(
@@ -314,7 +314,7 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
 
 <br>
 
-<h3 id="llmsegmenter">LLMSegmenter</h3>
+<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter</h3>
 
 ```python
 LLMSegmenter(
@@ -360,7 +360,7 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 
 <br>
 
-<h3 id="create_segmenter">create_segmenter()</h3>
+<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter()</h3>
 
 ```python
 create_segmenter(

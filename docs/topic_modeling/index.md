@@ -71,7 +71,7 @@ topics = lda.get_topics(n_words=10)  # Get top words per topic
 
 <!-- API-START -->
 
-<h3 id="ldagibbssampler">LDAGibbsSampler</h3>
+<h3 id="ldagibbssampler">qhchina.analytics.topicmodels.LDAGibbsSampler</h3>
 
 ```python
 LDAGibbsSampler(
@@ -128,7 +128,7 @@ lda.fit(documents)
 topics = lda.get_topics(n_words=10)
 ```
 
-<h4 id="ldagibbssampler-coherence">LDAGibbsSampler.coherence()</h4>
+<h4 id="ldagibbssampler-coherence">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence()</h4>
 
 ```python
 coherence(method: str = 'umass', n_words: int = 10, window_size: Optional[int] = None, **kwargs)
@@ -161,7 +161,7 @@ avg_coherence, topic_coherences = model.coherence('npmi')
 print(f"Average NPMI coherence: {avg_coherence:.4f}")
 ```
 
-<h4 id="ldagibbssampler-coherence_npmi">LDAGibbsSampler.coherence_npmi()</h4>
+<h4 id="ldagibbssampler-coherence_npmi">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_npmi()</h4>
 
 ```python
 coherence_npmi(n_words: int = 10, window_size: int = 10, eps: float = 1e-12)
@@ -185,7 +185,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-coherence_umass">LDAGibbsSampler.coherence_umass()</h4>
+<h4 id="ldagibbssampler-coherence_umass">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_umass()</h4>
 
 ```python
 coherence_umass(n_words: int = 10, eps: float = 1e-12)
@@ -209,7 +209,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-document_similarity">LDAGibbsSampler.document_similarity()</h4>
+<h4 id="ldagibbssampler-document_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity()</h4>
 
 ```python
 document_similarity(doc_i: int, doc_j: int, metric: str = 'jsd')
@@ -229,7 +229,7 @@ Calculate similarity between two documents based on their topic distributions.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-document_similarity_matrix">LDAGibbsSampler.document_similarity_matrix()</h4>
+<h4 id="ldagibbssampler-document_similarity_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity_matrix()</h4>
 
 ```python
 document_similarity_matrix(doc_ids: Optional[List[int]] = None, metric: str = 'jsd')
@@ -244,7 +244,7 @@ Calculate pairwise similarity/distance between documents.
 **Returns:**
 Square matrix with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-evaluate">LDAGibbsSampler.evaluate()</h4>
+<h4 id="ldagibbssampler-evaluate">qhchina.analytics.topicmodels.LDAGibbsSampler.evaluate()</h4>
 
 ```python
 evaluate(n_words: int = 10, verbose: bool = True)
@@ -262,7 +262,7 @@ and topic diversity.
 **Returns:**
 Dictionary containing all evaluation metrics
 
-<h4 id="ldagibbssampler-fit">LDAGibbsSampler.fit()</h4>
+<h4 id="ldagibbssampler-fit">qhchina.analytics.topicmodels.LDAGibbsSampler.fit()</h4>
 
 ```python
 fit(documents: List[List[str]])
@@ -273,7 +273,7 @@ Fit the LDA model to the given documents.
 **Parameters:**
 - `documents`: List of tokenized documents (each document is a list of tokens)
 
-<h4 id="ldagibbssampler-get_document_topics">LDAGibbsSampler.get_document_topics()</h4>
+<h4 id="ldagibbssampler-get_document_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_document_topics()</h4>
 
 ```python
 get_document_topics(doc_id: int, sort_by_prob: bool = False)
@@ -288,7 +288,7 @@ Get topic distribution for a specific document.
 **Returns:**
 List of (topic_id, probability) tuples
 
-<h4 id="ldagibbssampler-get_top_documents">LDAGibbsSampler.get_top_documents()</h4>
+<h4 id="ldagibbssampler-get_top_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.get_top_documents()</h4>
 
 ```python
 get_top_documents(topic_id: int, n_docs: int = 10)
@@ -303,7 +303,7 @@ Get the top n documents for a specific topic.
 **Returns:**
 List of (document_id, probability) tuples, sorted by probability in descending order
 
-<h4 id="ldagibbssampler-get_topic_distribution">LDAGibbsSampler.get_topic_distribution()</h4>
+<h4 id="ldagibbssampler-get_topic_distribution">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_distribution()</h4>
 
 ```python
 get_topic_distribution()
@@ -314,7 +314,7 @@ Get overall topic distribution across the corpus.
 **Returns:**
 Array of topic probabilities
 
-<h4 id="ldagibbssampler-get_topic_words">LDAGibbsSampler.get_topic_words()</h4>
+<h4 id="ldagibbssampler-get_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_words()</h4>
 
 ```python
 get_topic_words(topic_id: int, n_words: int = 10)
@@ -329,7 +329,7 @@ Get the top n words for a specific topic.
 **Returns:**
 List of (word, probability) tuples, sorted by probability in descending order
 
-<h4 id="ldagibbssampler-get_topics">LDAGibbsSampler.get_topics()</h4>
+<h4 id="ldagibbssampler-get_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topics()</h4>
 
 ```python
 get_topics(n_words: int = 10)
@@ -343,7 +343,7 @@ Get the top words for each topic along with their probabilities.
 **Returns:**
 List of topics, each containing a list of (word, probability) tuples
 
-<h4 id="ldagibbssampler-inference">LDAGibbsSampler.inference()</h4>
+<h4 id="ldagibbssampler-inference">qhchina.analytics.topicmodels.LDAGibbsSampler.inference()</h4>
 
 ```python
 inference(new_doc: List[str], inference_iterations: int = 100)
@@ -358,7 +358,7 @@ Infer topic distribution for a new document.
 **Returns:**
 Topic distribution for the document
 
-<h4 id="ldagibbssampler-initialize">LDAGibbsSampler.initialize()</h4>
+<h4 id="ldagibbssampler-initialize">qhchina.analytics.topicmodels.LDAGibbsSampler.initialize()</h4>
 
 ```python
 initialize(docs_as_ids: List[List[int]])
@@ -369,7 +369,7 @@ Initialize data structures for Gibbs sampling.
 **Parameters:**
 - `docs_as_ids`: Documents with tokens as integer IDs
 
-<h4 id="ldagibbssampler-perplexity">LDAGibbsSampler.perplexity()</h4>
+<h4 id="ldagibbssampler-perplexity">qhchina.analytics.topicmodels.LDAGibbsSampler.perplexity()</h4>
 
 ```python
 perplexity()
@@ -380,7 +380,7 @@ Calculate perplexity of the model on the training data.
 **Returns:**
 Perplexity value (lower is better)
 
-<h4 id="ldagibbssampler-plot_topic_words">LDAGibbsSampler.plot_topic_words()</h4>
+<h4 id="ldagibbssampler-plot_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.plot_topic_words()</h4>
 
 ```python
 plot_topic_words(n_words: int = 10, figsize: Tuple[int, int] = (12, 8), fontsize: int = 10, filename: Optional[str] = None, separate_files: bool = False, dpi: int = 72, orientation: str = 'horizontal')
@@ -398,7 +398,7 @@ Plot the top words for each topic as a bar chart.
 - `orientation`: "horizontal" (words on x-axis, probabilities on y-axis) or 
   "vertical" (probabilities on x-axis, words on y-axis with highest at top)
 
-<h4 id="ldagibbssampler-preprocess">LDAGibbsSampler.preprocess()</h4>
+<h4 id="ldagibbssampler-preprocess">qhchina.analytics.topicmodels.LDAGibbsSampler.preprocess()</h4>
 
 ```python
 preprocess(documents: List[List[str]])
@@ -417,7 +417,7 @@ Tuple containing:
 - word_to_id: Mapping from words to integer IDs
 - id_to_word: Mapping from integer IDs to words
 
-<h4 id="ldagibbssampler-run_gibbs_sampling">LDAGibbsSampler.run_gibbs_sampling()</h4>
+<h4 id="ldagibbssampler-run_gibbs_sampling">qhchina.analytics.topicmodels.LDAGibbsSampler.run_gibbs_sampling()</h4>
 
 ```python
 run_gibbs_sampling()
@@ -427,7 +427,7 @@ Run Gibbs sampling for the specified number of iterations.
 
 Uses Cython if available and enabled.
 
-<h4 id="ldagibbssampler-save">LDAGibbsSampler.save()</h4>
+<h4 id="ldagibbssampler-save">qhchina.analytics.topicmodels.LDAGibbsSampler.save()</h4>
 
 ```python
 save(filepath: str)
@@ -438,7 +438,7 @@ Save the model to a file.
 **Parameters:**
 - `filepath`: Path to save the model
 
-<h4 id="ldagibbssampler-topic_correlation_matrix">LDAGibbsSampler.topic_correlation_matrix()</h4>
+<h4 id="ldagibbssampler-topic_correlation_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_correlation_matrix()</h4>
 
 ```python
 topic_correlation_matrix(metric: str = 'jsd')
@@ -452,7 +452,7 @@ Calculate pairwise similarity/distance between all topics.
 **Returns:**
 Square matrix of shape (n_topics, n_topics) with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-topic_similarity">LDAGibbsSampler.topic_similarity()</h4>
+<h4 id="ldagibbssampler-topic_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_similarity()</h4>
 
 ```python
 topic_similarity(topic_i: int, topic_j: int, metric: str = 'jsd')
@@ -472,7 +472,7 @@ Calculate similarity between two topics.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-visualize_documents">LDAGibbsSampler.visualize_documents()</h4>
+<h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents()</h4>
 
 ```python
 visualize_documents(method: str = 'pca', n_clusters: Optional[int] = None, doc_labels: Optional[List[str]] = None, show_labels: bool = False, label_strategy: str = 'auto', use_adjusttext: bool = True, max_labels: Optional[int] = None, figsize: Optional[Tuple[int, int]] = None, dpi: int = 150, alpha: float = 0.7, size: float = 50, cmap: str = 'tab10', title: Optional[str] = None, filename: Optional[str] = None, format: str = 'static', random_state: Optional[int] = None, highlight: Union[int, List[int], NoneType] = None, n_topic_words: int = 4, **kwargs)

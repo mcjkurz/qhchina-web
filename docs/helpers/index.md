@@ -42,7 +42,7 @@ The `qhchina.helpers` module provides utilities for font management and text loa
 
 <!-- API-START -->
 
-<h3 id="load_fonts">load_fonts()</h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts()</h3>
 
 ```python
 load_fonts(target_font: str = 'Noto Sans CJK TC', verbose: bool = False)
@@ -72,7 +72,7 @@ When verbose=False, returns None.
 
 <br>
 
-<h3 id="current_font">current_font()</h3>
+<h3 id="current_font">qhchina.helpers.fonts.current_font()</h3>
 
 ```python
 current_font()
@@ -88,7 +88,7 @@ The current font name, or None if no font is configured.
 
 <br>
 
-<h3 id="set_font">set_font()</h3>
+<h3 id="set_font">qhchina.helpers.fonts.set_font()</h3>
 
 ```python
 set_font(font='Noto Sans CJK TC')
@@ -110,7 +110,7 @@ This function is thread-safe.
 
 <br>
 
-<h3 id="list_available_fonts">list_available_fonts()</h3>
+<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts()</h3>
 
 ```python
 list_available_fonts()
@@ -122,7 +122,7 @@ Returns a dictionary mapping font file names to their internal font names.
 
 <br>
 
-<h3 id="list_font_aliases">list_font_aliases()</h3>
+<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases()</h3>
 
 ```python
 list_font_aliases()
@@ -134,7 +134,7 @@ Returns a dictionary mapping aliases to their full font names.
 
 <br>
 
-<h3 id="get_font_path">get_font_path()</h3>
+<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path()</h3>
 
 ```python
 get_font_path(font: str = 'Noto Sans CJK TC')
@@ -158,7 +158,7 @@ wc = WordCloud(font_path=font_path, ...)
 
 <br>
 
-<h3 id="load_text">load_text()</h3>
+<h3 id="load_text">qhchina.helpers.texts.load_text()</h3>
 
 ```python
 load_text(filename, encoding='utf-8')
@@ -176,7 +176,7 @@ Loads text from a file.
 
 <br>
 
-<h3 id="load_texts">load_texts()</h3>
+<h3 id="load_texts">qhchina.helpers.texts.load_texts()</h3>
 
 ```python
 load_texts(filenames, encoding='utf-8')
@@ -194,7 +194,7 @@ Loads text from multiple files.
 
 <br>
 
-<h3 id="load_stopwords">load_stopwords()</h3>
+<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords()</h3>
 
 ```python
 load_stopwords(language: str = 'zh_sim')
@@ -214,7 +214,7 @@ Set of stopwords
 
 <br>
 
-<h3 id="split_into_chunks">split_into_chunks()</h3>
+<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks()</h3>
 
 ```python
 split_into_chunks(sequence, chunk_size, overlap=0.0)
@@ -239,7 +239,7 @@ doesn't divide evenly.
 
 <br>
 
-<h3 id="get_stopword_languages">get_stopword_languages()</h3>
+<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages()</h3>
 
 ```python
 get_stopword_languages()
@@ -252,7 +252,7 @@ List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
 
 <br>
 
-<h3 id="detect_encoding">detect_encoding()</h3>
+<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding()</h3>
 
 ```python
 detect_encoding(filename, num_bytes=10000)

@@ -75,7 +75,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 
 <!-- API-START -->
 
-<h3 id="word2vec">Word2Vec</h3>
+<h3 id="word2vec">qhchina.analytics.word2vec.Word2Vec</h3>
 
 ```python
 Word2Vec(
@@ -176,7 +176,7 @@ similar = model.most_similar('喜欢', topn=5)
 similar = model.wv.most_similar('喜欢', topn=5)  # Same as above
 ```
 
-<h4 id="word2vec-build_vocab">Word2Vec.build_vocab()</h4>
+<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.Word2Vec.build_vocab()</h4>
 
 ```python
 build_vocab(sentences: Iterable[List[str]])
@@ -191,7 +191,7 @@ Build vocabulary from sentences.
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
 
-<h4 id="word2vec-get_vector">Word2Vec.get_vector()</h4>
+<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.Word2Vec.get_vector()</h4>
 
 ```python
 get_vector(word: str, normalize: bool = False)
@@ -209,7 +209,7 @@ Word vector as numpy array of shape (vector_size,).
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-most_similar">Word2Vec.most_similar()</h4>
+<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.Word2Vec.most_similar()</h4>
 
 ```python
 most_similar(word: str, topn: int = 10)
@@ -224,7 +224,7 @@ Find the topn most similar words to the given word.
 **Returns:**
 List of (word, similarity) tuples.
 
-<h4 id="word2vec-save">Word2Vec.save()</h4>
+<h4 id="word2vec-save">qhchina.analytics.word2vec.Word2Vec.save()</h4>
 
 ```python
 save(path: str)
@@ -239,7 +239,7 @@ needed during training, not inference.
 **Parameters:**
 - `path`: Path to save the model.
 
-<h4 id="word2vec-similarity">Word2Vec.similarity()</h4>
+<h4 id="word2vec-similarity">qhchina.analytics.word2vec.Word2Vec.similarity()</h4>
 
 ```python
 similarity(word1: str, word2: str)
@@ -257,7 +257,7 @@ Cosine similarity between the two words (float between -1 and 1).
 **Raises:**
 - `KeyError`: If either word is not in the vocabulary.
 
-<h4 id="word2vec-train">Word2Vec.train()</h4>
+<h4 id="word2vec-train">qhchina.analytics.word2vec.Word2Vec.train()</h4>
 
 ```python
 train(sentences: Union[List[List[str]], Iterable[List[str]]])
@@ -289,7 +289,7 @@ Final loss value if calculate_loss is True, None otherwise.
 
 <br>
 
-<h3 id="temprefword2vec">TempRefWord2Vec</h3>
+<h3 id="temprefword2vec">qhchina.analytics.word2vec.TempRefWord2Vec</h3>
 
 ```python
 TempRefWord2Vec(
@@ -344,7 +344,7 @@ model.most_similar("bread_1800s")  # Words similar to "bread" in the 1800s
 model.most_similar("bread_1900s")  # Words similar to "bread" in the 1900s
 ```
 
-<h4 id="temprefword2vec-build_vocab">TempRefWord2Vec.build_vocab()</h4>
+<h4 id="temprefword2vec-build_vocab">qhchina.analytics.word2vec.TempRefWord2Vec.build_vocab()</h4>
 
 ```python
 build_vocab(sentences: List[List[str]])
@@ -357,7 +357,7 @@ Explicitly adds base words to the vocabulary even if they don't appear in the co
 **Parameters:**
 - `sentences`: List of tokenized sentences.
 
-<h4 id="temprefword2vec-calculate_semantic_change">TempRefWord2Vec.calculate_semantic_change()</h4>
+<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.word2vec.TempRefWord2Vec.calculate_semantic_change()</h4>
 
 ```python
 calculate_semantic_change(target_word: str, labels: Optional[List[str]] = None)
@@ -383,7 +383,7 @@ for transition, word_changes in changes.items():
     print("Words moved away:", word_changes[-5:])   # Top 5 decreases
 ```
 
-<h4 id="temprefword2vec-get_available_targets">TempRefWord2Vec.get_available_targets()</h4>
+<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.word2vec.TempRefWord2Vec.get_available_targets()</h4>
 
 ```python
 get_available_targets()
@@ -394,7 +394,7 @@ Get the list of target words available for semantic change analysis.
 **Returns:**
 (List of target words that were specified during model initialization)
 
-<h4 id="temprefword2vec-get_period_vocab_counts">TempRefWord2Vec.get_period_vocab_counts()</h4>
+<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.word2vec.TempRefWord2Vec.get_period_vocab_counts()</h4>
 
 ```python
 get_period_vocab_counts(period: Optional[str] = None)
@@ -409,7 +409,7 @@ Get vocabulary counts for a specific period or all periods.
 (Union[Dict[str, Counter], Counter]) If period is None: dictionary mapping period labels to Counter objects
 If period is specified: Counter object for that specific period
 
-<h4 id="temprefword2vec-get_time_labels">TempRefWord2Vec.get_time_labels()</h4>
+<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.word2vec.TempRefWord2Vec.get_time_labels()</h4>
 
 ```python
 get_time_labels()
@@ -420,7 +420,7 @@ Get the list of time period labels used in the model.
 **Returns:**
 (List of time period labels that were specified during model initialization)
 
-<h4 id="temprefword2vec-save">TempRefWord2Vec.save()</h4>
+<h4 id="temprefword2vec-save">qhchina.analytics.word2vec.TempRefWord2Vec.save()</h4>
 
 ```python
 save(path: str)
@@ -439,7 +439,7 @@ Note: The combined corpus is NOT saved to reduce file size.
 **Parameters:**
 - `path` (str): Path to save the model file.
 
-<h4 id="temprefword2vec-train">TempRefWord2Vec.train()</h4>
+<h4 id="temprefword2vec-train">qhchina.analytics.word2vec.TempRefWord2Vec.train()</h4>
 
 ```python
 train(sentences: Optional[List[List[str]]] = None)
@@ -462,7 +462,7 @@ Final loss value if calculate_loss is True, None otherwise.
 
 <br>
 
-<h3 id="sample_sentences_to_token_count">sample_sentences_to_token_count()</h3>
+<h3 id="sample_sentences_to_token_count">qhchina.analytics.word2vec.sample_sentences_to_token_count()</h3>
 
 ```python
 sample_sentences_to_token_count(
@@ -490,7 +490,7 @@ target_tokens.
 
 <br>
 
-<h3 id="add_corpus_tags">add_corpus_tags()</h3>
+<h3 id="add_corpus_tags">qhchina.analytics.word2vec.add_corpus_tags()</h3>
 
 ```python
 add_corpus_tags(
@@ -512,7 +512,7 @@ List of processed corpora where target words have been tagged with their corpus 
 
 <br>
 
-<h3 id="project_2d">project_2d()</h3>
+<h3 id="project_2d">qhchina.analytics.vectors.project_2d()</h3>
 
 ```python
 project_2d(
@@ -554,7 +554,7 @@ Projects high-dimensional vectors into 2D using PCA, t-SNE, or UMAP and visualiz
 
 <br>
 
-<h3 id="get_bias_direction">get_bias_direction()</h3>
+<h3 id="get_bias_direction">qhchina.analytics.vectors.get_bias_direction()</h3>
 
 ```python
 get_bias_direction(
@@ -577,7 +577,7 @@ positive and negative anchor pairs.
 
 <br>
 
-<h3 id="calculate_bias">calculate_bias()</h3>
+<h3 id="calculate_bias">qhchina.analytics.vectors.calculate_bias()</h3>
 
 ```python
 calculate_bias(
@@ -600,7 +600,7 @@ Calculate bias scores for target words along an axis defined by anchor pairs.
 
 <br>
 
-<h3 id="project_bias">project_bias()</h3>
+<h3 id="project_bias">qhchina.analytics.vectors.project_bias()</h3>
 
 ```python
 project_bias(
@@ -643,7 +643,7 @@ Projects words onto:
 
 <br>
 
-<h3 id="cosine_similarity">cosine_similarity()</h3>
+<h3 id="cosine_similarity">qhchina.analytics.vectors.cosine_similarity()</h3>
 
 ```python
 cosine_similarity(
@@ -669,7 +669,7 @@ similarity matrix.
 
 <br>
 
-<h3 id="cosine_distance">cosine_distance()</h3>
+<h3 id="cosine_distance">qhchina.analytics.vectors.cosine_distance()</h3>
 
 ```python
 cosine_distance(
@@ -694,7 +694,7 @@ distance matrix.
 
 <br>
 
-<h3 id="most_similar">most_similar()</h3>
+<h3 id="most_similar">qhchina.analytics.vectors.most_similar()</h3>
 
 ```python
 most_similar(
@@ -724,7 +724,7 @@ score in descending order.
 
 <br>
 
-<h3 id="align_vectors">align_vectors()</h3>
+<h3 id="align_vectors">qhchina.analytics.vectors.align_vectors()</h3>
 
 ```python
 align_vectors(source_vectors: numpy.ndarray, target_vectors: numpy.ndarray)
