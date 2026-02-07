@@ -126,11 +126,11 @@ Features:
 
 **Parameters:**
 - `sentences` (list or iterable of list of str): Tokenized sentences for training. 
-  Can be a list (fast path) or any iterable including generators (streaming path).
+  Can be a list (fast path) or a restartable iterable (streaming path).
   If provided, training starts immediately during initialization.
   
-  Note: Single-use generators will only work for 1 epoch. For multi-epoch training,
-  use a list or restartable iterable.
+  Note: The iterable must be restartable (can be iterated multiple times) since
+  it is consumed once during vocabulary building and again during each training epoch.
 - `vector_size` (int): Dimensionality of the word vectors (default: 100).
 - `window` (int): Maximum distance between the current and predicted word (default: 5).
 - `min_word_count` (int): Ignores all words with frequency lower than this (default: 5).
@@ -186,8 +186,7 @@ Build vocabulary from sentences.
 
 **Parameters:**
 - `sentences`: Iterable of tokenized sentences (each sentence is a list of words).
-  Can be a list (for fast path) or any iterable (for streaming path).
-  If an iterable/generator is provided, it will be consumed during vocab building.
+  Can be a list (for fast path) or a restartable iterable (for streaming path).
 
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
@@ -284,9 +283,9 @@ from instance attributes set during initialization.
   - A list of sentences (fast path, requires all data in memory)
   - A restartable iterable (streaming path, memory-efficient)
   
-  Note: Single-use generators will only work for 1 epoch and will raise
-  a warning. For multi-epoch training with generators, convert to a list
-  or use a restartable iterable (e.g., file-backed).
+  Note: Single-use generators are not supported. The iterable must be
+  restartable since it is consumed once during vocabulary building and
+  again during each training epoch.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
