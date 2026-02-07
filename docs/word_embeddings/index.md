@@ -269,14 +269,11 @@ Supports two training modes:
 
 1. **Fast path** (list input): When ``sentences`` is a list, the entire corpus
    is passed to Cython in a single call per epoch, minimizing Python/Cython
-   boundary crossings. This is ~35% faster than Gensim for single-threaded training.
+   boundary crossings.
 
 2. **Streaming path** (iterable input): When ``sentences`` is a non-list iterable
    (e.g., file-backed iterator), sentences are processed in chunks to minimize
    memory usage. The iterable must be restartable (can be iterated multiple times).
-
-All training configuration (epochs, batch_size, alpha, min_alpha, etc.) is read
-from instance attributes set during initialization.
 
 **Parameters:**
 - `sentences`: Tokenized sentences. Can be:
