@@ -79,7 +79,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 
 ```python
 Word2Vec(
-    sentences: Union[List[List[str]], Iterable[List[str]], NoneType] = None,
+    sentences: Optional[Iterable[List[str]]] = None,
     vector_size: int = 100,
     window: int = 5,
     min_word_count: int = 5,
