@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Documentation
-permalink: /pkg_docs/
+permalink: /docs/
 functions:
   - name: Quick Start
     anchor: quick-start

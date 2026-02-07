@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Word Embeddings
-permalink: /pkg_docs/word_embeddings/
+permalink: /docs/word_embeddings/
 functions:
   - name: Word2Vec
     anchor: word2vec

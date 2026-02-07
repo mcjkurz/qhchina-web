@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Collocation Analysis
-permalink: /pkg_docs/collocations/
+permalink: /docs/collocations/
 functions:
   - name: FilterOptions
     anchor: filteroptions

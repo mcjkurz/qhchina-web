@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Helper Utilities
-permalink: /pkg_docs/helpers/
+permalink: /docs/helpers/
 functions:
   - name: load_fonts()
     anchor: load_fonts

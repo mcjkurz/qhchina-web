@@ -23,7 +23,7 @@ header_pages:
   - about/index.md
   - projects/index.md
   - resources/index.md
-  - pkg_docs/index.md
+  - docs/index.md
 
 # Collections
 collections:

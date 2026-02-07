@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Stylometry
-permalink: /pkg_docs/stylometry/
+permalink: /docs/stylometry/
 functions:
   - name: Stylometry
     anchor: stylometry

@@ -41,18 +41,18 @@
             <nav class="docs-nav">
               <h3>Package Documentation</h3>
               <ul>
-                {% assign nav_items = "Overview:/pkg_docs/,Preprocessing:/pkg_docs/preprocessing/,Word Embeddings:/pkg_docs/word_embeddings/,Topic Modeling:/pkg_docs/topic_modeling/,Stylometry:/pkg_docs/stylometry/,Collocations:/pkg_docs/collocations/,Helpers:/pkg_docs/helpers/" | split: "," %}
+                {% assign nav_items = "Overview:/docs/,Preprocessing:/docs/preprocessing/,Word Embeddings:/docs/word_embeddings/,Topic Modeling:/docs/topic_modeling/,Stylometry:/docs/stylometry/,Collocations:/docs/collocations/,Helpers:/docs/helpers/" | split: "," %}
                 {% for item in nav_items %}
                   {% assign parts = item | split: ":" %}
                   {% assign name = parts[0] %}
                   {% assign url = parts[1] %}
                   {% assign is_overview = false %}
-                  {% if url == '/pkg_docs/' %}
+                  {% if url == '/docs/' %}
                     {% assign is_overview = true %}
                   {% endif %}
                   {% assign is_active = false %}
                   {% if is_overview %}
-                    {% if page.url == '/pkg_docs/' %}
+                    {% if page.url == '/docs/' %}
                       {% assign is_active = true %}
                     {% endif %}
                   {% else %}

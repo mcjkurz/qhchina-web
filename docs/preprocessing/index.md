@@ -1,7 +1,7 @@
 ---
 layout: docs_with_sidebar
 title: Text Preprocessing
-permalink: /pkg_docs/preprocessing/
+permalink: /docs/preprocessing/
 functions:
   - name: SegmentationWrapper
     anchor: segmentationwrapper
