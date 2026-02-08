@@ -33,10 +33,6 @@ functions:
     anchor: temprefword2vec-save
   - name: TempRefWord2Vec.train()
     anchor: temprefword2vec-train
-  - name: sample_sentences_to_token_count()
-    anchor: sample_sentences_to_token_count
-  - name: add_corpus_tags()
-    anchor: add_corpus_tags
   - name: project_2d()
     anchor: project_2d
   - name: get_bias_direction()
@@ -95,14 +91,14 @@ Word2Vec(
     max_vocab_size: Optional[int] = None,
     verbose: bool = False,
     epochs: int = 1,
-    batch_size: int = 10000,
+    batch_size: int = 10240,
     callbacks: Optional[List[Callable]] = None,
     calculate_loss: bool = True,
     total_examples: Optional[int] = None
 )
 ```
 
-Implementation of Word2Vec algorithm with Cython-accelerated training.
+Implementation of Word2Vec algorithm with Cython-accelerated training. It is inspired by the Gensim implementation.
 
 This class implements both Skip-gram and CBOW architectures:
 - Skip-gram (sg=1): Each training example is (input_idx, output_idx) where input is the center word
@@ -125,12 +121,9 @@ Features:
 - Vocabulary size restriction with max_vocab_size parameter
 
 **Parameters:**
-- `sentences` (list or iterable of list of str): Tokenized sentences for training. 
-  Can be a list (fast path) or a restartable iterable (streaming path).
+- `sentences` (iterable of list of str): Tokenized sentences for training. 
   If provided, training starts immediately during initialization.
-  
-  Note: The iterable must be restartable (can be iterated multiple times) since
-  it is consumed once during vocabulary building and again during each training epoch.
+  Note: The iterable must be restartable (can be iterated multiple times).
 - `vector_size` (int): Dimensionality of the word vectors (default: 100).
 - `window` (int): Maximum distance between the current and predicted word (default: 5).
 - `min_word_count` (int): Ignores all words with frequency lower than this (default: 5).
@@ -147,7 +140,9 @@ Features:
 - `max_vocab_size` (int): Maximum vocabulary size to keep, keeping the most frequent words.
   None means no limit (keep all words above min_word_count).
 - `epochs` (int): Number of training iterations over the corpus (default: 1).
-- `batch_size` (int): Maximum words per training batch (default: 10000).
+- `batch_size` (int): Target number of words per training batch (default: 10240). 
+  Note that the Cython training buffer is limited to 10240 words, regardless of the batch_size parameter; 
+  words beyond this limit will be dropped from the batch, which mimics Gensim behavior.
 - `callbacks` (list of callable): Callback functions to call after each epoch.
 - `calculate_loss` (bool): Whether to calculate and return the final loss (default: True).
 - `total_examples` (int): Total number of training examples per epoch. When provided 
@@ -186,7 +181,6 @@ Build vocabulary from sentences.
 
 **Parameters:**
 - `sentences`: Iterable of tokenized sentences (each sentence is a list of words).
-  Can be a list (for fast path) or a restartable iterable (for streaming path).
 
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
@@ -260,29 +254,21 @@ Cosine similarity between the two words (float between -1 and 1).
 <h4 id="word2vec-train">qhchina.analytics.word2vec.Word2Vec.train()</h4>
 
 ```python
-train(sentences: Union[List[List[str]], Iterable[List[str]]])
+train(sentences: Iterable[List[str]])
 ```
 
 Train word2vec model on given sentences.
 
-Supports two training modes:
-
-1. **Fast path** (list input): When ``sentences`` is a list, the entire corpus
-   is passed to Cython in a single call per epoch, minimizing Python/Cython
-   boundary crossings.
-
-2. **Streaming path** (iterable input): When ``sentences`` is a non-list iterable
-   (e.g., file-backed iterator), sentences are processed in chunks to minimize
-   memory usage. The iterable must be restartable (can be iterated multiple times).
+Processes sentences in batches using Cython-accelerated training.
+This approach is memory-efficient and works with both lists and iterables.
 
 **Parameters:**
 - `sentences`: Tokenized sentences. Can be:
-  - A list of sentences (fast path, requires all data in memory)
-  - A restartable iterable (streaming path, memory-efficient)
+  - A list of sentences
+  - A restartable iterable (e.g., file-backed iterator)
   
   Note: Single-use generators are not supported. The iterable must be
-  restartable since it is consumed once during vocabulary building and
-  again during each training epoch.
+  restartable.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
@@ -326,7 +312,7 @@ from qhchina.analytics.word2vec import TempRefWord2Vec
 corpus_1800s = [["bread", "baker", ...], ["food", "eat", ...], ...]
 corpus_1900s = [["bread", "supermarket", ...], ["food", "buy", ...], ...]
 
-# Initialize model (Note: only sg=1 is supported)
+# Initialize and train model (training starts automatically)
 model = TempRefWord2Vec(
 ...     corpora=[corpus_1800s, corpus_1900s],
 ...     labels=["1800s", "1900s"],
@@ -336,10 +322,7 @@ model = TempRefWord2Vec(
 ...     sg=1  # Skip-gram required
 ... )
 
-# Train (uses preprocessed internal corpus)
-model.train()
-
-# Analyze semantic change
+# Analyze semantic change (model is already trained)
 model.most_similar("bread_1800s")  # Words similar to "bread" in the 1800s
 model.most_similar("bread_1900s")  # Words similar to "bread" in the 1900s
 ```
@@ -392,7 +375,7 @@ get_available_targets()
 Get the list of target words available for semantic change analysis.
 
 **Returns:**
-(List of target words that were specified during model initialization)
+List of target words that were specified during model initialization.
 
 <h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.word2vec.TempRefWord2Vec.get_period_vocab_counts()</h4>
 
@@ -403,11 +386,14 @@ get_period_vocab_counts(period: Optional[str] = None)
 Get vocabulary counts for a specific period or all periods.
 
 **Parameters:**
-- `period` (str): The period label to get vocab counts for. If None, returns all periods.
+- `period`: The period label to get vocab counts for. If None, returns all periods.
 
 **Returns:**
-(Union[Dict[str, Counter], Counter]) If period is None: dictionary mapping period labels to Counter objects
-If period is specified: Counter object for that specific period
+If period is None: dictionary mapping period labels to Counter objects.
+If period is specified: Counter object for that specific period.
+
+**Raises:**
+- `ValueError`: If the specified period is not found in the model.
 
 <h4 id="temprefword2vec-get_time_labels">qhchina.analytics.word2vec.TempRefWord2Vec.get_time_labels()</h4>
 
@@ -418,7 +404,7 @@ get_time_labels()
 Get the list of time period labels used in the model.
 
 **Returns:**
-(List of time period labels that were specified during model initialization)
+List of time period labels that were specified during model initialization.
 
 <h4 id="temprefword2vec-save">qhchina.analytics.word2vec.TempRefWord2Vec.save()</h4>
 
@@ -459,56 +445,6 @@ from instance attributes set during initialization via ``**kwargs``.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
-
-<br>
-
-<h3 id="sample_sentences_to_token_count">qhchina.analytics.word2vec.sample_sentences_to_token_count()</h3>
-
-```python
-sample_sentences_to_token_count(
-    corpus: List[List[str]],
-    target_tokens: int,
-    seed: Optional[int] = None
-)
-```
-
-Samples sentences from a corpus until the target token count is reached.
-
-This function randomly selects sentences from the corpus until the total number
-of tokens reaches or slightly exceeds the target count. This is useful for balancing
-corpus sizes when comparing different time periods or domains.
-
-**Parameters:**
-- `corpus` (List[List[str]]): A list of sentences, where each sentence is a list 
-  of tokens.
-- `target_tokens` (int): The target number of tokens to sample.
-- `seed` (Optional[int]): Random seed for reproducibility. If None, uses global seed.
-
-**Returns:**
-(List[List[str]]) A list of sampled sentences with token count close to 
-target_tokens.
-
-<br>
-
-<h3 id="add_corpus_tags">qhchina.analytics.word2vec.add_corpus_tags()</h3>
-
-```python
-add_corpus_tags(
-    corpora: List[List[List[str]]],
-    labels: List[str],
-    target_words: List[str]
-)
-```
-
-Add corpus-specific tags to target words in all corpora at once.
-
-**Parameters:**
-- `corpora`: List of corpora (each corpus is list of tokenized sentences)
-- `labels`: List of corpus labels
-- `target_words`: List of words to tag
-
-**Returns:**
-List of processed corpora where target words have been tagged with their corpus label
 
 <br>
 
