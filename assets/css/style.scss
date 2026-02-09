@@ -9,7 +9,23 @@
   border: none; // Remove all borders
   padding: 10px;
   margin-bottom: 15px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+}
+
+// Ensure code blocks don't overflow their container on mobile
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+pre code {
+  display: block;
+  white-space: pre;
+  overflow-x: auto;
 }
 
 .highlighter-rouge,
@@ -205,4 +221,37 @@ div[class^="language-"] {
   border-top: none;
   padding-top: 0;
   margin-top: 1.5rem;
+}
+
+// =====================================================
+// Mobile code block fixes
+// =====================================================
+@media (max-width: 768px) {
+  .highlight,
+  .highlighter-rouge,
+  div[class^="language-"],
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Ensure code blocks are contained within their parent
+  .docs-content .highlight,
+  .wrapper .highlight,
+  .container .highlight {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 576px) {
+  .highlight {
+    padding: 8px;
+    font-size: 0.85em;
+  }
+  
+  pre code {
+    font-size: 0.85em;
+  }
 }
