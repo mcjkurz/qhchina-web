@@ -342,6 +342,10 @@ main {
 }
 
 @media (max-width: 576px) {
+  body {
+    font-size: 15px;
+  }
+  
   .wrapper,
   .logo-section,
   .nav-section,
