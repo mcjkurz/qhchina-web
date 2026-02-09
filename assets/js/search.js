@@ -25,7 +25,7 @@
 
     // Fetch the search index
     try {
-      const response = await fetch('/qhchina/assets/search-index.json');
+      const response = await fetch('/assets/search-index.json');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -33,16 +33,6 @@
       isInitialized = true;
     } catch (error) {
       console.error('Failed to load search index:', error);
-      // Try without the base URL (for local development)
-      try {
-        const response = await fetch('/assets/search-index.json');
-        if (response.ok) {
-          searchIndex = await response.json();
-          isInitialized = true;
-        }
-      } catch (e) {
-        console.error('Failed to load search index (fallback):', e);
-      }
     }
 
     // Set up event listeners
