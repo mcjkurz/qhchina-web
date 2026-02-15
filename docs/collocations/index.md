@@ -32,7 +32,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions</h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L33" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 FilterOptions(*args, **kwargs)
@@ -42,7 +42,7 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates()</h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L319" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 find_collocates(
@@ -120,7 +120,7 @@ collocation statistics.
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix()</h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L589" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 cooc_matrix(
@@ -175,7 +175,7 @@ If as_dataframe=False and use_sparse=True: tuple of (scipy sparse matrix,
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates()</h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L765" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 plot_collocates(
