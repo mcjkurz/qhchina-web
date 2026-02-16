@@ -53,7 +53,9 @@ sentences = segmenter.segment("深度学习正在改变世界。自然语言处�
 
 <h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L26" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 SegmentationWrapper(
     strategy: str = 'whole',
     chunk_size: int = 512,
@@ -61,7 +63,9 @@ SegmentationWrapper(
     user_dict: str | list[str | tuple] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Base segmentation wrapper class that can be extended for different segmentation tools.
 
@@ -82,17 +86,25 @@ Base segmentation wrapper class that can be extended for different segmentation 
 
 <h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L182" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 close()
-</code></pre>
+```
+
+</div>
 
 Clean up resources. Call this when done with the segmenter.
 
 <h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L186" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 reset_user_dict()
-</code></pre>
+```
+
+</div>
 
 Reset the user dictionary to default state.
 
@@ -101,9 +113,13 @@ Subclasses should override this method to implement backend-specific reset logic
 
 <h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L209" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 segment(text: str)
-</code></pre>
+```
+
+</div>
 
 Segment text into tokens based on the selected strategy.
 
@@ -119,7 +135,9 @@ contains tokens for a line, sentence, or chunk respectively
 
 <h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L333" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 SpacySegmenter(
     model_name: str = 'zh_core_web_sm',
     disable: list[str] | None = None,
@@ -130,7 +148,9 @@ SpacySegmenter(
     filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Segmentation wrapper for spaCy models.
 
@@ -154,9 +174,13 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
 
 <h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L424" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 reset_user_dict()
-</code></pre>
+```
+
+</div>
 
 Reset the spaCy tokenizer's user dictionary.
 
@@ -167,7 +191,9 @@ Note: This resets to an empty user dictionary, not the original state if one was
 
 <h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L481" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 PKUSegmenter(
     model_name: str = 'default',
     user_dict: str | list[str | tuple] | None = None,
@@ -177,7 +203,9 @@ PKUSegmenter(
     filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Segmentation wrapper for PKUSeg Chinese text segmentation.
 
@@ -212,9 +240,13 @@ which will reinitialize the segmenter.
 
 <h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L568" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 reset_user_dict()
-</code></pre>
+```
+
+</div>
 
 Reset the user dictionary by reinitializing PKUSeg without a user dict.
 
@@ -226,7 +258,9 @@ global state.
 
 <h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L630" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 JiebaSegmenter(
     user_dict: str | list[str | tuple] | None = None,
     pos_tagging: bool = False,
@@ -235,7 +269,9 @@ JiebaSegmenter(
     filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Segmentation wrapper for Jieba Chinese text segmentation.
 
@@ -255,9 +291,13 @@ Segmentation wrapper for Jieba Chinese text segmentation.
 
 <h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L687" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 reset_user_dict()
-</code></pre>
+```
+
+</div>
 
 Reset Jieba's dictionary to default state.
 
@@ -268,7 +308,9 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
 
 <h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L794" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 BertSegmenter(
     model_name: str = None,
     model=None,
@@ -284,7 +326,9 @@ BertSegmenter(
     filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Segmentation wrapper for BERT-based Chinese word segmentation.
 
@@ -316,7 +360,9 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
 
 <h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1108" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 LLMSegmenter(
     api_key: str,
     model: str,
@@ -333,7 +379,9 @@ LLMSegmenter(
     filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
-</code></pre>
+```
+
+</div>
 
 Segmentation wrapper using Language Model APIs like OpenAI.
 
@@ -362,7 +410,9 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 
 <h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1321" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code class="language-python">
+<div class="signature">
+
+```python
 create_segmenter(
     backend: str = 'spacy',
     strategy: str = 'whole',
@@ -370,7 +420,9 @@ create_segmenter(
     sentence_end_pattern: str = '([。！？\\.!?……]+)',
     **kwargs
 )
-</code></pre>
+```
+
+</div>
 
 Create a segmenter based on the specified backend.
 

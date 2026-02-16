@@ -29,12 +29,14 @@ pre code {
 }
 
 // Function/method signature blocks - allow wrapping
-pre.signature {
-  white-space: pre-wrap !important;
-  word-wrap: break-word !important;
-  overflow-x: visible !important;
+.signature {
+  pre {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-x: visible !important;
+  }
   
-  code {
+  pre code {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     overflow-x: visible !important;
