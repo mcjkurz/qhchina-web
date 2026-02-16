@@ -619,11 +619,12 @@ aside.docs-sidebar {
     display: none !important;
   }
   
-  // Source link: display on new line on mobile
+  // Source link: display on new line on mobile, keep font small
   .docs-content .source-link {
     display: block;
     margin-left: 0;
     margin-top: 0.25em;
+    font-size: 0.75em;
   }
 }
 
