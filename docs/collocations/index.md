@@ -476,19 +476,25 @@ plot_collocates(
 ```python
 from qhchina.analytics.collocations import cooc_matrix
 
-# Create co-occurrence matrix
-cooc = cooc_matrix(
+# Create co-occurrence matrix (returns CoocMatrix object)
+matrix = cooc_matrix(
     documents=sentences,
     method="window",
     horizon=2,
-    min_abs_count=2,
-    as_dataframe=True
+    min_word_count=2
 )
 
-# Find words that co-occur with a target word
+# Access co-occurrence counts with flexible indexing
 target_word = "经济"
-if target_word in cooc.index:
-    cooc_with_target = cooc[target_word].sort_values(ascending=False)
+if target_word in matrix.vocab:
+    cooc_with_target = matrix[target_word]  # Returns dict {word: count}
     print(f"Words co-occurring with '{target_word}':")
-    print(cooc_with_target.head(10))
+    for word, count in sorted(cooc_with_target.items(), key=lambda x: -x[1])[:10]:
+        print(f"  {word}: {count}")
+
+# Get a specific pair count
+count = matrix["经济", "发展"]
+
+# Convert to DataFrame if needed
+df = matrix.to_dataframe()
 ```

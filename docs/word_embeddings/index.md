@@ -60,8 +60,8 @@ The `qhchina.analytics.word2vec` module provides Word2Vec implementations for Ch
 ```python
 from qhchina.analytics.word2vec import Word2Vec
 
-model = Word2Vec(vector_size=100, window=5, min_word_count=5)
-model.train(sentences, epochs=5)
+model = Word2Vec(vector_size=100, window=5, min_word_count=5, epochs=5)
+model.train(sentences)
 similar = model.most_similar("经济", topn=10)  # Find words similar to "经济"
 ```
 
@@ -692,8 +692,8 @@ Tuple of (aligned_vectors, transformation_matrix)
 ```python
 from qhchina.analytics.word2vec import Word2Vec
 
-# Initialize model
-model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42)
+# Initialize model (epochs is set at initialization)
+model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
 
 # Prepare tokenized sentences
 sentences = [
@@ -703,7 +703,7 @@ sentences = [
 ]
 
 # Train model
-model.train(sentences, epochs=5)
+model.train(sentences)
 
 # Get similar words
 similar_words = model.most_similar("电影", topn=10)
@@ -735,9 +735,9 @@ model = TempRefWord2Vec(
     vector_size=100,
     window=5,
     sg=1,
-    seed=42
+    seed=42,
+    epochs=5  # Training will start automatically during initialization
 )
-model.train(calculate_loss=True)
 
 # Access temporal variants
 reform_1980s = model.get_vector("改革_1980")
