@@ -16,3 +16,9 @@ vendor/
 .idea/
 .vscode/
 .cursor/
+
+# Python virtual environment
+venv/
+
+# Test suite
+tests/
