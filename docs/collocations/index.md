@@ -42,7 +42,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>FilterOptions(*args, **kwargs)</code></pre>
+<pre class="signature"><code><span class="sig-name">FilterOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
 Type definition for filter options in collocation analysis.
 
@@ -50,10 +50,10 @@ Type definition for filter options in collocation analysis.
 
 <h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>CoocMatrix(
-    matrix: scipy.sparse._csr.csr_matrix,
-    vocab_list: list[str],
-    word_to_index: dict[str, int]
+<pre class="signature"><code><span class="sig-name">CoocMatrix</span>(
+    <span class="sig-param">matrix</span><span class="sig-punct">:</span> <span class="sig-type">scipy.sparse._csr.csr_matrix</span>,
+    <span class="sig-param">vocab_list</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
+    <span class="sig-param">word_to_index</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, int]</span>
 )</code></pre>
 
 Co-occurrence matrix with flexible indexing by word or index.
@@ -88,7 +88,7 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
 <h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>get(row_key, col_key, default: int = 0)</code></pre>
+<pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
 Get a co-occurrence count with a default value for missing pairs.
 
@@ -102,7 +102,7 @@ Co-occurrence count, or default if not found.
 
 <h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>to_dataframe()</code></pre>
+<pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
 Convert to a pandas DataFrame with word labels.
 
@@ -113,7 +113,7 @@ DataFrame with vocabulary words as both index and columns.
 
 <h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>to_dense()</code></pre>
+<pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
 Convert to a dense NumPy array.
 
@@ -126,16 +126,16 @@ Warning: This may use significant memory for large vocabularies.
 
 <h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>find_collocates(
-    sentences: list[list[str]],
-    target_words: str | list[str],
-    method: str = 'window',
-    horizon: int | tuple | None = None,
-    filters: qhchina.analytics.collocations.FilterOptions | None = None,
-    correction: str | None = None,
-    as_dataframe: bool = True,
-    max_sentence_length: int | None = 256,
-    alternative: str = 'greater'
+<pre class="signature"><code><span class="sig-name">find_collocates</span>(
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
+    <span class="sig-param">target_words</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
+    <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
+    <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">qhchina.analytics.collocations.FilterOptions | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>,
+    <span class="sig-param">alternative</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'greater'</span>
 )</code></pre>
 
 Find collocates for target words within a corpus of sentences.
@@ -211,15 +211,15 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L837" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>cooc_matrix(
-    documents: list[list[str]],
-    horizon: int | tuple[int, int] | None = None,
-    method: str = 'window',
-    min_word_count: int = 1,
-    min_doc_count: int = 1,
-    max_vocab_size: int | None = None,
-    vocab: list[str] | set | None = None,
-    binary: bool = False
+<pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
+    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
+    <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple[int, int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
+    <span class="sig-param">min_word_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
+    <span class="sig-param">min_doc_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
+    <span class="sig-param">max_vocab_size</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">vocab</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | set | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
 )</code></pre>
 
 Calculate a co-occurrence matrix from a list of documents.
@@ -273,27 +273,27 @@ Returns a CoocMatrix object with flexible indexing:
 
 <h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1088" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>plot_collocates(
-    collocates: list[dict] | pandas.core.frame.DataFrame,
-    x_col: str = 'ratio_local',
-    y_col: str = 'p_value',
-    x_scale: str = 'log',
-    y_scale: str = 'log',
-    color: str | list[str] | None = None,
-    colormap: str = 'viridis',
-    color_by: str | None = None,
-    title: str | None = None,
-    figsize: tuple = (10, 8),
-    fontsize: int = 10,
-    show_labels: bool = False,
-    label_top_n: int | None = None,
-    alpha: float = 0.6,
-    marker_size: int = 50,
-    show_diagonal: bool = False,
-    diagonal_color: str = 'red',
-    filename: str | None = None,
-    xlabel: str | None = None,
-    ylabel: str | None = None
+<pre class="signature"><code><span class="sig-name">plot_collocates</span>(
+    <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
+    <span class="sig-param">x_col</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'ratio_local'</span>,
+    <span class="sig-param">y_col</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'p_value'</span>,
+    <span class="sig-param">x_scale</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'log'</span>,
+    <span class="sig-param">y_scale</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'log'</span>,
+    <span class="sig-param">color</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">colormap</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'viridis'</span>,
+    <span class="sig-param">color_by</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple</span> <span class="sig-punct">=</span> <span class="sig-default">(10, 8)</span>,
+    <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
+    <span class="sig-param">show_labels</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">label_top_n</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">alpha</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.6</span>,
+    <span class="sig-param">marker_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">50</span>,
+    <span class="sig-param">show_diagonal</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">diagonal_color</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'red'</span>,
+    <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">xlabel</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">ylabel</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
 )</code></pre>
 
 Visualize collocation results as a 2D scatter plot.

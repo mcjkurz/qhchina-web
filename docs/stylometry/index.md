@@ -98,15 +98,15 @@ dist = stylo.distance('鲁迅_1', '沈从文_1')     # Compare two documents (lo
 
 <h3 id="stylometry">qhchina.analytics.stylometry.Stylometry <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L196" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>Stylometry(
-    n_features: int = 100,
-    ngram_range: tuple[int, int] = (1, 1),
-    transform: str = 'zscore',
-    distance: str = 'cosine',
-    classifier: str = 'delta',
-    cull: float | None = None,
-    chunk_size: int | None = None,
-    mode: str = 'centroid'
+<pre class="signature"><code><span class="sig-name">Stylometry</span>(
+    <span class="sig-param">n_features</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>,
+    <span class="sig-param">ngram_range</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(1, 1)</span>,
+    <span class="sig-param">transform</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zscore'</span>,
+    <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'cosine'</span>,
+    <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'delta'</span>,
+    <span class="sig-param">cull</span><span class="sig-punct">:</span> <span class="sig-type">float | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">mode</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'centroid'</span>
 )</code></pre>
 
 Stylometry for authorship attribution and document clustering.
@@ -165,7 +165,7 @@ author, confidence = stylo.predict(disputed_tokens)
 
 <h4 id="stylometry-bootstrap_predict">qhchina.analytics.stylometry.Stylometry.bootstrap_predict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L997" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>bootstrap_predict(text: list[str], n_iter: int = 100, sample_ratio: float = 0.8, distance: str | None = None, seed: int | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">bootstrap_predict</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">n_iter</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>, <span class="sig-param">sample_ratio</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.8</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Bootstrap analysis for prediction robustness.
 
@@ -212,7 +212,7 @@ print(f"Vote distribution: {result['distribution']}")
 
 <h4 id="stylometry-dendrogram">qhchina.analytics.stylometry.Stylometry.dendrogram() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1725" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>dendrogram(method: str = 'average', level: str = 'document', orientation: str = 'top', figsize: tuple[int, int] = (12, 8), labels: list[str] | None = None, title: str | None = None, fontsize: int = 10, color_threshold: float | None = None, filename: str | None = None, show: bool = True, distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">dendrogram</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'average'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">orientation</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'top'</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(12, 8)</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">color_threshold</span><span class="sig-punct">:</span> <span class="sig-type">float | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Visualize hierarchical clustering as a dendrogram.
 
@@ -234,13 +234,13 @@ None if show=True, otherwise dict with 'fig', 'ax', and dendrogram data.
 
 <h4 id="stylometry-distance">qhchina.analytics.stylometry.Stylometry.distance() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1336" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>distance(a: str | list[str], b: str | list[str], distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">distance</span>(<span class="sig-param">a</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">b</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Compute the distance between two documents. Lower = more similar.
 
 <h4 id="stylometry-distance_matrix">qhchina.analytics.stylometry.Stylometry.distance_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1405" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>distance_matrix(level: str = 'document', distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">distance_matrix</span>(<span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Compute pairwise distance matrix from fitted data.
 
@@ -253,7 +253,7 @@ Compute pairwise distance matrix from fitted data.
 
 <h4 id="stylometry-fit_transform">qhchina.analytics.stylometry.Stylometry.fit_transform() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L579" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>fit_transform(corpus: dict[str, list[list[str]]] | list[list[str]], labels: list[str] | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">fit_transform</span>(<span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, list[list[str]]] | list[list[str]]</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Fit the model on a corpus and transform documents to feature vectors.
 
@@ -268,7 +268,7 @@ Fit the model on a corpus and transform documents to feature vectors.
 
 <h4 id="stylometry-get_author_profile">qhchina.analytics.stylometry.Stylometry.get_author_profile() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1494" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>get_author_profile(author: str)</code></pre>
+<pre class="signature"><code><span class="sig-name">get_author_profile</span>(<span class="sig-param">author</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
 Get the feature values for a specific author.
 
@@ -276,7 +276,7 @@ Returns a DataFrame with 'feature' and 'value' columns, sorted by value descendi
 
 <h4 id="stylometry-get_feature_comparison">qhchina.analytics.stylometry.Stylometry.get_feature_comparison() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1512" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>get_feature_comparison()</code></pre>
+<pre class="signature"><code><span class="sig-name">get_feature_comparison</span>()</code></pre>
 
 Get a comparison table of feature values across all fitted authors.
 
@@ -284,7 +284,7 @@ Returns a DataFrame with one column per author plus a 'variance' column.
 
 <h4 id="stylometry-hierarchical_clustering">qhchina.analytics.stylometry.Stylometry.hierarchical_clustering() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1426" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>hierarchical_clustering(method: str = 'average', level: str = 'document', distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">hierarchical_clustering</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'average'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Perform hierarchical clustering on fitted data.
 
@@ -298,7 +298,7 @@ Perform hierarchical clustering on fitted data.
 
 <h4 id="stylometry-most_similar">qhchina.analytics.stylometry.Stylometry.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1283" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>most_similar(query: str | list[str], k: int | None = None, return_distance: bool = False, distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">query</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">return_distance</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Find the most similar documents to a query.
 
@@ -313,7 +313,7 @@ List of (doc_id, value) tuples sorted by similarity (most similar first).
 
 <h4 id="stylometry-plot">qhchina.analytics.stylometry.Stylometry.plot() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1536" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>plot(method: str = 'pca', level: str = 'document', figsize: tuple[int, int] = (10, 8), show_labels: bool = True, labels: list[str] | None = None, title: str | None = None, colors: dict[str, str] | None = None, marker_size: int = 100, fontsize: int = 12, filename: str | None = None, random_state: int = 42, show: bool = True)</code></pre>
+<pre class="signature"><code><span class="sig-name">plot</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'pca'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(10, 8)</span>, <span class="sig-param">show_labels</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">colors</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">marker_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>, <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">12</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">random_state</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">42</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
 Create a 2D scatter plot of documents or authors.
 
@@ -336,7 +336,7 @@ None if show=True, otherwise (fig, ax) tuple.
 
 <h4 id="stylometry-predict">qhchina.analytics.stylometry.Stylometry.predict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L831" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>predict(text: list[str], k: int = 1, distance: str | None = None, classifier: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">predict</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Predict the most likely author for a tokenized text.
 
@@ -353,7 +353,7 @@ List of (author, score) tuples.
 
 <h4 id="stylometry-predict_author">qhchina.analytics.stylometry.Stylometry.predict_author() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L925" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>predict_author(text: list[str], k: int = 1, distance: str | None = None, classifier: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">predict_author</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Convenience method to get just the predicted author name.
 
@@ -369,7 +369,7 @@ Predicted author name (str).
 
 <h4 id="stylometry-predict_confidence">qhchina.analytics.stylometry.Stylometry.predict_confidence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L958" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>predict_confidence(text: list[str], k: int = 1, classifier: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">predict_confidence</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Predict with unified confidence scores (higher = more likely).
 
@@ -380,7 +380,7 @@ List of (author, confidence) tuples where confidence is 0-1, higher = more likel
 
 <h4 id="stylometry-rolling_delta">qhchina.analytics.stylometry.Stylometry.rolling_delta() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1138" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>rolling_delta(text: list[str], reference: str | None = None, window: int = 5000, step: int = 1000, distance: str | None = None, show: bool = True, figsize: tuple[int, int] = (12, 6), title: str | None = None, filename: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">rolling_delta</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">reference</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">window</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5000</span>, <span class="sig-param">step</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1000</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(12, 6)</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Rolling window analysis across a long text.
 
@@ -430,13 +430,13 @@ print(results[['position', 'distance']])
 
 <h4 id="stylometry-similarity">qhchina.analytics.stylometry.Stylometry.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1354" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>similarity(a: str | list[str], b: str | list[str], distance: str | None = None)</code></pre>
+<pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">a</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">b</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Compute the similarity between two documents. Higher = more similar.
 
 <h4 id="stylometry-transform">qhchina.analytics.stylometry.Stylometry.transform() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L766" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>transform(tokens: list[str], warn_oov: bool = True)</code></pre>
+<pre class="signature"><code><span class="sig-name">transform</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">warn_oov</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
 Transform a tokenized text to a feature vector using fitted features.
 
@@ -450,7 +450,7 @@ Feature vector (numpy array)
 
 <h4 id="stylometry-vocabulary_stats">qhchina.analytics.stylometry.Stylometry.vocabulary_stats() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1467" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code>vocabulary_stats()</code></pre>
+<pre class="signature"><code><span class="sig-name">vocabulary_stats</span>()</code></pre>
 
 Get vocabulary richness statistics for all fitted documents.
 
@@ -461,13 +461,13 @@ DataFrame with columns: doc_id, author, yule_k, token_count, type_count
 
 <h3 id="compare_corpora">qhchina.analytics.stylometry.compare_corpora() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1808" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>compare_corpora(
-    corpusA: list[str] | list[list[str]],
-    corpusB: list[str] | list[list[str]],
-    method: str = 'fisher',
-    filters: dict | None = None,
-    correction: str | None = None,
-    as_dataframe: bool = True
+<pre class="signature"><code><span class="sig-name">compare_corpora</span>(
+    <span class="sig-param">corpusA</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | list[list[str]]</span>,
+    <span class="sig-param">corpusB</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | list[list[str]]</span>,
+    <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'fisher'</span>,
+    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>
 )</code></pre>
 
 Compare two corpora to identify statistically significant differences in word usage.
@@ -519,7 +519,7 @@ If as_dataframe is False: list[dict] where each dict contains information
 
 <h3 id="extract_mfw">qhchina.analytics.stylometry.extract_mfw() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L51" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>extract_mfw(ngram_counts: collections.Counter, n: int = 100)</code></pre>
+<pre class="signature"><code><span class="sig-name">extract_mfw</span>(<span class="sig-param">ngram_counts</span><span class="sig-punct">:</span> <span class="sig-type">collections.Counter</span>, <span class="sig-param">n</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>)</code></pre>
 
 Extract the Most Frequent Words (MFW) from a frequency counter.
 
@@ -544,7 +544,7 @@ print(mfw)
 
 <h3 id="burrows_delta">qhchina.analytics.stylometry.burrows_delta() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L73" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>burrows_delta(vec_a: numpy.ndarray, vec_b: numpy.ndarray)</code></pre>
+<pre class="signature"><code><span class="sig-name">burrows_delta</span>(<span class="sig-param">vec_a</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>, <span class="sig-param">vec_b</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>)</code></pre>
 
 Compute Burrows' Delta distance between two feature vectors.
 
@@ -563,7 +563,7 @@ Lower values indicate more similar writing styles.
 
 <h3 id="manhattan_distance">qhchina.analytics.stylometry.manhattan_distance() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L95" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>manhattan_distance(vec_a: numpy.ndarray, vec_b: numpy.ndarray)</code></pre>
+<pre class="signature"><code><span class="sig-name">manhattan_distance</span>(<span class="sig-param">vec_a</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>, <span class="sig-param">vec_b</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>)</code></pre>
 
 Compute Manhattan (L1) distance between two vectors.
 
@@ -578,7 +578,7 @@ Compute Manhattan (L1) distance between two vectors.
 
 <h3 id="euclidean_distance">qhchina.analytics.stylometry.euclidean_distance() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L109" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>euclidean_distance(vec_a: numpy.ndarray, vec_b: numpy.ndarray)</code></pre>
+<pre class="signature"><code><span class="sig-name">euclidean_distance</span>(<span class="sig-param">vec_a</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>, <span class="sig-param">vec_b</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>)</code></pre>
 
 Compute Euclidean (L2) distance between two vectors.
 
@@ -593,7 +593,7 @@ Compute Euclidean (L2) distance between two vectors.
 
 <h3 id="eder_delta">qhchina.analytics.stylometry.eder_delta() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L123" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>eder_delta(vec_a: numpy.ndarray, vec_b: numpy.ndarray)</code></pre>
+<pre class="signature"><code><span class="sig-name">eder_delta</span>(<span class="sig-param">vec_a</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>, <span class="sig-param">vec_b</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>)</code></pre>
 
 Eder's Delta distance: a variation of Burrows' Delta with different weighting.
 
@@ -608,7 +608,7 @@ Reference: Eder, M. (2013). "Mind your corpus: systematic errors in authorship a
 
 <h3 id="get_relative_frequencies">qhchina.analytics.stylometry.get_relative_frequencies() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L140" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>get_relative_frequencies(items: list[str])</code></pre>
+<pre class="signature"><code><span class="sig-name">get_relative_frequencies</span>(<span class="sig-param">items</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>)</code></pre>
 
 Compute relative frequencies for a list of items (tokens or n-grams).
 
@@ -619,7 +619,7 @@ Dict mapping each unique item to its relative frequency (count / total)
 
 <h3 id="compute_yule_k">qhchina.analytics.stylometry.compute_yule_k() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L154" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code>compute_yule_k(tokens: list[str])</code></pre>
+<pre class="signature"><code><span class="sig-name">compute_yule_k</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>)</code></pre>
 
 Compute Yule's K characteristic for vocabulary richness.
 
