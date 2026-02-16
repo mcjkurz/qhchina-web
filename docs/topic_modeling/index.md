@@ -76,16 +76,16 @@ topics = lda.get_topics(n_words=10)  # Get top words per topic
 ```python
 LDAGibbsSampler(
     n_topics: int = 10,
-    alpha: Optional[float] = None,
-    beta: Optional[float] = None,
+    alpha: float | numpy.ndarray | list[float] | None = None,
+    beta: float | None = None,
     iterations: int = 100,
     burnin: int = 0,
-    random_state: Optional[int] = None,
-    log_interval: Optional[int] = None,
+    random_state: int | None = None,
+    log_interval: int | None = None,
     min_word_count: int = 1,
-    max_vocab_size: Optional[int] = None,
+    max_vocab_size: int | None = None,
     min_word_length: int = 1,
-    stopwords: Optional[set] = None,
+    stopwords: set | None = None,
     estimate_alpha: int = 1
 )
 ```
@@ -126,10 +126,10 @@ lda.fit(documents)
 topics = lda.get_topics(n_words=10)
 ```
 
-<h4 id="ldagibbssampler-coherence">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1236" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1234" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-coherence(method: str = 'umass', n_words: int = 10, window_size: Optional[int] = None, **kwargs)
+coherence(method: str = 'umass', n_words: int = 10, window_size: int | None = None, **kwargs)
 ```
 
 Calculate topic coherence using the specified method.
@@ -159,7 +159,7 @@ avg_coherence, topic_coherences = model.coherence('npmi')
 print(f"Average NPMI coherence: {avg_coherence:.4f}")
 ```
 
-<h4 id="ldagibbssampler-coherence_npmi">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_npmi() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1174" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence_npmi">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_npmi() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1172" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 coherence_npmi(n_words: int = 10, window_size: int = 10, eps: float = 1e-12)
@@ -183,7 +183,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-coherence_umass">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_umass() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1115" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence_umass">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_umass() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1113" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 coherence_umass(n_words: int = 10, eps: float = 1e-12)
@@ -207,7 +207,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-document_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1001" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-document_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L999" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 document_similarity(doc_i: int, doc_j: int, metric: str = 'jsd')
@@ -227,10 +227,10 @@ Calculate similarity between two documents based on their topic distributions.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-document_similarity_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1023" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-document_similarity_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1021" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-document_similarity_matrix(doc_ids: Optional[List[int]] = None, metric: str = 'jsd')
+document_similarity_matrix(doc_ids: list[int] | None = None, metric: str = 'jsd')
 ```
 
 Calculate pairwise similarity/distance between documents.
@@ -242,7 +242,7 @@ Calculate pairwise similarity/distance between documents.
 **Returns:**
 Square matrix with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-evaluate">qhchina.analytics.topicmodels.LDAGibbsSampler.evaluate() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1274" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-evaluate">qhchina.analytics.topicmodels.LDAGibbsSampler.evaluate() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1272" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 evaluate(n_words: int = 10, verbose: bool = True)
@@ -263,7 +263,7 @@ Dictionary containing all evaluation metrics
 <h4 id="ldagibbssampler-fit">qhchina.analytics.topicmodels.LDAGibbsSampler.fit() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L480" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-fit(documents: List[List[str]])
+fit(documents: list[list[str]])
 ```
 
 Fit the LDA model to the given documents.
@@ -286,7 +286,7 @@ Get topic distribution for a specific document.
 **Returns:**
 List of (topic_id, probability) tuples
 
-<h4 id="ldagibbssampler-get_top_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.get_top_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L867" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_top_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.get_top_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L865" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_top_documents(topic_id: int, n_docs: int = 10)
@@ -312,7 +312,7 @@ Get overall topic distribution across the corpus.
 **Returns:**
 Array of topic probabilities
 
-<h4 id="ldagibbssampler-get_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L886" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L884" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_topic_words(topic_id: int, n_words: int = 10)
@@ -344,7 +344,7 @@ List of topics, each containing a list of (word, probability) tuples
 <h4 id="ldagibbssampler-inference">qhchina.analytics.topicmodels.LDAGibbsSampler.inference() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L608" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-inference(new_doc: List[str], inference_iterations: int = 100)
+inference(new_doc: list[str], inference_iterations: int = 100)
 ```
 
 Infer topic distribution for a new document.
@@ -359,7 +359,7 @@ Topic distribution for the document
 <h4 id="ldagibbssampler-initialize">qhchina.analytics.topicmodels.LDAGibbsSampler.initialize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L255" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-initialize(docs_as_ids: List[List[int]])
+initialize(docs_as_ids: list[list[int]])
 ```
 
 Initialize data structures for Gibbs sampling.
@@ -378,10 +378,10 @@ Calculate perplexity of the model on the training data.
 **Returns:**
 Perplexity value (lower is better)
 
-<h4 id="ldagibbssampler-plot_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.plot_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L669" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-plot_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.plot_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L667" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-plot_topic_words(n_words: int = 10, figsize: Tuple[int, int] = (12, 8), fontsize: int = 10, filename: Optional[str] = None, separate_files: bool = False, dpi: int = 72, orientation: str = 'horizontal')
+plot_topic_words(n_words: int = 10, figsize: tuple[int, int] = (12, 8), fontsize: int = 10, filename: str | None = None, separate_files: bool = False, dpi: int = 72, orientation: str = 'horizontal')
 ```
 
 Plot the top words for each topic as a bar chart.
@@ -399,7 +399,7 @@ Plot the top words for each topic as a bar chart.
 <h4 id="ldagibbssampler-preprocess">qhchina.analytics.topicmodels.LDAGibbsSampler.preprocess() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L187" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-preprocess(documents: List[List[str]])
+preprocess(documents: list[list[str]])
 ```
 
 Convert token documents to word IDs and build vocabulary.
@@ -425,7 +425,7 @@ Run Gibbs sampling for the specified number of iterations.
 
 Uses Cython if available and enabled.
 
-<h4 id="ldagibbssampler-save">qhchina.analytics.topicmodels.LDAGibbsSampler.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L755" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-save">qhchina.analytics.topicmodels.LDAGibbsSampler.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L753" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 save(filepath: str)
@@ -436,7 +436,7 @@ Save the model to a file.
 **Parameters:**
 - `filepath`: Path to save the model
 
-<h4 id="ldagibbssampler-topic_correlation_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_correlation_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L975" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-topic_correlation_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_correlation_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L973" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 topic_correlation_matrix(metric: str = 'jsd')
@@ -450,7 +450,7 @@ Calculate pairwise similarity/distance between all topics.
 **Returns:**
 Square matrix of shape (n_topics, n_topics) with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-topic_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L954" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-topic_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L952" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 topic_similarity(topic_i: int, topic_j: int, metric: str = 'jsd')
@@ -470,10 +470,10 @@ Calculate similarity between two topics.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1510" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1508" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-visualize_documents(method: str = 'pca', n_clusters: Optional[int] = None, doc_labels: Optional[List[str]] = None, show_labels: bool = False, label_strategy: str = 'auto', use_adjusttext: bool = True, max_labels: Optional[int] = None, figsize: Optional[Tuple[int, int]] = None, dpi: int = 150, alpha: float = 0.7, size: float = 50, cmap: str = 'tab10', title: Optional[str] = None, filename: Optional[str] = None, format: str = 'static', random_state: Optional[int] = None, highlight: Union[int, List[int], NoneType] = None, n_topic_words: int = 4, **kwargs)
+visualize_documents(method: str = 'pca', n_clusters: int | None = None, doc_labels: list[str] | None = None, show_labels: bool = False, label_strategy: str = 'auto', use_adjusttext: bool = True, max_labels: int | None = None, figsize: tuple[int, int] | None = None, dpi: int = 150, alpha: float = 0.7, size: float = 50, cmap: str = 'tab10', title: str | None = None, filename: str | None = None, format: str = 'static', random_state: int | None = None, highlight: int | list[int] | None = None, n_topic_words: int = 4, **kwargs)
 ```
 
 Visualize documents in 2D space using dimensionality reduction.

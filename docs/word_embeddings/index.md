@@ -75,7 +75,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 
 ```python
 Word2Vec(
-    sentences: Optional[Iterable[List[str]]] = None,
+    sentences: collections.abc.Iterable[list[str]] | None = None,
     vector_size: int = 100,
     window: int = 5,
     min_word_count: int = 5,
@@ -83,18 +83,19 @@ Word2Vec(
     ns_exponent: float = 0.75,
     cbow_mean: bool = True,
     sg: int = 0,
-    seed: int = 1,
+    seed: int | None = None,
     alpha: float = 0.025,
-    min_alpha: Optional[float] = None,
+    min_alpha: float | None = None,
     sample: float = 0.001,
     shrink_windows: bool = True,
-    max_vocab_size: Optional[int] = None,
+    max_vocab_size: int | None = None,
     verbose: bool = False,
     epochs: int = 1,
     batch_size: int = 10240,
-    callbacks: Optional[List[Callable]] = None,
+    callbacks: list[collections.abc.Callable] | None = None,
     calculate_loss: bool = True,
-    total_examples: Optional[int] = None
+    total_examples: int | None = None,
+    _skip_init: bool = False
 )
 ```
 
@@ -171,10 +172,10 @@ similar = model.most_similar('喜欢', topn=5)
 similar = model.wv.most_similar('喜欢', topn=5)  # Same as above
 ```
 
-<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.Word2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L208" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.Word2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L244" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-build_vocab(sentences: Iterable[List[str]])
+build_vocab(sentences: collections.abc.Iterable[list[str]])
 ```
 
 Build vocabulary from sentences.
@@ -185,7 +186,7 @@ Build vocabulary from sentences.
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
 
-<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.Word2Vec.get_vector() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L696" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.Word2Vec.get_vector() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L740" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_vector(word: str, normalize: bool = False)
@@ -203,7 +204,7 @@ Word vector as numpy array of shape (vector_size,).
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.Word2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L745" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.Word2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L789" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 most_similar(word: str, topn: int = 10)
@@ -218,7 +219,7 @@ Find the topn most similar words to the given word.
 **Returns:**
 List of (word, similarity) tuples.
 
-<h4 id="word2vec-save">qhchina.analytics.word2vec.Word2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L798" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-save">qhchina.analytics.word2vec.Word2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L842" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 save(path: str)
@@ -233,7 +234,7 @@ needed during training, not inference.
 **Parameters:**
 - `path`: Path to save the model.
 
-<h4 id="word2vec-similarity">qhchina.analytics.word2vec.Word2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L773" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-similarity">qhchina.analytics.word2vec.Word2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L817" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 similarity(word1: str, word2: str)
@@ -251,10 +252,10 @@ Cosine similarity between the two words (float between -1 and 1).
 **Raises:**
 - `KeyError`: If either word is not in the vocabulary.
 
-<h4 id="word2vec-train">qhchina.analytics.word2vec.Word2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L513" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-train">qhchina.analytics.word2vec.Word2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L557" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-train(sentences: Iterable[List[str]])
+train(sentences: collections.abc.Iterable[list[str]])
 ```
 
 Train word2vec model on given sentences.
@@ -275,14 +276,15 @@ Final loss value if calculate_loss is True, None otherwise.
 
 <br>
 
-<h3 id="temprefword2vec">qhchina.analytics.word2vec.TempRefWord2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L874" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="temprefword2vec">qhchina.analytics.word2vec.TempRefWord2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L921" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 TempRefWord2Vec(
-    corpora: List[List[List[str]]],
-    labels: List[str],
-    targets: List[str],
+    corpora: list[list[list[str]]],
+    labels: list[str],
+    targets: list[str],
     balance: bool = True,
+    _skip_init: bool = False,
     **kwargs
 )
 ```
@@ -297,10 +299,10 @@ The class takes multiple corpora corresponding to different time periods and aut
 creates temporal references for specified target words.
 
 **Parameters:**
-- `corpora` (List[List[List[str]]]): List of corpora, each corpus is a list of sentences 
+- `corpora` (list[list[list[str]]]): List of corpora, each corpus is a list of sentences 
   for a time period.
-- `labels` (List[str]): Labels for each corpus (e.g., time periods like "1800s", "1900s").
-- `targets` (List[str]): List of target words to trace semantic change.
+- `labels` (list[str]): Labels for each corpus (e.g., time periods like "1800s", "1900s").
+- `targets` (list[str]): List of target words to trace semantic change.
 - `balance` (bool): Whether to balance the corpora to equal sizes (default: True).
 - `**kwargs`: Arguments passed to Word2Vec parent class (vector_size, window, sg, etc.).
 
@@ -327,10 +329,10 @@ model.most_similar("bread_1800s")  # Words similar to "bread" in the 1800s
 model.most_similar("bread_1900s")  # Words similar to "bread" in the 1900s
 ```
 
-<h4 id="temprefword2vec-build_vocab">qhchina.analytics.word2vec.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1078" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-build_vocab">qhchina.analytics.word2vec.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1139" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-build_vocab(sentences: List[List[str]])
+build_vocab(sentences: list[list[str]])
 ```
 
 Extends the parent build_vocab method to handle temporal word variants.
@@ -340,10 +342,10 @@ Explicitly adds base words to the vocabulary even if they don't appear in the co
 **Parameters:**
 - `sentences`: List of tokenized sentences.
 
-<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1240" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1301" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-calculate_semantic_change(target_word: str, labels: Optional[List[str]] = None)
+calculate_semantic_change(target_word: str, labels: list[str] | None = None)
 ```
 
 Calculate semantic change by comparing cosine similarities across time periods.
@@ -366,7 +368,7 @@ for transition, word_changes in changes.items():
     print("Words moved away:", word_changes[-5:])   # Top 5 decreases
 ```
 
-<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.word2vec.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1312" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.word2vec.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1373" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_available_targets()
@@ -377,10 +379,10 @@ Get the list of target words available for semantic change analysis.
 **Returns:**
 List of target words that were specified during model initialization.
 
-<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.word2vec.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1330" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.word2vec.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1391" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-get_period_vocab_counts(period: Optional[str] = None)
+get_period_vocab_counts(period: str | None = None)
 ```
 
 Get vocabulary counts for a specific period or all periods.
@@ -395,7 +397,7 @@ If period is specified: Counter object for that specific period.
 **Raises:**
 - `ValueError`: If the specified period is not found in the model.
 
-<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.word2vec.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1321" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.word2vec.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1382" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_time_labels()
@@ -406,7 +408,7 @@ Get the list of time period labels used in the model.
 **Returns:**
 List of time period labels that were specified during model initialization.
 
-<h4 id="temprefword2vec-save">qhchina.analytics.word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1355" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-save">qhchina.analytics.word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1416" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 save(path: str)
@@ -425,10 +427,10 @@ Note: The combined corpus is NOT saved to reduce file size.
 **Parameters:**
 - `path` (str): Path to save the model file.
 
-<h4 id="temprefword2vec-train">qhchina.analytics.word2vec.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1216" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-train">qhchina.analytics.word2vec.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1277" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-train(sentences: Optional[List[List[str]]] = None)
+train(sentences: list[list[str]] | None = None)
 ```
 
 Train the TempRefWord2Vec model using the preprocessed combined corpus.
@@ -452,15 +454,15 @@ Final loss value if calculate_loss is True, None otherwise.
 
 ```python
 project_2d(
-    vectors: Union[List[numpy.ndarray], Dict[str, numpy.ndarray], numpy.ndarray],
-    labels: Optional[List[str]] = None,
+    vectors: list[numpy.ndarray] | dict[str, numpy.ndarray] | numpy.ndarray,
+    labels: list[str] | None = None,
     method: str = 'pca',
-    title: Optional[str] = None,
-    color: Union[str, List[str], NoneType] = None,
-    figsize: Tuple[int, int] = (8, 8),
+    title: str | None = None,
+    color: str | list[str] | None = None,
+    figsize: tuple[int, int] = (8, 8),
     fontsize: int = 12,
-    perplexity: Optional[float] = None,
-    filename: Optional[str] = None,
+    perplexity: float | None = None,
+    filename: str | None = None,
     adjust_text_labels: bool = False,
     n_neighbors: int = 15,
     min_dist: float = 0.1
@@ -494,7 +496,7 @@ Projects high-dimensional vectors into 2D using PCA, t-SNE, or UMAP and visualiz
 
 ```python
 get_bias_direction(
-    anchors: Union[Tuple[numpy.ndarray, numpy.ndarray], List[Tuple[numpy.ndarray, numpy.ndarray]]]
+    anchors: tuple[numpy.ndarray, numpy.ndarray] | list[tuple[numpy.ndarray, numpy.ndarray]]
 )
 ```
 
@@ -517,8 +519,8 @@ positive and negative anchor pairs.
 
 ```python
 calculate_bias(
-    anchors: Union[Tuple[str, str], List[Tuple[str, str]]],
-    targets: List[str],
+    anchors: tuple[str, str] | list[tuple[str, str]],
+    targets: list[str],
     word_vectors: Any
 )
 ```
@@ -583,8 +585,8 @@ Projects words onto:
 
 ```python
 cosine_similarity(
-    v1: Union[numpy.ndarray, List[float]],
-    v2: Union[numpy.ndarray, List[float]]
+    v1: numpy.ndarray | list[float],
+    v2: numpy.ndarray | list[float]
 )
 ```
 
@@ -609,8 +611,8 @@ similarity matrix.
 
 ```python
 cosine_distance(
-    v1: Union[numpy.ndarray, List[float]],
-    v2: Union[numpy.ndarray, List[float]]
+    v1: numpy.ndarray | list[float],
+    v2: numpy.ndarray | list[float]
 )
 ```
 
@@ -635,10 +637,10 @@ distance matrix.
 ```python
 most_similar(
     target_vector: numpy.ndarray,
-    vectors: Union[List[numpy.ndarray], numpy.ndarray],
-    labels: Optional[List[str]] = None,
+    vectors: list[numpy.ndarray] | numpy.ndarray,
+    labels: list[str] | None = None,
     metric: Union[str, Callable[[numpy.ndarray, numpy.ndarray], float]] = 'cosine',
-    top_n: Optional[int] = None
+    top_n: int | None = None
 )
 ```
 

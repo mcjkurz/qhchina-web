@@ -42,7 +42,7 @@ The `qhchina.helpers` module provides utilities for font management and text loa
 
 <!-- API-START -->
 
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L117" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L116" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 load_fonts(target_font: str = 'Noto Sans CJK TC', verbose: bool = False)
@@ -72,7 +72,7 @@ When verbose=False, returns None.
 
 <br>
 
-<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L227" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L226" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 current_font()
@@ -88,7 +88,7 @@ The current font name, or None if no font is configured.
 
 <br>
 
-<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L50" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L49" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 set_font(font='Noto Sans CJK TC')
@@ -110,7 +110,7 @@ This function is thread-safe.
 
 <br>
 
-<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L250" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 list_available_fonts()
@@ -122,7 +122,7 @@ Returns a dictionary mapping font file names to their internal font names.
 
 <br>
 
-<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L270" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L269" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 list_font_aliases()
@@ -134,7 +134,7 @@ Returns a dictionary mapping aliases to their full font names.
 
 <br>
 
-<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L201" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L200" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 get_font_path(font: str = 'Noto Sans CJK TC')

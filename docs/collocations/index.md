@@ -40,7 +40,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L254" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 FilterOptions(*args, **kwargs)
@@ -50,13 +50,13 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L42" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 CoocMatrix(
     matrix: scipy.sparse._csr.csr_matrix,
-    vocab_list: List[str],
-    word_to_index: Dict[str, int]
+    vocab_list: list[str],
+    word_to_index: dict[str, int]
 )
 ```
 
@@ -73,10 +73,10 @@ Supports flexible indexing:
 Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
 **Parameters:**
-- `vocab` (List[str]): List of vocabulary words in index order.
-- `word_to_index` (Dict[str, int]): Mapping from words to matrix indices.
-- `index_to_word` (Dict[int, str]): Mapping from matrix indices to words.
-- `shape` (Tuple[int, int]): Shape of the matrix (vocab_size, vocab_size).
+- `vocab` (list[str]): List of vocabulary words in index order.
+- `word_to_index` (dict[str, int]): Mapping from words to matrix indices.
+- `index_to_word` (dict[int, str]): Mapping from matrix indices to words.
+- `shape` (tuple[int, int]): Shape of the matrix (vocab_size, vocab_size).
 - `nnz` (int): Number of non-zero entries.
 
 **Example:**
@@ -90,7 +90,7 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 >>> arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L163" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get(row_key, col_key, default: int = 0)
@@ -106,7 +106,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L191" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 to_dataframe()
@@ -119,7 +119,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L180" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 to_dense()
@@ -134,18 +134,18 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L540" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 find_collocates(
-    sentences: List[List[str]],
-    target_words: Union[str, List[str]],
+    sentences: list[list[str]],
+    target_words: str | list[str],
     method: str = 'window',
-    horizon: Union[int, tuple, NoneType] = None,
-    filters: Optional[qhchina.analytics.collocations.FilterOptions] = None,
-    correction: Optional[str] = None,
+    horizon: int | tuple | None = None,
+    filters: qhchina.analytics.collocations.FilterOptions | None = None,
+    correction: str | None = None,
     as_dataframe: bool = True,
-    max_sentence_length: Optional[int] = 256,
+    max_sentence_length: int | None = 256,
     alternative: str = 'greater'
 )
 ```
@@ -153,14 +153,14 @@ find_collocates(
 Find collocates for target words within a corpus of sentences.
 
 **Parameters:**
-- `sentences` (List[List[str]]): List of tokenized sentences, where each sentence 
+- `sentences` (list[list[str]]): List of tokenized sentences, where each sentence 
   is a list of tokens.
-- `target_words` (Union[str, List[str]]): Target word(s) to find collocates for.
+- `target_words` (str | list[str]): Target word(s) to find collocates for.
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
   token. 'sentence' considers whole sentences as context units (horizon not 
   applicable). Default is 'window'.
-- `horizon` (Optional[Union[int, tuple]]): Context window size relative to the target 
+- `horizon` (int | tuple | None): Context window size relative to the target 
   word. Only applicable when method='window'. Must be None when method='sentence'.
   - int: Symmetric window (e.g., 5 means 5 words on each side of target)
   - tuple: Asymmetric window (left, right) specifying how many words to look
@@ -168,14 +168,14 @@ Find collocates for target words within a corpus of sentences.
     the RIGHT of target; (5, 0) finds collocates up to 5 words to the LEFT; 
     (2, 3) finds collocates 2 words left and 3 words right of target.
   - None: Uses default of 5 for 'window' method
-- `filters` (Optional[FilterOptions]): Dictionary of filters to apply to results.
+- `filters` (FilterOptions | None): Dictionary of filters to apply to results.
   All filters (except ``max_adjusted_p``) are applied BEFORE multiple testing 
   correction, defining the "family" of hypotheses being tested. This maximizes 
   statistical power by not correcting for collocates that were never of interest.
   
   Available filters:
   
-  - 'stopwords': List[str] - Words to exclude from results
+  - 'stopwords': list[str] - Words to exclude from results
   - 'min_word_length': int - Minimum character length for collocates
   - 'min_obs_local': int - Minimum observed local frequency
   - 'max_obs_local': int - Maximum observed local frequency
@@ -198,7 +198,7 @@ Find collocates for target words within a corpus of sentences.
   - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
   - None: No correction (default).
 - `as_dataframe` (bool): If True, return results as a pandas DataFrame. Default is True.
-- `max_sentence_length` (Optional[int]): Maximum sentence length for preprocessing. 
+- `max_sentence_length` (int | None): Maximum sentence length for preprocessing. 
   Used by both 'window' and 'sentence' methods. Longer sentences will be truncated 
   to avoid memory bloat from outliers. Set to None for no limit. Default is 256.
 - `alternative` (str): Alternative hypothesis for Fisher's exact test. Options are:
@@ -207,7 +207,8 @@ Find collocates for target words within a corpus of sentences.
   observed differs from expected).
 
 **Returns:**
-(Union[List[Dict], pd.DataFrame]) Collocation results with the following fields:
+list[dict] | pd.DataFrame: Collocation results with the following fields:
+
 - **target** (str): The target word.
 - **collocate** (str): The co-occurring word.
 - **obs_local** (int): Observed co-occurrence count (contexts where both appear).
@@ -220,17 +221,17 @@ Find collocates for target words within a corpus of sentences.
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L840" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L837" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 cooc_matrix(
-    documents: List[List[str]],
-    horizon: Union[int, Tuple[int, int], NoneType] = None,
+    documents: list[list[str]],
+    horizon: int | tuple[int, int] | None = None,
     method: str = 'window',
     min_word_count: int = 1,
     min_doc_count: int = 1,
-    max_vocab_size: Optional[int] = None,
-    vocab: Union[List[str], set, NoneType] = None,
+    max_vocab_size: int | None = None,
+    vocab: list[str] | set | None = None,
     binary: bool = False
 )
 ```
@@ -284,30 +285,30 @@ Returns a CoocMatrix object with flexible indexing:
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1093" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1088" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 plot_collocates(
-    collocates: Union[List[Dict], pandas.core.frame.DataFrame],
+    collocates: list[dict] | pandas.core.frame.DataFrame,
     x_col: str = 'ratio_local',
     y_col: str = 'p_value',
     x_scale: str = 'log',
     y_scale: str = 'log',
-    color: Union[str, List[str], NoneType] = None,
+    color: str | list[str] | None = None,
     colormap: str = 'viridis',
-    color_by: Optional[str] = None,
-    title: Optional[str] = None,
+    color_by: str | None = None,
+    title: str | None = None,
     figsize: tuple = (10, 8),
     fontsize: int = 10,
     show_labels: bool = False,
-    label_top_n: Optional[int] = None,
+    label_top_n: int | None = None,
     alpha: float = 0.6,
     marker_size: int = 50,
     show_diagonal: bool = False,
     diagonal_color: str = 'red',
-    filename: Optional[str] = None,
-    xlabel: Optional[str] = None,
-    ylabel: Optional[str] = None
+    filename: str | None = None,
+    xlabel: str | None = None,
+    ylabel: str | None = None
 )
 ```
 
@@ -318,7 +319,7 @@ ratio_local (x-axis) vs p_value (y-axis) with logarithmic scales, but allows
 full flexibility to plot any columns with any scale type.
 
 **Parameters:**
-- `collocates` (Union[List[Dict], pd.DataFrame]): Output from find_collocates, 
+- `collocates` (list[dict] | pd.DataFrame): Output from find_collocates, 
   either as a list of dictionaries or DataFrame.
 - `x_col` (str): Column name to plot on x-axis. Common choices: 'ratio_local', 
   'obs_local', 'exp_local', 'obs_global'. Default is 'ratio_local'.
@@ -328,18 +329,18 @@ full flexibility to plot any columns with any scale type.
   For ratio_local, 'log' makes the scale symmetric around 1. Default is 'log'.
 - `y_scale` (str): Scale for y-axis. Options: 'log', 'linear', 'symlog', 'logit'.
   For p_value, 'log' is recommended to visualize small values. Default is 'log'.
-- `color` (Optional[Union[str, List[str]]]): Color(s) for the points. Can be a single 
+- `color` (str | list[str] | None): Color(s) for the points. Can be a single 
   color string, list of colors, or None to use default.
 - `colormap` (str): Matplotlib colormap to use when color_by is specified. 
   Default is 'viridis'.
-- `color_by` (Optional[str]): Column name to use for coloring points (e.g., 
+- `color_by` (str | None): Column name to use for coloring points (e.g., 
   'obs_local', 'obs_global').
-- `title` (Optional[str]): Title for the plot.
+- `title` (str | None): Title for the plot.
 - `figsize` (tuple): Figure size as (width, height) in inches. Default is (10, 8).
 - `fontsize` (int): Base font size for labels. Default is 10.
 - `show_labels` (bool): Whether to show collocate text labels next to points. 
   Default is False.
-- `label_top_n` (Optional[int]): If specified, only label the top N points. When 
+- `label_top_n` (int | None): If specified, only label the top N points. When 
   color_by is set, ranks by that column; otherwise ranks by y-axis values. 
   For p_value, labels smallest (most significant) values; for other metrics, 
   labels largest values.
@@ -348,10 +349,10 @@ full flexibility to plot any columns with any scale type.
 - `show_diagonal` (bool): Whether to draw a diagonal reference line (y=x). Useful 
   for observed vs expected plots. Default is False.
 - `diagonal_color` (str): Color of the diagonal reference line. Default is 'red'.
-- `filename` (Optional[str]): If provided, saves the figure to the specified file path.
-- `xlabel` (Optional[str]): Label for x-axis. If None, auto-generated from x_col 
+- `filename` (str | None): If provided, saves the figure to the specified file path.
+- `xlabel` (str | None): Label for x-axis. If None, auto-generated from x_col 
   and x_scale.
-- `ylabel` (Optional[str]): Label for y-axis. If None, auto-generated from y_col 
+- `ylabel` (str | None): Label for y-axis. If None, auto-generated from y_col 
   and y_scale.
 
 **Returns:**

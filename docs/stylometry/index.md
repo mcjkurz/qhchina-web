@@ -101,12 +101,12 @@ dist = stylo.distance('鲁迅_1', '沈从文_1')     # Compare two documents (lo
 ```python
 Stylometry(
     n_features: int = 100,
-    ngram_range: Tuple[int, int] = (1, 1),
+    ngram_range: tuple[int, int] = (1, 1),
     transform: str = 'zscore',
     distance: str = 'cosine',
     classifier: str = 'delta',
-    cull: Optional[float] = None,
-    chunk_size: Optional[int] = None,
+    cull: float | None = None,
+    chunk_size: int | None = None,
     mode: str = 'centroid'
 )
 ```
@@ -168,7 +168,7 @@ author, confidence = stylo.predict(disputed_tokens)
 <h4 id="stylometry-bootstrap_predict">qhchina.analytics.stylometry.Stylometry.bootstrap_predict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L997" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-bootstrap_predict(text: List[str], n_iter: int = 100, sample_ratio: float = 0.8, distance: Optional[str] = None, seed: Optional[int] = None)
+bootstrap_predict(text: list[str], n_iter: int = 100, sample_ratio: float = 0.8, distance: str | None = None, seed: int | None = None)
 ```
 
 Bootstrap analysis for prediction robustness.
@@ -192,10 +192,32 @@ Dict with:
 - 'distances': Dict of author -> (mean_distance, std_distance)
 - 'n_iterations': Number of iterations performed
 
-<h4 id="stylometry-dendrogram">qhchina.analytics.stylometry.Stylometry.dendrogram() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1685" class="source-link" title="View source on GitHub">[source]</a></h4>
+**Example:**
+```python
+# Prepare corpus with known authors
+corpus = {'author1': [list_of_tokens1, ...], 'author2': [list_of_tokens2, ...]}
+
+# Fit model
+stylo = Stylometry(n_features=500)
+stylo.fit_transform(corpus)
+
+# Bootstrap analysis on disputed text
+disputed_text = ['token1', 'token2', ...]  # flat list of tokens
+result = stylo.bootstrap_predict(
+    disputed_text,
+    n_iter=100,       # 100 bootstrap iterations
+    sample_ratio=0.8  # use 80% of features each iteration
+)
+
+print(f"Predicted author: {result['prediction']}")
+print(f"Confidence: {result['confidence']:.1%}")
+print(f"Vote distribution: {result['distribution']}")
+```
+
+<h4 id="stylometry-dendrogram">qhchina.analytics.stylometry.Stylometry.dendrogram() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1725" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-dendrogram(method: str = 'average', level: str = 'document', orientation: str = 'top', figsize: Tuple[int, int] = (12, 8), labels: Optional[List[str]] = None, title: Optional[str] = None, fontsize: int = 10, color_threshold: Optional[float] = None, filename: Optional[str] = None, show: bool = True, distance: Optional[str] = None)
+dendrogram(method: str = 'average', level: str = 'document', orientation: str = 'top', figsize: tuple[int, int] = (12, 8), labels: list[str] | None = None, title: str | None = None, fontsize: int = 10, color_threshold: float | None = None, filename: str | None = None, show: bool = True, distance: str | None = None)
 ```
 
 Visualize hierarchical clustering as a dendrogram.
@@ -216,18 +238,18 @@ Visualize hierarchical clustering as a dendrogram.
 **Returns:**
 None if show=True, otherwise dict with 'fig', 'ax', and dendrogram data.
 
-<h4 id="stylometry-distance">qhchina.analytics.stylometry.Stylometry.distance() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1296" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-distance">qhchina.analytics.stylometry.Stylometry.distance() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1336" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-distance(a: Union[str, List[str]], b: Union[str, List[str]], distance: Optional[str] = None)
+distance(a: str | list[str], b: str | list[str], distance: str | None = None)
 ```
 
 Compute the distance between two documents. Lower = more similar.
 
-<h4 id="stylometry-distance_matrix">qhchina.analytics.stylometry.Stylometry.distance_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1365" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-distance_matrix">qhchina.analytics.stylometry.Stylometry.distance_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1405" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-distance_matrix(level: str = 'document', distance: Optional[str] = None)
+distance_matrix(level: str = 'document', distance: str | None = None)
 ```
 
 Compute pairwise distance matrix from fitted data.
@@ -242,7 +264,7 @@ Compute pairwise distance matrix from fitted data.
 <h4 id="stylometry-fit_transform">qhchina.analytics.stylometry.Stylometry.fit_transform() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L579" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-fit_transform(corpus: Union[Dict[str, List[List[str]]], List[List[str]]], labels: Optional[List[str]] = None)
+fit_transform(corpus: dict[str, list[list[str]]] | list[list[str]], labels: list[str] | None = None)
 ```
 
 Fit the model on a corpus and transform documents to feature vectors.
@@ -256,7 +278,7 @@ Fit the model on a corpus and transform documents to feature vectors.
 - `labels`: Optional list of labels for list input. Documents sharing
   the same label are grouped together.
 
-<h4 id="stylometry-get_author_profile">qhchina.analytics.stylometry.Stylometry.get_author_profile() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1454" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-get_author_profile">qhchina.analytics.stylometry.Stylometry.get_author_profile() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1494" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_author_profile(author: str)
@@ -266,7 +288,7 @@ Get the feature values for a specific author.
 
 Returns a DataFrame with 'feature' and 'value' columns, sorted by value descending.
 
-<h4 id="stylometry-get_feature_comparison">qhchina.analytics.stylometry.Stylometry.get_feature_comparison() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1472" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-get_feature_comparison">qhchina.analytics.stylometry.Stylometry.get_feature_comparison() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1512" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get_feature_comparison()
@@ -276,10 +298,10 @@ Get a comparison table of feature values across all fitted authors.
 
 Returns a DataFrame with one column per author plus a 'variance' column.
 
-<h4 id="stylometry-hierarchical_clustering">qhchina.analytics.stylometry.Stylometry.hierarchical_clustering() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1386" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-hierarchical_clustering">qhchina.analytics.stylometry.Stylometry.hierarchical_clustering() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1426" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-hierarchical_clustering(method: str = 'average', level: str = 'document', distance: Optional[str] = None)
+hierarchical_clustering(method: str = 'average', level: str = 'document', distance: str | None = None)
 ```
 
 Perform hierarchical clustering on fitted data.
@@ -292,10 +314,10 @@ Perform hierarchical clustering on fitted data.
 **Returns:**
 (linkage_matrix, labels)
 
-<h4 id="stylometry-most_similar">qhchina.analytics.stylometry.Stylometry.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1243" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-most_similar">qhchina.analytics.stylometry.Stylometry.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1283" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-most_similar(query: Union[str, List[str]], k: Optional[int] = None, return_distance: bool = False, distance: Optional[str] = None)
+most_similar(query: str | list[str], k: int | None = None, return_distance: bool = False, distance: str | None = None)
 ```
 
 Find the most similar documents to a query.
@@ -309,10 +331,10 @@ Find the most similar documents to a query.
 **Returns:**
 List of (doc_id, value) tuples sorted by similarity (most similar first).
 
-<h4 id="stylometry-plot">qhchina.analytics.stylometry.Stylometry.plot() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1496" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-plot">qhchina.analytics.stylometry.Stylometry.plot() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1536" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-plot(method: str = 'pca', level: str = 'document', figsize: Tuple[int, int] = (10, 8), show_labels: bool = True, labels: Optional[List[str]] = None, title: Optional[str] = None, colors: Optional[Dict[str, str]] = None, marker_size: int = 100, fontsize: int = 12, filename: Optional[str] = None, random_state: int = 42, show: bool = True)
+plot(method: str = 'pca', level: str = 'document', figsize: tuple[int, int] = (10, 8), show_labels: bool = True, labels: list[str] | None = None, title: str | None = None, colors: dict[str, str] | None = None, marker_size: int = 100, fontsize: int = 12, filename: str | None = None, random_state: int = 42, show: bool = True)
 ```
 
 Create a 2D scatter plot of documents or authors.
@@ -337,7 +359,7 @@ None if show=True, otherwise (fig, ax) tuple.
 <h4 id="stylometry-predict">qhchina.analytics.stylometry.Stylometry.predict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L831" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-predict(text: List[str], k: int = 1, distance: Optional[str] = None, classifier: Optional[str] = None)
+predict(text: list[str], k: int = 1, distance: str | None = None, classifier: str | None = None)
 ```
 
 Predict the most likely author for a tokenized text.
@@ -356,7 +378,7 @@ List of (author, score) tuples.
 <h4 id="stylometry-predict_author">qhchina.analytics.stylometry.Stylometry.predict_author() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L925" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-predict_author(text: List[str], k: int = 1, distance: Optional[str] = None, classifier: Optional[str] = None)
+predict_author(text: list[str], k: int = 1, distance: str | None = None, classifier: str | None = None)
 ```
 
 Convenience method to get just the predicted author name.
@@ -374,7 +396,7 @@ Predicted author name (str).
 <h4 id="stylometry-predict_confidence">qhchina.analytics.stylometry.Stylometry.predict_confidence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L958" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-predict_confidence(text: List[str], k: int = 1, classifier: Optional[str] = None)
+predict_confidence(text: list[str], k: int = 1, classifier: str | None = None)
 ```
 
 Predict with unified confidence scores (higher = more likely).
@@ -384,10 +406,10 @@ Abstracts away the difference between delta (distance) and SVM (probability).
 **Returns:**
 List of (author, confidence) tuples where confidence is 0-1, higher = more likely.
 
-<h4 id="stylometry-rolling_delta">qhchina.analytics.stylometry.Stylometry.rolling_delta() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1118" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-rolling_delta">qhchina.analytics.stylometry.Stylometry.rolling_delta() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1138" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-rolling_delta(text: List[str], reference: Optional[str] = None, window: int = 5000, step: int = 1000, distance: Optional[str] = None, show: bool = True, figsize: Tuple[int, int] = (12, 6), title: Optional[str] = None, filename: Optional[str] = None)
+rolling_delta(text: list[str], reference: str | None = None, window: int = 5000, step: int = 1000, distance: str | None = None, show: bool = True, figsize: tuple[int, int] = (12, 6), title: str | None = None, filename: str | None = None)
 ```
 
 Rolling window analysis across a long text.
@@ -414,10 +436,32 @@ DataFrame with columns:
 - 'distance': Distance to reference
 - 'end_position': Ending token position of window
 
-<h4 id="stylometry-similarity">qhchina.analytics.stylometry.Stylometry.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1314" class="source-link" title="View source on GitHub">[source]</a></h4>
+**Example:**
+```python
+# Prepare corpus with known authors
+corpus = {'author1': [list_of_tokens1, ...], 'author2': [list_of_tokens2, ...]}
+
+# Fit model on known authors
+stylo = Stylometry(n_features=500)
+stylo.fit_transform(corpus)
+
+# Analyze a long disputed text for authorship changes
+disputed_text = ['token1', 'token2', ...]  # flat list of tokens
+results = stylo.rolling_delta(
+    disputed_text,
+    reference='author1',  # compare windows to author1's style
+    window=5000,          # 5000-token windows
+    step=1000             # slide by 1000 tokens
+)
+
+# Results show distance at each position
+print(results[['position', 'distance']])
+```
+
+<h4 id="stylometry-similarity">qhchina.analytics.stylometry.Stylometry.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1354" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-similarity(a: Union[str, List[str]], b: Union[str, List[str]], distance: Optional[str] = None)
+similarity(a: str | list[str], b: str | list[str], distance: str | None = None)
 ```
 
 Compute the similarity between two documents. Higher = more similar.
@@ -425,7 +469,7 @@ Compute the similarity between two documents. Higher = more similar.
 <h4 id="stylometry-transform">qhchina.analytics.stylometry.Stylometry.transform() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L766" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
-transform(tokens: List[str], warn_oov: bool = True)
+transform(tokens: list[str], warn_oov: bool = True)
 ```
 
 Transform a tokenized text to a feature vector using fitted features.
@@ -438,7 +482,7 @@ Transform a tokenized text to a feature vector using fitted features.
 **Returns:**
 Feature vector (numpy array)
 
-<h4 id="stylometry-vocabulary_stats">qhchina.analytics.stylometry.Stylometry.vocabulary_stats() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1427" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="stylometry-vocabulary_stats">qhchina.analytics.stylometry.Stylometry.vocabulary_stats() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1467" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 vocabulary_stats()
@@ -451,15 +495,15 @@ DataFrame with columns: doc_id, author, yule_k, token_count, type_count
 
 <br>
 
-<h3 id="compare_corpora">qhchina.analytics.stylometry.compare_corpora() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1768" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="compare_corpora">qhchina.analytics.stylometry.compare_corpora() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1808" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 compare_corpora(
-    corpusA: Union[List[str], List[List[str]]],
-    corpusB: Union[List[str], List[List[str]]],
+    corpusA: list[str] | list[list[str]],
+    corpusB: list[str] | list[list[str]],
     method: str = 'fisher',
-    filters: Optional[Dict] = None,
-    correction: Optional[str] = None,
+    filters: dict | None = None,
+    correction: str | None = None,
     as_dataframe: bool = True
 )
 ```
@@ -505,7 +549,7 @@ Compare two corpora to identify statistically significant differences in word us
 If as_dataframe is True: pandas.DataFrame containing information about each 
     word's frequency in both corpora, the p-value, and the ratio of relative 
     frequencies.
-If as_dataframe is False: List[dict] where each dict contains information 
+If as_dataframe is False: list[dict] where each dict contains information 
     about a word's frequency in both corpora, the p-value, and the ratio of 
     relative frequencies.
 
@@ -613,7 +657,7 @@ Reference: Eder, M. (2013). "Mind your corpus: systematic errors in authorship a
 <h3 id="get_relative_frequencies">qhchina.analytics.stylometry.get_relative_frequencies() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L140" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
-get_relative_frequencies(items: List[str])
+get_relative_frequencies(items: list[str])
 ```
 
 Compute relative frequencies for a list of items (tokens or n-grams).
@@ -626,7 +670,7 @@ Dict mapping each unique item to its relative frequency (count / total)
 <h3 id="compute_yule_k">qhchina.analytics.stylometry.compute_yule_k() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L154" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
-compute_yule_k(tokens: List[str])
+compute_yule_k(tokens: list[str])
 ```
 
 Compute Yule's K characteristic for vocabulary richness.

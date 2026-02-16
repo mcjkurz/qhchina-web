@@ -57,8 +57,8 @@ sentences = segmenter.segment("深度学习正在改变世界。自然语言处�
 SegmentationWrapper(
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    filters: dict[str, typing.Any] | None = None,
+    user_dict: str | list[str | tuple] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -75,8 +75,8 @@ Base segmentation wrapper class that can be extended for different segmentation 
   - excluded_pos: List or set of POS tags to exclude (converted to set internally)
 - `user_dict`: Custom user dictionary for segmentation. Can be:
   - str: Path to a dictionary file
-  - List[str]: List of words
-  - List[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
+  - list[str]: List of words
+  - list[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
 - `sentence_end_pattern`: Regular expression pattern for sentence endings (default: 
   Chinese and English punctuation).
 
@@ -122,12 +122,12 @@ contains tokens for a line, sentence, or chunk respectively
 ```python
 SpacySegmenter(
     model_name: str = 'zh_core_web_sm',
-    disable: Optional[List[str]] = None,
+    disable: list[str] | None = None,
     batch_size: int = 200,
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    user_dict: str | list[str | tuple] | None = None,
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
+    filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -170,11 +170,11 @@ Note: This resets to an empty user dictionary, not the original state if one was
 ```python
 PKUSegmenter(
     model_name: str = 'default',
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    user_dict: str | list[str | tuple] | None = None,
     pos_tagging: bool = False,
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
+    filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -199,8 +199,8 @@ which will reinitialize the segmenter.
   - Or a path to a custom model directory
 - `user_dict`: Custom user dictionary. Can be:
   - str: Path to a dictionary file (one word per line)
-  - List[str]: List of words
-  - List[Tuple]: List of tuples (only first element/word is used)
+  - list[str]: List of words
+  - list[Tuple]: List of tuples (only first element/word is used)
 - `pos_tagging`: Whether to include POS tagging in segmentation.
 - `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'whole'.
 - `chunk_size`: Size of chunks when using 'chunk' strategy.
@@ -228,11 +228,11 @@ global state.
 
 ```python
 JiebaSegmenter(
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    user_dict: str | list[str | tuple] | None = None,
     pos_tagging: bool = False,
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
+    filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -242,8 +242,8 @@ Segmentation wrapper for Jieba Chinese text segmentation.
 **Parameters:**
 - `user_dict`: Custom user dictionary for Jieba. Can be:
   - str: Path to a dictionary file
-  - List[str]: List of words
-  - List[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
+  - list[str]: List of words
+  - list[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
 - `pos_tagging`: Whether to include POS tagging in segmentation.
 - `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'whole'.
 - `chunk_size`: Size of chunks when using 'chunk' strategy.
@@ -273,15 +273,15 @@ BertSegmenter(
     model_name: str = None,
     model=None,
     tokenizer=None,
-    tagging_scheme: Union[str, List[str]] = 'be',
+    tagging_scheme: str | list[str] = 'be',
     batch_size: int = 32,
-    device: Optional[str] = None,
+    device: str | None = None,
     remove_special_tokens: bool = True,
     max_sequence_length: int = 512,
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    user_dict: str | list[str | tuple] | None = None,
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
+    filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -327,10 +327,10 @@ LLMSegmenter(
     max_tokens: int = 2048,
     retry_patience: int = 1,
     timeout: float = 60.0,
-    user_dict: Union[str, List[Union[str, Tuple]], NoneType] = None,
+    user_dict: str | list[str | tuple] | None = None,
     strategy: str = 'whole',
     chunk_size: int = 512,
-    filters: Dict[str, Any] = None,
+    filters: dict[str, typing.Any] | None = None,
     sentence_end_pattern: str = '([。！？\\.!?……]+)'
 )
 ```
@@ -382,8 +382,8 @@ Create a segmenter based on the specified backend.
 - `**kwargs`: Additional arguments to pass to the segmenter constructor
   - user_dict: Custom user dictionary. Can be:
       - str: Path to a dictionary file
-      - List[str]: List of words
-      - List[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
+      - list[str]: List of words
+      - list[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
       Note: Not supported for 'bert' and 'llm' backends (will log a warning)
   - filters: Dictionary of filters to apply during segmentation
       - min_word_length: Minimum length of tokens to include (default 1)
