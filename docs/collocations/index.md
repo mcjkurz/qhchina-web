@@ -42,9 +42,9 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 FilterOptions(*args, **kwargs)
-```
+</code></pre>
 
 Type definition for filter options in collocation analysis.
 
@@ -52,13 +52,13 @@ Type definition for filter options in collocation analysis.
 
 <h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 CoocMatrix(
     matrix: scipy.sparse._csr.csr_matrix,
     vocab_list: list[str],
     word_to_index: dict[str, int]
 )
-```
+</code></pre>
 
 Co-occurrence matrix with flexible indexing by word or index.
 
@@ -92,9 +92,9 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
 <h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 get(row_key, col_key, default: int = 0)
-```
+</code></pre>
 
 Get a co-occurrence count with a default value for missing pairs.
 
@@ -108,9 +108,9 @@ Co-occurrence count, or default if not found.
 
 <h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 to_dataframe()
-```
+</code></pre>
 
 Convert to a pandas DataFrame with word labels.
 
@@ -121,9 +121,9 @@ DataFrame with vocabulary words as both index and columns.
 
 <h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 to_dense()
-```
+</code></pre>
 
 Convert to a dense NumPy array.
 
@@ -136,7 +136,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 find_collocates(
     sentences: list[list[str]],
     target_words: str | list[str],
@@ -148,7 +148,7 @@ find_collocates(
     max_sentence_length: int | None = 256,
     alternative: str = 'greater'
 )
-```
+</code></pre>
 
 Find collocates for target words within a corpus of sentences.
 
@@ -223,7 +223,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L837" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 cooc_matrix(
     documents: list[list[str]],
     horizon: int | tuple[int, int] | None = None,
@@ -234,7 +234,7 @@ cooc_matrix(
     vocab: list[str] | set | None = None,
     binary: bool = False
 )
-```
+</code></pre>
 
 Calculate a co-occurrence matrix from a list of documents.
 
@@ -287,7 +287,7 @@ Returns a CoocMatrix object with flexible indexing:
 
 <h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1088" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-```python
+<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
 plot_collocates(
     collocates: list[dict] | pandas.core.frame.DataFrame,
     x_col: str = 'ratio_local',
@@ -310,7 +310,7 @@ plot_collocates(
     xlabel: str | None = None,
     ylabel: str | None = None
 )
-```
+</code></pre>
 
 Visualize collocation results as a 2D scatter plot.
 
