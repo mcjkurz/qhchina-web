@@ -44,13 +44,7 @@ The `qhchina.helpers` module provides utilities for font management and text loa
 
 <h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L116" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-load_fonts(target_font: str = 'Noto Sans CJK TC', verbose: bool = False)
-```
-
-</div>
+<pre class="signature"><code>load_fonts(target_font: str = 'Noto Sans CJK TC', verbose: bool = False)</code></pre>
 
 Load CJK fonts into matplotlib and optionally set a default font.
 
@@ -78,13 +72,7 @@ When verbose=False, returns None.
 
 <h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L226" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-current_font()
-```
-
-</div>
+<pre class="signature"><code>current_font()</code></pre>
 
 Get the currently configured font name.
 
@@ -98,13 +86,7 @@ The current font name, or None if no font is configured.
 
 <h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L49" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-set_font(font='Noto Sans CJK TC')
-```
-
-</div>
+<pre class="signature"><code>set_font(font='Noto Sans CJK TC')</code></pre>
 
 Set the matplotlib font for Chinese text rendering.
 
@@ -124,13 +106,7 @@ This function is thread-safe.
 
 <h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L250" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-list_available_fonts()
-```
-
-</div>
+<pre class="signature"><code>list_available_fonts()</code></pre>
 
 List all available CJK fonts bundled with the package.
 
@@ -140,13 +116,7 @@ Returns a dictionary mapping font file names to their internal font names.
 
 <h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L269" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-list_font_aliases()
-```
-
-</div>
+<pre class="signature"><code>list_font_aliases()</code></pre>
 
 List all available font aliases for convenient access.
 
@@ -156,13 +126,7 @@ Returns a dictionary mapping aliases to their full font names.
 
 <h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L200" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-get_font_path(font: str = 'Noto Sans CJK TC')
-```
-
-</div>
+<pre class="signature"><code>get_font_path(font: str = 'Noto Sans CJK TC')</code></pre>
 
 Get the file path for a CJK font (for use with WordCloud, etc.).
 
@@ -184,13 +148,7 @@ wc = WordCloud(font_path=font_path, ...)
 
 <h3 id="load_text">qhchina.helpers.texts.load_text() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L58" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-load_text(filename, encoding='utf-8')
-```
-
-</div>
+<pre class="signature"><code>load_text(filename, encoding='utf-8')</code></pre>
 
 Loads text from a file.
 
@@ -206,13 +164,7 @@ Loads text from a file.
 
 <h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L79" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-load_texts(filenames, encoding='utf-8')
-```
-
-</div>
+<pre class="signature"><code>load_texts(filenames, encoding='utf-8')</code></pre>
 
 Loads text from multiple files.
 
@@ -228,13 +180,7 @@ Loads text from multiple files.
 
 <h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L99" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-load_stopwords(language: str = 'zh_sim')
-```
-
-</div>
+<pre class="signature"><code>load_stopwords(language: str = 'zh_sim')</code></pre>
 
 Load stopwords from a file for the specified language.
 
@@ -252,13 +198,7 @@ Set of stopwords
 
 <h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L169" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-split_into_chunks(sequence, chunk_size, overlap=0.0)
-```
-
-</div>
+<pre class="signature"><code>split_into_chunks(sequence, chunk_size, overlap=0.0)</code></pre>
 
 Splits text or a list of tokens into chunks with optional overlap between consecutive chunks.
 
@@ -281,13 +221,7 @@ doesn't divide evenly.
 
 <h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L143" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-get_stopword_languages()
-```
-
-</div>
+<pre class="signature"><code>get_stopword_languages()</code></pre>
 
 Get all available stopword language codes.
 
@@ -298,13 +232,7 @@ List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
 
 <h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L16" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<div class="signature">
-
-```python
-detect_encoding(filename, num_bytes=10000)
-```
-
-</div>
+<pre class="signature"><code>detect_encoding(filename, num_bytes=10000)</code></pre>
 
 Detects the encoding of a file.
 

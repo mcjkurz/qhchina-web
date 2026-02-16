@@ -29,17 +29,21 @@ pre code {
 }
 
 // Function/method signature blocks - allow wrapping
-.signature {
-  pre {
-    white-space: pre-wrap !important;
-    word-wrap: break-word !important;
-    overflow-x: visible !important;
-  }
+pre.signature {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-x: visible !important;
+  background: #f8f8f8;
+  border-radius: 3px;
+  padding: 10px;
+  border-left: 3px solid var(--primary-color);
   
-  pre code {
+  code {
     white-space: pre-wrap !important;
     word-wrap: break-word !important;
     overflow-x: visible !important;
+    background: transparent;
+    padding: 0;
   }
 }
 
