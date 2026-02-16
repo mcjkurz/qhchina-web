@@ -5,6 +5,14 @@ permalink: /docs/collocations/
 functions:
   - name: FilterOptions
     anchor: filteroptions
+  - name: CoocMatrix
+    anchor: coocmatrix
+  - name: CoocMatrix.get()
+    anchor: coocmatrix-get
+  - name: CoocMatrix.to_dataframe()
+    anchor: coocmatrix-to_dataframe
+  - name: CoocMatrix.to_dense()
+    anchor: coocmatrix-to_dense
   - name: find_collocates()
     anchor: find_collocates
   - name: cooc_matrix()
@@ -32,7 +40,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L33" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L257" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 FilterOptions(*args, **kwargs)
@@ -42,7 +50,90 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L319" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L46" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+
+```python
+CoocMatrix(
+    matrix: scipy.sparse._csr.csr_matrix,
+    vocab_list: List[str],
+    word_to_index: Dict[str, int]
+)
+```
+
+A vocabulary-aware co-occurrence matrix with intuitive indexing.
+
+Supports flexible indexing by word strings or integer indices:
+    matrix["word1", "word2"]  → single count (int)
+    matrix[132, 5234]         → single count (int)
+    matrix["word1"]           → row as dict {word: count}
+    matrix["word1", :]        → row as dict {word: count}
+    matrix[:, "word2"]        → column as dict {word: count}
+
+Internally stores data as a scipy sparse CSR matrix for memory efficiency.
+
+**Parameters:**
+- `vocab` (List[str]): List of vocabulary words in index order.
+- `word_to_index` (Dict[str, int]): Mapping from words to matrix indices.
+- `index_to_word` (Dict[int, str]): Mapping from matrix indices to words.
+- `shape` (Tuple[int, int]): Shape of the matrix (vocab_size, vocab_size).
+- `nnz` (int): Number of non-zero entries.
+
+**Example:**
+```python
+>>> matrix = cooc_matrix(documents, horizon=5)
+>>> matrix["fox", "dog"]
+42
+>>> matrix["fox"]
+{'quick': 10, 'brown': 8, 'dog': 42, ...}
+>>> df = matrix.to_dataframe()
+>>> arr = matrix.to_dense()
+```
+
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L166" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+
+```python
+get(row_key, col_key, default: int = 0)
+```
+
+Get a co-occurrence count with a default value for missing pairs.
+
+**Parameters:**
+- `row_key`: Row word or index.
+- `col_key`: Column word or index.
+- `default`: Value to return if the pair is not found or out of vocabulary.
+
+**Returns:**
+Co-occurrence count, or default if not found.
+
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L194" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+
+```python
+to_dataframe()
+```
+
+Convert to a pandas DataFrame with word labels.
+
+Warning: This may use significant memory for large vocabularies.
+
+**Returns:**
+DataFrame with vocabulary words as both index and columns.
+
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L183" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+
+```python
+to_dense()
+```
+
+Convert to a dense NumPy array.
+
+Warning: This may use significant memory for large vocabularies.
+
+**Returns:**
+2D numpy array of shape (vocab_size, vocab_size).
+
+<br>
+
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L543" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 find_collocates(
@@ -115,67 +206,81 @@ Find collocates for target words within a corpus of sentences.
   observed differs from expected).
 
 **Returns:**
-(Union[List[Dict], pd.DataFrame]) List of dictionaries or DataFrame containing 
-collocation statistics.
+(Union[List[Dict], pd.DataFrame]) Collocation results with the following fields:
+- **target** (str): The target word.
+- **collocate** (str): The co-occurring word.
+- **obs_local** (int): Observed co-occurrence count (contexts where both appear).
+- **exp_local** (float): Expected co-occurrence count under independence.
+- **ratio_local** (float): Ratio of observed to expected (obs_local / exp_local).
+  Values > 1 indicate attraction, < 1 indicate repulsion.
+- **obs_global** (int): Total occurrences of the collocate in the corpus.
+- **p_value** (float): P-value from Fisher's exact test.
+- **adjusted_p_value** (float, optional): Present only if ``correction`` is set.
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L589" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L843" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 cooc_matrix(
     documents: List[List[str]],
+    horizon: Union[int, Tuple[int, int]] = 5,
     method: str = 'window',
-    horizon: Union[int, Tuple[int, int], NoneType] = None,
-    min_abs_count: int = 1,
+    min_word_count: int = 1,
     min_doc_count: int = 1,
-    vocab_size: Optional[int] = None,
-    binary: bool = False,
-    as_dataframe: bool = True,
+    max_vocab_size: Optional[int] = None,
     vocab: Union[List[str], set, NoneType] = None,
-    use_sparse: bool = False
+    binary: bool = False
 )
 ```
 
 Calculate a co-occurrence matrix from a list of documents.
 
+Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
+    matrix["word1", "word2"]  → single count
+    matrix["word1"]           → row as dict {word: count}
+    matrix.to_dataframe()     → pandas DataFrame
+    matrix.to_dense()         → numpy array
+
 **Parameters:**
-- `documents` (list): List of tokenized documents, where each document is a list of tokens.
-- `method` (str): Method to use for calculating co-occurrences. Either 'window' or 
-  'document'. Default is 'window'.
-- `horizon` (Optional[Union[int, tuple]]): Context window size relative to each word. 
-  Only applicable when method='window'. Must be None when method='document'.
+- `documents`: List of tokenized documents, where each document is a list of tokens.
+- `horizon`: Context window size relative to each word. Only used for method='window'.
   - int: Symmetric window (e.g., 5 means 5 words on each side)
-  - tuple: Asymmetric window (left, right) specifying words on each side:
-    (0, 5) counts co-occurrences with words up to 5 positions to the RIGHT;
-    (5, 0) counts co-occurrences with words up to 5 positions to the LEFT.
-  - None: Uses default of 5 for 'window' method
-- `min_abs_count` (int): Minimum absolute count for a word to be included in the 
-  vocabulary. Default is 1.
-- `min_doc_count` (int): Minimum number of documents a word must appear in to be 
-  included. Default is 1.
-- `vocab_size` (int): Maximum size of the vocabulary. Words are sorted by 
-  frequency.
-- `binary` (bool): If True, count co-occurrences as binary (0/1) rather than 
-  frequencies. Default is False.
-- `as_dataframe` (bool): If True, return the co-occurrence matrix as a pandas 
-  DataFrame. Default is True.
-- `vocab` (list or set): Predefined vocabulary to use. Words will still be 
-  filtered by min_abs_count and min_doc_count. If vocab_size is also provided, 
-  only the top vocab_size words will be kept.
-- `use_sparse` (bool): If True, use a sparse matrix representation for better memory 
-  efficiency with large vocabularies. Default is False.
+  - tuple: Asymmetric window (left, right), e.g., (0, 5) for right-only context
+- `method`: Method for calculating co-occurrences:
+  - 'window': Count within sliding window (default, uses horizon)
+  - 'document': Bag-of-words within each document (ignores horizon)
+- `min_word_count`: Minimum total count for a word to be included in auto-generated
+  vocabulary. Ignored if vocab is provided. Default 1.
+- `min_doc_count`: Minimum number of documents a word must appear in to be included
+  in auto-generated vocabulary. Ignored if vocab is provided. Default 1.
+- `max_vocab_size`: Maximum vocabulary size (most frequent words kept). Only applies
+  to auto-generated vocabulary. Ignored if vocab is provided. Default None.
+- `vocab`: Predefined vocabulary to use. If provided, this vocabulary is used exactly
+  as given without any filtering (min_word_count, min_doc_count, and max_vocab_size
+  are ignored). Words in vocab that don't appear in documents will still be
+  included in the matrix (with zero counts).
+- `binary`: If True, count co-occurrences as binary (0/1). Default False.
 
 **Returns:**
-If as_dataframe=True: pandas DataFrame with rows and columns labeled by vocabulary.
-If as_dataframe=False and use_sparse=False: tuple of (numpy array, word_to_index 
-    dictionary).
-If as_dataframe=False and use_sparse=True: tuple of (scipy sparse matrix, 
-    word_to_index dictionary).
+(CoocMatrix) A vocabulary-aware co-occurrence matrix object.
+
+**Example:**
+```python
+>>> matrix = cooc_matrix(documents, horizon=5)
+>>> matrix["fox", "dog"]      # Get count for word pair
+42
+>>> matrix["fox"]             # Get all co-occurrences for "fox"
+{'quick': 10, 'brown': 8, 'dog': 42, ...}
+>>> df = matrix.to_dataframe()  # Convert to DataFrame if needed
+
+>>> # With predefined vocabulary (no filtering applied)
+>>> matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
+```
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L765" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1082" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 plot_collocates(
