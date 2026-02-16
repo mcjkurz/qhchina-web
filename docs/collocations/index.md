@@ -224,7 +224,7 @@ Find collocates for target words within a corpus of sentences.
 ```python
 cooc_matrix(
     documents: List[List[str]],
-    horizon: Union[int, Tuple[int, int]] = 5,
+    horizon: Union[int, Tuple[int, int], NoneType] = None,
     method: str = 'window',
     min_word_count: int = 1,
     min_doc_count: int = 1,
@@ -244,7 +244,9 @@ Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
 
 **Parameters:**
 - `documents`: List of tokenized documents, where each document is a list of tokens.
-- `horizon`: Context window size relative to each word. Only used for method='window'.
+- `horizon`: Context window size relative to each word. Only applicable for method='window'.
+  If not provided, defaults to 5 for window method. Must not be provided for 
+  method='document'.
   - int: Symmetric window (e.g., 5 means 5 words on each side)
   - tuple: Asymmetric window (left, right), e.g., (0, 5) for right-only context
 - `method`: Method for calculating co-occurrences:
@@ -280,7 +282,7 @@ Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1082" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1095" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
 
 ```python
 plot_collocates(
