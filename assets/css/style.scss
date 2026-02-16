@@ -45,11 +45,11 @@ pre.signature {
     background: transparent;
     padding: 0;
     
-    // Syntax highlighting for signatures (matching Rouge theme)
-    .sig-name { color: #458; font-weight: bold; }   // function name (like .nc class)
-    .sig-param { color: #008080; }                  // parameter name (like .nv variable)
-    .sig-type { color: #0086B3; }                   // type hints (like .nb builtin)
-    .sig-default { color: #d14; }                   // default string values (like .s string)
+    // Syntax highlighting for signatures (matching site theme)
+    .sig-name { color: var(--primary-color); font-weight: bold; }  // function name (same as headers)
+    .sig-param { color: #476582; }                  // parameter name (same as inline code)
+    .sig-type { color: #0086B3; }                   // type hints
+    .sig-default { color: #d14; }                   // default string values
     .sig-punct { color: #333; }                     // punctuation
   }
 }
