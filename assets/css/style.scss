@@ -28,6 +28,19 @@ pre code {
   overflow-x: auto;
 }
 
+// Function/method signature blocks - allow wrapping
+pre.signature {
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-x: visible !important;
+  
+  code {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-x: visible !important;
+  }
+}
+
 .highlighter-rouge,
 .highlight pre,
 .highlight code,

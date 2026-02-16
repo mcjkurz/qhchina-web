@@ -42,7 +42,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 FilterOptions(*args, **kwargs)
 </code></pre>
 
@@ -52,7 +52,7 @@ Type definition for filter options in collocation analysis.
 
 <h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 CoocMatrix(
     matrix: scipy.sparse._csr.csr_matrix,
     vocab_list: list[str],
@@ -92,7 +92,7 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
 <h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 get(row_key, col_key, default: int = 0)
 </code></pre>
 
@@ -108,7 +108,7 @@ Co-occurrence count, or default if not found.
 
 <h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 to_dataframe()
 </code></pre>
 
@@ -121,7 +121,7 @@ DataFrame with vocabulary words as both index and columns.
 
 <h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 to_dense()
 </code></pre>
 
@@ -136,7 +136,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 find_collocates(
     sentences: list[list[str]],
     target_words: str | list[str],
@@ -223,7 +223,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L837" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 cooc_matrix(
     documents: list[list[str]],
     horizon: int | tuple[int, int] | None = None,
@@ -287,7 +287,7 @@ Returns a CoocMatrix object with flexible indexing:
 
 <h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1088" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre style="white-space: pre-wrap; word-wrap: break-word;"><code class="language-python">
+<pre class="signature"><code class="language-python">
 plot_collocates(
     collocates: list[dict] | pandas.core.frame.DataFrame,
     x_col: str = 'ratio_local',
