@@ -40,7 +40,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L257" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L254" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 FilterOptions(*args, **kwargs)
@@ -50,7 +50,7 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L46" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L42" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 CoocMatrix(
@@ -60,14 +60,15 @@ CoocMatrix(
 )
 ```
 
-A vocabulary-aware co-occurrence matrix with intuitive indexing.
+Co-occurrence matrix with flexible indexing by word or index.
 
-Supports flexible indexing by word strings or integer indices:
-    matrix["word1", "word2"]  → single count (int)
-    matrix[132, 5234]         → single count (int)
-    matrix["word1"]           → row as dict {word: count}
-    matrix["word1", :]        → row as dict {word: count}
-    matrix[:, "word2"]        → column as dict {word: count}
+Supports flexible indexing:
+
+- ``matrix["word1", "word2"]`` - single count (int)
+- ``matrix[132, 5234]`` - single count (int)
+- ``matrix["word1"]`` - row as dict {word: count}
+- ``matrix["word1", :]`` - row as dict {word: count}
+- ``matrix[:, "word2"]`` - column as dict {word: count}
 
 Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
@@ -89,7 +90,7 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 >>> arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L166" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L163" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 get(row_key, col_key, default: int = 0)
@@ -105,7 +106,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L194" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L191" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 to_dataframe()
@@ -118,7 +119,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L183" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L180" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 ```python
 to_dense()
@@ -133,7 +134,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L543" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L540" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 find_collocates(
@@ -219,7 +220,7 @@ Find collocates for target words within a corpus of sentences.
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L843" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L840" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 cooc_matrix(
@@ -236,11 +237,12 @@ cooc_matrix(
 
 Calculate a co-occurrence matrix from a list of documents.
 
-Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
-    matrix["word1", "word2"]  → single count
-    matrix["word1"]           → row as dict {word: count}
-    matrix.to_dataframe()     → pandas DataFrame
-    matrix.to_dense()         → numpy array
+Returns a CoocMatrix object with flexible indexing:
+
+- ``matrix["word1", "word2"]`` - single count
+- ``matrix["word1"]`` - row as dict {word: count}
+- ``matrix.to_dataframe()`` - pandas DataFrame
+- ``matrix.to_dense()`` - numpy array
 
 **Parameters:**
 - `documents`: List of tokenized documents, where each document is a list of tokens.
@@ -265,7 +267,7 @@ Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
 - `binary`: If True, count co-occurrences as binary (0/1). Default False.
 
 **Returns:**
-(CoocMatrix) A vocabulary-aware co-occurrence matrix object.
+(CoocMatrix) Co-occurrence matrix object.
 
 **Example:**
 ```python
@@ -282,7 +284,7 @@ Returns a CoocMatrix object with intuitive vocabulary-aware indexing:
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1095" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1093" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 plot_collocates(

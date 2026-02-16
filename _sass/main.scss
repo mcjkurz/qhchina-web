@@ -546,6 +546,14 @@ aside.docs-sidebar {
     padding-top: calc(1 * var(--spacing-unit));
     border-top: 1px dashed var(--border-color);
   }
+  
+  // Source link styling for API documentation
+  .source-link {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 0.5em;
+    white-space: nowrap;
+  }
 }
 
 /* Responsive docs layout */
@@ -609,6 +617,13 @@ aside.docs-sidebar {
   // Hide submenu on mobile - shows main nav only
   .docs-submenu {
     display: none !important;
+  }
+  
+  // Source link: display on new line on mobile
+  .docs-content .source-link {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.25em;
   }
 }
 

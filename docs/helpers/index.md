@@ -42,7 +42,7 @@ The `qhchina.helpers` module provides utilities for font management and text loa
 
 <!-- API-START -->
 
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L117" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L117" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 load_fonts(target_font: str = 'Noto Sans CJK TC', verbose: bool = False)
@@ -72,7 +72,7 @@ When verbose=False, returns None.
 
 <br>
 
-<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L227" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L227" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 current_font()
@@ -88,7 +88,7 @@ The current font name, or None if no font is configured.
 
 <br>
 
-<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L50" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L50" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 set_font(font='Noto Sans CJK TC')
@@ -110,7 +110,7 @@ This function is thread-safe.
 
 <br>
 
-<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L251" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 list_available_fonts()
@@ -122,7 +122,7 @@ Returns a dictionary mapping font file names to their internal font names.
 
 <br>
 
-<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L270" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L270" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 list_font_aliases()
@@ -134,7 +134,7 @@ Returns a dictionary mapping aliases to their full font names.
 
 <br>
 
-<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L201" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L201" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 get_font_path(font: str = 'Noto Sans CJK TC')
@@ -158,7 +158,7 @@ wc = WordCloud(font_path=font_path, ...)
 
 <br>
 
-<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L58" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L58" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 load_text(filename, encoding='utf-8')
@@ -176,7 +176,7 @@ Loads text from a file.
 
 <br>
 
-<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L79" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L79" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 load_texts(filenames, encoding='utf-8')
@@ -194,7 +194,7 @@ Loads text from multiple files.
 
 <br>
 
-<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L99" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L99" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 load_stopwords(language: str = 'zh_sim')
@@ -214,7 +214,7 @@ Set of stopwords
 
 <br>
 
-<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L169" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L169" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 split_into_chunks(sequence, chunk_size, overlap=0.0)
@@ -239,7 +239,7 @@ doesn't divide evenly.
 
 <br>
 
-<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L143" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L143" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 get_stopword_languages()
@@ -252,7 +252,7 @@ List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
 
 <br>
 
-<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L16" title="View source on GitHub" style="float: right; font-size: 0.8em; font-weight: normal;">[source]</a></h3>
+<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L16" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 ```python
 detect_encoding(filename, num_bytes=10000)
