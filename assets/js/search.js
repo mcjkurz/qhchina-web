@@ -251,6 +251,8 @@
     if (toggleButtons.length === 0) {
       return;
     }
+    
+    console.log('Submenu toggle initialized, found', toggleButtons.length, 'buttons');
 
     toggleButtons.forEach(function(button) {
       const submenu = button.closest('li').querySelector('.docs-submenu');

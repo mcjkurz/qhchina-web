@@ -99,7 +99,7 @@
         </div>
       </footer>
     </div>
-    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.cache_version | default: '1' }}"></script>
   </body>
 </html>
 

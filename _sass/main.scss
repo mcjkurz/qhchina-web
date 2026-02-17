@@ -478,11 +478,24 @@ aside.docs-sidebar {
 // Nav item wrapper for category link + toggle button
 .nav-item-wrapper {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
   
   > a {
     flex: 1;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  // When has toggle button, adjust active link styling
+  > a.active {
+    border-radius: 4px 0 0 4px;
+  }
+  
+  // When no toggle button, keep normal radius
+  > a:only-child {
+    border-radius: 4px;
   }
 }
 
@@ -491,23 +504,23 @@ aside.docs-sidebar {
   display: none; // Hidden by default, shown on desktop via media query
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: var(--primary-color);
   border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  padding: calc(0.5 * var(--spacing-unit));
-  margin-left: calc(0.25 * var(--spacing-unit));
-  border-radius: 4px;
-  color: var(--light-text);
+  padding: 0 calc(0.5 * var(--spacing-unit));
+  margin: 0;
+  border-radius: 0 4px 4px 0;
+  color: white;
   transition: all 0.2s ease;
   
   &:hover {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--link-hover);
   }
   
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(22, 113, 141, 0.2);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.3);
   }
   
   .toggle-arrow {
