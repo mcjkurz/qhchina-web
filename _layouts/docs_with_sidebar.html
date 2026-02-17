@@ -41,13 +41,9 @@
             <nav class="docs-nav">
               <h3>Package Documentation</h3>
               <ul>
-                {% assign nav_items = "Overview:/docs/,Corpus:/docs/corpus/,Preprocessing:/docs/preprocessing/,Word Embeddings:/docs/word_embeddings/,Topic Modeling:/docs/topic_modeling/,Stylometry:/docs/stylometry/,Collocations:/docs/collocations/,Helpers:/docs/helpers/" | split: "," %}
-                {% for item in nav_items %}
-                  {% assign parts = item | split: ":" %}
-                  {% assign name = parts[0] %}
-                  {% assign url = parts[1] %}
+                {% for item in site.data.nav_docs %}
                   {% assign is_overview = false %}
-                  {% if url == '/docs/' %}
+                  {% if item.url == '/docs/' %}
                     {% assign is_overview = true %}
                   {% endif %}
                   {% assign is_active = false %}
@@ -56,28 +52,29 @@
                       {% assign is_active = true %}
                     {% endif %}
                   {% else %}
-                    {% if page.url contains url %}
+                    {% if page.url contains item.url %}
                       {% assign is_active = true %}
                     {% endif %}
                   {% endif %}
-                  <li class="{% if is_active %}has-submenu{% endif %}">
-                    <div class="nav-item-wrapper">
-                      <a href="{{ site.baseurl }}{{ url }}" {% if is_active %}class="active"{% endif %}>{{ name }}</a>
-                      {% if is_active and page.functions %}
-                      <button class="submenu-toggle" aria-expanded="true" aria-label="Toggle submenu">
+                  {% assign has_functions = false %}
+                  {% if item.functions.size > 0 %}
+                    {% assign has_functions = true %}
+                  {% endif %}
+                  <li class="{% if has_functions %}has-submenu{% endif %}">
+                    <div class="nav-item-wrapper {% if is_active %}active{% endif %}">
+                      <a href="{{ site.baseurl }}{{ item.url }}" {% if is_active %}class="active"{% endif %}>{{ item.name }}</a>
+                      {% if has_functions %}
+                      <button class="submenu-toggle" aria-expanded="{% if is_active %}true{% else %}false{% endif %}" aria-label="Toggle submenu">
                         <svg class="toggle-arrow" viewBox="0 0 24 24" width="16" height="16">
                           <path d="M7 10l5 5 5-5z" fill="currentColor"/>
                         </svg>
                       </button>
                       {% endif %}
                     </div>
-                    {% if is_active and page.functions %}
-                    <ul class="docs-submenu">
-                      {% if page.has_examples %}
-                        <li class="examples-link"><a href="#examples">Examples</a></li>
-                      {% endif %}
-                      {% for func in page.functions %}
-                        <li><a href="#{{ func.anchor }}">{{ func.name }}</a></li>
+                    {% if has_functions %}
+                    <ul class="docs-submenu{% unless is_active %} collapsed{% endunless %}" data-category-url="{{ item.url }}">
+                      {% for func in item.functions %}
+                        <li><a href="{{ site.baseurl }}{{ item.url }}#{{ func.anchor }}">{{ func.name }}</a></li>
                       {% endfor %}
                     </ul>
                     {% endif %}

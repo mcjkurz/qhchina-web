@@ -1,0 +1,545 @@
+[
+  {
+    "name": "Overview",
+    "url": "/docs/",
+    "functions": []
+  },
+  {
+    "name": "Corpus",
+    "url": "/docs/corpus/",
+    "functions": [
+      {
+        "name": "Corpus",
+        "anchor": "corpus"
+      },
+      {
+        "name": "Corpus.add()",
+        "anchor": "corpus-add"
+      },
+      {
+        "name": "Corpus.add_many()",
+        "anchor": "corpus-add_many"
+      },
+      {
+        "name": "Corpus.describe()",
+        "anchor": "corpus-describe"
+      },
+      {
+        "name": "Corpus.filter()",
+        "anchor": "corpus-filter"
+      },
+      {
+        "name": "Corpus.get()",
+        "anchor": "corpus-get"
+      },
+      {
+        "name": "Corpus.groupby()",
+        "anchor": "corpus-groupby"
+      },
+      {
+        "name": "Corpus.load()",
+        "anchor": "corpus-load"
+      },
+      {
+        "name": "Corpus.metadata_values()",
+        "anchor": "corpus-metadata_values"
+      },
+      {
+        "name": "Corpus.remove()",
+        "anchor": "corpus-remove"
+      },
+      {
+        "name": "Corpus.save()",
+        "anchor": "corpus-save"
+      },
+      {
+        "name": "Corpus.split()",
+        "anchor": "corpus-split"
+      },
+      {
+        "name": "Corpus.to_dataframe()",
+        "anchor": "corpus-to_dataframe"
+      },
+      {
+        "name": "Document",
+        "anchor": "document"
+      },
+      {
+        "name": "Document.get()",
+        "anchor": "document-get"
+      }
+    ]
+  },
+  {
+    "name": "Preprocessing",
+    "url": "/docs/preprocessing/",
+    "functions": [
+      {
+        "name": "SegmentationWrapper",
+        "anchor": "segmentationwrapper"
+      },
+      {
+        "name": "SegmentationWrapper.close()",
+        "anchor": "segmentationwrapper-close"
+      },
+      {
+        "name": "SegmentationWrapper.reset_user_dict()",
+        "anchor": "segmentationwrapper-reset_user_dict"
+      },
+      {
+        "name": "SegmentationWrapper.segment()",
+        "anchor": "segmentationwrapper-segment"
+      },
+      {
+        "name": "SpacySegmenter",
+        "anchor": "spacysegmenter"
+      },
+      {
+        "name": "SpacySegmenter.reset_user_dict()",
+        "anchor": "spacysegmenter-reset_user_dict"
+      },
+      {
+        "name": "PKUSegmenter",
+        "anchor": "pkusegmenter"
+      },
+      {
+        "name": "PKUSegmenter.reset_user_dict()",
+        "anchor": "pkusegmenter-reset_user_dict"
+      },
+      {
+        "name": "JiebaSegmenter",
+        "anchor": "jiebasegmenter"
+      },
+      {
+        "name": "JiebaSegmenter.reset_user_dict()",
+        "anchor": "jiebasegmenter-reset_user_dict"
+      },
+      {
+        "name": "BertSegmenter",
+        "anchor": "bertsegmenter"
+      },
+      {
+        "name": "LLMSegmenter",
+        "anchor": "llmsegmenter"
+      },
+      {
+        "name": "create_segmenter()",
+        "anchor": "create_segmenter"
+      }
+    ]
+  },
+  {
+    "name": "Word Embeddings",
+    "url": "/docs/word_embeddings/",
+    "functions": [
+      {
+        "name": "Word2Vec",
+        "anchor": "word2vec"
+      },
+      {
+        "name": "Word2Vec.build_vocab()",
+        "anchor": "word2vec-build_vocab"
+      },
+      {
+        "name": "Word2Vec.get_vector()",
+        "anchor": "word2vec-get_vector"
+      },
+      {
+        "name": "Word2Vec.load()",
+        "anchor": "word2vec-load"
+      },
+      {
+        "name": "Word2Vec.most_similar()",
+        "anchor": "word2vec-most_similar"
+      },
+      {
+        "name": "Word2Vec.save()",
+        "anchor": "word2vec-save"
+      },
+      {
+        "name": "Word2Vec.similarity()",
+        "anchor": "word2vec-similarity"
+      },
+      {
+        "name": "Word2Vec.train()",
+        "anchor": "word2vec-train"
+      },
+      {
+        "name": "TempRefWord2Vec",
+        "anchor": "temprefword2vec"
+      },
+      {
+        "name": "TempRefWord2Vec.build_vocab()",
+        "anchor": "temprefword2vec-build_vocab"
+      },
+      {
+        "name": "TempRefWord2Vec.calculate_semantic_change()",
+        "anchor": "temprefword2vec-calculate_semantic_change"
+      },
+      {
+        "name": "TempRefWord2Vec.get_available_targets()",
+        "anchor": "temprefword2vec-get_available_targets"
+      },
+      {
+        "name": "TempRefWord2Vec.get_period_vocab_counts()",
+        "anchor": "temprefword2vec-get_period_vocab_counts"
+      },
+      {
+        "name": "TempRefWord2Vec.get_time_labels()",
+        "anchor": "temprefword2vec-get_time_labels"
+      },
+      {
+        "name": "TempRefWord2Vec.load()",
+        "anchor": "temprefword2vec-load"
+      },
+      {
+        "name": "TempRefWord2Vec.save()",
+        "anchor": "temprefword2vec-save"
+      },
+      {
+        "name": "TempRefWord2Vec.train()",
+        "anchor": "temprefword2vec-train"
+      },
+      {
+        "name": "project_2d()",
+        "anchor": "project_2d"
+      },
+      {
+        "name": "get_bias_direction()",
+        "anchor": "get_bias_direction"
+      },
+      {
+        "name": "calculate_bias()",
+        "anchor": "calculate_bias"
+      },
+      {
+        "name": "project_bias()",
+        "anchor": "project_bias"
+      },
+      {
+        "name": "cosine_similarity()",
+        "anchor": "cosine_similarity"
+      },
+      {
+        "name": "cosine_distance()",
+        "anchor": "cosine_distance"
+      },
+      {
+        "name": "most_similar()",
+        "anchor": "most_similar"
+      },
+      {
+        "name": "align_vectors()",
+        "anchor": "align_vectors"
+      }
+    ]
+  },
+  {
+    "name": "Topic Modeling",
+    "url": "/docs/topic_modeling/",
+    "functions": [
+      {
+        "name": "LDAGibbsSampler",
+        "anchor": "ldagibbssampler"
+      },
+      {
+        "name": "LDAGibbsSampler.coherence()",
+        "anchor": "ldagibbssampler-coherence"
+      },
+      {
+        "name": "LDAGibbsSampler.coherence_npmi()",
+        "anchor": "ldagibbssampler-coherence_npmi"
+      },
+      {
+        "name": "LDAGibbsSampler.coherence_umass()",
+        "anchor": "ldagibbssampler-coherence_umass"
+      },
+      {
+        "name": "LDAGibbsSampler.document_similarity()",
+        "anchor": "ldagibbssampler-document_similarity"
+      },
+      {
+        "name": "LDAGibbsSampler.document_similarity_matrix()",
+        "anchor": "ldagibbssampler-document_similarity_matrix"
+      },
+      {
+        "name": "LDAGibbsSampler.evaluate()",
+        "anchor": "ldagibbssampler-evaluate"
+      },
+      {
+        "name": "LDAGibbsSampler.fit()",
+        "anchor": "ldagibbssampler-fit"
+      },
+      {
+        "name": "LDAGibbsSampler.get_document_topics()",
+        "anchor": "ldagibbssampler-get_document_topics"
+      },
+      {
+        "name": "LDAGibbsSampler.get_top_documents()",
+        "anchor": "ldagibbssampler-get_top_documents"
+      },
+      {
+        "name": "LDAGibbsSampler.get_topic_distribution()",
+        "anchor": "ldagibbssampler-get_topic_distribution"
+      },
+      {
+        "name": "LDAGibbsSampler.get_topic_words()",
+        "anchor": "ldagibbssampler-get_topic_words"
+      },
+      {
+        "name": "LDAGibbsSampler.get_topics()",
+        "anchor": "ldagibbssampler-get_topics"
+      },
+      {
+        "name": "LDAGibbsSampler.inference()",
+        "anchor": "ldagibbssampler-inference"
+      },
+      {
+        "name": "LDAGibbsSampler.initialize()",
+        "anchor": "ldagibbssampler-initialize"
+      },
+      {
+        "name": "LDAGibbsSampler.load()",
+        "anchor": "ldagibbssampler-load"
+      },
+      {
+        "name": "LDAGibbsSampler.perplexity()",
+        "anchor": "ldagibbssampler-perplexity"
+      },
+      {
+        "name": "LDAGibbsSampler.plot_topic_words()",
+        "anchor": "ldagibbssampler-plot_topic_words"
+      },
+      {
+        "name": "LDAGibbsSampler.preprocess()",
+        "anchor": "ldagibbssampler-preprocess"
+      },
+      {
+        "name": "LDAGibbsSampler.run_gibbs_sampling()",
+        "anchor": "ldagibbssampler-run_gibbs_sampling"
+      },
+      {
+        "name": "LDAGibbsSampler.save()",
+        "anchor": "ldagibbssampler-save"
+      },
+      {
+        "name": "LDAGibbsSampler.topic_correlation_matrix()",
+        "anchor": "ldagibbssampler-topic_correlation_matrix"
+      },
+      {
+        "name": "LDAGibbsSampler.topic_similarity()",
+        "anchor": "ldagibbssampler-topic_similarity"
+      },
+      {
+        "name": "LDAGibbsSampler.train_multiple()",
+        "anchor": "ldagibbssampler-train_multiple"
+      },
+      {
+        "name": "LDAGibbsSampler.visualize_documents()",
+        "anchor": "ldagibbssampler-visualize_documents"
+      }
+    ]
+  },
+  {
+    "name": "Stylometry",
+    "url": "/docs/stylometry/",
+    "functions": [
+      {
+        "name": "Stylometry",
+        "anchor": "stylometry"
+      },
+      {
+        "name": "Stylometry.bootstrap_predict()",
+        "anchor": "stylometry-bootstrap_predict"
+      },
+      {
+        "name": "Stylometry.dendrogram()",
+        "anchor": "stylometry-dendrogram"
+      },
+      {
+        "name": "Stylometry.distance()",
+        "anchor": "stylometry-distance"
+      },
+      {
+        "name": "Stylometry.distance_matrix()",
+        "anchor": "stylometry-distance_matrix"
+      },
+      {
+        "name": "Stylometry.fit_transform()",
+        "anchor": "stylometry-fit_transform"
+      },
+      {
+        "name": "Stylometry.get_author_profile()",
+        "anchor": "stylometry-get_author_profile"
+      },
+      {
+        "name": "Stylometry.get_feature_comparison()",
+        "anchor": "stylometry-get_feature_comparison"
+      },
+      {
+        "name": "Stylometry.hierarchical_clustering()",
+        "anchor": "stylometry-hierarchical_clustering"
+      },
+      {
+        "name": "Stylometry.most_similar()",
+        "anchor": "stylometry-most_similar"
+      },
+      {
+        "name": "Stylometry.plot()",
+        "anchor": "stylometry-plot"
+      },
+      {
+        "name": "Stylometry.predict()",
+        "anchor": "stylometry-predict"
+      },
+      {
+        "name": "Stylometry.predict_author()",
+        "anchor": "stylometry-predict_author"
+      },
+      {
+        "name": "Stylometry.predict_confidence()",
+        "anchor": "stylometry-predict_confidence"
+      },
+      {
+        "name": "Stylometry.rolling_delta()",
+        "anchor": "stylometry-rolling_delta"
+      },
+      {
+        "name": "Stylometry.similarity()",
+        "anchor": "stylometry-similarity"
+      },
+      {
+        "name": "Stylometry.transform()",
+        "anchor": "stylometry-transform"
+      },
+      {
+        "name": "Stylometry.vocabulary_stats()",
+        "anchor": "stylometry-vocabulary_stats"
+      },
+      {
+        "name": "compare_corpora()",
+        "anchor": "compare_corpora"
+      },
+      {
+        "name": "extract_mfw()",
+        "anchor": "extract_mfw"
+      },
+      {
+        "name": "burrows_delta()",
+        "anchor": "burrows_delta"
+      },
+      {
+        "name": "manhattan_distance()",
+        "anchor": "manhattan_distance"
+      },
+      {
+        "name": "euclidean_distance()",
+        "anchor": "euclidean_distance"
+      },
+      {
+        "name": "eder_delta()",
+        "anchor": "eder_delta"
+      },
+      {
+        "name": "get_relative_frequencies()",
+        "anchor": "get_relative_frequencies"
+      },
+      {
+        "name": "compute_yule_k()",
+        "anchor": "compute_yule_k"
+      }
+    ]
+  },
+  {
+    "name": "Collocations",
+    "url": "/docs/collocations/",
+    "functions": [
+      {
+        "name": "FilterOptions",
+        "anchor": "filteroptions"
+      },
+      {
+        "name": "CoocMatrix",
+        "anchor": "coocmatrix"
+      },
+      {
+        "name": "CoocMatrix.get()",
+        "anchor": "coocmatrix-get"
+      },
+      {
+        "name": "CoocMatrix.to_dataframe()",
+        "anchor": "coocmatrix-to_dataframe"
+      },
+      {
+        "name": "CoocMatrix.to_dense()",
+        "anchor": "coocmatrix-to_dense"
+      },
+      {
+        "name": "find_collocates()",
+        "anchor": "find_collocates"
+      },
+      {
+        "name": "cooc_matrix()",
+        "anchor": "cooc_matrix"
+      },
+      {
+        "name": "plot_collocates()",
+        "anchor": "plot_collocates"
+      }
+    ]
+  },
+  {
+    "name": "Helpers",
+    "url": "/docs/helpers/",
+    "functions": [
+      {
+        "name": "load_fonts()",
+        "anchor": "load_fonts"
+      },
+      {
+        "name": "current_font()",
+        "anchor": "current_font"
+      },
+      {
+        "name": "set_font()",
+        "anchor": "set_font"
+      },
+      {
+        "name": "list_available_fonts()",
+        "anchor": "list_available_fonts"
+      },
+      {
+        "name": "list_font_aliases()",
+        "anchor": "list_font_aliases"
+      },
+      {
+        "name": "get_font_path()",
+        "anchor": "get_font_path"
+      },
+      {
+        "name": "load_text()",
+        "anchor": "load_text"
+      },
+      {
+        "name": "load_texts()",
+        "anchor": "load_texts"
+      },
+      {
+        "name": "load_stopwords()",
+        "anchor": "load_stopwords"
+      },
+      {
+        "name": "split_into_chunks()",
+        "anchor": "split_into_chunks"
+      },
+      {
+        "name": "get_stopword_languages()",
+        "anchor": "get_stopword_languages"
+      },
+      {
+        "name": "detect_encoding()",
+        "anchor": "detect_encoding"
+      }
+    ]
+  }
+]

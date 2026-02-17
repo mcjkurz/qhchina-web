@@ -207,11 +207,12 @@
 /**
  * Collapsible submenu functionality for docs sidebar.
  * Only active on desktop (min-width: 769px).
+ * Each category's collapse state is saved independently.
  */
 (function() {
   'use strict';
 
-  const STORAGE_KEY = 'docs-submenu-collapsed';
+  const STORAGE_KEY = 'docs-submenu-states';
 
   /**
    * Check if we're on desktop (submenu toggle is visible).
@@ -221,22 +222,26 @@
   }
 
   /**
-   * Get saved collapse state from localStorage.
+   * Get saved collapse states from localStorage.
+   * Returns object mapping category URLs to collapsed state (true/false).
    */
-  function getSavedState() {
+  function getSavedStates() {
     try {
-      return localStorage.getItem(STORAGE_KEY) === 'true';
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved ? JSON.parse(saved) : {};
     } catch (e) {
-      return false;
+      return {};
     }
   }
 
   /**
-   * Save collapse state to localStorage.
+   * Save collapse state for a category to localStorage.
    */
-  function saveState(collapsed) {
+  function saveState(categoryUrl, collapsed) {
     try {
-      localStorage.setItem(STORAGE_KEY, collapsed ? 'true' : 'false');
+      const states = getSavedStates();
+      states[categoryUrl] = collapsed;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
     } catch (e) {
       // Ignore storage errors
     }
@@ -251,20 +256,34 @@
     if (toggleButtons.length === 0) {
       return;
     }
-    
-    console.log('Submenu toggle initialized, found', toggleButtons.length, 'buttons');
+
+    const savedStates = getSavedStates();
 
     toggleButtons.forEach(function(button) {
-      const submenu = button.closest('li').querySelector('.docs-submenu');
+      const li = button.closest('li');
+      const submenu = li.querySelector('.docs-submenu');
+      const wrapper = button.closest('.nav-item-wrapper');
+      const isActive = wrapper && wrapper.classList.contains('active');
       
       if (!submenu) {
         return;
       }
+      
+      const categoryUrl = submenu.dataset.categoryUrl || '';
 
-      // Restore saved state on desktop
-      if (isDesktop() && getSavedState()) {
-        submenu.classList.add('collapsed');
-        button.setAttribute('aria-expanded', 'false');
+      // On desktop, restore saved state (but active category starts expanded by default)
+      if (isDesktop()) {
+        if (categoryUrl in savedStates) {
+          // Use saved state
+          if (savedStates[categoryUrl]) {
+            submenu.classList.add('collapsed');
+            button.setAttribute('aria-expanded', 'false');
+          } else {
+            submenu.classList.remove('collapsed');
+            button.setAttribute('aria-expanded', 'true');
+          }
+        }
+        // If no saved state, use the default from HTML (active = expanded, inactive = collapsed)
       }
 
       // Handle toggle click
@@ -278,38 +297,25 @@
           // Expand
           submenu.classList.remove('collapsed');
           button.setAttribute('aria-expanded', 'true');
-          saveState(false);
+          saveState(categoryUrl, false);
         } else {
           // Collapse
           submenu.classList.add('collapsed');
           button.setAttribute('aria-expanded', 'false');
-          saveState(true);
+          saveState(categoryUrl, true);
         }
       });
     });
 
-    // Handle window resize - ensure submenu is visible on mobile
+    // Handle window resize - ensure submenus behave correctly
     window.addEventListener('resize', debounceResize(function() {
+      const submenus = document.querySelectorAll('.docs-submenu');
+      
       if (!isDesktop()) {
-        // On mobile, always show submenu (remove collapsed state)
-        toggleButtons.forEach(function(button) {
-          const submenu = button.closest('li').querySelector('.docs-submenu');
-          if (submenu) {
-            submenu.classList.remove('collapsed');
-          }
-        });
-      } else {
-        // On desktop, restore saved state
-        if (getSavedState()) {
-          toggleButtons.forEach(function(button) {
-            const submenu = button.closest('li').querySelector('.docs-submenu');
-            if (submenu) {
-              submenu.classList.add('collapsed');
-              button.setAttribute('aria-expanded', 'false');
-            }
-          });
-        }
+        // On mobile, hide all submenus (CSS handles this via display:none)
+        // No need to modify classes
       }
+      // On desktop, states are already correct from initialization
     }, 150));
   }
 
