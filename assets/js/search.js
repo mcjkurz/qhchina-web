@@ -207,44 +207,23 @@
 /**
  * Collapsible submenu functionality for docs sidebar.
  * Only active on desktop (min-width: 769px).
- * Each category's collapse state is saved independently.
+ * Default: active category expanded, others collapsed.
+ * User can toggle any category, but state is not persisted across page loads.
  */
 (function() {
   'use strict';
 
-  const STORAGE_KEY = 'docs-submenu-states';
+  // Clear any old saved states from localStorage
+  try {
+    localStorage.removeItem('docs-submenu-states');
+    localStorage.removeItem('docs-submenu-collapsed');
+  } catch (e) {}
 
   /**
    * Check if we're on desktop (submenu toggle is visible).
    */
   function isDesktop() {
     return window.matchMedia('(min-width: 769px)').matches;
-  }
-
-  /**
-   * Get saved collapse states from localStorage.
-   * Returns object mapping category URLs to collapsed state (true/false).
-   */
-  function getSavedStates() {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : {};
-    } catch (e) {
-      return {};
-    }
-  }
-
-  /**
-   * Save collapse state for a category to localStorage.
-   */
-  function saveState(categoryUrl, collapsed) {
-    try {
-      const states = getSavedStates();
-      states[categoryUrl] = collapsed;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
-    } catch (e) {
-      // Ignore storage errors
-    }
   }
 
   /**
@@ -257,39 +236,12 @@
       return;
     }
 
-    const savedStates = getSavedStates();
-
     toggleButtons.forEach(function(button) {
       const li = button.closest('li');
       const submenu = li.querySelector('.docs-submenu');
-      const wrapper = button.closest('.nav-item-wrapper');
-      const isActive = wrapper && wrapper.classList.contains('active');
       
       if (!submenu) {
         return;
-      }
-      
-      const categoryUrl = submenu.dataset.categoryUrl || '';
-
-      // On desktop, restore saved state for INACTIVE categories only
-      // Active category always starts expanded (user is viewing that page)
-      if (isDesktop() && !isActive) {
-        if (categoryUrl in savedStates) {
-          // Use saved state for inactive categories
-          if (savedStates[categoryUrl]) {
-            submenu.classList.add('collapsed');
-            button.setAttribute('aria-expanded', 'false');
-          } else {
-            submenu.classList.remove('collapsed');
-            button.setAttribute('aria-expanded', 'true');
-          }
-        }
-        // If no saved state, use the default from HTML (inactive = collapsed)
-      }
-      // Active category: always ensure it's expanded
-      if (isDesktop() && isActive) {
-        submenu.classList.remove('collapsed');
-        button.setAttribute('aria-expanded', 'true');
       }
 
       // Handle toggle click
@@ -303,37 +255,13 @@
           // Expand
           submenu.classList.remove('collapsed');
           button.setAttribute('aria-expanded', 'true');
-          saveState(categoryUrl, false);
         } else {
           // Collapse
           submenu.classList.add('collapsed');
           button.setAttribute('aria-expanded', 'false');
-          saveState(categoryUrl, true);
         }
       });
     });
-
-    // Handle window resize - ensure submenus behave correctly
-    window.addEventListener('resize', debounceResize(function() {
-      const submenus = document.querySelectorAll('.docs-submenu');
-      
-      if (!isDesktop()) {
-        // On mobile, hide all submenus (CSS handles this via display:none)
-        // No need to modify classes
-      }
-      // On desktop, states are already correct from initialization
-    }, 150));
-  }
-
-  /**
-   * Simple debounce for resize events.
-   */
-  function debounceResize(func, wait) {
-    let timeout;
-    return function() {
-      clearTimeout(timeout);
-      timeout = setTimeout(func, wait);
-    };
   }
 
   // Initialize when DOM is ready
