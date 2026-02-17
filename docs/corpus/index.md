@@ -42,19 +42,16 @@ The `Corpus` class provides a unified way to manage tokenized documents with met
 ```python
 from qhchina import Corpus
 
-# Create a corpus
+# Create a corpus with real literary excerpts
 corpus = Corpus()
-corpus.add(['我', '喜欢', '学习'], author='鲁迅', period='民国')
-corpus.add(['他', '写', '小说'], author='茅盾', period='民国')
+corpus.add(['没有', '吃', '过', '人', '的', '孩子', '或者', '还', '有'], author='鲁迅')
+corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾')
+corpus.add(['小溪', '流', '下去', '绕', '山岨', '流'], author='沈从文')
 
 # Use directly with analytics
-from qhchina.analytics.word2vec import Word2Vec
-model = Word2Vec(corpus, vector_size=100)
-
-# Group by metadata for Stylometry
-from qhchina.analytics.stylometry import Stylometry
-stylo = Stylometry()
-stylo.fit_transform(corpus.groupby('author'))
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+lda = LDAGibbsSampler(n_topics=5)
+lda.fit(corpus)
 ```
 
 ---
@@ -67,20 +64,20 @@ stylo.fit_transform(corpus.groupby('author'))
 from qhchina import Corpus
 
 corpus = Corpus()
-corpus.add(['鲁迅', '写', '小说'], author='鲁迅', year=1920)
-corpus.add(['茅盾', '写', '散文'], author='茅盾', year=1925)
+corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅', year=1918)
+corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾', year=1927)
 
 # Access documents
 doc = corpus.get('doc_0')
-print(doc.tokens)    # ['鲁迅', '写', '小说']
-print(doc.metadata)  # {'author': '鲁迅', 'year': 1920}
+print(doc.tokens)    # ['没有', '吃', '过', '人', '的', '孩子']
+print(doc.metadata)  # {'author': '鲁迅', 'year': 1918}
 ```
 
 **Filtering and Grouping**
 
 ```python
 # Filter by metadata
-luxun = corpus.filter(author='鲁迅')
+luxun_docs = corpus.filter(author='鲁迅')
 
 # Group for Stylometry
 from qhchina.analytics.stylometry import Stylometry
@@ -115,7 +112,7 @@ collocates = find_collocates(corpus, target_words=['经济'])
 
 <!-- API-START -->
 
-<h3 id="corpus">qhchina.corpus.Corpus <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L71" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="corpus">qhchina.corpus.Corpus <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L67" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">Corpus</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]] | list[Document] | 'Corpus' | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -138,14 +135,14 @@ Works directly with all qhchina analytics modules:
 **Example:**
 ```python
 >>> corpus = Corpus()
->>> corpus.add(['鲁迅', '写', '小说'], author='鲁迅')
->>> corpus.add(['茅盾', '写', '散文'], author='茅盾')
+>>> corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
+>>> corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾')
 >>> 
 >>> for tokens in corpus.filter(author='鲁迅'):
 ...     print(tokens)
 ```
 
-<h4 id="corpus-add">qhchina.corpus.Corpus.add() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L204" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-add">qhchina.corpus.Corpus.add() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L200" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">add</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">metadata</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>)</code></pre>
 
@@ -165,13 +162,13 @@ The document ID (generated or provided).
 
 **Example:**
 ```python
->>> corpus.add(['word1', 'word2'], author='鲁迅', date='1920')
+>>> corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
 'doc_0'
->>> corpus.add(['word3'], doc_id='custom_id', source='报纸')
-'custom_id'
+>>> corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾')
+'doc_1'
 ```
 
-<h4 id="corpus-add_many">qhchina.corpus.Corpus.add_many() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L255" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-add_many">qhchina.corpus.Corpus.add_many() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L251" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">add_many</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>, <span class="sig-param">metadata_list</span><span class="sig-punct">:</span> <span class="sig-type">list[dict[str, Any]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">shared_metadata</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>)</code></pre>
 
@@ -195,7 +192,7 @@ List of document IDs.
 ['doc_0', 'doc_1']
 ```
 
-<h4 id="corpus-describe">qhchina.corpus.Corpus.describe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L596" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-describe">qhchina.corpus.Corpus.describe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L592" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">describe</span>()</code></pre>
 
@@ -215,7 +212,7 @@ Dictionary with:
 {'documents': 100, 'tokens': 5432, 'vocab_size': 1205, ...}
 ```
 
-<h4 id="corpus-filter">qhchina.corpus.Corpus.filter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L351" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-filter">qhchina.corpus.Corpus.filter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L347" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">filter</span>(<span class="sig-param">predicate</span><span class="sig-punct">:</span> <span class="sig-type">Callable[[Document], bool] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">metadata_filters</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>)</code></pre>
 
@@ -235,19 +232,19 @@ New Corpus containing matching documents.
 **Example:**
 ```python
 >>> # Filter by author
->>> luxun = corpus.filter(author='鲁迅')
+>>> luxun_docs = corpus.filter(author='鲁迅')
 >>> 
 >>> # Filter by predicate
 >>> long_docs = corpus.filter(lambda d: len(d.tokens) > 100)
 >>> 
 >>> # Combine filters
 >>> result = corpus.filter(
-...     lambda d: '小说' in d.metadata.get('genre', ''),
+...     lambda d: d.metadata.get('year', 0) > 1920,
 ...     author='鲁迅'
 ... )
 ```
 
-<h4 id="corpus-get">qhchina.corpus.Corpus.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L296" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-get">qhchina.corpus.Corpus.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L292" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -268,7 +265,7 @@ The Document object.
 >>> print(doc.tokens, doc.metadata)
 ```
 
-<h4 id="corpus-groupby">qhchina.corpus.Corpus.groupby() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L414" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-groupby">qhchina.corpus.Corpus.groupby() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L410" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">groupby</span>(<span class="sig-param">key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -290,18 +287,18 @@ Dictionary mapping metadata values to lists of token lists.
 
 **Example:**
 ```python
->>> corpus.add(['word1'], author='鲁迅')
->>> corpus.add(['word2'], author='鲁迅')
->>> corpus.add(['word3'], author='茅盾')
+>>> corpus.add(['没有', '吃', '过', '人'], author='鲁迅')
+>>> corpus.add(['救救', '孩子'], author='鲁迅')
+>>> corpus.add(['太阳', '下', '了', '地平线'], author='茅盾')
 >>> 
 >>> grouped = corpus.groupby('author')
->>> # {'鲁迅': [['word1'], ['word2']], '茅盾': [['word3']]}
+>>> # {'鲁迅': [['没有', '吃', ...], ['救救', '孩子']], '茅盾': [[...]]}
 >>> 
 >>> # Use with Stylometry
 >>> stylo.fit_transform(corpus.groupby('author'))
 ```
 
-<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L704" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L700" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | Path</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -321,7 +318,7 @@ Loaded Corpus object.
 >>> corpus = Corpus.load('my_corpus.pkl')    # Pickle format
 ```
 
-<h4 id="corpus-metadata_values">qhchina.corpus.Corpus.metadata_values() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L621" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-metadata_values">qhchina.corpus.Corpus.metadata_values() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L617" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">metadata_values</span>(<span class="sig-param">key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -336,10 +333,10 @@ Set of unique values (excludes documents without this key).
 **Example:**
 ```python
 >>> corpus.metadata_values('author')
-{'鲁迅', '茅盾', '巴金'}
+{'鲁迅', '茅盾', '沈从文'}
 ```
 
-<h4 id="corpus-remove">qhchina.corpus.Corpus.remove() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L317" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-remove">qhchina.corpus.Corpus.remove() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L313" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">remove</span>(<span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -360,7 +357,7 @@ The removed Document object.
 >>> print(f"Removed document with {len(removed.tokens)} tokens")
 ```
 
-<h4 id="corpus-save">qhchina.corpus.Corpus.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L645" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-save">qhchina.corpus.Corpus.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L641" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | Path</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -380,7 +377,7 @@ Save corpus to a file.
 >>> corpus.save('corpus', format='pickle')  # Explicit format
 ```
 
-<h4 id="corpus-split">qhchina.corpus.Corpus.split() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L465" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-split">qhchina.corpus.Corpus.split() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L461" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">split</span>(<span class="sig-param">train_ratio</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.8</span>, <span class="sig-param">stratify_by</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -406,7 +403,7 @@ Tuple of (train_corpus, test_corpus).
 ... )
 ```
 
-<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L761" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L757" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -423,7 +420,7 @@ DataFrame with columns: doc_id, tokens, token_count, and all metadata keys.
 
 <br>
 
-<h3 id="document">qhchina.corpus.Document <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L45" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="document">qhchina.corpus.Document <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L41" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">Document</span>(
     <span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
