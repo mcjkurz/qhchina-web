@@ -432,7 +432,7 @@ DataFrame with columns: doc_id, tokens, token_count, and all metadata keys.
 
 <pre class="signature"><code><span class="sig-name">Document</span>(
     <span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
-    <span class="sig-param">metadata</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any]</span> <span class="sig-punct">=</span> <span class="sig-default"><factory></span>,
+    <span class="sig-param">metadata</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any]</span> <span class="sig-punct">=</span> <span class="sig-default">&lt;factory&gt;</span>,
     <span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">''</span>
 )</code></pre>
 
