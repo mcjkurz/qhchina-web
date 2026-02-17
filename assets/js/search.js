@@ -271,10 +271,11 @@
       
       const categoryUrl = submenu.dataset.categoryUrl || '';
 
-      // On desktop, restore saved state (but active category starts expanded by default)
-      if (isDesktop()) {
+      // On desktop, restore saved state for INACTIVE categories only
+      // Active category always starts expanded (user is viewing that page)
+      if (isDesktop() && !isActive) {
         if (categoryUrl in savedStates) {
-          // Use saved state
+          // Use saved state for inactive categories
           if (savedStates[categoryUrl]) {
             submenu.classList.add('collapsed');
             button.setAttribute('aria-expanded', 'false');
@@ -283,7 +284,12 @@
             button.setAttribute('aria-expanded', 'true');
           }
         }
-        // If no saved state, use the default from HTML (active = expanded, inactive = collapsed)
+        // If no saved state, use the default from HTML (inactive = collapsed)
+      }
+      // Active category: always ensure it's expanded
+      if (isDesktop() && isActive) {
+        submenu.classList.remove('collapsed');
+        button.setAttribute('aria-expanded', 'true');
       }
 
       // Handle toggle click
