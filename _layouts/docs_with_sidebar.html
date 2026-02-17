@@ -61,7 +61,16 @@
                     {% endif %}
                   {% endif %}
                   <li class="{% if is_active %}has-submenu{% endif %}">
-                    <a href="{{ site.baseurl }}{{ url }}" {% if is_active %}class="active"{% endif %}>{{ name }}</a>
+                    <div class="nav-item-wrapper">
+                      <a href="{{ site.baseurl }}{{ url }}" {% if is_active %}class="active"{% endif %}>{{ name }}</a>
+                      {% if is_active and page.functions %}
+                      <button class="submenu-toggle" aria-expanded="true" aria-label="Toggle submenu">
+                        <svg class="toggle-arrow" viewBox="0 0 24 24" width="16" height="16">
+                          <path d="M7 10l5 5 5-5z" fill="currentColor"/>
+                        </svg>
+                      </button>
+                      {% endif %}
+                    </div>
                     {% if is_active and page.functions %}
                     <ul class="docs-submenu">
                       {% if page.has_examples %}
