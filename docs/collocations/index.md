@@ -44,15 +44,15 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 from qhchina.analytics.collocations import find_collocates
 
 sentences = [
-    ["中国", "经济", "发展", "改革"],
-    ["美国", "经济", "市场", "金融"],
-    ["中国", "市场", "贸易", "改革"],
+    ["追求", "自由", "理想", "青年"],
+    ["爱情", "自由", "婚姻", "传统"],
+    ["思想", "自由", "解放", "革命"],
 ]
 
-# Find collocates of "经济"
+# Find collocates of "自由"
 collocates = find_collocates(
     sentences,
-    target_words=["经济"],
+    target_words=["自由"],
     horizon=3,
     filters={'max_p': 0.05}
 )
@@ -61,28 +61,31 @@ collocates = find_collocates(
 print(collocates.head())
 ```
 
-**Using Corpus**
+**Comparing Collocates Across Authors**
 
 ```python
 from qhchina import Corpus
 from qhchina.analytics.collocations import find_collocates
 
 corpus = Corpus()
-corpus.add(["中国", "经济", "快速", "发展"], source="报纸")
-corpus.add(["美国", "经济", "市场", "波动"], source="报纸")
+# ... add documents with author metadata ...
 
-# Works directly with Corpus
-collocates = find_collocates(corpus, target_words=["经济"], horizon=3)
+# Compare how "爱情" is used by different authors
+luxun = corpus.filter(author='鲁迅')
+bingxin = corpus.filter(author='冰心')
+
+luxun_collocates = find_collocates(luxun, ["爱情"], horizon=3)
+bingxin_collocates = find_collocates(bingxin, ["爱情"], horizon=3)
 ```
 
 **Directional Collocates**
 
 ```python
 # Words to the RIGHT of target
-right = find_collocates(sentences, ["经济"], horizon=(0, 3))
+right = find_collocates(sentences, ["自由"], horizon=(0, 3))
 
 # Words to the LEFT of target  
-left = find_collocates(sentences, ["经济"], horizon=(3, 0))
+left = find_collocates(sentences, ["自由"], horizon=(3, 0))
 ```
 
 **Visualizing Collocates**
@@ -93,13 +96,13 @@ from qhchina.analytics.collocations import find_collocates, plot_collocates
 # Find collocates
 collocates = find_collocates(
     sentences=sentences,
-    target_words=["经济"],
+    target_words=["自由"],
     alternative='two-sided',
     filters={'max_p': 0.05, 'min_obs_local': 2}
 )
 
 # Default: ratio vs p-value (log scales)
-plot_collocates(collocates, title="Collocates of 经济")
+plot_collocates(collocates, title="Collocates of 自由")
 
 # Observed vs expected with diagonal reference line
 plot_collocates(

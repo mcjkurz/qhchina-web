@@ -76,11 +76,11 @@ topics = lda.get_topics(n_words=10)  # Get top words per topic
 ```python
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
-# Tokenized documents
+# Tokenized literary documents
 documents = [
-    ["人工智能", "改变", "生活", "方式"],
-    ["医生", "建议", "患者", "运动"],
-    ["中国", "传统", "文化", "传承"],
+    ["爱情", "自由", "追求", "理想"],
+    ["故乡", "童年", "回忆", "母亲"],
+    ["革命", "青年", "觉醒", "斗争"],
 ]
 
 # Train model
@@ -97,24 +97,28 @@ lda.save("model.npy")
 lda = LDAGibbsSampler.load("model.npy")
 ```
 
-**Using Corpus with Metadata**
+**Comparing Topics Across Literary Periods**
 
 ```python
 from qhchina import Corpus
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
-# Build corpus with metadata
 corpus = Corpus()
-corpus.add(["经济", "发展", "改革"], period="1980s", source="报纸")
-corpus.add(["市场", "开放", "贸易"], period="1990s", source="报纸")
-corpus.add(["科技", "创新", "人工智能"], period="2020s", source="网络")
+# ... add documents with period metadata ...
 
-# Train on corpus directly
-lda = LDAGibbsSampler(n_topics=3, iterations=50)
-lda.fit(corpus)
+# Compare themes in May Fourth vs contemporary literature
+may_fourth = corpus.filter(period="1920s")
+contemporary = corpus.filter(period="2000s")
 
-# Analyze specific period
-docs_1990s = corpus.filter(period="1990s")
+lda_early = LDAGibbsSampler(n_topics=5, iterations=100)
+lda_late = LDAGibbsSampler(n_topics=5, iterations=100)
+
+lda_early.fit(may_fourth)
+lda_late.fit(contemporary)
+
+# How did literary themes evolve?
+print("1920s themes:", lda_early.get_topics(n_words=5))
+print("2000s themes:", lda_late.get_topics(n_words=5))
 ```
 
 **Analyzing Documents and Topics**

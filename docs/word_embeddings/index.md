@@ -76,26 +76,26 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 ```python
 from qhchina.analytics.word2vec import Word2Vec
 
-# Initialize model (epochs is set at initialization)
+# Initialize model
 model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
 
-# Prepare tokenized sentences
+# Tokenized literary sentences
 sentences = [
-    ["我", "喜欢", "这部", "电影"],
-    ["这", "是", "一个", "有趣", "的", "故事"],
+    ["她", "渴望", "自由", "追求", "理想"],
+    ["爱情", "是", "永恒", "的", "主题"],
     # More sentences...
 ]
 
 # Train model
 model.train(sentences)
 
-# Get similar words
-similar_words = model.most_similar("电影", topn=10)
-for word, score in similar_words:
+# Find words similar to "爱情"
+similar = model.most_similar("爱情", topn=10)
+for word, score in similar:
     print(f"{word}: {score:.4f}")
 
-# Calculate similarity
-sim = model.similarity("电影", "电视")
+# Compare concepts
+sim = model.similarity("爱情", "自由")
 print(f"Similarity: {sim:.4f}")
 ```
 
@@ -104,14 +104,13 @@ print(f"Similarity: {sim:.4f}")
 ```python
 from qhchina.analytics.word2vec import TempRefWord2Vec
 
-# Prepare corpus data from different time periods
-time_labels = ["1980", "1990", "2000", "2010"]
-corpora = [corpus_1980, corpus_1990, corpus_2000, corpus_2010]  # Each is a list of tokenized sentences
+# Corpus from different literary periods
+time_labels = ["1920s", "1940s", "1980s", "2000s"]
+corpora = [corpus_1920s, corpus_1940s, corpus_1980s, corpus_2000s]
 
-# Words to track for semantic change
-target_words = ["改革", "经济", "科技"]
+# Track how key concepts evolved
+target_words = ["自由", "爱情", "革命"]
 
-# Initialize and train model
 model = TempRefWord2Vec(
     corpora=corpora,
     labels=time_labels,
@@ -120,19 +119,14 @@ model = TempRefWord2Vec(
     window=5,
     sg=1,
     seed=42,
-    epochs=5  # Training will start automatically during initialization
+    epochs=5
 )
 
-# Access temporal variants
-reform_1980s = model.get_vector("改革_1980")
-reform_2010s = model.get_vector("改革_2010")
-
-# Analyze semantic change
-changes = model.calculate_semantic_change("改革")
+# How did "自由" change from 1920s to 2000s?
+changes = model.calculate_semantic_change("自由")
 for transition, word_changes in changes.items():
     print(f"\n{transition}:")
-    print("Words moved towards:", word_changes[:10])
-    print("Words moved away:", word_changes[-10:])
+    print("Words moved towards:", word_changes[:5])
 ```
 
 
