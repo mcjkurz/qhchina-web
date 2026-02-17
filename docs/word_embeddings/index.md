@@ -172,8 +172,8 @@ This class implements both Skip-gram and CBOW architectures:
 
 Training is performed using optimized Cython routines with BLAS operations.
 
-If ``sentences`` is provided at initialization, training starts immediately. Otherwise, call
-``train()`` later with the sentences to train on.
+If `sentences` is provided at initialization, training starts immediately. Otherwise, call
+`train()` later with the sentences to train on.
 
 Features:
 - CBOW and Skip-gram architectures
@@ -510,7 +510,7 @@ that was created and preprocessed during initialization. This ensures the traini
 data has the proper temporal references.
 
 All training configuration (epochs, batch_size, alpha, min_alpha, etc.) is read
-from instance attributes set during initialization via ``**kwargs``.
+from instance attributes set during initialization via `**kwargs`.
 
 **Parameters:**
 - `sentences`: Ignored in TempRefWord2Vec, will use self.combined_corpus instead.

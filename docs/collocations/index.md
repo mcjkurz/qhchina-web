@@ -182,11 +182,11 @@ Co-occurrence matrix with flexible indexing by word or index.
 
 Supports flexible indexing:
 
-- ``matrix["word1", "word2"]`` - single count (int)
-- ``matrix[132, 5234]`` - single count (int)
-- ``matrix["word1"]`` - row as dict {word: count}
-- ``matrix["word1", :]`` - row as dict {word: count}
-- ``matrix[:, "word2"]`` - column as dict {word: count}
+- `matrix["word1", "word2"]` - single count (int)
+- `matrix[132, 5234]` - single count (int)
+- `matrix["word1"]` - row as dict {word: count}
+- `matrix["word1", :]` - row as dict {word: count}
+- `matrix[:, "word2"]` - column as dict {word: count}
 
 Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
@@ -348,10 +348,10 @@ Calculate a co-occurrence matrix from a list of documents.
 
 Returns a CoocMatrix object with flexible indexing:
 
-- ``matrix["word1", "word2"]`` - single count
-- ``matrix["word1"]`` - row as dict {word: count}
-- ``matrix.to_dataframe()`` - pandas DataFrame
-- ``matrix.to_dense()`` - numpy array
+- `matrix["word1", "word2"]` - single count
+- `matrix["word1"]` - row as dict {word: count}
+- `matrix.to_dataframe()` - pandas DataFrame
+- `matrix.to_dense()` - numpy array
 
 **Parameters:**
 - `documents`: Iterable of tokenized documents, where each document is a list of 

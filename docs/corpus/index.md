@@ -140,10 +140,10 @@ A collection of tokenized documents with metadata.
 
 Works directly with all qhchina analytics modules:
 
-- ``lda.fit(corpus)`` - topic modeling
-- ``find_collocates(corpus, ...)`` - collocation analysis
-- ``Word2Vec(corpus)`` - word embeddings
-- ``stylo.fit_transform(corpus.groupby('author'))`` - stylometry
+- `lda.fit(corpus)` - topic modeling
+- `find_collocates(corpus, ...)` - collocation analysis
+- `Word2Vec(corpus)` - word embeddings
+- `stylo.fit_transform(corpus.groupby('author'))` - stylometry
 
 **Parameters:**
 - `documents`: List of token lists, Document objects, or another Corpus.
@@ -256,7 +256,7 @@ New Corpus (shares document references, memory-efficient).
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
-Get a document by its ID. Use ``corpus[index]`` for integer access.
+Get a document by its ID. Use `corpus[index]` for integer access.
 
 **Parameters:**
 - `doc_id`: The document ID to look up.
@@ -280,7 +280,7 @@ The Document object.
 Group documents by a metadata key.
 
 Returns a dictionary mapping metadata values to lists of token lists.
-This is the format expected by ``Stylometry.fit_transform()``.
+This is the format expected by `Stylometry.fit_transform()`.
 
 Documents without the specified metadata key are silently skipped.
 
@@ -439,9 +439,9 @@ DataFrame with columns: doc_id, tokens, token_count, and all metadata keys.
 A single document with tokens and metadata.
 
 Supports flexible indexing:
-- ``doc[0]`` → first token
-- ``doc["author"]`` → metadata value
-- ``doc.get("year", 1900)`` → metadata with default
+- `doc[0]` → first token
+- `doc["author"]` → metadata value
+- `doc.get("year", 1900)` → metadata with default
 
 **Parameters:**
 - `tokens`: List of string tokens (the segmented text).
