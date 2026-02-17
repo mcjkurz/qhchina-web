@@ -423,8 +423,8 @@ aside.docs-sidebar {
   flex-grow: 0 !important;
   flex-basis: 240px !important;
   position: sticky !important;
-  top: calc(2 * var(--spacing-unit)) !important;
-  max-height: calc(100vh - 4 * var(--spacing-unit)) !important;
+  top: calc(1 * var(--spacing-unit)) !important;
+  max-height: calc(100vh - 2 * var(--spacing-unit)) !important;
   overflow-y: auto !important;
   order: 1 !important;
   float: none !important;
