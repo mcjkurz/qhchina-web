@@ -271,6 +271,7 @@ Latent Dirichlet Allocation with Gibbs sampling implementation.
   (default 0).
 - `random_state`: Random seed for reproducibility.
 - `log_interval`: Calculate perplexity and print results every log_interval iterations.
+  If None (default), no periodic logging is performed.
 - `min_word_count`: Minimum count of word to be included in vocabulary.
 - `max_vocab_size`: Maximum vocabulary size to keep.
 - `min_word_length`: Minimum length of word to be included in vocabulary.
@@ -293,7 +294,7 @@ lda.fit(documents)
 topics = lda.get_topics(n_words=10)
 ```
 
-<h4 id="ldagibbssampler-coherence">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1233" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1234" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">coherence</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'umass'</span>, <span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
@@ -324,7 +325,7 @@ avg_coherence, topic_coherences = model.coherence('npmi')
 print(f"Average NPMI coherence: {avg_coherence:.4f}")
 ```
 
-<h4 id="ldagibbssampler-coherence_npmi">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_npmi() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1171" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence_npmi">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_npmi() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1172" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">coherence_npmi</span>(<span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">eps</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">1e-12</span>)</code></pre>
 
@@ -346,7 +347,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-coherence_umass">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_umass() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1112" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-coherence_umass">qhchina.analytics.topicmodels.LDAGibbsSampler.coherence_umass() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1113" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">coherence_umass</span>(<span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">eps</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">1e-12</span>)</code></pre>
 
@@ -368,7 +369,7 @@ Tuple of:
 - Average coherence across all topics
 - List of coherence values for each topic
 
-<h4 id="ldagibbssampler-document_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L998" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-document_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L999" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">document_similarity</span>(<span class="sig-param">doc_i</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">doc_j</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">metric</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'jsd'</span>)</code></pre>
 
@@ -386,7 +387,7 @@ Calculate similarity between two documents based on their topic distributions.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-document_similarity_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1020" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-document_similarity_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.document_similarity_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1021" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">document_similarity_matrix</span>(<span class="sig-param">doc_ids</span><span class="sig-punct">:</span> <span class="sig-type">list[int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">metric</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'jsd'</span>)</code></pre>
 
@@ -399,7 +400,7 @@ Calculate pairwise similarity/distance between documents.
 **Returns:**
 Square matrix with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-evaluate">qhchina.analytics.topicmodels.LDAGibbsSampler.evaluate() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1271" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-evaluate">qhchina.analytics.topicmodels.LDAGibbsSampler.evaluate() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1272" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">evaluate</span>(<span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">verbose</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
@@ -415,7 +416,7 @@ and topic diversity.
 **Returns:**
 Dictionary containing all evaluation metrics
 
-<h4 id="ldagibbssampler-fit">qhchina.analytics.topicmodels.LDAGibbsSampler.fit() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L478" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-fit">qhchina.analytics.topicmodels.LDAGibbsSampler.fit() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L479" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">fit</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>)</code></pre>
 
@@ -425,7 +426,7 @@ Fit the LDA model to the given documents.
 - `documents`: Iterable of tokenized documents (each document is a list of tokens).
   Can be a list, Corpus, or any other iterable.
 
-<h4 id="ldagibbssampler-get_document_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_document_topics() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L582" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_document_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_document_topics() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L583" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_document_topics</span>(<span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">sort_by_prob</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -438,7 +439,7 @@ Get topic distribution for a specific document.
 **Returns:**
 List of (topic_id, probability) tuples
 
-<h4 id="ldagibbssampler-get_top_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.get_top_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L864" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_top_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.get_top_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L865" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_top_documents</span>(<span class="sig-param">topic_id</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">n_docs</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>)</code></pre>
 
@@ -451,7 +452,7 @@ Get the top n documents for a specific topic.
 **Returns:**
 List of (document_id, probability) tuples, sorted by probability in descending order
 
-<h4 id="ldagibbssampler-get_topic_distribution">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_distribution() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L598" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_topic_distribution">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_distribution() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L599" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_topic_distribution</span>()</code></pre>
 
@@ -460,7 +461,7 @@ Get overall topic distribution across the corpus.
 **Returns:**
 Array of topic probabilities
 
-<h4 id="ldagibbssampler-get_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L883" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L884" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_topic_words</span>(<span class="sig-param">topic_id</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>)</code></pre>
 
@@ -473,7 +474,7 @@ Get the top n words for a specific topic.
 **Returns:**
 List of (word, probability) tuples, sorted by probability in descending order
 
-<h4 id="ldagibbssampler-get_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topics() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L562" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-get_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_topics() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L563" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_topics</span>(<span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>)</code></pre>
 
@@ -485,7 +486,7 @@ Get the top words for each topic along with their probabilities.
 **Returns:**
 List of topics, each containing a list of (word, probability) tuples
 
-<h4 id="ldagibbssampler-inference">qhchina.analytics.topicmodels.LDAGibbsSampler.inference() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L607" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-inference">qhchina.analytics.topicmodels.LDAGibbsSampler.inference() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L608" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">inference</span>(<span class="sig-param">new_doc</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">inference_iterations</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>)</code></pre>
 
@@ -498,7 +499,7 @@ Infer topic distribution for a new document.
 **Returns:**
 Topic distribution for the document
 
-<h4 id="ldagibbssampler-initialize">qhchina.analytics.topicmodels.LDAGibbsSampler.initialize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L253" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-initialize">qhchina.analytics.topicmodels.LDAGibbsSampler.initialize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L254" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">initialize</span>(<span class="sig-param">docs_as_ids</span><span class="sig-punct">:</span> <span class="sig-type">list[list[int]]</span>)</code></pre>
 
@@ -507,7 +508,7 @@ Initialize data structures for Gibbs sampling.
 **Parameters:**
 - `docs_as_ids`: Documents with tokens as integer IDs
 
-<h4 id="ldagibbssampler-load">qhchina.analytics.topicmodels.LDAGibbsSampler.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L792" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-load">qhchina.analytics.topicmodels.LDAGibbsSampler.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L793" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -519,7 +520,7 @@ Load a model from a file.
 **Returns:**
 Loaded LDA model
 
-<h4 id="ldagibbssampler-perplexity">qhchina.analytics.topicmodels.LDAGibbsSampler.perplexity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L518" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-perplexity">qhchina.analytics.topicmodels.LDAGibbsSampler.perplexity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L519" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">perplexity</span>()</code></pre>
 
@@ -528,7 +529,7 @@ Calculate perplexity of the model on the training data.
 **Returns:**
 Perplexity value (lower is better)
 
-<h4 id="ldagibbssampler-plot_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.plot_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L666" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-plot_topic_words">qhchina.analytics.topicmodels.LDAGibbsSampler.plot_topic_words() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L667" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">plot_topic_words</span>(<span class="sig-param">n_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(12, 8)</span>, <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">separate_files</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">dpi</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">72</span>, <span class="sig-param">orientation</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'horizontal'</span>)</code></pre>
 
@@ -544,7 +545,7 @@ Plot the top words for each topic as a bar chart.
 - `orientation`: "horizontal" (words on x-axis, probabilities on y-axis) or 
   "vertical" (probabilities on x-axis, words on y-axis with highest at top)
 
-<h4 id="ldagibbssampler-preprocess">qhchina.analytics.topicmodels.LDAGibbsSampler.preprocess() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L185" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-preprocess">qhchina.analytics.topicmodels.LDAGibbsSampler.preprocess() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L186" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">preprocess</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>)</code></pre>
 
@@ -561,7 +562,7 @@ Tuple containing:
 - word_to_id: Mapping from words to integer IDs
 - id_to_word: Mapping from integer IDs to words
 
-<h4 id="ldagibbssampler-run_gibbs_sampling">qhchina.analytics.topicmodels.LDAGibbsSampler.run_gibbs_sampling() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L342" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-run_gibbs_sampling">qhchina.analytics.topicmodels.LDAGibbsSampler.run_gibbs_sampling() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L343" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">run_gibbs_sampling</span>()</code></pre>
 
@@ -569,7 +570,7 @@ Run Gibbs sampling for the specified number of iterations.
 
 Uses Cython if available and enabled.
 
-<h4 id="ldagibbssampler-save">qhchina.analytics.topicmodels.LDAGibbsSampler.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L752" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-save">qhchina.analytics.topicmodels.LDAGibbsSampler.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L753" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -578,7 +579,7 @@ Save the model to a file.
 **Parameters:**
 - `filepath`: Path to save the model
 
-<h4 id="ldagibbssampler-topic_correlation_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_correlation_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L972" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-topic_correlation_matrix">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_correlation_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L973" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">topic_correlation_matrix</span>(<span class="sig-param">metric</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'jsd'</span>)</code></pre>
 
@@ -590,7 +591,7 @@ Calculate pairwise similarity/distance between all topics.
 **Returns:**
 Square matrix of shape (n_topics, n_topics) with pairwise similarities/distances
 
-<h4 id="ldagibbssampler-topic_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L951" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-topic_similarity">qhchina.analytics.topicmodels.LDAGibbsSampler.topic_similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L952" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">topic_similarity</span>(<span class="sig-param">topic_i</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">topic_j</span><span class="sig-punct">:</span> <span class="sig-type">int</span>, <span class="sig-param">metric</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'jsd'</span>)</code></pre>
 
@@ -608,7 +609,7 @@ Calculate similarity between two topics.
 **Returns:**
 Similarity/distance value based on chosen metric
 
-<h4 id="ldagibbssampler-train_multiple">qhchina.analytics.topicmodels.LDAGibbsSampler.train_multiple() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1323" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-train_multiple">qhchina.analytics.topicmodels.LDAGibbsSampler.train_multiple() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1324" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train_multiple</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>, <span class="sig-param">n_runs</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>, <span class="sig-param">n_topics</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">random_seeds</span><span class="sig-punct">:</span> <span class="sig-type">list[int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">return_all_models</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">verbose</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
@@ -644,7 +645,7 @@ print(f"Stability: {results['stability_score']:.4f}")
 best_model = results['best_model']
 ```
 
-<h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1507" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1508" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">visualize_documents</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'pca'</span>, <span class="sig-param">n_clusters</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">doc_labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show_labels</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">label_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'auto'</span>, <span class="sig-param">use_adjusttext</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">max_labels</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">dpi</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">150</span>, <span class="sig-param">alpha</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.7</span>, <span class="sig-param">size</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">50</span>, <span class="sig-param">cmap</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'tab10'</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'static'</span>, <span class="sig-param">random_state</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">highlight</span><span class="sig-punct">:</span> <span class="sig-type">int | list[int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">n_topic_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">4</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
