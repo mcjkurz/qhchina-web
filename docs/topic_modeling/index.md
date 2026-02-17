@@ -639,8 +639,8 @@ Dictionary containing:
 **Example:**
 ```python
 results = LDAGibbsSampler.train_multiple(
-...     documents, n_runs=5, n_topics=10, iterations=100
-... )
+    documents, n_runs=5, n_topics=10, iterations=100
+)
 print(f"Stability: {results['stability_score']:.4f}")
 best_model = results['best_model']
 ```

@@ -5,9 +5,11 @@
 // Rouge syntax highlighting
 .highlight {
   background: #f8f8f8;
-  border-radius: 3px;
+  border-radius: 0 3px 3px 0;
   border: none; // Remove all borders
+  border-left: 3px solid var(--primary-color);
   padding: 10px;
+  padding-left: 1rem;
   margin-bottom: 15px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -34,8 +36,9 @@ pre.signature {
   word-wrap: break-word !important;
   overflow-x: visible !important;
   background: #f8f8f8;
-  border-radius: 3px;
+  border-radius: 0 3px 3px 0;
   padding: 10px;
+  padding-left: 1rem;
   border-left: 3px solid var(--primary-color);
   
   code {
@@ -154,21 +157,11 @@ div[class^="language-"] {
   margin: 2.5rem 0;
 }
 
-// Function signature code blocks - add left border accent for visual distinction
-.docs-content > div[class^="language-python"],
-.docs-content > .language-python,
-.docs-content > .highlighter-rouge.language-python {
-  border-left: 3px solid var(--primary-color);
-  border-radius: 0 4px 4px 0;
+// Code blocks in documentation - proper spacing
+.docs-content > div[class^="language-"],
+.docs-content > .highlighter-rouge {
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-}
-
-// Make sure the inner highlight also has the proper styling
-.docs-content > div[class^="language-python"] .highlight,
-.docs-content > .highlighter-rouge.language-python .highlight {
-  padding-left: 1rem;
-  border-left: none;
 }
 
 // Better spacing between function blocks

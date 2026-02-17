@@ -199,13 +199,13 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
 **Example:**
 ```python
->>> matrix = cooc_matrix(documents, horizon=5)
->>> matrix["fox", "dog"]
+matrix = cooc_matrix(documents, horizon=5)
+matrix["fox", "dog"]
 42
->>> matrix["fox"]
+matrix["fox"]
 {'quick': 10, 'brown': 8, 'dog': 42, ...}
->>> df = matrix.to_dataframe()
->>> arr = matrix.to_dense()
+df = matrix.to_dataframe()
+arr = matrix.to_dense()
 ```
 
 <h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L161" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -381,15 +381,15 @@ Returns a CoocMatrix object with flexible indexing:
 
 **Example:**
 ```python
->>> matrix = cooc_matrix(documents, horizon=5)
->>> matrix["fox", "dog"]      # Get count for word pair
+matrix = cooc_matrix(documents, horizon=5)
+matrix["fox", "dog"]      # Get count for word pair
 42
->>> matrix["fox"]             # Get all co-occurrences for "fox"
+matrix["fox"]             # Get all co-occurrences for "fox"
 {'quick': 10, 'brown': 8, 'dog': 42, ...}
->>> df = matrix.to_dataframe()  # Convert to DataFrame if needed
+df = matrix.to_dataframe()  # Convert to DataFrame if needed
 
->>> # With predefined vocabulary (no filtering applied)
->>> matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
+# With predefined vocabulary (no filtering applied)
+matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
 ```
 
 <br>
@@ -474,11 +474,11 @@ plot_collocates(collocates)
 
 # Plot observed vs expected frequency
 plot_collocates(collocates, x_col='exp_local', y_col='obs_local',
-...                 x_scale='linear', y_scale='linear')
+                x_scale='linear', y_scale='linear')
 
 # With labels and custom styling
 plot_collocates(collocates, show_labels=True, label_top_n=20,
-...                 color='red', title='Collocates of 天')
+                color='red', title='Collocates of 天')
 ```
 
 <br>

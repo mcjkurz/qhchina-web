@@ -318,9 +318,9 @@ from qhchina.analytics.stylometry import Stylometry
 
 # Prepare corpus: dict mapping author names to lists of tokenized documents
 corpus = {
-...     '鲁迅': [tokens_luxun_1, tokens_luxun_2],
-...     '茅盾': [tokens_maodun_1, tokens_maodun_2]
-... }
+    '鲁迅': [tokens_luxun_1, tokens_luxun_2],
+    '茅盾': [tokens_maodun_1, tokens_maodun_2]
+}
 
 # Create and fit stylometry model
 stylo = Stylometry(n_features=100, ngram_range=(1, 2), cull=0.2)

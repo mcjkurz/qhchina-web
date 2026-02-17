@@ -175,12 +175,12 @@ Works directly with all qhchina analytics modules:
 
 **Example:**
 ```python
->>> corpus = Corpus()
->>> corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
->>> corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾')
->>> 
->>> for tokens in corpus.filter(author='鲁迅'):
-...     print(tokens)
+corpus = Corpus()
+corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
+corpus.add(['太阳', '刚刚', '下', '了', '地平线'], author='茅盾')
+
+for tokens in corpus.filter(author='鲁迅'):
+    print(tokens)
 ```
 
 <h4 id="corpus-add">qhchina.corpus.Corpus.add() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L214" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -203,13 +203,13 @@ The document ID (generated or provided).
 
 **Example:**
 ```python
->>> corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
+corpus.add(['没有', '吃', '过', '人', '的', '孩子'], author='鲁迅')
 'doc_0'
->>> corpus.add(['小溪', '流', '下去'], doc_id='边城', author='沈从文')
+corpus.add(['小溪', '流', '下去'], doc_id='边城', author='沈从文')
 '边城'
->>> corpus[0].tokens      # Access by index
+corpus[0].tokens      # Access by index
 ['没有', '吃', '过', '人', '的', '孩子']
->>> corpus['边城'].tokens  # Access by doc_id
+corpus['边城'].tokens  # Access by doc_id
 ['小溪', '流', '下去']
 ```
 
@@ -232,8 +232,8 @@ List of document IDs.
 
 **Example:**
 ```python
->>> docs = [['word1'], ['word2', 'word3']]
->>> corpus.add_many(docs, period='民国')
+docs = [['word1'], ['word2', 'word3']]
+corpus.add_many(docs, period='民国')
 ['doc_0', 'doc_1']
 ```
 
@@ -253,7 +253,7 @@ Dictionary with:
 
 **Example:**
 ```python
->>> corpus.describe()
+corpus.describe()
 {'documents': 100, 'tokens': 5432, 'vocab_size': 1205, ...}
 ```
 
@@ -272,8 +272,8 @@ New Corpus (shares document references, memory-efficient).
 
 **Example:**
 ```python
->>> luxun = corpus.filter(author='鲁迅')
->>> pre_1930 = corpus.filter(lambda d: d["year"] < 1930)
+luxun = corpus.filter(author='鲁迅')
+pre_1930 = corpus.filter(lambda d: d["year"] < 1930)
 ```
 
 <h4 id="corpus-get">qhchina.corpus.Corpus.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L310" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -293,8 +293,8 @@ The Document object.
 
 **Example:**
 ```python
->>> corpus['边城'].tokens   # By doc_id
->>> corpus[0].tokens        # By index
+corpus['边城'].tokens   # By doc_id
+corpus[0].tokens        # By index
 ```
 
 <h4 id="corpus-groupby">qhchina.corpus.Corpus.groupby() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L415" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -319,15 +319,15 @@ Dictionary mapping metadata values to lists of token lists.
 
 **Example:**
 ```python
->>> corpus.add(['没有', '吃', '过', '人'], author='鲁迅')
->>> corpus.add(['救救', '孩子'], author='鲁迅')
->>> corpus.add(['太阳', '下', '了', '地平线'], author='茅盾')
->>> 
->>> grouped = corpus.groupby('author')
->>> # {'鲁迅': [['没有', '吃', ...], ['救救', '孩子']], '茅盾': [[...]]}
->>> 
->>> # Use with Stylometry
->>> stylo.fit_transform(corpus.groupby('author'))
+corpus.add(['没有', '吃', '过', '人'], author='鲁迅')
+corpus.add(['救救', '孩子'], author='鲁迅')
+corpus.add(['太阳', '下', '了', '地平线'], author='茅盾')
+
+grouped = corpus.groupby('author')
+# {'鲁迅': [['没有', '吃', ...], ['救救', '孩子']], '茅盾': [[...]]}
+
+# Use with Stylometry
+stylo.fit_transform(corpus.groupby('author'))
 ```
 
 <h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L705" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -346,8 +346,8 @@ Loaded Corpus object.
 
 **Example:**
 ```python
->>> corpus = Corpus.load('my_corpus.json')   # JSON format
->>> corpus = Corpus.load('my_corpus.pkl')    # Pickle format
+corpus = Corpus.load('my_corpus.json')   # JSON format
+corpus = Corpus.load('my_corpus.pkl')    # Pickle format
 ```
 
 <h4 id="corpus-metadata_values">qhchina.corpus.Corpus.metadata_values() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L622" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -364,7 +364,7 @@ Set of unique values (excludes documents without this key).
 
 **Example:**
 ```python
->>> corpus.metadata_values('author')
+corpus.metadata_values('author')
 {'鲁迅', '茅盾', '沈从文'}
 ```
 
@@ -385,8 +385,8 @@ The removed Document object.
 
 **Example:**
 ```python
->>> removed = corpus.remove('doc_0')
->>> print(f"Removed document with {len(removed.tokens)} tokens")
+removed = corpus.remove('doc_0')
+print(f"Removed document with {len(removed.tokens)} tokens")
 ```
 
 <h4 id="corpus-save">qhchina.corpus.Corpus.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L646" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -404,9 +404,9 @@ Save corpus to a file.
 
 **Example:**
 ```python
->>> corpus.save('my_corpus.json')           # JSON format
->>> corpus.save('my_corpus.pkl')            # Pickle format (smaller)
->>> corpus.save('corpus', format='pickle')  # Explicit format
+corpus.save('my_corpus.json')           # JSON format
+corpus.save('my_corpus.pkl')            # Pickle format (smaller)
+corpus.save('corpus', format='pickle')  # Explicit format
 ```
 
 <h4 id="corpus-split">qhchina.corpus.Corpus.split() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L466" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -429,10 +429,10 @@ Tuple of (train_corpus, test_corpus).
 
 **Example:**
 ```python
->>> train, test = corpus.split(0.8, seed=42)
->>> train_stratified, test_stratified = corpus.split(
-...     0.8, stratify_by='author', seed=42
-... )
+train, test = corpus.split(0.8, seed=42)
+train_stratified, test_stratified = corpus.split(
+    0.8, stratify_by='author', seed=42
+)
 ```
 
 <h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L762" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -446,8 +446,8 @@ DataFrame with columns: doc_id, tokens, token_count, and all metadata keys.
 
 **Example:**
 ```python
->>> df = corpus.to_dataframe()
->>> df.groupby('author')['token_count'].mean()
+df = corpus.to_dataframe()
+df.groupby('author')['token_count'].mean()
 ```
 
 <br>
