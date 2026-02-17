@@ -107,20 +107,20 @@ Since `filter()` returns a new `Corpus`, you can chain methods for concise data 
 ```python
 # Chain filter() and groupby() in one line
 # First filter documents with at least 20 tokens, then group by author
-by_author = corpus.filter(lambda d: len(d.tokens) >= 20).groupby('author')
+by_author = corpus.filter(lambda doc: len(doc) >= 20).groupby('author')
 
 # Use with Stylometry - only analyze substantial documents
 stylo = Stylometry()
 stylo.fit_transform(
-    corpus.filter(lambda d: len(d.tokens) >= 100).groupby('author')
+    corpus.filter(lambda doc: len(doc) >= 100).groupby('author')
 )
 
 # Multiple filters can be chained
 modern_fiction = (
     corpus
-    .filter(lambda d: d["year"] >= 1920)
+    .filter(lambda doc: doc["year"] >= 1920)
     .filter(genre='小说')
-    .filter(lambda d: len(d.tokens) >= 50)
+    .filter(lambda doc: len(doc) >= 50)
 )
 ```
 
