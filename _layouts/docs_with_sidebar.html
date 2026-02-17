@@ -41,7 +41,7 @@
             <nav class="docs-nav">
               <h3>Package Documentation</h3>
               <ul>
-                {% assign nav_items = "Overview:/docs/,Preprocessing:/docs/preprocessing/,Word Embeddings:/docs/word_embeddings/,Topic Modeling:/docs/topic_modeling/,Stylometry:/docs/stylometry/,Collocations:/docs/collocations/,Helpers:/docs/helpers/" | split: "," %}
+                {% assign nav_items = "Overview:/docs/,Corpus:/docs/corpus/,Preprocessing:/docs/preprocessing/,Word Embeddings:/docs/word_embeddings/,Topic Modeling:/docs/topic_modeling/,Stylometry:/docs/stylometry/,Collocations:/docs/collocations/,Helpers:/docs/helpers/" | split: "," %}
                 {% for item in nav_items %}
                   {% assign parts = item | split: ":" %}
                   {% assign name = parts[0] %}
