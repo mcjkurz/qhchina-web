@@ -75,46 +75,46 @@ topics = lda.get_topics(n_words=10)  # Get top words per topic
 
 ```python
 from qhchina.analytics.topicmodels import LDAGibbsSampler
-from qhchina.helpers import load_stopwords
 
-# Load stopwords
-stopwords = load_stopwords("zh_sim")
-
-# Example tokenized documents
+# Tokenized documents
 documents = [
-    ["人工智能", "正在", "改变", "我们", "的", "生活", "方式"],
-    ["医生", "建议", "患者", "多", "喝", "水", "每天", "运动"],
-    ["中国", "传统", "文化", "源远流长", "需要", "传承"],
-    # More documents...
+    ["人工智能", "改变", "生活", "方式"],
+    ["医生", "建议", "患者", "运动"],
+    ["中国", "传统", "文化", "传承"],
 ]
 
-# Create and fit model
-lda = LDAGibbsSampler(
-    n_topics=5,
-    iterations=100,
-    burnin=20,
-    log_interval=20,
-    stopwords=stopwords,
-    min_word_count=2,
-    estimate_alpha=1
-)
+# Train model
+lda = LDAGibbsSampler(n_topics=5, iterations=100)
 lda.fit(documents)
 
-# Get topics
-topics = lda.get_topics(n_words=10)
-for i, topic in enumerate(topics):
-    print(f"Topic {i}:")
-    for word, prob in topic:
-        print(f"  {word}: {prob:.4f}")
+# View topics
+for i, topic in enumerate(lda.get_topics(n_words=5)):
+    words = [w for w, p in topic]
+    print(f"Topic {i}: {', '.join(words)}")
 
-# Visualize topics
-lda.plot_topic_words(n_words=10, figsize=(12, 20), filename="topics.png")
+# Save/load
+lda.save("model.npy")
+lda = LDAGibbsSampler.load("model.npy")
+```
 
-# Save model
-lda.save("lda_model.npy")
+**Using Corpus with Metadata**
 
-# Load model later
-loaded_lda = LDAGibbsSampler.load("lda_model.npy")
+```python
+from qhchina import Corpus
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+# Build corpus with metadata
+corpus = Corpus()
+corpus.add(["经济", "发展", "改革"], period="1980s", source="报纸")
+corpus.add(["市场", "开放", "贸易"], period="1990s", source="报纸")
+corpus.add(["科技", "创新", "人工智能"], period="2020s", source="网络")
+
+# Train on corpus directly
+lda = LDAGibbsSampler(n_topics=3, iterations=50)
+lda.fit(corpus)
+
+# Analyze specific period
+docs_1990s = corpus.filter(period="1990s")
 ```
 
 **Analyzing Documents and Topics**

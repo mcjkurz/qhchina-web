@@ -43,48 +43,46 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 ```python
 from qhchina.analytics.collocations import find_collocates
 
-# Example tokenized sentences
 sentences = [
     ["中国", "经济", "发展", "改革"],
     ["美国", "经济", "市场", "金融"],
     ["中国", "市场", "贸易", "改革"],
-    # More sentences...
 ]
 
-# Find collocates of "经济" using window method
+# Find collocates of "经济"
 collocates = find_collocates(
-    sentences=sentences,
+    sentences,
     target_words=["经济"],
-    method="window",
-    horizon=3,  # 3 words on each side
-    filters={
-        'max_p': 0.05,          # Only statistically significant
-        'stopwords': ["的", "了"],
-        'min_word_length': 2
-    },
-    as_dataframe=True
-)
-
-# Find words that appear to the RIGHT of "经济"
-right_collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    horizon=(0, 3),  # 0 words left, 3 words right of target
+    horizon=3,
     filters={'max_p': 0.05}
 )
 
-# Find words that appear to the LEFT of "经济"
-left_collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    horizon=(3, 0),  # 3 words left, 0 words right of target
-    filters={'max_p': 0.05}
-)
+# Top results
+print(collocates.head())
+```
 
-# Display top collocates
-top_collocates = collocates.sort_values("p_value").head(10)
-for _, row in top_collocates.iterrows():
-    print(f"{row['collocate']}: obs={row['obs_local']}, ratio={row['ratio_local']:.2f}, p={row['p_value']:.4f}")
+**Using Corpus**
+
+```python
+from qhchina import Corpus
+from qhchina.analytics.collocations import find_collocates
+
+corpus = Corpus()
+corpus.add(["中国", "经济", "快速", "发展"], source="报纸")
+corpus.add(["美国", "经济", "市场", "波动"], source="报纸")
+
+# Works directly with Corpus
+collocates = find_collocates(corpus, target_words=["经济"], horizon=3)
+```
+
+**Directional Collocates**
+
+```python
+# Words to the RIGHT of target
+right = find_collocates(sentences, ["经济"], horizon=(0, 3))
+
+# Words to the LEFT of target  
+left = find_collocates(sentences, ["经济"], horizon=(3, 0))
 ```
 
 **Visualizing Collocates**
