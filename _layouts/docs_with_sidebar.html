@@ -64,12 +64,12 @@
                     <a href="{{ site.baseurl }}{{ url }}" {% if is_active %}class="active"{% endif %}>{{ name }}</a>
                     {% if is_active and page.functions %}
                     <ul class="docs-submenu">
-                      {% for func in page.functions %}
-                        <li><a href="#{{ func.anchor }}">{{ func.name }}</a></li>
-                      {% endfor %}
                       {% if page.has_examples %}
                         <li class="examples-link"><a href="#examples">Examples</a></li>
                       {% endif %}
+                      {% for func in page.functions %}
+                        <li><a href="#{{ func.anchor }}">{{ func.name }}</a></li>
+                      {% endfor %}
                     </ul>
                     {% endif %}
                   </li>
