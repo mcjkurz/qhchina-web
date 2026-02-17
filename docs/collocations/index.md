@@ -40,7 +40,7 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L252" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">FilterOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
@@ -48,7 +48,7 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L40" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">CoocMatrix</span>(
     <span class="sig-param">matrix</span><span class="sig-punct">:</span> <span class="sig-type">scipy.sparse._csr.csr_matrix</span>,
@@ -86,7 +86,7 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 >>> arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L161" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
@@ -100,7 +100,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L189" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -111,7 +111,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L178" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
@@ -124,10 +124,10 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L538" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
     <span class="sig-param">target_words</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -141,8 +141,8 @@ Warning: This may use significant memory for large vocabularies.
 Find collocates for target words within a corpus of sentences.
 
 **Parameters:**
-- `sentences` (list[list[str]]): List of tokenized sentences, where each sentence 
-  is a list of tokens.
+- `sentences` (Iterable[list[str]]): Iterable of tokenized sentences, where each 
+  sentence is a list of tokens. Can be a list, Corpus, or any other iterable.
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
@@ -209,10 +209,10 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L837" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L842" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
-    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
+    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple[int, int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">min_word_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
@@ -232,7 +232,8 @@ Returns a CoocMatrix object with flexible indexing:
 - ``matrix.to_dense()`` - numpy array
 
 **Parameters:**
-- `documents`: List of tokenized documents, where each document is a list of tokens.
+- `documents`: Iterable of tokenized documents, where each document is a list of 
+  tokens. Can be a list, Corpus, or any other iterable.
 - `horizon`: Context window size relative to each word. Only applicable for method='window'.
   If not provided, defaults to 5 for window method. Must not be provided for 
   method='document'.
@@ -271,7 +272,7 @@ Returns a CoocMatrix object with flexible indexing:
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1088" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1097" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
