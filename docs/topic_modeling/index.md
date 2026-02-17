@@ -33,6 +33,8 @@ functions:
     anchor: ldagibbssampler-inference
   - name: LDAGibbsSampler.initialize()
     anchor: ldagibbssampler-initialize
+  - name: LDAGibbsSampler.load()
+    anchor: ldagibbssampler-load
   - name: LDAGibbsSampler.perplexity()
     anchor: ldagibbssampler-perplexity
   - name: LDAGibbsSampler.plot_topic_words()
@@ -47,6 +49,8 @@ functions:
     anchor: ldagibbssampler-topic_correlation_matrix
   - name: LDAGibbsSampler.topic_similarity()
     anchor: ldagibbssampler-topic_similarity
+  - name: LDAGibbsSampler.train_multiple()
+    anchor: ldagibbssampler-train_multiple
   - name: LDAGibbsSampler.visualize_documents()
     anchor: ldagibbssampler-visualize_documents
 has_examples: True
@@ -64,6 +68,167 @@ lda = LDAGibbsSampler(n_topics=10, iterations=100)
 lda.fit(documents)  # documents = list of tokenized texts
 topics = lda.get_topics(n_words=10)  # Get top words per topic
 ```
+
+## Examples
+
+**Basic Topic Modeling**
+
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+from qhchina.helpers import load_stopwords
+
+# Load stopwords
+stopwords = load_stopwords("zh_sim")
+
+# Example tokenized documents
+documents = [
+    ["人工智能", "正在", "改变", "我们", "的", "生活", "方式"],
+    ["医生", "建议", "患者", "多", "喝", "水", "每天", "运动"],
+    ["中国", "传统", "文化", "源远流长", "需要", "传承"],
+    # More documents...
+]
+
+# Create and fit model
+lda = LDAGibbsSampler(
+    n_topics=5,
+    iterations=100,
+    burnin=20,
+    log_interval=20,
+    stopwords=stopwords,
+    min_word_count=2,
+    estimate_alpha=1
+)
+lda.fit(documents)
+
+# Get topics
+topics = lda.get_topics(n_words=10)
+for i, topic in enumerate(topics):
+    print(f"Topic {i}:")
+    for word, prob in topic:
+        print(f"  {word}: {prob:.4f}")
+
+# Visualize topics
+lda.plot_topic_words(n_words=10, figsize=(12, 20), filename="topics.png")
+
+# Save model
+lda.save("lda_model.npy")
+
+# Load model later
+loaded_lda = LDAGibbsSampler.load("lda_model.npy")
+```
+
+**Analyzing Documents and Topics**
+
+```python
+# Get topic distribution for a specific document
+doc_topics = lda.get_document_topics(doc_id=0, sort_by_prob=True)
+print(f"Document 0 topics:")
+for topic_id, prob in doc_topics:
+    print(f"  Topic {topic_id}: {prob:.4f}")
+
+# Infer topics for a new document
+new_doc = ["人工智能", "技术", "医疗", "领域"]
+topic_dist = lda.inference(new_doc, inference_iterations=50)
+print("New document topic distribution:", topic_dist)
+
+# Calculate topic similarity
+similarity = lda.topic_similarity(topic_i=0, topic_j=1, metric='jsd')
+print(f"Topic similarity: {similarity:.4f}")
+```
+
+**Visualizing Documents in 2D Space**
+
+```python
+# PCA visualization colored by dominant topic (default)
+lda.visualize_documents(
+    method='pca',
+    figsize=(12, 10),
+    dpi=150,
+    filename='documents_pca.png'
+)
+
+# t-SNE with document labels (sample per topic)
+doc_labels = [f"Document_{i}" for i in range(len(documents))]
+lda.visualize_documents(
+    method='tsne',
+    doc_labels=doc_labels,
+    show_labels=True,
+    label_strategy='sample',  # Show sample of labels per topic
+    max_labels=5,             # Show up to 5 documents per topic
+    figsize=(14, 12),
+    dpi=200,
+    filename='documents_tsne.png'
+)
+
+# K-means clustering with MDS (specify n_clusters to use k-means)
+lda.visualize_documents(
+    method='mds',
+    n_clusters=3,  # Automatically uses k-means when n_clusters is set
+    figsize=(10, 8),
+    filename='documents_clusters.png'
+)
+
+# Interactive HTML visualization
+lda.visualize_documents(
+    method='pca',
+    doc_labels=doc_labels,
+    format='html',  # Creates interactive visualization
+    filename='documents_interactive.html'
+)
+
+# Highlight specific topics (static plot)
+lda.visualize_documents(
+    method='pca',
+    highlight=[0, 2, 5],  # Only topics 0, 2, and 5 shown in color
+    figsize=(12, 10),
+    filename='documents_highlighted.png'
+)
+
+# Custom number of words in legend (static plot)
+lda.visualize_documents(
+    method='pca',
+    n_topic_words=6,      # Show 6 words per topic in legend
+    figsize=(14, 10),     # Wider figure to accommodate longer legend
+    filename='documents_6words.png'
+)
+
+# Interactive HTML with highlighting and custom topic words
+lda.visualize_documents(
+    method='tsne',
+    doc_labels=doc_labels,
+    format='html',
+    highlight=[0, 2, 5],  # Initially highlight these topics
+    n_topic_words=6,      # Show 6 words per topic in legend
+    perplexity=50,        # Custom t-SNE parameter
+    filename='documents_custom.html'
+)
+
+# UMAP with custom parameters (if umap-learn is installed)
+try:
+    lda.visualize_documents(
+        method='umap',
+        doc_labels=doc_labels,
+        format='html',
+        n_neighbors=15,       # UMAP parameter
+        min_dist=0.1,         # UMAP parameter
+        filename='documents_umap.html'
+    )
+except ImportError:
+    print("Install umap-learn: pip install umap-learn")
+```
+
+**Interactive HTML Features:**
+
+The HTML format creates a standalone file with:
+- **Hover tooltips** showing document name/ID and top 3 topic probabilities
+- **Click topics** in the legend to toggle highlighting on/off
+- **Click points** on the canvas to toggle their topic's highlighting
+- **Select All / Deselect All button** to quickly toggle all topics at once
+- **Responsive legend** that updates based on highlighted topics
+- All topics shown in legend (grayed when not highlighted)
+
+This is useful for exploring large document collections and interactively focusing on specific topics.
+
 
 ---
 
@@ -338,6 +503,18 @@ Initialize data structures for Gibbs sampling.
 **Parameters:**
 - `docs_as_ids`: Documents with tokens as integer IDs
 
+<h4 id="ldagibbssampler-load">qhchina.analytics.topicmodels.LDAGibbsSampler.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L792" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Load a model from a file.
+
+**Parameters:**
+- `filepath`: Path to load the model from
+
+**Returns:**
+Loaded LDA model
+
 <h4 id="ldagibbssampler-perplexity">qhchina.analytics.topicmodels.LDAGibbsSampler.perplexity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L518" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">perplexity</span>()</code></pre>
@@ -427,6 +604,42 @@ Calculate similarity between two topics.
 **Returns:**
 Similarity/distance value based on chosen metric
 
+<h4 id="ldagibbssampler-train_multiple">qhchina.analytics.topicmodels.LDAGibbsSampler.train_multiple() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1323" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">train_multiple</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>, <span class="sig-param">n_runs</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>, <span class="sig-param">n_topics</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">random_seeds</span><span class="sig-punct">:</span> <span class="sig-type">list[int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">return_all_models</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">verbose</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">kwargs</span>)</code></pre>
+
+Train multiple LDA models with different random seeds and analyze robustness.
+
+This method trains several models and computes stability metrics to assess
+how consistent the discovered topics are across different random initializations.
+
+**Parameters:**
+- `documents`: List of tokenized documents
+- `n_runs`: Number of models to train (default: 5)
+- `n_topics`: Number of topics
+- `random_seeds`: Optional list of random seeds (if None, auto-generated)
+- `return_all_models`: Whether to return all trained models (default: False)
+- `verbose`: Whether to print progress and results
+- `**kwargs`: Additional arguments passed to LDAGibbsSampler
+
+**Returns:**
+Dictionary containing:
+- 'best_model': The model with highest coherence
+- 'coherence_scores': List of coherence scores for each run
+- 'perplexity_scores': List of perplexity scores for each run
+- 'stability_score': Average pairwise topic similarity across runs
+- 'topic_alignment': Topic alignment across runs
+- 'all_models': List of all models (if return_all_models=True)
+
+**Example:**
+```python
+results = LDAGibbsSampler.train_multiple(
+...     documents, n_runs=5, n_topics=10, iterations=100
+... )
+print(f"Stability: {results['stability_score']:.4f}")
+best_model = results['best_model']
+```
+
 <h4 id="ldagibbssampler-visualize_documents">qhchina.analytics.topicmodels.LDAGibbsSampler.visualize_documents() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1507" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">visualize_documents</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'pca'</span>, <span class="sig-param">n_clusters</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">doc_labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show_labels</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">label_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'auto'</span>, <span class="sig-param">use_adjusttext</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">max_labels</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">dpi</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">150</span>, <span class="sig-param">alpha</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.7</span>, <span class="sig-param">size</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">50</span>, <span class="sig-param">cmap</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'tab10'</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'static'</span>, <span class="sig-param">random_state</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">highlight</span><span class="sig-punct">:</span> <span class="sig-type">int | list[int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">n_topic_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">4</span>, <span class="sig-param">kwargs</span>)</code></pre>
@@ -479,165 +692,3 @@ Documents are automatically colored by dominant topic, or by k-means clusters if
 <br>
 
 <!-- API-END -->
-
----
-
-## Examples
-
-**Basic Topic Modeling**
-
-```python
-from qhchina.analytics.topicmodels import LDAGibbsSampler
-from qhchina.helpers import load_stopwords
-
-# Load stopwords
-stopwords = load_stopwords("zh_sim")
-
-# Example tokenized documents
-documents = [
-    ["人工智能", "正在", "改变", "我们", "的", "生活", "方式"],
-    ["医生", "建议", "患者", "多", "喝", "水", "每天", "运动"],
-    ["中国", "传统", "文化", "源远流长", "需要", "传承"],
-    # More documents...
-]
-
-# Create and fit model
-lda = LDAGibbsSampler(
-    n_topics=5,
-    iterations=100,
-    burnin=20,
-    log_interval=20,
-    stopwords=stopwords,
-    min_word_count=2,
-    estimate_alpha=1
-)
-lda.fit(documents)
-
-# Get topics
-topics = lda.get_topics(n_words=10)
-for i, topic in enumerate(topics):
-    print(f"Topic {i}:")
-    for word, prob in topic:
-        print(f"  {word}: {prob:.4f}")
-
-# Visualize topics
-lda.plot_topic_words(n_words=10, figsize=(12, 20), filename="topics.png")
-
-# Save model
-lda.save("lda_model.npy")
-
-# Load model later
-loaded_lda = LDAGibbsSampler.load("lda_model.npy")
-```
-
-**Analyzing Documents and Topics**
-
-```python
-# Get topic distribution for a specific document
-doc_topics = lda.get_document_topics(doc_id=0, sort_by_prob=True)
-print(f"Document 0 topics:")
-for topic_id, prob in doc_topics:
-    print(f"  Topic {topic_id}: {prob:.4f}")
-
-# Infer topics for a new document
-new_doc = ["人工智能", "技术", "医疗", "领域"]
-topic_dist = lda.inference(new_doc, inference_iterations=50)
-print("New document topic distribution:", topic_dist)
-
-# Calculate topic similarity
-similarity = lda.topic_similarity(topic_i=0, topic_j=1, metric='jsd')
-print(f"Topic similarity: {similarity:.4f}")
-```
-
-**Visualizing Documents in 2D Space**
-
-```python
-# PCA visualization colored by dominant topic (default)
-lda.visualize_documents(
-    method='pca',
-    figsize=(12, 10),
-    dpi=150,
-    filename='documents_pca.png'
-)
-
-# t-SNE with document labels (sample per topic)
-doc_labels = [f"Document_{i}" for i in range(len(documents))]
-lda.visualize_documents(
-    method='tsne',
-    doc_labels=doc_labels,
-    show_labels=True,
-    label_strategy='sample',  # Show sample of labels per topic
-    max_labels=5,             # Show up to 5 documents per topic
-    figsize=(14, 12),
-    dpi=200,
-    filename='documents_tsne.png'
-)
-
-# K-means clustering with MDS (specify n_clusters to use k-means)
-lda.visualize_documents(
-    method='mds',
-    n_clusters=3,  # Automatically uses k-means when n_clusters is set
-    figsize=(10, 8),
-    filename='documents_clusters.png'
-)
-
-# Interactive HTML visualization
-lda.visualize_documents(
-    method='pca',
-    doc_labels=doc_labels,
-    format='html',  # Creates interactive visualization
-    filename='documents_interactive.html'
-)
-
-# Highlight specific topics (static plot)
-lda.visualize_documents(
-    method='pca',
-    highlight=[0, 2, 5],  # Only topics 0, 2, and 5 shown in color
-    figsize=(12, 10),
-    filename='documents_highlighted.png'
-)
-
-# Custom number of words in legend (static plot)
-lda.visualize_documents(
-    method='pca',
-    n_topic_words=6,      # Show 6 words per topic in legend
-    figsize=(14, 10),     # Wider figure to accommodate longer legend
-    filename='documents_6words.png'
-)
-
-# Interactive HTML with highlighting and custom topic words
-lda.visualize_documents(
-    method='tsne',
-    doc_labels=doc_labels,
-    format='html',
-    highlight=[0, 2, 5],  # Initially highlight these topics
-    n_topic_words=6,      # Show 6 words per topic in legend
-    perplexity=50,        # Custom t-SNE parameter
-    filename='documents_custom.html'
-)
-
-# UMAP with custom parameters (if umap-learn is installed)
-try:
-    lda.visualize_documents(
-        method='umap',
-        doc_labels=doc_labels,
-        format='html',
-        n_neighbors=15,       # UMAP parameter
-        min_dist=0.1,         # UMAP parameter
-        filename='documents_umap.html'
-    )
-except ImportError:
-    print("Install umap-learn: pip install umap-learn")
-```
-
-**Interactive HTML Features:**
-
-The HTML format creates a standalone file with:
-- **Hover tooltips** showing document name/ID and top 3 topic probabilities
-- **Click topics** in the legend to toggle highlighting on/off
-- **Click points** on the canvas to toggle their topic's highlighting
-- **Select All / Deselect All button** to quickly toggle all topics at once
-- **Responsive legend** that updates based on highlighted topics
-- All topics shown in legend (grayed when not highlighted)
-
-This is useful for exploring large document collections and interactively focusing on specific topics.

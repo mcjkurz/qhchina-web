@@ -9,6 +9,8 @@ functions:
     anchor: word2vec-build_vocab
   - name: Word2Vec.get_vector()
     anchor: word2vec-get_vector
+  - name: Word2Vec.load()
+    anchor: word2vec-load
   - name: Word2Vec.most_similar()
     anchor: word2vec-most_similar
   - name: Word2Vec.save()
@@ -29,6 +31,8 @@ functions:
     anchor: temprefword2vec-get_period_vocab_counts
   - name: TempRefWord2Vec.get_time_labels()
     anchor: temprefword2vec-get_time_labels
+  - name: TempRefWord2Vec.load()
+    anchor: temprefword2vec-load
   - name: TempRefWord2Vec.save()
     anchor: temprefword2vec-save
   - name: TempRefWord2Vec.train()
@@ -64,6 +68,73 @@ model = Word2Vec(vector_size=100, window=5, min_word_count=5, epochs=5)
 model.train(sentences)
 similar = model.most_similar("经济", topn=10)  # Find words similar to "经济"
 ```
+
+## Examples
+
+**Basic Word2Vec Training**
+
+```python
+from qhchina.analytics.word2vec import Word2Vec
+
+# Initialize model (epochs is set at initialization)
+model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
+
+# Prepare tokenized sentences
+sentences = [
+    ["我", "喜欢", "这部", "电影"],
+    ["这", "是", "一个", "有趣", "的", "故事"],
+    # More sentences...
+]
+
+# Train model
+model.train(sentences)
+
+# Get similar words
+similar_words = model.most_similar("电影", topn=10)
+for word, score in similar_words:
+    print(f"{word}: {score:.4f}")
+
+# Calculate similarity
+sim = model.similarity("电影", "电视")
+print(f"Similarity: {sim:.4f}")
+```
+
+**Tracking Semantic Change Over Time**
+
+```python
+from qhchina.analytics.word2vec import TempRefWord2Vec
+
+# Prepare corpus data from different time periods
+time_labels = ["1980", "1990", "2000", "2010"]
+corpora = [corpus_1980, corpus_1990, corpus_2000, corpus_2010]  # Each is a list of tokenized sentences
+
+# Words to track for semantic change
+target_words = ["改革", "经济", "科技"]
+
+# Initialize and train model
+model = TempRefWord2Vec(
+    corpora=corpora,
+    labels=time_labels,
+    targets=target_words,
+    vector_size=100,
+    window=5,
+    sg=1,
+    seed=42,
+    epochs=5  # Training will start automatically during initialization
+)
+
+# Access temporal variants
+reform_1980s = model.get_vector("改革_1980")
+reform_2010s = model.get_vector("改革_2010")
+
+# Analyze semantic change
+changes = model.calculate_semantic_change("改革")
+for transition, word_changes in changes.items():
+    print(f"\n{transition}:")
+    print("Words moved towards:", word_changes[:10])
+    print("Words moved away:", word_changes[-10:])
+```
+
 
 ---
 
@@ -197,6 +268,18 @@ Word vector as numpy array of shape (vector_size,).
 
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
+
+<h4 id="word2vec-load">qhchina.analytics.word2vec.Word2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L867" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Load a model from a file.
+
+**Parameters:**
+- `path`: Path to load the model from.
+
+**Returns:**
+Loaded Word2Vec model.
 
 <h4 id="word2vec-most_similar">qhchina.analytics.word2vec.Word2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L782" class="source-link" title="View source on GitHub">[source]</a></h4>
 
@@ -383,6 +466,27 @@ Get the list of time period labels used in the model.
 
 **Returns:**
 List of time period labels that were specified during model initialization.
+
+<h4 id="temprefword2vec-load">qhchina.analytics.word2vec.TempRefWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1471" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Load a TempRefWord2Vec model from a file.
+
+This overrides the parent load method to also restore:
+- Period-specific vocabulary counts
+- Target words and labels  
+- Temporal word mappings
+
+**Parameters:**
+- `path` (str): Path to load the model from.
+
+**Returns:**
+(TempRefWord2Vec) Loaded TempRefWord2Vec model with all temporal metadata 
+restored.
+
+**Raises:**
+- `ValueError`: If the file doesn't contain TempRefWord2Vec data.
 
 <h4 id="temprefword2vec-save">qhchina.analytics.word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1412" class="source-link" title="View source on GitHub">[source]</a></h4>
 
@@ -638,71 +742,3 @@ Tuple of (aligned_vectors, transformation_matrix)
 <br>
 
 <!-- API-END -->
-
----
-
-## Examples
-
-**Basic Word2Vec Training**
-
-```python
-from qhchina.analytics.word2vec import Word2Vec
-
-# Initialize model (epochs is set at initialization)
-model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
-
-# Prepare tokenized sentences
-sentences = [
-    ["我", "喜欢", "这部", "电影"],
-    ["这", "是", "一个", "有趣", "的", "故事"],
-    # More sentences...
-]
-
-# Train model
-model.train(sentences)
-
-# Get similar words
-similar_words = model.most_similar("电影", topn=10)
-for word, score in similar_words:
-    print(f"{word}: {score:.4f}")
-
-# Calculate similarity
-sim = model.similarity("电影", "电视")
-print(f"Similarity: {sim:.4f}")
-```
-
-**Tracking Semantic Change Over Time**
-
-```python
-from qhchina.analytics.word2vec import TempRefWord2Vec
-
-# Prepare corpus data from different time periods
-time_labels = ["1980", "1990", "2000", "2010"]
-corpora = [corpus_1980, corpus_1990, corpus_2000, corpus_2010]  # Each is a list of tokenized sentences
-
-# Words to track for semantic change
-target_words = ["改革", "经济", "科技"]
-
-# Initialize and train model
-model = TempRefWord2Vec(
-    corpora=corpora,
-    labels=time_labels,
-    targets=target_words,
-    vector_size=100,
-    window=5,
-    sg=1,
-    seed=42,
-    epochs=5  # Training will start automatically during initialization
-)
-
-# Access temporal variants
-reform_1980s = model.get_vector("改革_1980")
-reform_2010s = model.get_vector("改革_2010")
-
-# Analyze semantic change
-changes = model.calculate_semantic_change("改革")
-for transition, word_changes in changes.items():
-    print(f"\n{transition}:")
-    print("Words moved towards:", word_changes[:10])
-    print("Words moved away:", word_changes[-10:])
-```

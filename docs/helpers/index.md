@@ -36,6 +36,75 @@ include_imported: True
 
 The `qhchina.helpers` module provides utilities for font management and text loading when working with Chinese texts.
 
+## Examples
+
+**Basic Font Setup**
+
+```python
+from qhchina.helpers import load_fonts, set_font
+import matplotlib.pyplot as plt
+
+# Load fonts and set Traditional Chinese serif as default
+load_fonts('serif-tc')
+
+# Create a plot with Chinese text
+plt.figure(figsize=(8, 6))
+plt.title('中國古典詩歌分析')
+plt.xlabel('時間')
+plt.ylabel('頻率')
+plt.show()
+```
+
+**Using Custom Fonts**
+
+```python
+from qhchina.helpers import set_font
+import matplotlib.pyplot as plt
+
+# Use your own font file
+set_font('/path/to/your/custom-font.otf')
+
+# Or set it when loading fonts
+from qhchina.helpers import load_fonts
+load_fonts(target_font='/path/to/your/custom-font.ttf')
+
+# Now your plots will use the custom font
+plt.figure(figsize=(8, 6))
+plt.title('使用自定義字體')
+plt.show()
+```
+
+**Loading Texts and Stopwords**
+
+```python
+from qhchina.helpers import load_text, load_texts, load_stopwords, split_into_chunks
+from qhchina.helpers.texts import detect_encoding, get_stopword_languages
+
+# Load a single text file
+text = load_text('document.txt')
+
+# Load with automatic encoding detection (requires chardet)
+text = load_text('古文.txt', encoding='auto')
+
+# Detect encoding manually
+encoding = detect_encoding('古文.txt')
+print(f"Detected encoding: {encoding}")
+
+# Load multiple files
+texts = load_texts(['file1.txt', 'file2.txt', 'file3.txt'])
+
+# See available stopword languages
+languages = get_stopword_languages()
+print(f"Available: {languages}")  # ['zh_cl_sim', 'zh_cl_tr', 'zh_sim', 'zh_tr']
+
+# Load stopwords
+stopwords = load_stopwords('zh_sim')
+
+# Split long text into chunks
+chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
+```
+
+
 ---
 
 ## API Reference
@@ -250,73 +319,3 @@ Detects the encoding of a file.
 <br>
 
 <!-- API-END -->
-
----
-
-## Examples
-
-**Basic Font Setup**
-
-```python
-from qhchina.helpers import load_fonts, set_font
-import matplotlib.pyplot as plt
-
-# Load fonts and set Traditional Chinese serif as default
-load_fonts('serif-tc')
-
-# Create a plot with Chinese text
-plt.figure(figsize=(8, 6))
-plt.title('中國古典詩歌分析')
-plt.xlabel('時間')
-plt.ylabel('頻率')
-plt.show()
-```
-
-**Using Custom Fonts**
-
-```python
-from qhchina.helpers import set_font
-import matplotlib.pyplot as plt
-
-# Use your own font file
-set_font('/path/to/your/custom-font.otf')
-
-# Or set it when loading fonts
-from qhchina.helpers import load_fonts
-load_fonts(target_font='/path/to/your/custom-font.ttf')
-
-# Now your plots will use the custom font
-plt.figure(figsize=(8, 6))
-plt.title('使用自定義字體')
-plt.show()
-```
-
-**Loading Texts and Stopwords**
-
-```python
-from qhchina.helpers import load_text, load_texts, load_stopwords, split_into_chunks
-from qhchina.helpers.texts import detect_encoding, get_stopword_languages
-
-# Load a single text file
-text = load_text('document.txt')
-
-# Load with automatic encoding detection (requires chardet)
-text = load_text('古文.txt', encoding='auto')
-
-# Detect encoding manually
-encoding = detect_encoding('古文.txt')
-print(f"Detected encoding: {encoding}")
-
-# Load multiple files
-texts = load_texts(['file1.txt', 'file2.txt', 'file3.txt'])
-
-# See available stopword languages
-languages = get_stopword_languages()
-print(f"Available: {languages}")  # ['zh_cl_sim', 'zh_cl_tr', 'zh_sim', 'zh_tr']
-
-# Load stopwords
-stopwords = load_stopwords('zh_sim')
-
-# Split long text into chunks
-chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
-```

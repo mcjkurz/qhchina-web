@@ -36,6 +36,127 @@ top_collocates = collocates.sort_values("p_value").head(10)  # Most significant 
 
 ---
 
+## Examples
+
+**Finding Collocates**
+
+```python
+from qhchina.analytics.collocations import find_collocates
+
+# Example tokenized sentences
+sentences = [
+    ["中国", "经济", "发展", "改革"],
+    ["美国", "经济", "市场", "金融"],
+    ["中国", "市场", "贸易", "改革"],
+    # More sentences...
+]
+
+# Find collocates of "经济" using window method
+collocates = find_collocates(
+    sentences=sentences,
+    target_words=["经济"],
+    method="window",
+    horizon=3,  # 3 words on each side
+    filters={
+        'max_p': 0.05,          # Only statistically significant
+        'stopwords': ["的", "了"],
+        'min_word_length': 2
+    },
+    as_dataframe=True
+)
+
+# Find words that appear to the RIGHT of "经济"
+right_collocates = find_collocates(
+    sentences=sentences,
+    target_words=["经济"],
+    horizon=(0, 3),  # 0 words left, 3 words right of target
+    filters={'max_p': 0.05}
+)
+
+# Find words that appear to the LEFT of "经济"
+left_collocates = find_collocates(
+    sentences=sentences,
+    target_words=["经济"],
+    horizon=(3, 0),  # 3 words left, 0 words right of target
+    filters={'max_p': 0.05}
+)
+
+# Display top collocates
+top_collocates = collocates.sort_values("p_value").head(10)
+for _, row in top_collocates.iterrows():
+    print(f"{row['collocate']}: obs={row['obs_local']}, ratio={row['ratio_local']:.2f}, p={row['p_value']:.4f}")
+```
+
+**Visualizing Collocates**
+
+```python
+from qhchina.analytics.collocations import find_collocates, plot_collocates
+
+# Find collocates
+collocates = find_collocates(
+    sentences=sentences,
+    target_words=["经济"],
+    alternative='two-sided',
+    filters={'max_p': 0.05, 'min_obs_local': 2}
+)
+
+# Default: ratio vs p-value (log scales)
+plot_collocates(collocates, title="Collocates of 经济")
+
+# Observed vs expected with diagonal reference line
+plot_collocates(
+    collocates,
+    x_col='exp_local',
+    y_col='obs_local',
+    x_scale='log',
+    y_scale='log',
+    show_diagonal=True,
+    title='Observed vs Expected'
+)
+
+# Color by ratio, label top 15 most strongly associated
+plot_collocates(
+    collocates,
+    x_col='obs_global',
+    y_col='p_value',
+    color_by='ratio_local',
+    colormap='RdYlBu_r',
+    show_labels=True,
+    label_top_n=15,
+    title='Corpus Frequency vs Significance'
+)
+```
+
+**Creating Co-occurrence Matrix**
+
+```python
+from qhchina.analytics.collocations import cooc_matrix
+
+# Create co-occurrence matrix (returns CoocMatrix object)
+matrix = cooc_matrix(
+    documents=sentences,
+    method="window",
+    horizon=2,
+    min_word_count=2
+)
+
+# Access co-occurrence counts with flexible indexing
+target_word = "经济"
+if target_word in matrix.vocab:
+    cooc_with_target = matrix[target_word]  # Returns dict {word: count}
+    print(f"Words co-occurring with '{target_word}':")
+    for word, count in sorted(cooc_with_target.items(), key=lambda x: -x[1])[:10]:
+        print(f"  {word}: {count}")
+
+# Get a specific pair count
+count = matrix["经济", "发展"]
+
+# Convert to DataFrame if needed
+df = matrix.to_dataframe()
+```
+
+---
+
 ## API Reference
 
 <!-- API-START -->
@@ -362,124 +483,3 @@ plot_collocates(collocates, show_labels=True, label_top_n=20,
 <br>
 
 <!-- API-END -->
-
----
-
-## Examples
-
-**Finding Collocates**
-
-```python
-from qhchina.analytics.collocations import find_collocates
-
-# Example tokenized sentences
-sentences = [
-    ["中国", "经济", "发展", "改革"],
-    ["美国", "经济", "市场", "金融"],
-    ["中国", "市场", "贸易", "改革"],
-    # More sentences...
-]
-
-# Find collocates of "经济" using window method
-collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    method="window",
-    horizon=3,  # 3 words on each side
-    filters={
-        'max_p': 0.05,          # Only statistically significant
-        'stopwords': ["的", "了"],
-        'min_word_length': 2
-    },
-    as_dataframe=True
-)
-
-# Find words that appear to the RIGHT of "经济"
-right_collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    horizon=(0, 3),  # 0 words left, 3 words right of target
-    filters={'max_p': 0.05}
-)
-
-# Find words that appear to the LEFT of "经济"
-left_collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    horizon=(3, 0),  # 3 words left, 0 words right of target
-    filters={'max_p': 0.05}
-)
-
-# Display top collocates
-top_collocates = collocates.sort_values("p_value").head(10)
-for _, row in top_collocates.iterrows():
-    print(f"{row['collocate']}: obs={row['obs_local']}, ratio={row['ratio_local']:.2f}, p={row['p_value']:.4f}")
-```
-
-**Visualizing Collocates**
-
-```python
-from qhchina.analytics.collocations import find_collocates, plot_collocates
-
-# Find collocates
-collocates = find_collocates(
-    sentences=sentences,
-    target_words=["经济"],
-    alternative='two-sided',
-    filters={'max_p': 0.05, 'min_obs_local': 2}
-)
-
-# Default: ratio vs p-value (log scales)
-plot_collocates(collocates, title="Collocates of 经济")
-
-# Observed vs expected with diagonal reference line
-plot_collocates(
-    collocates,
-    x_col='exp_local',
-    y_col='obs_local',
-    x_scale='log',
-    y_scale='log',
-    show_diagonal=True,
-    title='Observed vs Expected'
-)
-
-# Color by ratio, label top 15 most strongly associated
-plot_collocates(
-    collocates,
-    x_col='obs_global',
-    y_col='p_value',
-    color_by='ratio_local',
-    colormap='RdYlBu_r',
-    show_labels=True,
-    label_top_n=15,
-    title='Corpus Frequency vs Significance'
-)
-```
-
-**Creating Co-occurrence Matrix**
-
-```python
-from qhchina.analytics.collocations import cooc_matrix
-
-# Create co-occurrence matrix (returns CoocMatrix object)
-matrix = cooc_matrix(
-    documents=sentences,
-    method="window",
-    horizon=2,
-    min_word_count=2
-)
-
-# Access co-occurrence counts with flexible indexing
-target_word = "经济"
-if target_word in matrix.vocab:
-    cooc_with_target = matrix[target_word]  # Returns dict {word: count}
-    print(f"Words co-occurring with '{target_word}':")
-    for word, count in sorted(cooc_with_target.items(), key=lambda x: -x[1])[:10]:
-        print(f"  {word}: {count}")
-
-# Get a specific pair count
-count = matrix["经济", "发展"]
-
-# Convert to DataFrame if needed
-df = matrix.to_dataframe()
-```
