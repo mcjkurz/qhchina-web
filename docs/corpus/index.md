@@ -17,8 +17,14 @@ functions:
     anchor: corpus-get
   - name: Corpus.groupby()
     anchor: corpus-groupby
+  - name: Corpus.hapax_dislegomena()
+    anchor: corpus-hapax_dislegomena
+  - name: Corpus.hapax_legomena()
+    anchor: corpus-hapax_legomena
   - name: Corpus.load()
     anchor: corpus-load
+  - name: Corpus.mattr()
+    anchor: corpus-mattr
   - name: Corpus.metadata_values()
     anchor: corpus-metadata_values
   - name: Corpus.remove()
@@ -29,6 +35,8 @@ functions:
     anchor: corpus-split
   - name: Corpus.to_dataframe()
     anchor: corpus-to_dataframe
+  - name: Corpus.type_token_ratio()
+    anchor: corpus-type_token_ratio
   - name: Document
     anchor: document
   - name: Document.get()
@@ -330,7 +338,52 @@ grouped = corpus.groupby('author')
 stylo.fit_transform(corpus.groupby('author'))
 ```
 
-<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L705" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-hapax_dislegomena">qhchina.corpus.Corpus.hapax_dislegomena() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L790" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">hapax_dislegomena</span>()</code></pre>
+
+Return words that appear exactly twice in the corpus.
+
+Hapax dislegomena (Greek: "said twice") complement hapax legomena
+in vocabulary richness analysis.
+
+**Returns:**
+Set of words with frequency == 2.
+
+**Example:**
+```python
+dis = corpus.hapax_dislegomena()
+len(dis)
+523
+```
+
+<h4 id="corpus-hapax_legomena">qhchina.corpus.Corpus.hapax_legomena() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L766" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">hapax_legomena</span>()</code></pre>
+
+Return words that appear exactly once in the corpus.
+
+Hapax legomena (Greek: "said once") are words occurring only once.
+They are important for:
+- Vocabulary richness analysis
+- Authorship attribution
+- Zipf's law studies
+
+A corpus typically has 40-60% of its vocabulary as hapax legomena.
+
+**Returns:**
+Set of words with frequency == 1.
+
+**Example:**
+```python
+hapax = corpus.hapax_legomena()
+len(hapax)
+1247
+print(f"Hapax ratio: {len(hapax) / corpus.vocab_size:.1%}")
+Hapax ratio: 48.2%
+```
+
+<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L870" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | Path</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -348,6 +401,35 @@ Loaded Corpus object.
 ```python
 corpus = Corpus.load('my_corpus.json')   # JSON format
 corpus = Corpus.load('my_corpus.pkl')    # Pickle format
+```
+
+<h4 id="corpus-mattr">qhchina.corpus.Corpus.mattr() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L696" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">mattr</span>(<span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">500</span>)</code></pre>
+
+Calculate Moving Average Type-Token Ratio (MATTR).
+
+MATTR is more reliable than standard TTR for comparing texts of
+different lengths. It calculates TTR for a sliding window across
+the corpus and returns the mean.
+
+**Parameters:**
+- `window_size`: Number of tokens per window. Default is 500,
+  which is standard in the literature. Smaller windows
+  give higher MATTR values.
+
+**Returns:**
+Mean TTR across all windows (0.0 to 1.0).
+
+**Raises:**
+- `ValueError`: If corpus has fewer tokens than window_size.
+
+**Example:**
+```python
+corpus.mattr()
+0.723
+corpus.mattr(window_size=100)
+0.856
 ```
 
 <h4 id="corpus-metadata_values">qhchina.corpus.Corpus.metadata_values() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L622" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -389,7 +471,7 @@ removed = corpus.remove('doc_0')
 print(f"Removed document with {len(removed.tokens)} tokens")
 ```
 
-<h4 id="corpus-save">qhchina.corpus.Corpus.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L646" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-save">qhchina.corpus.Corpus.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L811" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | Path</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -435,7 +517,7 @@ train_stratified, test_stratified = corpus.split(
 )
 ```
 
-<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L762" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L927" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -448,6 +530,42 @@ DataFrame with columns: doc_id, tokens, token_count, and all metadata keys.
 ```python
 df = corpus.to_dataframe()
 df.groupby('author')['token_count'].mean()
+```
+
+<h4 id="corpus-type_token_ratio">qhchina.corpus.Corpus.type_token_ratio() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L642" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">type_token_ratio</span>(<span class="sig-param">variant</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'standard'</span>)</code></pre>
+
+Calculate Type-Token Ratio (TTR) for the corpus.
+
+TTR measures lexical diversity - the ratio of unique words (types)
+to total words (tokens). Higher values indicate more diverse vocabulary.
+
+Note: Standard TTR is sensitive to text length (longer texts tend to
+have lower TTR). Use 'root' or 'log' variants for length-normalized
+measures, or use mattr() for comparing texts of different lengths.
+
+**Parameters:**
+- `variant`: Calculation method:
+  - 'standard': types / tokens (range: 0.0 to 1.0)
+  - 'root': types / sqrt(tokens) - Guiraud's R
+  - 'log': log(types) / log(tokens) - Herdan's C
+
+**Returns:**
+The TTR value. For 'standard', this is between 0.0 and 1.0.
+For 'root' and 'log', values vary based on corpus size.
+
+**Raises:**
+- `ValueError`: If variant is not recognized or corpus is empty.
+
+**Example:**
+```python
+corpus.type_token_ratio()
+0.342
+corpus.type_token_ratio(variant='root')
+45.67
+corpus.type_token_ratio(variant='log')
+0.891
 ```
 
 <br>

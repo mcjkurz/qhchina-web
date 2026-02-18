@@ -37,8 +37,20 @@
         "anchor": "corpus-groupby"
       },
       {
+        "name": "Corpus.hapax_dislegomena()",
+        "anchor": "corpus-hapax_dislegomena"
+      },
+      {
+        "name": "Corpus.hapax_legomena()",
+        "anchor": "corpus-hapax_legomena"
+      },
+      {
         "name": "Corpus.load()",
         "anchor": "corpus-load"
+      },
+      {
+        "name": "Corpus.mattr()",
+        "anchor": "corpus-mattr"
       },
       {
         "name": "Corpus.metadata_values()",
@@ -59,6 +71,10 @@
       {
         "name": "Corpus.to_dataframe()",
         "anchor": "corpus-to_dataframe"
+      },
+      {
+        "name": "Corpus.type_token_ratio()",
+        "anchor": "corpus-type_token_ratio"
       },
       {
         "name": "Document",
