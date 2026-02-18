@@ -139,8 +139,16 @@
         "anchor": "llmsegmenter"
       },
       {
+        "name": "NormalizeOptions",
+        "anchor": "normalizeoptions"
+      },
+      {
         "name": "create_segmenter()",
         "anchor": "create_segmenter"
+      },
+      {
+        "name": "normalize()",
+        "anchor": "normalize"
       }
     ]
   },

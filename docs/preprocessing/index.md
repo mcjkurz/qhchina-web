@@ -27,10 +27,14 @@ functions:
     anchor: bertsegmenter
   - name: LLMSegmenter
     anchor: llmsegmenter
+  - name: NormalizeOptions
+    anchor: normalizeoptions
   - name: create_segmenter()
     anchor: create_segmenter
+  - name: normalize()
+    anchor: normalize
 has_examples: True
-import_from: qhchina.preprocessing.segmentation
+import_from: ['qhchina.preprocessing.segmentation', 'qhchina.preprocessing.normalization']
 ---
 
 # Text Preprocessing
@@ -420,6 +424,55 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 
 <br>
 
+<h3 id="normalizeoptions">qhchina.preprocessing.normalization.NormalizeOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L43" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">NormalizeOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
+
+Normalization options dictionary.
+
+All keys are optional - only specified options are applied.
+
+Keys:
+    conversion: Script/variant conversion using OpenCC. Values:
+        - 't2s': Traditional → Simplified
+        - 's2t': Simplified → Traditional
+        - 't2tw': Traditional → Taiwan standard (normalizes variants)
+        - 't2hk': Traditional → Hong Kong standard
+        - 's2tw': Simplified → Taiwan traditional
+        - 's2hk': Simplified → Hong Kong traditional
+        - Any valid OpenCC configuration name
+    
+    unicode: Unicode normalization form.
+        - 'NFC': Canonical composition (recommended)
+        - 'NFD': Canonical decomposition
+        - 'NFKC': Compatibility composition
+        - 'NFKD': Compatibility decomposition
+    
+    whitespace: Whitespace handling.
+        - 'collapse': Collapse multiple spaces/tabs/newlines to single, strip text
+        - 'strip': Strip leading/trailing whitespace from each line
+        - 'remove': Remove all whitespace (spaces, tabs, newlines)
+    
+    punctuation: Punctuation width.
+        - 'full': Convert to full-width (，。！？)
+        - 'half': Convert to half-width (,.!?)
+    
+    numbers: Digit width.
+        - 'full': Convert to full-width (０-９)
+        - 'half': Convert to half-width (0-9)
+    
+    letters: Letter width.
+        - 'full': Convert to full-width (Ａ-Ｚ)
+        - 'half': Convert to half-width (A-Z)
+    
+    quotes: Quotation mark style (smart nesting).
+        - 'straight': ASCII quotes (" ')
+        - 'smart': Typographic curly quotes (" " ' ')
+        - 'corner': East Asian corner brackets (「 」 『 』)
+        - 'guillemets': French-style angle quotes (« » ‹ ›)
+
+<br>
+
 <h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1321" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">create_segmenter</span>(
@@ -456,6 +509,59 @@ An instance of a SegmentationWrapper subclass
 
 **Raises:**
 - `ValueError`: If the specified backend is not supported
+
+<br>
+
+<h3 id="normalize">qhchina.preprocessing.normalization.normalize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L175" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">normalize</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">options</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Normalize Chinese text with specified options.
+
+**Parameters:**
+- `text`: Input text to normalize.
+- `options`: Dictionary of normalization options. Only specified options
+  are applied. If None or empty, returns text unchanged.
+  See NormalizeOptions for valid keys and values.
+
+**Returns:**
+Normalized text.
+
+**Raises:**
+- `ImportError`: If 'conversion' option is used but OpenCC is not installed.
+- `ValueError`: If an invalid option value is provided.
+
+**Example:**
+```python
+Basic Unicode normalization:
+
+normalize(text, {'unicode': 'NFC'})
+
+Convert to simplified Chinese:
+
+normalize("軟體開發", {'conversion': 't2s'})
+'软件开发'
+
+Full-width punctuation:
+
+normalize("Hello, world!", {'punctuation': 'full'})
+'Hello，world！'
+
+Smart quotes to corner brackets:
+
+normalize('他说"你好"', {'quotes': 'corner'})
+'他说「你好」'
+
+Combined options:
+
+normalize(text, {
+    'conversion': 't2s',
+    'unicode': 'NFC',
+    'whitespace': 'collapse',
+    'punctuation': 'full',
+    'quotes': 'smart',
+})
+```
 
 <br>
 
