@@ -213,12 +213,24 @@
         "anchor": "temprefword2vec-get_time_labels"
       },
       {
+        "name": "TempRefWord2Vec.get_vector()",
+        "anchor": "temprefword2vec-get_vector"
+      },
+      {
         "name": "TempRefWord2Vec.load()",
         "anchor": "temprefword2vec-load"
       },
       {
+        "name": "TempRefWord2Vec.most_similar()",
+        "anchor": "temprefword2vec-most_similar"
+      },
+      {
         "name": "TempRefWord2Vec.save()",
         "anchor": "temprefword2vec-save"
+      },
+      {
+        "name": "TempRefWord2Vec.similarity()",
+        "anchor": "temprefword2vec-similarity"
       },
       {
         "name": "TempRefWord2Vec.train()",
