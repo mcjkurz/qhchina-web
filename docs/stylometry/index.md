@@ -61,7 +61,7 @@ import_from: qhchina.analytics.stylometry
 
 # Stylometry
 
-The `qhchina.analytics.stylometry` module provides tools for authorship attribution and document clustering using statistical analysis of writing style. By default, the module uses z-score normalization to transform word frequencies, which standardizes feature values across documents and makes them comparable regardless of document length.
+Stylometry is the quantitative study of writing style, based on the observation that authors leave distinctive linguistic fingerprints in their texts through unconscious word choice patterns. These patterns—particularly in high-frequency function words—remain consistent across an author's works and can be measured statistically. The `qhchina.analytics.stylometry` module provides tools for authorship attribution and document clustering using statistical analysis of writing style. By default, it uses z-score normalization to transform word frequencies, which standardizes feature values across documents and makes them comparable regardless of document length.
 
 > **Note:** This module is inspired by the R package [stylo](https://github.com/computationalstylistics/stylo), a much more comprehensive implementation for computational stylistics.
 

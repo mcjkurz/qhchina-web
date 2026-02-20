@@ -59,7 +59,7 @@ import_from: qhchina.analytics.topicmodels
 
 # Topic Modeling
 
-The `qhchina.analytics.topicmodels` module provides Latent Dirichlet Allocation (LDA) with Gibbs sampling for discovering thematic structure in document collections.
+Topic modeling is an unsupervised method for discovering abstract themes that run through a collection of documents. It assumes documents are mixtures of topics, where each topic is characterized by a distribution over words. The `qhchina.analytics.topicmodels` module provides Latent Dirichlet Allocation (LDA) with Gibbs sampling for discovering thematic structure in document collections.
 
 ```python
 from qhchina.analytics.topicmodels import LDAGibbsSampler

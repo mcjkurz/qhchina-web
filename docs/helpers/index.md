@@ -34,7 +34,7 @@ include_imported: True
 
 # Helper Utilities
 
-The `qhchina.helpers` module provides utilities for font management and text loading when working with Chinese texts.
+Working with Chinese text often requires proper font configuration for visualization and access to standard resources like stopword lists. The `qhchina.helpers` module provides utilities for font management, text loading, and common preprocessing tasks.
 
 ## Examples
 

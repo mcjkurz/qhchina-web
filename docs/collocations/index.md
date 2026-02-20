@@ -25,7 +25,7 @@ import_from: qhchina.analytics.collocations
 
 # Collocation Analysis
 
-The `qhchina.analytics.collocations` module provides tools for identifying words that frequently co-occur together in text.
+Collocations are word combinations that occur together more frequently than expected by chance, revealing meaningful linguistic patterns and conceptual associations. Statistical measures like log-likelihood and chi-square help distinguish genuine collocations from random co-occurrences. The `qhchina.analytics.collocations` module provides tools for identifying and analyzing these patterns in Chinese text.
 
 ```python
 from qhchina.analytics.collocations import find_collocates

@@ -45,7 +45,9 @@ has_examples: True
 import_from: qhchina.corpus
 ---
 
-The `Corpus` class provides a unified way to manage tokenized documents with metadata. It integrates seamlessly with all qhchina analytics modules.
+# Corpus Management
+
+Managing document collections with associated metadata (author, date, genre) is essential for comparative text analysis. The `Corpus` class provides a unified way to manage tokenized documents with metadata, supporting filtering, grouping, and basic corpus statistics. It integrates seamlessly with all qhchina analytics modules.
 
 ## Quick Start
 

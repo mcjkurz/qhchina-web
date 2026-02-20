@@ -39,7 +39,7 @@ import_from: ['qhchina.preprocessing.segmentation', 'qhchina.preprocessing.norma
 
 # Text Preprocessing
 
-The `qhchina.preprocessing` module provides Chinese text segmentation (word tokenization) with various backends and processing strategies.
+Chinese text lacks explicit word boundaries, making segmentation (tokenization) a necessary first step for most text analysis tasks. The quality of segmentation directly affects downstream analysis, and different segmenters perform better on different text types. The `qhchina.preprocessing` module provides Chinese text segmentation with various backends (spaCy, jieba, pkuseg, BERT) and processing strategies.
 
 ```python
 from qhchina.preprocessing.segmentation import create_segmenter
