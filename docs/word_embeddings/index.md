@@ -94,10 +94,12 @@ target_words = ["自由", "爱情", "革命"]
 # Step 1: Create tagged corpus files for each period
 corpus_1920s = TempRefCorpus(label="1920s", targets=target_words)
 corpus_1920s.add_many(sentences_1920s)
+corpus_1920s.shuffle()  # Shuffle before saving for better training
 corpus_1920s.save("1920s.txt")
 
 corpus_2000s = TempRefCorpus(label="2000s", targets=target_words)
 corpus_2000s.add_many(sentences_2000s)
+corpus_2000s.shuffle()  # Shuffle before saving for better training
 corpus_2000s.save("2000s.txt")
 
 # Step 2: Initialize model with file paths
