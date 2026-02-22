@@ -409,9 +409,9 @@ negative sampling distributes gradients:
 - Base forms (e.g., "bread") are treated as CENTER words, absorbing the
   noisy updates in W_prime (syn1neg) that would otherwise degrade quality
 
-All temporal variants of a word share the same base form as center, creating
-implicit alignment. Queries use W only, making temporal variants directly
-comparable.
+All temporal variants of a word share the same base form as center. 
+Queries use W only (context representations), making temporal variants 
+directly comparable.
 
 Training uses balanced batch sampling - each batch contains equal numbers of
 tokens from each time period, ensuring fair representation regardless of
