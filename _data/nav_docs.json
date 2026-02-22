@@ -209,6 +209,50 @@
         "anchor": "linesentencefile"
       },
       {
+        "name": "TempRefWord2Vec",
+        "anchor": "temprefword2vec"
+      },
+      {
+        "name": "TempRefWord2Vec.build_vocab()",
+        "anchor": "temprefword2vec-build_vocab"
+      },
+      {
+        "name": "TempRefWord2Vec.calculate_semantic_change()",
+        "anchor": "temprefword2vec-calculate_semantic_change"
+      },
+      {
+        "name": "TempRefWord2Vec.get_available_targets()",
+        "anchor": "temprefword2vec-get_available_targets"
+      },
+      {
+        "name": "TempRefWord2Vec.get_period_vocab_counts()",
+        "anchor": "temprefword2vec-get_period_vocab_counts"
+      },
+      {
+        "name": "TempRefWord2Vec.get_time_labels()",
+        "anchor": "temprefword2vec-get_time_labels"
+      },
+      {
+        "name": "TempRefWord2Vec.load()",
+        "anchor": "temprefword2vec-load"
+      },
+      {
+        "name": "TempRefWord2Vec.most_similar()",
+        "anchor": "temprefword2vec-most_similar"
+      },
+      {
+        "name": "TempRefWord2Vec.save()",
+        "anchor": "temprefword2vec-save"
+      },
+      {
+        "name": "TempRefWord2Vec.similarity()",
+        "anchor": "temprefword2vec-similarity"
+      },
+      {
+        "name": "TempRefWord2Vec.train()",
+        "anchor": "temprefword2vec-train"
+      },
+      {
         "name": "project_2d()",
         "anchor": "project_2d"
       },
