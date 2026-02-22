@@ -47,10 +47,10 @@ has_examples: True
 Word embeddings represent words as dense vectors in a continuous space, where semantically similar words are positioned closer together. These vector representations enable computational analysis of meaning, including finding synonyms, analogies, and measuring semantic similarity. The `qhchina.analytics.word2vec` module provides Word2Vec implementations for Chinese text analysis, including standard Word2Vec and TempRefWord2Vec for tracking semantic change over time.
 
 ```python
-from qhchina.analytics.word2vec import Word2Vec
+from qhchina.analytics import Word2Vec
 
-model = Word2Vec(vector_size=100, window=5, min_word_count=5, epochs=5)
-model.train(sentences)
+model = Word2Vec(sentences, vector_size=100, window=5, min_word_count=5, epochs=5)
+model.train()
 similar = model.most_similar("经济", topn=10)  # Find words similar to "经济"
 ```
 
@@ -59,10 +59,7 @@ similar = model.most_similar("经济", topn=10)  # Find words similar to "经济
 **Basic Word2Vec Training**
 
 ```python
-from qhchina.analytics.word2vec import Word2Vec
-
-# Initialize model
-model = Word2Vec(vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
+from qhchina.analytics import Word2Vec
 
 # Tokenized literary sentences
 sentences = [
@@ -71,8 +68,9 @@ sentences = [
     # More sentences...
 ]
 
-# Train model
-model.train(sentences)
+# Initialize and train model
+model = Word2Vec(sentences, vector_size=100, window=5, min_word_count=5, sg=1, seed=42, epochs=5)
+model.train()
 
 # Find words similar to "爱情"
 similar = model.most_similar("爱情", topn=10)
@@ -87,18 +85,24 @@ print(f"Similarity: {sim:.4f}")
 **Tracking Semantic Change Over Time**
 
 ```python
-from qhchina.analytics.word2vec import TempRefWord2Vec
-
-# Corpus from different literary periods
-time_labels = ["1920s", "1940s", "1980s", "2000s"]
-corpora = [corpus_1920s, corpus_1940s, corpus_1980s, corpus_2000s]
+from qhchina import TempRefCorpus
+from qhchina.analytics import TempRefWord2Vec
 
 # Track how key concepts evolved
 target_words = ["自由", "爱情", "革命"]
 
+# Step 1: Create tagged corpus files for each period
+corpus_1920s = TempRefCorpus(label="1920s", targets=target_words)
+corpus_1920s.add_many(sentences_1920s)
+corpus_1920s.save("1920s.txt")
+
+corpus_2000s = TempRefCorpus(label="2000s", targets=target_words)
+corpus_2000s.add_many(sentences_2000s)
+corpus_2000s.save("2000s.txt")
+
+# Step 2: Initialize model with file paths
 model = TempRefWord2Vec(
-    corpora=corpora,
-    labels=time_labels,
+    sentences={"1920s": "1920s.txt", "2000s": "2000s.txt"},
     targets=target_words,
     vector_size=100,
     window=5,
@@ -106,6 +110,9 @@ model = TempRefWord2Vec(
     seed=42,
     epochs=5
 )
+
+# Step 3: Train the model
+model.train()
 
 # How did "自由" change from 1920s to 2000s?
 changes = model.calculate_semantic_change("自由")
