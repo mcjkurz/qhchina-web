@@ -401,32 +401,32 @@ for sentence in reader:
 Word2Vec with Temporal Referencing (TR) for tracking semantic change.
 
 Implements temporal referencing where target words are tagged with time period
-indicators (e.g., "bread_1800s"). The training aligns with how negative sampling
-distributes gradients:
+indicators (e.g., "bread_1800s"). The training exploits how Skip-gram with
+negative sampling distributes gradients:
 
-- Temporal variants (e.g., "bread_1800s") are used as CONTEXT words, receiving
-  high-quality aggregated updates in W (syn0)
-- Base forms (e.g., "bread") are used as CENTER words, receiving multiple noisy
-  updates in W_prime (syn1neg), providing a stable reference frame
+- Temporal variants (e.g., "bread_1800s") are treated as CONTEXT words,
+  receiving high-quality updates in W (syn0)
+- Base forms (e.g., "bread") are treated as CENTER words, absorbing the
+  noisy updates in W_prime (syn1neg) that would otherwise degrade quality
 
-This design ensures all queries use W only, making temporal variants directly
-comparable with each other and with regular words.
+All temporal variants of a word share the same base form as center, creating
+implicit alignment. Queries use W only, making temporal variants directly
+comparable.
 
 Training uses balanced batch sampling - each batch contains equal numbers of
-documents from each time period, ensuring fair representation regardless of
+tokens from each time period, ensuring fair representation regardless of
 corpus sizes.
 
-Note:
-    - Only supports Skip-gram (sg=1). CBOW is not supported.
-    - Requires pre-tagged corpus files. Use `TempRefCorpus` to create them.
-    - Training does NOT start automatically. Call `train()` explicitly after
-      initialization.
+**Important:** Only supports Skip-gram (sg=1). Requires pre-tagged corpus files
+(use `TempRefCorpus` or follow the file format). Training does NOT start
+automatically - call `train()` after initialization.
 
 **Parameters:**
-- `sentences`: Dictionary mapping time period labels to file paths.
-  Files must be pre-tagged using ``TempRefCorpus``.
-  Format: ``{"label1": "path1.txt", "label2": "path2.txt", ...}``
-- `targets`: List of target words to trace semantic change.
+- `sentences`: Dictionary mapping time period labels to corpus file paths.
+  Files should contain tagged tokens (e.g., "bread_1800s"). Use
+  ``TempRefCorpus.save()`` or follow the format: first line has
+  ``sentence_count token_count``, remaining lines are space-separated tokens.
+- `targets`: List of target words to track (without period suffixes).
 - `**kwargs`: Arguments passed to Word2Vec. Common options:
   - vector_size (int): Dimensionality of word vectors (default: 100)
   - window (int): Context window size (default: 5)
@@ -436,8 +436,6 @@ Note:
   - batch_size (int): Tokens per batch (default: 10240)
   - alpha (float): Initial learning rate (default: 0.025)
   - verbose (bool): Log progress (default: False)
-  
-  Note: sg must be 1 (Skip-gram).
 
 **Example:**
 ```python
@@ -455,23 +453,20 @@ corpus2 = TempRefCorpus(label="1900s", targets=targets)
 corpus2.add_many(sentences_1900s)
 corpus2.save("1900s.txt")
 
-# Step 2: Initialize the model
+# Step 2: Initialize and train
 model = TempRefWord2Vec(
     sentences={"1800s": "1800s.txt", "1900s": "1900s.txt"},
     targets=targets,
     vector_size=100,
-    sg=1
 )
-
-# Step 3: Train the model (explicit call required)
 model.train()
 
-# Step 4: Analyze semantic change
-model.most_similar("bread_1800s")  # Words similar to "bread" in 1800s
-model.most_similar("bread_1900s")  # Words similar to "bread" in 1900s
+# Step 3: Analyze semantic change
+model.most_similar("bread_1800s")
+model.most_similar("bread_1900s")
 ```
 
-<h4 id="temprefword2vec-build_vocab">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L195" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-build_vocab">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L191" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -483,7 +478,7 @@ in a single pass through the files, then adds temporal base words.
 **Parameters:**
 - `sentences`: Ignored for TempRefWord2Vec. Uses internal file readers instead.
 
-<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L534" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L530" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">calculate_semantic_change</span>(<span class="sig-param">target_word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -507,7 +502,7 @@ for transition, word_changes in changes.items():
     print("Words moved away:", word_changes[-5:])   # Top 5 decreases
 ```
 
-<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L606" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L602" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_available_targets</span>()</code></pre>
 
@@ -516,7 +511,7 @@ Get the list of target words available for semantic change analysis.
 **Returns:**
 List of target words that were specified during model initialization.
 
-<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L624" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L620" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_period_vocab_counts</span>(<span class="sig-param">period</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -532,7 +527,7 @@ If period is specified: Counter object for that specific period.
 **Raises:**
 - `ValueError`: If the specified period is not found in the model.
 
-<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L615" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L611" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_time_labels</span>()</code></pre>
 
@@ -541,7 +536,7 @@ Get the list of time period labels used in the model.
 **Returns:**
 List of time period labels that were specified during model initialization.
 
-<h4 id="temprefword2vec-load">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L708" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-load">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L704" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -562,7 +557,7 @@ restored.
 **Raises:**
 - `ValueError`: If the file doesn't contain TempRefWord2Vec data.
 
-<h4 id="temprefword2vec-most_similar">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L440" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-most_similar">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L436" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -593,7 +588,7 @@ predicted by word_1900?).
 **Returns:**
 List of (word, similarity) tuples sorted by descending similarity.
 
-<h4 id="temprefword2vec-save">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L649" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-save">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L645" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -610,7 +605,7 @@ Note: The combined corpus is NOT saved to reduce file size.
 **Parameters:**
 - `path` (str): Path to save the model file.
 
-<h4 id="temprefword2vec-similarity">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L493" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-similarity">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L489" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -635,7 +630,7 @@ Cosine similarity score between -1 and 1.
 **Raises:**
 - `KeyError`: If either word is not in vocabulary.
 
-<h4 id="temprefword2vec-train">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L405" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-train">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L401" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train</span>()</code></pre>
 
