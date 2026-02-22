@@ -237,16 +237,8 @@
         "anchor": "temprefword2vec-load"
       },
       {
-        "name": "TempRefWord2Vec.most_similar()",
-        "anchor": "temprefword2vec-most_similar"
-      },
-      {
         "name": "TempRefWord2Vec.save()",
         "anchor": "temprefword2vec-save"
-      },
-      {
-        "name": "TempRefWord2Vec.similarity()",
-        "anchor": "temprefword2vec-similarity"
       },
       {
         "name": "TempRefWord2Vec.train()",
