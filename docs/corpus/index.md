@@ -261,7 +261,7 @@ corpus.add_many(docs, period='民国')
 ['doc_0', 'doc_1']
 ```
 
-<h4 id="corpus-clear_cache">qhchina.corpus.Corpus.clear_cache() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1337" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-clear_cache">qhchina.corpus.Corpus.clear_cache() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1339" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">clear_cache</span>(<span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -353,13 +353,15 @@ corpus = Corpus.download('songshi')
 print(f"Downloaded {len(corpus)} documents")
 
 # Download a single file
-corpus = Corpus.download('songshi/宋史.txt')
+corpus = Corpus.download('宋史/宋史.txt')
 
-# Tokenize the downloaded text
-from qhchina import create_segmenter
-segmenter = create_segmenter()
-for doc in corpus._documents:
-    doc.tokens = segmenter(doc.get('raw_text'))
+# Download and tokenize in one chain (uses default jieba backend)
+corpus = Corpus.download('songshi').tokenize()
+
+# Or use a custom segmenter
+from qhchina.preprocessing import create_segmenter
+segmenter = create_segmenter('spacy', filters={'min_word_length': 2})
+corpus = Corpus.download('songshi').tokenize(segmenter=segmenter)
 ```
 
 <h4 id="corpus-filter">qhchina.corpus.Corpus.filter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L525" class="source-link" title="View source on GitHub">[source]</a></h4>
@@ -480,7 +482,7 @@ print(f"Hapax ratio: {len(hapax) / corpus.vocab_size:.1%}")
 Hapax ratio: 48.2%
 ```
 
-<h4 id="corpus-list_cached">qhchina.corpus.Corpus.list_cached() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1308" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-list_cached">qhchina.corpus.Corpus.list_cached() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1310" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">list_cached</span>()</code></pre>
 
@@ -496,7 +498,7 @@ Corpus.list_cached()
 [{'name': 'songshi', 'files': 3, 'size_mb': 1.5}]
 ```
 
-<h4 id="corpus-list_remote">qhchina.corpus.Corpus.list_remote() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1283" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-list_remote">qhchina.corpus.Corpus.list_remote() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1285" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">list_remote</span>()</code></pre>
 
@@ -667,7 +669,7 @@ train_stratified, test_stratified = corpus.split(
 )
 ```
 
-<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1369" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1371" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -682,7 +684,7 @@ df = corpus.to_dataframe()
 df.groupby('author')['token_count'].mean()
 ```
 
-<h4 id="corpus-tokenize">qhchina.corpus.Corpus.tokenize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1398" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-tokenize">qhchina.corpus.Corpus.tokenize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1400" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">tokenize</span>(<span class="sig-param">segmenter</span><span class="sig-punct">:</span> <span class="sig-type">Any | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'jieba'</span>, <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">raw_text_key</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'raw_text'</span>, <span class="sig-param">skip_tokenized</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
