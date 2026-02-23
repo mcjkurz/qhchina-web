@@ -33,6 +33,12 @@ functions:
     anchor: get_stopword_languages
   - name: detect_encoding()
     anchor: detect_encoding
+  - name: download_corpus()
+    anchor: download_corpus
+  - name: download_file()
+    anchor: download_file
+  - name: list_remote_corpora()
+    anchor: list_remote_corpora
 has_examples: True
 import_from: qhchina.helpers
 include_imported: True
@@ -399,6 +405,144 @@ Detects the encoding of a file.
 
 **Raises:**
 - `ImportError`: If chardet is not installed.
+
+<br>
+
+<h3 id="download_corpus">qhchina.helpers.texts.download_corpus() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L245" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">download_corpus</span>(
+    <span class="sig-param">name</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
+    <span class="sig-param">parent_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">show_progress</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>
+)</code></pre>
+
+Download a corpus folder from the qhchina-data GitHub repository.
+
+Downloads all .txt files from the specified corpus folder and saves them
+to a local directory.
+
+**Parameters:**
+- `name`: Corpus name (e.g., "张爱玲", "songshi"). This corresponds to a 
+  folder name under ``corpora/`` in the qhchina-data repository.
+- `parent_dir`: Parent directory where the corpus folder will be created.
+  If None (default), uses the current working directory.
+- `show_progress`: If True (default), display a progress bar showing
+  cumulative kilobytes downloaded.
+      
+
+**Raises:**
+- `ImportError`: If requests is not installed.
+- `ValueError`: If the corpus is not found or contains no .txt files.
+- `requests.RequestException`: If the download fails.
+
+**Example:**
+```python
+Basic usage::
+
+    from qhchina import download_corpus
+    
+    # Download to current directory
+    download_corpus("张爱玲")
+    # Creates ./张爱玲/张爱玲_倾城之恋.txt, ./张爱玲/张爱玲_金锁记.txt, ...
+    
+    # Download to a specific parent directory
+    download_corpus("张爱玲", parent_dir="corpora")
+    # Creates ./corpora/张爱玲/...
+
+Full workflow with segmentation and analysis::
+
+    import os
+    from qhchina import download_corpus, load_stopwords
+    from qhchina.preprocessing import create_segmenter
+    from qhchina.analytics import compare_corpora
+    
+    # Download two corpora
+    download_corpus("莫言", parent_dir="corpora")
+    download_corpus("张爱玲", parent_dir="corpora")
+    
+    # Set up segmenter with stopwords
+    stopwords = load_stopwords("zh")
+    segmenter = create_segmenter(
+        backend="jieba", 
+        strategy="sentence",
+        filters={"stopwords": stopwords}
+    )
+    
+    # Load and segment texts
+    moyan_sentences = []
+    for filename in os.listdir("corpora/莫言"):
+        if filename.endswith(".txt"):
+            with open(f"corpora/莫言/{filename}", encoding="utf-8") as f:
+                moyan_sentences.extend(segmenter.segment(f.read()))
+    
+    zal_sentences = []
+    for filename in os.listdir("corpora/张爱玲"):
+        if filename.endswith(".txt"):
+            with open(f"corpora/张爱玲/{filename}", encoding="utf-8") as f:
+                zal_sentences.extend(segmenter.segment(f.read()))
+    
+    # Compare the two corpora using Fisher's exact test
+    results = compare_corpora(
+        moyan_sentences, zal_sentences,
+        filters={"min_count": 5, "max_p": 0.05}
+    )
+```
+
+<br>
+
+<h3 id="download_file">qhchina.helpers.texts.download_file() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L389" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">download_file</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">output_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Download a single file from the qhchina-data GitHub repository.
+
+**Parameters:**
+- `path`: Path to the file in the repository (e.g., "corpora/莫言/莫言_丰乳肥臀.txt",
+  "fonts/NotoSerifSC-Regular.otf"). The path is relative to the repository root.
+- `output_dir`: Directory where the file will be saved. If None (default),
+  uses the current working directory.
+      
+
+**Raises:**
+- `ImportError`: If requests is not installed.
+- `ValueError`: If the file is not found.
+- `requests.RequestException`: If the download fails.
+
+**Example:**
+```python
+from qhchina import download_file
+
+# Download to current directory
+download_file("corpora/莫言/莫言_丰乳肥臀.txt")
+# Creates ./莫言_丰乳肥臀.txt
+
+# Download to a specific directory
+download_file("corpora/莫言/莫言_丰乳肥臀.txt", output_dir="texts")
+# Creates ./texts/莫言_丰乳肥臀.txt
+```
+
+<br>
+
+<h3 id="list_remote_corpora">qhchina.helpers.texts.list_remote_corpora() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L455" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">list_remote_corpora</span>()</code></pre>
+
+List available corpora in the qhchina-data GitHub repository.
+
+**Returns:**
+List of corpus names (folder names under ``corpora/``).
+
+**Raises:**
+- `ImportError`: If requests is not installed.
+- `requests.RequestException`: If the API request fails.
+
+**Example:**
+```python
+from qhchina import list_remote_corpora
+corpora = list_remote_corpora()
+print(corpora)
+['张爱玲', '沈从文', '莫言', ...]
+```
 
 <br>
 

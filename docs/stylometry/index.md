@@ -692,6 +692,48 @@ If as_dataframe is False: list[dict] where each dict contains information
     about a word's frequency in both corpora, the p-value, and the ratio of 
     relative frequencies.
 
+**Example:**
+```python
+Compare word usage between two authors::
+
+import os
+from qhchina import download_corpus, load_stopwords
+from qhchina.preprocessing import create_segmenter
+from qhchina.analytics import compare_corpora
+
+# Download corpora
+download_corpus("莫言", parent_dir="corpora")
+download_corpus("张爱玲", parent_dir="corpora")
+
+# Set up segmenter
+stopwords = load_stopwords("zh")
+segmenter = create_segmenter(
+    backend="jieba", 
+    strategy="sentence",
+    filters={"stopwords": stopwords}
+)
+
+# Load and segment
+moyan = []
+for f in os.listdir("corpora/莫言"):
+    if f.endswith(".txt"):
+        with open(f"corpora/莫言/{f}", encoding="utf-8") as fp:
+            moyan.extend(segmenter.segment(fp.read()))
+
+zal = []
+for f in os.listdir("corpora/张爱玲"):
+    if f.endswith(".txt"):
+        with open(f"corpora/张爱玲/{f}", encoding="utf-8") as fp:
+            zal.extend(segmenter.segment(fp.read()))
+
+# Compare corpora
+results = compare_corpora(
+    moyan, zal,
+    filters={"min_count": 5, "max_p": 0.05, "min_word_length": 2}
+)
+results.sort_values("rel_freqA", ascending=False).head(20)
+```
+
 <br>
 
 <h3 id="extract_mfw">qhchina.analytics.stylometry.extract_mfw() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L54" class="source-link" title="View source on GitHub">[source]</a></h3>

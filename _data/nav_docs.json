@@ -505,6 +505,18 @@
       {
         "name": "detect_encoding()",
         "anchor": "detect_encoding"
+      },
+      {
+        "name": "download_corpus()",
+        "anchor": "download_corpus"
+      },
+      {
+        "name": "download_file()",
+        "anchor": "download_file"
+      },
+      {
+        "name": "list_remote_corpora()",
+        "anchor": "list_remote_corpora"
       }
     ]
   }

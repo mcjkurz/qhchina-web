@@ -557,6 +557,8 @@ This overrides the parent save method to also save:
 - Temporal word mappings
 - All other model parameters from the parent class
 
+Note: The combined corpus is NOT saved to reduce file size.
+
 **Parameters:**
 - `path` (str): Path to save the model file.
 

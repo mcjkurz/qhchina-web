@@ -213,7 +213,8 @@ contains tokens for a line, sentence, or chunk respectively
 
 Segmentation wrapper for spaCy models.
 
-Note: spaCy Chinese models use spacy-pkuseg, a fork of pkuseg trained on the OntoNotes corpus and co-trained with downstream statistical components (POS tagging, NER, parsing).
+Note: spaCy Chinese models use spacy-pkuseg, a fork of pkuseg trained on the OntoNotes
+corpus and co-trained with downstream statistical components (POS tagging, NER, parsing).
 
 **Parameters:**
 - `model_name`: Name of the spaCy model to use.
