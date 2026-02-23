@@ -400,7 +400,7 @@ corpus sizes.
 
 Note:
     - Only supports Skip-gram (sg=1). CBOW is not supported.
-    - Corpus files must be UNTAGGED. Tagging is done automatically during training.
+    - Corpora must be UNTAGGED. Tagging is done automatically during training.
     - Training does NOT start automatically. Call `train()` explicitly after
       initialization.
 
@@ -474,13 +474,13 @@ Using corpus files::
 
 <pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
-Build vocabulary by streaming through corpus files.
+Build vocabulary by iterating through corpora.
 
 This override builds both period_vocab_counts and the main vocabulary
-in a single pass through the files, then adds temporal base words.
+in a single pass through the corpora, then adds temporal base words.
 
 **Parameters:**
-- `sentences`: Ignored. TempRefWord2Vec uses internal file readers instead.
+- `sentences`: Ignored. TempRefWord2Vec uses internal corpora instead.
   Accepted for API compatibility with the parent class.
 
 <h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L554" class="source-link" title="View source on GitHub">[source]</a></h4>
