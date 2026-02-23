@@ -117,7 +117,7 @@ chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
 
 <!-- API-START -->
 
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L176" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L163" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_fonts</span>()</code></pre>
 
@@ -139,7 +139,7 @@ plt.title('中文標題')  # Now works!
 
 <br>
 
-<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L198" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L185" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">set_font</span>(<span class="sig-param">font</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -171,7 +171,7 @@ qhchina.set_font('Noto Serif TC')
 
 <br>
 
-<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L248" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L235" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_font_path</span>(<span class="sig-param">font</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -194,7 +194,7 @@ path = qhchina.get_font_path('NotoSerifTC-Regular.otf')
 
 <br>
 
-<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L396" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L369" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">current_font</span>()</code></pre>
 
@@ -205,7 +205,7 @@ The current font name, or None if using matplotlib defaults.
 
 <br>
 
-<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L285" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L272" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">download_fonts</span>(<span class="sig-param">fonts</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -235,7 +235,7 @@ qhchina.download_fonts('NotoSerifTC-Regular.otf')
 
 <br>
 
-<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L327" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L314" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">list_remote_fonts</span>()</code></pre>
 
@@ -253,7 +253,7 @@ qhchina.list_remote_fonts()
 
 <br>
 
-<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L350" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L337" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">list_cached_fonts</span>()</code></pre>
 
@@ -267,7 +267,7 @@ List of dicts with font information:
 
 <br>
 
-<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L416" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L389" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">clear_cache</span>()</code></pre>
 
@@ -282,7 +282,7 @@ qhchina.list_cached_fonts()
 
 <br>
 
-<h3 id="get_cache_dir">qhchina.helpers.fonts.get_cache_dir() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L50" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_cache_dir">qhchina.helpers.fonts.get_cache_dir() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L51" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_cache_dir</span>()</code></pre>
 

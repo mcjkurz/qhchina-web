@@ -69,6 +69,14 @@
         "anchor": "corpus-load"
       },
       {
+        "name": "Corpus.load_cached()",
+        "anchor": "corpus-load_cached"
+      },
+      {
+        "name": "Corpus.load_folder()",
+        "anchor": "corpus-load_folder"
+      },
+      {
         "name": "Corpus.mattr()",
         "anchor": "corpus-mattr"
       },
@@ -83,6 +91,10 @@
       {
         "name": "Corpus.save()",
         "anchor": "corpus-save"
+      },
+      {
+        "name": "Corpus.save_folder()",
+        "anchor": "corpus-save_folder"
       },
       {
         "name": "Corpus.shuffle()",
