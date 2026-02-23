@@ -154,7 +154,7 @@ df = matrix.to_dataframe()
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L243" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">FilterOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
@@ -170,15 +170,16 @@ Type definition for filter options in collocation analysis.
     <span class="sig-param">word_to_index</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, int]</span>
 )</code></pre>
 
-Co-occurrence matrix with flexible indexing by word or index.
+Co-occurrence matrix with numpy-like indexing by word or index.
 
-Supports flexible indexing:
+Indexing:
 
-- `matrix["word1", "word2"]` - single count (int)
-- `matrix[132, 5234]` - single count (int)
-- `matrix["word1"]` - row as dict {word: count}
-- `matrix["word1", :]` - row as dict {word: count}
-- `matrix[:, "word2"]` - column as dict {word: count}
+- `matrix[w]` or `matrix[i]` → 1D row vector, shape `(V,)`
+- `matrix[w1, w2]` or `matrix[i, j]` → scalar `int`
+- `matrix[[w1, w2]]` → 2D row submatrix, shape `(N, V)`
+- `matrix[w, :]` → 1D row vector, shape `(V,)`
+- `matrix[:, w]` → 1D column vector, shape `(V,)`
+- `matrix[:, [w1, w2]]` → 2D column submatrix, shape `(V, N)`
 
 Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 
@@ -194,13 +195,15 @@ Internally stores data as a scipy sparse CSR matrix for memory efficiency.
 matrix = cooc_matrix(documents, horizon=5)
 matrix["fox", "dog"]
 42
-matrix["fox"]
-{'quick': 10, 'brown': 8, 'dog': 42, ...}
+matrix["fox"]                          # 1D row vector
+array([0, 0, 10, 8, 42, ...])
+matrix[["fox", "dog"]]                 # 2D submatrix
+array([[0, 0, 10, ...], [0, 3, 0, ...]])
 df = matrix.to_dataframe()
 arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L152" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
@@ -214,7 +217,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L180" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -225,7 +228,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L169" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
@@ -238,7 +241,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L591" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L583" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -335,7 +338,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L911" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L903" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -356,10 +359,11 @@ corpora. When `vocab` is not provided, requires a restartable iterable
 file-backed iterators, and restartable generator classes all work;
 single-use generators require a pre-built `vocab`.
 
-Returns a CoocMatrix object with flexible indexing:
+Returns a CoocMatrix object with numpy-like indexing:
 
-- `matrix["word1", "word2"]` - single count
-- `matrix["word1"]` - row as dict {word: count}
+- `matrix["word1", "word2"]` - single count (int)
+- `matrix["word1"]` - 1D row vector, shape (V,)
+- `matrix[["word1", "word2"]]` - 2D row submatrix, shape (N, V)
 - `matrix.to_dataframe()` - pandas DataFrame
 - `matrix.to_dense()` - numpy array
 
@@ -394,11 +398,13 @@ Returns a CoocMatrix object with flexible indexing:
 **Example:**
 ```python
 matrix = cooc_matrix(documents, horizon=5)
-matrix["fox", "dog"]      # Get count for word pair
+matrix["fox", "dog"]      # Scalar count
 42
-matrix["fox"]             # Get all co-occurrences for "fox"
-{'quick': 10, 'brown': 8, 'dog': 42, ...}
-df = matrix.to_dataframe()  # Convert to DataFrame if needed
+matrix["fox"]             # 1D row vector, shape (V,)
+array([0, 0, 10, 8, 42, ...])
+matrix[["fox", "dog"]]    # 2D submatrix, shape (2, V)
+array([[0, 0, 10, ...], [0, 3, 0, ...]])
+df = matrix.to_dataframe()
 
 # With predefined vocabulary (no filtering applied)
 matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
@@ -406,7 +412,7 @@ matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1130" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1125" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
