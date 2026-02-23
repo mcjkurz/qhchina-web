@@ -43,12 +43,6 @@ functions:
     anchor: document
   - name: Document.get()
     anchor: document-get
-  - name: TempRefCorpus
-    anchor: temprefcorpus
-  - name: TempRefCorpus.add()
-    anchor: temprefcorpus-add
-  - name: TempRefCorpus.add_many()
-    anchor: temprefcorpus-add_many
 has_examples: True
 import_from: qhchina.corpus
 ---
@@ -393,7 +387,7 @@ print(f"Hapax ratio: {len(hapax) / corpus.vocab_size:.1%}")
 Hapax ratio: 48.2%
 ```
 
-<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L921" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-load">qhchina.corpus.Corpus.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L916" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | Path</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -548,7 +542,7 @@ train_stratified, test_stratified = corpus.split(
 )
 ```
 
-<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L998" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="corpus-to_dataframe">qhchina.corpus.Corpus.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L991" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -626,81 +620,6 @@ Supports flexible indexing:
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">Any</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Get metadata value with default.
-
-<br>
-
-<h3 id="temprefcorpus">qhchina.corpus.TempRefCorpus <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1050" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">TempRefCorpus</span>(
-    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">label</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
-    <span class="sig-param">targets</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
-    <span class="sig-param">metadata</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>
-)</code></pre>
-
-Corpus with automatic target word tagging for TempRefWord2Vec.
-
-This subclass tags target words with a period label when documents are added.
-For example, if label="1800s" and targets=["bread"], then "bread" becomes "bread_1800s".
-
-Use this to prepare pre-tagged corpus files for memory-efficient TempRefWord2Vec training.
-
-**Parameters:**
-- `documents`: Optional initial documents (list of token lists).
-- `label`: Time period label for tagging (e.g., "1800s", "ming", "period1").
-- `targets`: List of target words to tag.
-- `**metadata`: Default metadata for all documents.
-
-**Example:**
-```python
-from qhchina import TempRefCorpus
-
-# Create corpus for 1800s period
-corpus = TempRefCorpus(label="1800s", targets=["bread", "money"])
-corpus.add(["bread", "is", "good"])  # "bread" -> "bread_1800s"
-corpus.add(["money", "talks"])       # "money" -> "money_1800s"
-
-# Save for streaming training
-corpus.save("1800s.txt")
-
-# Use with TempRefWord2Vec
-model = TempRefWord2Vec(
-    corpora={"1800s": "1800s.txt", "1900s": "1900s.txt"},
-    targets=["bread", "money"],
-    sg=1
-)
-```
-
-<h4 id="temprefcorpus-add">qhchina.corpus.TempRefCorpus.add() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1096" class="source-link" title="View source on GitHub">[source]</a></h4>
-
-<pre class="signature"><code><span class="sig-name">add</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">doc_id</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">metadata</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>)</code></pre>
-
-Add a document with target words tagged.
-
-Target words are automatically tagged with the period label.
-For example, if label="1800s" and "bread" is a target, it becomes "bread_1800s".
-
-**Parameters:**
-- `tokens`: List of string tokens.
-- `doc_id`: Optional document ID.
-- `**metadata`: Document metadata.
-
-**Returns:**
-The document ID.
-
-<h4 id="temprefcorpus-add_many">qhchina.corpus.TempRefCorpus.add_many() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/corpus.py#L1122" class="source-link" title="View source on GitHub">[source]</a></h4>
-
-<pre class="signature"><code><span class="sig-name">add_many</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>, <span class="sig-param">metadata_list</span><span class="sig-punct">:</span> <span class="sig-type">list[dict[str, Any]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">shared_metadata</span><span class="sig-punct">:</span> <span class="sig-type">Any</span>)</code></pre>
-
-Add multiple documents with target words tagged.
-
-**Parameters:**
-- `documents`: List of token lists.
-- `metadata_list`: Optional per-document metadata.
-- `**shared_metadata`: Metadata applied to all documents.
-
-**Returns:**
-List of document IDs.
 
 <br>
 

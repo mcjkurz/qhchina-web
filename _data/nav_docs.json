@@ -87,18 +87,6 @@
       {
         "name": "Document.get()",
         "anchor": "document-get"
-      },
-      {
-        "name": "TempRefCorpus",
-        "anchor": "temprefcorpus"
-      },
-      {
-        "name": "TempRefCorpus.add()",
-        "anchor": "temprefcorpus-add"
-      },
-      {
-        "name": "TempRefCorpus.add_many()",
-        "anchor": "temprefcorpus-add_many"
       }
     ]
   },
