@@ -154,7 +154,7 @@ df = matrix.to_dataframe()
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L252" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L251" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">FilterOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
 
@@ -162,7 +162,7 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L40" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">CoocMatrix</span>(
     <span class="sig-param">matrix</span><span class="sig-punct">:</span> <span class="sig-type">scipy.sparse._csr.csr_matrix</span>,
@@ -200,7 +200,7 @@ df = matrix.to_dataframe()
 arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L161" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L160" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
@@ -214,7 +214,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L189" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -225,7 +225,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L178" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L177" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
@@ -238,7 +238,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L538" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L690" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -251,14 +251,20 @@ Warning: This may use significant memory for large vocabularies.
     <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>,
     <span class="sig-param">alternative</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'greater'</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'obs_local'</span>,
-    <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
+    <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>
 )</code></pre>
 
-Find collocates for target words within a corpus of sentences.
+Find collocates for target words in a corpus of sentences.
+
+Processes data in streaming batches to keep memory low even for very large
+corpora. Requires a restartable iterable (iterated twice: once for
+vocabulary building, once for counting). Lists, file-backed iterators, and
+restartable generator classes all work; single-use generators do not.
 
 **Parameters:**
-- `sentences` (Iterable[list[str]]): Iterable of tokenized sentences, where each 
-  sentence is a list of tokens. Can be a list or any other iterable.
+- `sentences` (Iterable[list[str]]): Restartable iterable of tokenized
+  sentences (each sentence a list of string tokens).
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
@@ -302,15 +308,17 @@ Find collocates for target words within a corpus of sentences.
   - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
   - None: No correction (default).
 - `as_dataframe` (bool): If True, return results as a pandas DataFrame. Default is True.
-- `max_sentence_length` (int | None): Maximum sentence length for preprocessing. 
-  Used by both 'window' and 'sentence' methods. Longer sentences will be truncated 
-  to avoid memory bloat from outliers. Set to None for no limit. Default is 256.
+- `max_sentence_length` (int | None): Maximum sentence length. Longer sentences 
+  are truncated to avoid memory bloat from outliers. Set to None for no limit.
+  Default is 256.
 - `alternative` (str): Alternative hypothesis for Fisher's exact test. Options are:
   'greater' (test if observed co-occurrence is greater than expected, default),
   'less' (test if observed is less than expected), or 'two-sided' (test if 
   observed differs from expected).
 - `sort_by` (str): Field to sort results by. Default is 'obs_local'.
 - `ascending` (bool): Sort direction. Default is False (descending).
+- `batch_words` (int): Target number of tokens per processing batch. Larger values
+  use more memory but reduce per-batch overhead. Default is 100,000.
 
 **Returns:**
 list[dict] | pd.DataFrame: Collocation results with the following fields:
@@ -327,7 +335,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L862" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1010" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -390,7 +398,7 @@ matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1117" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1265" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
