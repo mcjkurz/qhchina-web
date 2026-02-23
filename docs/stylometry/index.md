@@ -644,7 +644,9 @@ DataFrame with columns: doc_id, author, yule_k, token_count, type_count
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'fisher'</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>
+    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'rel_ratio'</span>,
+    <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
 )</code></pre>
 
 Compare two corpora to identify statistically significant differences in word usage.
@@ -683,6 +685,8 @@ Compare two corpora to identify statistically significant differences in word us
     recommended for corpus comparison).
   - None: No correction (default).
 - `as_dataframe` (bool): Whether to return a pandas DataFrame.
+- `sort_by` (str): Field to sort results by. Default is 'rel_ratio'.
+- `ascending` (bool): Sort direction. Default is False (descending).
 
 **Returns:**
 If as_dataframe is True: pandas.DataFrame containing information about each 

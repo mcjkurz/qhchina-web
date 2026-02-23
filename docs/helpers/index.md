@@ -53,11 +53,11 @@ Working with Chinese text often requires proper font configuration for visualiza
 **Basic Font Setup**
 
 ```python
-from qhchina.helpers import load_fonts, set_font
+from qhchina.helpers import load_fonts
 import matplotlib.pyplot as plt
 
-# Load fonts and set Traditional Chinese serif as default
-load_fonts('serif-tc')
+# Load the default CJK font for matplotlib
+load_fonts()
 
 # Create a plot with Chinese text
 plt.figure(figsize=(8, 6))
@@ -76,9 +76,8 @@ import matplotlib.pyplot as plt
 # Use your own font file
 set_font('/path/to/your/custom-font.otf')
 
-# Or set it when loading fonts
-from qhchina.helpers import load_fonts
-load_fonts(target_font='/path/to/your/custom-font.ttf')
+# Or use a font from the qhchina-data repository
+set_font('NotoSerifTC-Regular.otf')
 
 # Now your plots will use the custom font
 plt.figure(figsize=(8, 6))
