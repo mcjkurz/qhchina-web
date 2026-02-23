@@ -264,7 +264,7 @@ Find collocates for target words within a corpus of sentences.
 
 **Parameters:**
 - `sentences` (Iterable[list[str]]): Iterable of tokenized sentences, where each 
-  sentence is a list of tokens. Can be a list, Corpus, or any other iterable.
+  sentence is a list of tokens. Can be a list or any other iterable.
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
@@ -355,7 +355,7 @@ Returns a CoocMatrix object with flexible indexing:
 
 **Parameters:**
 - `documents`: Iterable of tokenized documents, where each document is a list of 
-  tokens. Can be a list, Corpus, or any other iterable.
+  tokens. Can be a list or any other iterable.
 - `horizon`: Context window size relative to each word. Only applicable for method='window'.
   If not provided, defaults to 5 for window method. Must not be provided for 
   method='document'.

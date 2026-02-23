@@ -293,7 +293,7 @@ Path to ~/.cache/qhchina/fonts/
 
 <br>
 
-<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L58" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L62" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_text</span>(<span class="sig-param">filename</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
 
@@ -309,7 +309,7 @@ Loads text from a file.
 
 <br>
 
-<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L79" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L83" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_texts</span>(<span class="sig-param">filenames</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
 
@@ -325,7 +325,7 @@ Loads text from multiple files.
 
 <br>
 
-<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L99" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L103" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_stopwords</span>(<span class="sig-param">language</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_sim'</span>)</code></pre>
 
@@ -349,7 +349,7 @@ Set of stopwords (combined from all matching files)
 
 <br>
 
-<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L193" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L197" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">split_into_chunks</span>(<span class="sig-param">sequence</span>, <span class="sig-param">chunk_size</span>, <span class="sig-param">overlap</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>)</code></pre>
 
@@ -372,7 +372,7 @@ doesn't divide evenly.
 
 <br>
 
-<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L167" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L171" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_stopword_languages</span>()</code></pre>
 
@@ -383,7 +383,7 @@ List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
 
 <br>
 
-<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L16" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L20" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">detect_encoding</span>(<span class="sig-param">filename</span>, <span class="sig-param">num_bytes</span> <span class="sig-punct">=</span> <span class="sig-default">10000</span>)</code></pre>
 

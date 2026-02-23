@@ -424,7 +424,7 @@ Fit the LDA model to the given documents.
 
 **Parameters:**
 - `documents`: Iterable of tokenized documents (each document is a list of tokens).
-  Can be a list, Corpus, or any other iterable.
+  Can be a list or any other iterable.
 
 <h4 id="ldagibbssampler-get_document_topics">qhchina.analytics.topicmodels.LDAGibbsSampler.get_document_topics() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L583" class="source-link" title="View source on GitHub">[source]</a></h4>
 

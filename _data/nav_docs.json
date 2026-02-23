@@ -5,128 +5,6 @@
     "functions": []
   },
   {
-    "name": "Corpus",
-    "url": "/docs/corpus/",
-    "functions": [
-      {
-        "name": "Corpus",
-        "anchor": "corpus"
-      },
-      {
-        "name": "Corpus.add()",
-        "anchor": "corpus-add"
-      },
-      {
-        "name": "Corpus.add_many()",
-        "anchor": "corpus-add_many"
-      },
-      {
-        "name": "Corpus.clear_cache()",
-        "anchor": "corpus-clear_cache"
-      },
-      {
-        "name": "Corpus.count()",
-        "anchor": "corpus-count"
-      },
-      {
-        "name": "Corpus.describe()",
-        "anchor": "corpus-describe"
-      },
-      {
-        "name": "Corpus.download()",
-        "anchor": "corpus-download"
-      },
-      {
-        "name": "Corpus.filter()",
-        "anchor": "corpus-filter"
-      },
-      {
-        "name": "Corpus.get()",
-        "anchor": "corpus-get"
-      },
-      {
-        "name": "Corpus.groupby()",
-        "anchor": "corpus-groupby"
-      },
-      {
-        "name": "Corpus.hapax_dislegomena()",
-        "anchor": "corpus-hapax_dislegomena"
-      },
-      {
-        "name": "Corpus.hapax_legomena()",
-        "anchor": "corpus-hapax_legomena"
-      },
-      {
-        "name": "Corpus.list_cached()",
-        "anchor": "corpus-list_cached"
-      },
-      {
-        "name": "Corpus.list_remote()",
-        "anchor": "corpus-list_remote"
-      },
-      {
-        "name": "Corpus.load()",
-        "anchor": "corpus-load"
-      },
-      {
-        "name": "Corpus.load_cached()",
-        "anchor": "corpus-load_cached"
-      },
-      {
-        "name": "Corpus.load_folder()",
-        "anchor": "corpus-load_folder"
-      },
-      {
-        "name": "Corpus.mattr()",
-        "anchor": "corpus-mattr"
-      },
-      {
-        "name": "Corpus.metadata_values()",
-        "anchor": "corpus-metadata_values"
-      },
-      {
-        "name": "Corpus.remove()",
-        "anchor": "corpus-remove"
-      },
-      {
-        "name": "Corpus.save()",
-        "anchor": "corpus-save"
-      },
-      {
-        "name": "Corpus.save_folder()",
-        "anchor": "corpus-save_folder"
-      },
-      {
-        "name": "Corpus.shuffle()",
-        "anchor": "corpus-shuffle"
-      },
-      {
-        "name": "Corpus.split()",
-        "anchor": "corpus-split"
-      },
-      {
-        "name": "Corpus.to_dataframe()",
-        "anchor": "corpus-to_dataframe"
-      },
-      {
-        "name": "Corpus.tokenize()",
-        "anchor": "corpus-tokenize"
-      },
-      {
-        "name": "Corpus.type_token_ratio()",
-        "anchor": "corpus-type_token_ratio"
-      },
-      {
-        "name": "Document",
-        "anchor": "document"
-      },
-      {
-        "name": "Document.get()",
-        "anchor": "document-get"
-      }
-    ]
-  },
-  {
     "name": "Preprocessing",
     "url": "/docs/preprocessing/",
     "functions": [
@@ -515,6 +393,14 @@
       {
         "name": "compute_yule_k()",
         "anchor": "compute_yule_k"
+      },
+      {
+        "name": "type_token_ratio()",
+        "anchor": "type_token_ratio"
+      },
+      {
+        "name": "mattr()",
+        "anchor": "mattr"
       }
     ]
   },
