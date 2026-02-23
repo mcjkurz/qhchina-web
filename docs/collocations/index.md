@@ -64,18 +64,10 @@ print(collocates.head())
 **Comparing Collocates Across Authors**
 
 ```python
-from qhchina import Corpus
 from qhchina.analytics.collocations import find_collocates
 
-corpus = Corpus()
-# ... add documents with author metadata ...
-
-# Compare how "爱情" is used by different authors
-luxun = corpus.filter(author='鲁迅')
-bingxin = corpus.filter(author='冰心')
-
-luxun_collocates = find_collocates(luxun, ["爱情"], horizon=3)
-bingxin_collocates = find_collocates(bingxin, ["爱情"], horizon=3)
+luxun_collocates = find_collocates(luxun_texts, ["爱情"], horizon=3)
+bingxin_collocates = find_collocates(bingxin_texts, ["爱情"], horizon=3)
 ```
 
 **Directional Collocates**

@@ -109,16 +109,7 @@ from qhchina.analytics import TempRefWord2Vec
 # Track how key concepts evolved
 target_words = ["自由", "爱情", "革命"]
 
-# Step 1: Create untagged corpus files (tagging is automatic)
-corpus_1920s = Corpus(sentences_1920s)
-corpus_1920s.shuffle()
-corpus_1920s.save("1920s.txt")
-
-corpus_2000s = Corpus(sentences_2000s)
-corpus_2000s.shuffle()
-corpus_2000s.save("2000s.txt")
-
-# Step 2: Initialize model with file paths
+# Step 2: Initialize model with file paths, one tokenized sentence per line
 model = TempRefWord2Vec(
     sentences={"1920s": "1920s.txt", "2000s": "2000s.txt"},
     targets=target_words,
@@ -565,8 +556,6 @@ This overrides the parent save method to also save:
 - Target words and labels  
 - Temporal word mappings
 - All other model parameters from the parent class
-
-Note: The combined corpus is NOT saved to reduce file size.
 
 **Parameters:**
 - `path` (str): Path to save the model file.

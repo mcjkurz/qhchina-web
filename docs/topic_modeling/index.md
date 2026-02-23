@@ -100,18 +100,14 @@ lda = LDAGibbsSampler.load("model.npy")
 **Comparing Topics Across Literary Periods**
 
 ```python
-from qhchina import Corpus
 from qhchina.analytics.topicmodels import LDAGibbsSampler
-
-corpus = Corpus()
-# ... add documents with period metadata ...
-
-# Compare themes in May Fourth vs contemporary literature
-may_fourth = corpus.filter(period="1920s")
-contemporary = corpus.filter(period="2000s")
 
 lda_early = LDAGibbsSampler(n_topics=5, iterations=100)
 lda_late = LDAGibbsSampler(n_topics=5, iterations=100)
+
+# each text is a list of tokens
+may_fourth = [text1, text2, text3, ...]
+contemporary = [text1, text2, text3, ...]
 
 lda_early.fit(may_fourth)
 lda_late.fit(contemporary)
