@@ -21,8 +21,20 @@
         "anchor": "corpus-add_many"
       },
       {
+        "name": "Corpus.clear_cache()",
+        "anchor": "corpus-clear_cache"
+      },
+      {
+        "name": "Corpus.count()",
+        "anchor": "corpus-count"
+      },
+      {
         "name": "Corpus.describe()",
         "anchor": "corpus-describe"
+      },
+      {
+        "name": "Corpus.download()",
+        "anchor": "corpus-download"
       },
       {
         "name": "Corpus.filter()",
@@ -43,6 +55,14 @@
       {
         "name": "Corpus.hapax_legomena()",
         "anchor": "corpus-hapax_legomena"
+      },
+      {
+        "name": "Corpus.list_cached()",
+        "anchor": "corpus-list_cached"
+      },
+      {
+        "name": "Corpus.list_remote()",
+        "anchor": "corpus-list_remote"
       },
       {
         "name": "Corpus.load()",
@@ -75,6 +95,10 @@
       {
         "name": "Corpus.to_dataframe()",
         "anchor": "corpus-to_dataframe"
+      },
+      {
+        "name": "Corpus.tokenize()",
+        "anchor": "corpus-tokenize"
       },
       {
         "name": "Corpus.type_token_ratio()",
@@ -529,24 +553,36 @@
         "anchor": "load_fonts"
       },
       {
-        "name": "current_font()",
-        "anchor": "current_font"
-      },
-      {
         "name": "set_font()",
         "anchor": "set_font"
       },
       {
-        "name": "list_available_fonts()",
-        "anchor": "list_available_fonts"
-      },
-      {
-        "name": "list_font_aliases()",
-        "anchor": "list_font_aliases"
-      },
-      {
         "name": "get_font_path()",
         "anchor": "get_font_path"
+      },
+      {
+        "name": "current_font()",
+        "anchor": "current_font"
+      },
+      {
+        "name": "download_fonts()",
+        "anchor": "download_fonts"
+      },
+      {
+        "name": "list_remote_fonts()",
+        "anchor": "list_remote_fonts"
+      },
+      {
+        "name": "list_cached_fonts()",
+        "anchor": "list_cached_fonts"
+      },
+      {
+        "name": "clear_cache()",
+        "anchor": "clear_cache"
+      },
+      {
+        "name": "get_cache_dir()",
+        "anchor": "get_cache_dir"
       },
       {
         "name": "load_text()",

@@ -5,16 +5,22 @@ permalink: /docs/helpers/
 functions:
   - name: load_fonts()
     anchor: load_fonts
-  - name: current_font()
-    anchor: current_font
   - name: set_font()
     anchor: set_font
-  - name: list_available_fonts()
-    anchor: list_available_fonts
-  - name: list_font_aliases()
-    anchor: list_font_aliases
   - name: get_font_path()
     anchor: get_font_path
+  - name: current_font()
+    anchor: current_font
+  - name: download_fonts()
+    anchor: download_fonts
+  - name: list_remote_fonts()
+    anchor: list_remote_fonts
+  - name: list_cached_fonts()
+    anchor: list_cached_fonts
+  - name: clear_cache()
+    anchor: clear_cache
+  - name: get_cache_dir()
+    anchor: get_cache_dir
   - name: load_text()
     anchor: load_text
   - name: load_texts()
@@ -111,107 +117,179 @@ chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
 
 <!-- API-START -->
 
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L116" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L176" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code><span class="sig-name">load_fonts</span>(<span class="sig-param">target_font</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'Noto Sans CJK TC'</span>, <span class="sig-param">verbose</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">load_fonts</span>()</code></pre>
 
-Load CJK fonts into matplotlib and optionally set a default font.
+Load the default CJK font for matplotlib.
 
-This function is thread-safe and can be called from multiple threads simultaneously.
-
-**Parameters:**
-- `target_font`: Font name or alias to set as default. Can be:
-  - Full font name: 'Noto Sans CJK TC', 'Noto Serif TC', 'Noto Serif SC'
-  - Alias: 'sans', 'sans-tc', 'sans-sc', 'serif-tc', 'serif-sc'
-  - None: Load fonts but don't set a default
-- `verbose`: If True, print detailed loading information and return font info
+Downloads the font from GitHub if not already cached.
+This is the simplest way to get started with Chinese text in plots.
 
 **Returns:**
-list[dict] | None: Only when verbose=True, returns a list of dictionaries,
-each containing:
-- 'font_name': Full font name (e.g., 'Noto Sans CJK TC')
-- 'aliases': List of aliases for the font (e.g., ['sans', 'sans-tc'])
-- 'path': Absolute path to the font file
-When verbose=False, returns None.
-
-**Raises:**
-- `OSError`: If fonts cannot be copied to matplotlib directory.
-
-<br>
-
-<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L226" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">current_font</span>()</code></pre>
-
-Get the currently configured font name.
-
-**Returns:**
-The current font name, or None if no font is configured.
-
-**Raises:**
-- `RuntimeError`: If there's an error accessing font configuration.
-
-<br>
-
-<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L49" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">set_font</span>(<span class="sig-param">font</span> <span class="sig-punct">=</span> <span class="sig-default">'Noto Sans CJK TC'</span>)</code></pre>
-
-Set the matplotlib font for Chinese text rendering.
-
-This function is thread-safe.
-
-**Parameters:**
-- `font`: Font name, alias, or path to font file. Can be:
-  - Full font name: 'Noto Sans CJK TC', 'Noto Serif TC', 'Noto Serif SC'
-  - Alias: 'sans', 'sans-tc', 'sans-sc', 'serif-tc', 'serif-sc'
-  - Path to font file: '/path/to/font.otf' or '/path/to/font.ttf'
-
-**Raises:**
-- `FileNotFoundError`: If a font file path is provided but doesn't exist.
-- `ValueError`: If the font cannot be loaded or set.
-
-<br>
-
-<h3 id="list_available_fonts">qhchina.helpers.fonts.list_available_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L250" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">list_available_fonts</span>()</code></pre>
-
-List all available CJK fonts bundled with the package.
-
-Returns a dictionary mapping font file names to their internal font names.
-
-<br>
-
-<h3 id="list_font_aliases">qhchina.helpers.fonts.list_font_aliases() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L269" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">list_font_aliases</span>()</code></pre>
-
-List all available font aliases for convenient access.
-
-Returns a dictionary mapping aliases to their full font names.
-
-<br>
-
-<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L200" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">get_font_path</span>(<span class="sig-param">font</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'Noto Sans CJK TC'</span>)</code></pre>
-
-Get the file path for a CJK font (for use with WordCloud, etc.).
-
-**Parameters:**
-- `font`: Font name or alias. Can be:
-  - Full font name: 'Noto Sans CJK TC', 'Noto Serif TC', 'Noto Serif SC'
-  - Alias: 'sans', 'sans-tc', 'sans-sc', 'serif-tc', 'serif-sc'
-
-**Returns:**
-(str) Absolute path to the font file
+The font name that was set (e.g., 'Noto Sans CJK TC')
 
 **Example:**
 ```python
-font_path = qhchina.get_font_path()
-wc = WordCloud(font_path=font_path, ...)
+import qhchina
+qhchina.load_fonts()
+'Noto Sans CJK TC'
+plt.title('中文標題')  # Now works!
 ```
+
+<br>
+
+<h3 id="set_font">qhchina.helpers.fonts.set_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L198" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">set_font</span>(<span class="sig-param">font</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Set matplotlib to use a specific font.
+
+**Parameters:**
+- `font`: One of:
+  - Font file name: 'NotoSerifTC-Regular.otf' (downloads from GitHub if needed)
+  - Local file path: '/path/to/font.otf' (must exist)
+  - Font name: 'Noto Serif TC', 'SimHei', etc. (sets rcParams directly)
+
+**Returns:**
+The font name that was set
+
+**Example:**
+```python
+# Use a font from qhchina-data (downloads if needed)
+qhchina.set_font('NotoSerifTC-Regular.otf')
+'Noto Serif TC'
+
+# Use a local font file
+qhchina.set_font('/path/to/MyFont.otf')
+'My Font'
+
+# Use an already-loaded or system font by name
+qhchina.set_font('Noto Serif TC')
+'Noto Serif TC'
+```
+
+<br>
+
+<h3 id="get_font_path">qhchina.helpers.fonts.get_font_path() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L248" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">get_font_path</span>(<span class="sig-param">font</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Get the file path for a font (for use with WordCloud, etc.).
+
+**Parameters:**
+- `font`: Font file name (e.g., 'NotoSerifTC-Regular.otf') or None for default.
+  Can also be a local file path.
+
+**Returns:**
+Absolute path to the font file
+
+**Example:**
+```python
+path = qhchina.get_font_path()  # default font
+wc = WordCloud(font_path=path, ...)
+
+path = qhchina.get_font_path('NotoSerifTC-Regular.otf')
+```
+
+<br>
+
+<h3 id="current_font">qhchina.helpers.fonts.current_font() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L396" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">current_font</span>()</code></pre>
+
+Get the currently configured matplotlib font name.
+
+**Returns:**
+The current font name, or None if using matplotlib defaults.
+
+<br>
+
+<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L285" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">download_fonts</span>(<span class="sig-param">fonts</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Download font files from the qhchina-data repository.
+
+**Parameters:**
+- `fonts`: Font file name(s) to download. If None, downloads ALL available fonts.
+  Examples:
+  - None: download all fonts
+  - 'NotoSerifTC-Regular.otf': download single font
+  - ['NotoSerifTC-Regular.otf', 'NotoSerifSC-Regular.otf']: download multiple
+
+**Returns:**
+Dict mapping file names to font names:
+{'NotoSerifTC-Regular.otf': 'Noto Serif TC', ...}
+
+**Example:**
+```python
+# Download all fonts
+qhchina.download_fonts()
+{'NotoSansTCSC-Regular.otf': 'Noto Sans CJK TC', ...}
+
+# Download specific font
+qhchina.download_fonts('NotoSerifTC-Regular.otf')
+{'NotoSerifTC-Regular.otf': 'Noto Serif TC'}
+```
+
+<br>
+
+<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L327" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">list_remote_fonts</span>()</code></pre>
+
+Query GitHub for available fonts in the qhchina-data repository.
+
+**Returns:**
+List of dicts with font information:
+[{'file': 'NotoSansTCSC-Regular.otf', 'size': 17279824, 'size_mb': 16.5}, ...]
+
+**Example:**
+```python
+qhchina.list_remote_fonts()
+[{'file': 'NotoSansTCSC-Regular.otf', 'size': 17279824, 'size_mb': 16.5}, ...]
+```
+
+<br>
+
+<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L350" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">list_cached_fonts</span>()</code></pre>
+
+List fonts currently in the local cache.
+
+**Returns:**
+List of dicts with font information:
+[{'file': 'NotoSansTCSC-Regular.otf', 'font_name': 'Noto Sans CJK TC', 
+  'path': '/Users/.../.cache/qhchina/fonts/NotoSansTCSC-Regular.otf', 
+  'size_mb': 16.5}, ...]
+
+<br>
+
+<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L416" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">clear_cache</span>()</code></pre>
+
+Remove all cached fonts.
+
+**Example:**
+```python
+qhchina.clear_cache()
+qhchina.list_cached_fonts()
+[]
+```
+
+<br>
+
+<h3 id="get_cache_dir">qhchina.helpers.fonts.get_cache_dir() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L50" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">get_cache_dir</span>()</code></pre>
+
+Get the font cache directory path.
+
+**Returns:**
+Path to ~/.cache/qhchina/fonts/
 
 <br>
 
@@ -253,19 +331,25 @@ Loads text from multiple files.
 
 Load stopwords from a file for the specified language.
 
+Supports prefix matching: if the language code doesn't match an exact file,
+all files starting with that prefix will be loaded and combined.
+
 **Parameters:**
-- `language`: Language code (default: "zh_sim" for simplified Chinese).
+- `language`: Language code or prefix (default: "zh_sim" for simplified Chinese).
+  - Exact match: "zh_sim" loads zh_sim.txt only
+  - Prefix match: "zh" loads all files starting with "zh" (zh_sim, zh_tr, zh_cl_sim, zh_cl_tr)
+  - Prefix match: "zh_cl" loads zh_cl_sim.txt and zh_cl_tr.txt
   Use get_stopword_languages() to see available options.
 
 **Returns:**
-Set of stopwords
+Set of stopwords (combined from all matching files)
 
 **Raises:**
-- `ValueError`: If the specified language is not available.
+- `ValueError`: If no matching stopwords files are found.
 
 <br>
 
-<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L169" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L193" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">split_into_chunks</span>(<span class="sig-param">sequence</span>, <span class="sig-param">chunk_size</span>, <span class="sig-param">overlap</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>)</code></pre>
 
@@ -288,7 +372,7 @@ doesn't divide evenly.
 
 <br>
 
-<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L143" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L167" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_stopword_languages</span>()</code></pre>
 
