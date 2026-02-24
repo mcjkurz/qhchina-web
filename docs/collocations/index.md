@@ -397,6 +397,8 @@ Returns a CoocMatrix object with numpy-like indexing:
 
 **Example:**
 ```python
+from qhchina.analytics import cooc_matrix, LineSentenceFile
+documents = LineSentenceFile("corpus.txt")
 matrix = cooc_matrix(documents, horizon=5)
 matrix["fox", "dog"]      # Scalar count
 42
@@ -405,14 +407,11 @@ array([0, 0, 10, 8, 42, ...])
 matrix[["fox", "dog"]]    # 2D submatrix, shape (2, V)
 array([[0, 0, 10, ...], [0, 3, 0, ...]])
 df = matrix.to_dataframe()
-
-# With predefined vocabulary (no filtering applied)
-matrix = cooc_matrix(documents, vocab=["fox", "dog", "cat"])
 ```
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1125" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1124" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
