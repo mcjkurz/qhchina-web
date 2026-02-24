@@ -498,13 +498,15 @@ Full workflow with segmentation and analysis::
     # Load and segment texts
     moyan_sentences = []
     for filename in os.listdir("corpora/莫言"):
-        with open(f"corpora/莫言/{filename}", encoding="utf-8") as f:
-            moyan_sentences.extend(segmenter.segment(f.read()))
+        if filename.endswith(".txt"):
+            with open(f"corpora/莫言/{filename}", encoding="utf-8") as f:
+                moyan_sentences.extend(segmenter.segment(f.read()))
     
     zal_sentences = []
     for filename in os.listdir("corpora/张爱玲"):
-        with open(f"corpora/张爱玲/{filename}", encoding="utf-8") as f:
-            zal_sentences.extend(segmenter.segment(f.read()))
+        if filename.endswith(".txt"):
+            with open(f"corpora/张爱玲/{filename}", encoding="utf-8") as f:
+                zal_sentences.extend(segmenter.segment(f.read()))
     
     # Compare the two corpora using Fisher's exact test
     results = compare_corpora(
