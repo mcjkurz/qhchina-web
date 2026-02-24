@@ -3,6 +3,8 @@ layout: docs_with_sidebar
 title: Helper Utilities
 permalink: /docs/helpers/
 functions:
+  - name: LineSentenceFile
+    anchor: linesentencefile
   - name: load_fonts()
     anchor: load_fonts
   - name: set_font()
@@ -121,6 +123,36 @@ chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
 ## API Reference
 
 <!-- API-START -->
+
+<h3 id="linesentencefile">qhchina.utils.LineSentenceFile <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/utils.py#L26" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">LineSentenceFile</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">limit</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Restartable iterable that streams sentences from a text file.
+
+Enables memory-efficient training on large corpora by reading sentences 
+directly from disk. File format is one sentence per line, with tokens 
+separated by spaces.
+
+**Parameters:**
+- `filepath`: Path to the corpus file.
+- `limit`: Maximum number of sentences to read. None reads the entire file.
+- `filepath`: Path to the corpus file.
+- `limit`: Maximum number of sentences, or None for unlimited.
+- `sentence_count`: Number of sentences (respects *limit*).
+- `token_count`: Total number of tokens (respects *limit*).
+
+**Example:**
+```python
+reader = LineSentenceFile("corpus.txt")
+for sentence in reader:
+    print(sentence)
+
+# Read only the first 1000 sentences
+reader = LineSentenceFile("corpus.txt", limit=1000)
+```
+
+<br>
 
 <h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L163" class="source-link" title="View source on GitHub">[source]</a></h3>
 

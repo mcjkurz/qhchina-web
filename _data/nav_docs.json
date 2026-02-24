@@ -443,6 +443,10 @@
     "url": "/docs/helpers/",
     "functions": [
       {
+        "name": "LineSentenceFile",
+        "anchor": "linesentencefile"
+      },
+      {
         "name": "load_fonts()",
         "anchor": "load_fonts"
       },
