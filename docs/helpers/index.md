@@ -137,10 +137,6 @@ separated by spaces.
 **Parameters:**
 - `filepath`: Path to the corpus file.
 - `limit`: Maximum number of sentences to read. None reads the entire file.
-- `filepath`: Path to the corpus file.
-- `limit`: Maximum number of sentences, or None for unlimited.
-- `sentence_count`: Number of sentences (respects *limit*).
-- `token_count`: Total number of tokens (respects *limit*).
 
 **Example:**
 ```python
