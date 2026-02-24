@@ -107,10 +107,6 @@
         "anchor": "word2vec-train"
       },
       {
-        "name": "LineSentenceFile",
-        "anchor": "linesentencefile"
-      },
-      {
         "name": "TempRefWord2Vec",
         "anchor": "temprefword2vec"
       },
