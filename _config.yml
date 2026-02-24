@@ -60,4 +60,4 @@ goatcounter_code: qhchina # This will create the URL qhchina.goatcounter.com
 github: [metadata]
 
 # Cache busting version (auto-updated by make_docs.py)
-cache_version: 20260224130019
+cache_version: 20260225001900
