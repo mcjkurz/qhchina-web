@@ -107,10 +107,10 @@ from qhchina.analytics import TempRefWord2Vec, LineSentenceFile
 # Track how key concepts evolved
 target_words = ["自由", "爱情", "革命"]
 
-texts_1920 = LineSentenceFile("1920.txt") # one sentence per line, split by tokens
+texts_1920 = LineSentenceFile("1920.txt") # one sentence per line, words split by spaces
 texts_2000 = LineSentenceFile("2000.txt")
 
-# Step 2: Initialize model with file paths, one tokenized sentence per line
+# Step 2: Initialize model with file paths
 model = TempRefWord2Vec(
     sentences={"1920": texts_1920, "2000": texts_2000},
     targets=target_words,
