@@ -241,7 +241,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L583" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L597" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -338,7 +338,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L903" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L917" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -411,7 +411,7 @@ df = matrix.to_dataframe()
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1124" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1138" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
