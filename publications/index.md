@@ -8,7 +8,7 @@ permalink: /publications/
 
 ## 2026
 
-Kurzynski, Maciej, "From Character to Poem: Nested Contexts and Scalar Limits of Parallelism Detection in Classical Chinese Poetry," *Journal of Open Humanities Data*, forthcoming.
+Kurzynski, Maciej, "[From Character to Poem: Nested Contexts and Scalar Limits of Parallelism Detection in Classical Chinese Poetry](https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.488)," *Journal of Open Humanities Data* 12, 2026:34.
 
 ## 2025
 
