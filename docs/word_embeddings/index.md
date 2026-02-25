@@ -397,7 +397,7 @@ Interpreting Results:
 
 **Example:**
 ```python
-# Using in-memory sentences::
+# Using in-memory sentences:
 from qhchina.analytics import TempRefWord2Vec
 
 # Tokenized sentences from 宋史 and 明史 (untagged)
