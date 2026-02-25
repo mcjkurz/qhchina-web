@@ -698,7 +698,7 @@ If as_dataframe is False: list[dict] where each dict contains information
 
 **Example:**
 ```python
-Compare word usage between two authors::
+# Compare word usage between two authors:
 
 import os
 from qhchina import download_corpus, load_stopwords
@@ -731,10 +731,10 @@ stopwords = load_stopwords("zh")
 results = compare_corpora(
     moyan, zal,
     filters={"min_count": 5, 
-             "max_p": 0.05, 
-             "min_word_length": 2, 
-             "stopwords": stopwords
-             }
+                "max_p": 0.05, 
+                "min_word_length": 2, 
+                "stopwords": stopwords
+                }
 )
 results.to_csv("results.csv", index=False)
 ```
