@@ -710,32 +710,33 @@ download_corpus("莫言", parent_dir="corpora")
 download_corpus("张爱玲", parent_dir="corpora")
 
 # Set up segmenter
-stopwords = load_stopwords("zh")
 segmenter = create_segmenter(
     backend="jieba", 
     strategy="sentence",
-    filters={"stopwords": stopwords}
 )
 
 # Load and segment
 moyan = []
 for f in os.listdir("corpora/莫言"):
-    if f.endswith(".txt"):
-        with open(f"corpora/莫言/{f}", encoding="utf-8") as fp:
-            moyan.extend(segmenter.segment(fp.read()))
+    with open(f"corpora/莫言/{f}", encoding="utf-8") as fp:
+        moyan.extend(segmenter.segment(fp.read()))
 
 zal = []
 for f in os.listdir("corpora/张爱玲"):
-    if f.endswith(".txt"):
-        with open(f"corpora/张爱玲/{f}", encoding="utf-8") as fp:
-            zal.extend(segmenter.segment(fp.read()))
+    with open(f"corpora/张爱玲/{f}", encoding="utf-8") as fp:
+        zal.extend(segmenter.segment(fp.read()))
 
 # Compare corpora
+stopwords = load_stopwords("zh")
 results = compare_corpora(
     moyan, zal,
-    filters={"min_count": 5, "max_p": 0.05, "min_word_length": 2}
+    filters={"min_count": 5, 
+             "max_p": 0.05, 
+             "min_word_length": 2, 
+             "stopwords": stopwords
+             }
 )
-results.sort_values("rel_freqA", ascending=False).head(20)
+results.to_csv("results.csv", index=False)
 ```
 
 <br>

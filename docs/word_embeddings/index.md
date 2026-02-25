@@ -412,7 +412,7 @@ model = TempRefWord2Vec(
 )
 model.train()
 
-# Streaming from text files::
+# Streaming from text files:
 from qhchina.analytics import TempRefWord2Vec, LineSentenceFile
 
 model = TempRefWord2Vec(
