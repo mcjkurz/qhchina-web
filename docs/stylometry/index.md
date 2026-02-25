@@ -659,24 +659,32 @@ Compare two corpora to identify statistically significant differences in word us
 - `method` (str): 'fisher' for Fisher's exact test or 'chi2' or 'chi2_corrected' 
   for the chi-square test. All tests use two-sided alternatives.
 - `filters` (dict): Dictionary of filters to apply to results.
-  All filters (except ``max_adjusted_p``) are applied AFTER the computation of the p-value, but 
-  BEFORE multiple testing correction, defining the "family" of hypotheses being tested. 
-  This maximizes statistical power by not correcting for words that were never of interest.
-  
-  Available filters:
+  Eligibility filters (applied before testing; define the hypothesis family):
   
   - 'min_count': int or tuple - Minimum count threshold(s) for a word to be 
     included (can be a single int for both corpora or tuple (min_countA, 
     min_countB)). Default is 0.
   - 'stopwords': list - Words to exclude from results.
   - 'min_word_length': int - Minimum character length for words.
-  - 'max_p': float - Maximum raw p-value threshold.
-  - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction,
-    applied after correction is computed).
+  
+  These filters are based on word properties (not p-values) and are
+  applied before any statistical tests are computed. They safely reduce the
+  hypothesis family and improve both performance and statistical power.
+  
+  P-value filters (two mutually exclusive workflows):
+  
+  - 'max_p': float - Maximum raw p-value threshold. Only valid when 
+    ``correction`` is None. Use for simple unadjusted hypothesis testing.
+  - 'max_adjusted_p': float - Maximum adjusted p-value. Only valid when 
+    ``correction`` is set. Applied after correction is computed.
+  
+  Using ``max_p`` together with ``correction`` raises a ValueError, because
+  pre-filtering on raw p-values violates the distributional assumptions
+  required by multiple testing procedures (BH, Bonferroni).
     
 - `correction` (str): Multiple testing correction method. When set,
   an ``adjusted_p_value`` column is added to the results. The correction
-  is applied AFTER all other filters, so only words that pass those
+  is applied after eligibility filters, so only words that pass those
   filters count toward the number of tests.
   
   - 'bonferroni': Bonferroni correction (conservative, controls family-wise 
@@ -731,10 +739,10 @@ stopwords = load_stopwords("zh")
 results = compare_corpora(
     moyan, zal,
     filters={"min_count": 5, 
-                "max_p": 0.05, 
-                "min_word_length": 2, 
-                "stopwords": stopwords
-                }
+            "max_p": 0.05, 
+            "min_word_length": 2, 
+            "stopwords": stopwords
+            }
 )
 results.to_csv("results.csv", index=False)
 ```
