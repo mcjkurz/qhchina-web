@@ -37,6 +37,40 @@ functions:
     anchor: temprefword2vec-save
   - name: TempRefWord2Vec.train()
     anchor: temprefword2vec-train
+  - name: DynamicWord2Vec
+    anchor: dynamicword2vec
+  - name: DynamicWord2Vec.build_vocab()
+    anchor: dynamicword2vec-build_vocab
+  - name: DynamicWord2Vec.calculate_semantic_change()
+    anchor: dynamicword2vec-calculate_semantic_change
+  - name: DynamicWord2Vec.calculate_temporal_drift()
+    anchor: dynamicword2vec-calculate_temporal_drift
+  - name: DynamicWord2Vec.get_all_time_vectors()
+    anchor: dynamicword2vec-get_all_time_vectors
+  - name: DynamicWord2Vec.get_time_labels()
+    anchor: dynamicword2vec-get_time_labels
+  - name: DynamicWord2Vec.get_vector()
+    anchor: dynamicword2vec-get_vector
+  - name: DynamicWord2Vec.load()
+    anchor: dynamicword2vec-load
+  - name: DynamicWord2Vec.most_similar()
+    anchor: dynamicword2vec-most_similar
+  - name: DynamicWord2Vec.save()
+    anchor: dynamicword2vec-save
+  - name: DynamicWord2Vec.train()
+    anchor: dynamicword2vec-train
+  - name: BalancedSentenceIterator
+    anchor: balancedsentenceiterator
+  - name: BalancedSentenceIterator.reset()
+    anchor: balancedsentenceiterator-reset
+  - name: SingleCorpusTemporalIterator
+    anchor: singlecorpustemporaliterator
+  - name: TemporalSentence
+    anchor: temporalsentence
+  - name: TemporalSentenceIterator
+    anchor: temporalsentenceiterator
+  - name: TemporalSentenceIterator.reset()
+    anchor: temporalsentenceiterator-reset
   - name: project_2d()
     anchor: project_2d
   - name: get_bias_direction()
@@ -53,7 +87,7 @@ functions:
     anchor: most_similar
   - name: align_vectors()
     anchor: align_vectors
-import_from: ['qhchina.analytics.word2vec', 'qhchina.analytics.tempref_word2vec', 'qhchina.analytics.vectors']
+import_from: ['qhchina.analytics.word2vec', 'qhchina.analytics.vectors']
 include_imported: True
 has_examples: True
 ---
@@ -138,7 +172,7 @@ for transition, word_changes in changes.items():
 
 <!-- API-START -->
 
-<h3 id="word2vec">qhchina.analytics.word2vec.Word2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L24" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="word2vec">qhchina.analytics.word2vec.word2vec_base.Word2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L23" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">Word2Vec</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -227,7 +261,7 @@ vector = model['喜欢']
 similar = model.most_similar('喜欢', topn=5)
 ```
 
-<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.Word2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L213" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.word2vec_base.Word2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L212" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>)</code></pre>
 
@@ -239,7 +273,7 @@ Build vocabulary from sentences.
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
 
-<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.Word2Vec.get_vector() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L934" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.word2vec_base.Word2Vec.get_vector() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L933" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_vector</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">normalize</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -255,7 +289,7 @@ Word vector as numpy array of shape (vector_size,).
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-load">qhchina.analytics.word2vec.Word2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1090" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-load">qhchina.analytics.word2vec.word2vec_base.Word2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L1089" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -267,7 +301,7 @@ Load a model from a file.
 **Returns:**
 Loaded Word2Vec model.
 
-<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.Word2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L983" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.word2vec_base.Word2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L982" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -286,7 +320,7 @@ List of (word, similarity) tuples sorted by descending similarity.
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-save">qhchina.analytics.word2vec.Word2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1058" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-save">qhchina.analytics.word2vec.word2vec_base.Word2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L1057" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -299,7 +333,7 @@ needed during training, not inference.
 **Parameters:**
 - `path`: Path to save the model.
 
-<h4 id="word2vec-similarity">qhchina.analytics.word2vec.Word2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L1023" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-similarity">qhchina.analytics.word2vec.word2vec_base.Word2Vec.similarity() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L1022" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -317,7 +351,7 @@ Cosine similarity between the two words (float between -1 and 1).
 **Raises:**
 - `KeyError`: If either word is not in the vocabulary.
 
-<h4 id="word2vec-train">qhchina.analytics.word2vec.Word2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec.py#L761" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-train">qhchina.analytics.word2vec.word2vec_base.Word2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L760" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train</span>()</code></pre>
 
@@ -334,7 +368,7 @@ Final loss value if calculate_loss is True, None otherwise.
 
 <br>
 
-<h3 id="temprefword2vec">qhchina.analytics.tempref_word2vec.TempRefWord2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L30" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="temprefword2vec">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L126" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">TempRefWord2Vec</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
@@ -435,7 +469,7 @@ model.most_similar("民_宋")
 model.most_similar("民_明")
 ```
 
-<h4 id="temprefword2vec-build_vocab">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L226" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-build_vocab">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L322" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -448,34 +482,49 @@ in a single pass through the corpora, then adds temporal base words.
 - `sentences`: Ignored. TempRefWord2Vec uses internal corpora instead.
   Accepted for API compatibility with the parent class.
 
-<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L528" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-calculate_semantic_change">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L624" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">calculate_semantic_change</span>(<span class="sig-param">target_word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">calculate_semantic_change</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Calculate semantic change by comparing cosine similarities across time periods.
 
 This is the recommended way to analyze temporal embeddings. It compares
-cosine similarity shifts across periods.
+cosine similarity shifts for `word` across every adjacent pair of
+periods stored in the model (in the order they were provided at initialisation).
 
 **Parameters:**
-- `target_word`: Target word to analyze (must be one of the targets specified 
+- `word`: Target word to analyze (must be one of the targets specified
   during initialization).
-- `labels`: Time period labels (optional, defaults to labels from model initialization).
+- `filters`: Optional dict to restrict which reference words are considered.
+  Supported keys:
+  
+  - ``min_word_count`` (int or tuple): Minimum number of occurrences a
+    word must have in **each** period to be included. Pass an int to use
+    the same threshold for every period, or a tuple whose length equals
+    the number of time slices to set per-period thresholds.
+  - ``min_word_length`` (int): Minimum character length of a word.
+  - ``stopwords`` (set): Words to exclude from the reference set.
+  - ``reference_words`` (list/set): Explicit whitelist of reference words.
+  - ``vocab_top_n`` (int): Only consider the union of the top-N most
+    frequent words from each period's corpus.
 
 **Returns:**
-Dict mapping transition names to lists of (word, change) tuples, sorted by 
-change score (descending).
+Dict mapping transition names (e.g. ``"宋_to_明"``) to lists of
+``(word, change)`` tuples sorted by descending change score.
 
 **Example:**
 ```python
-changes = model.calculate_semantic_change("人民")
+changes = model.calculate_semantic_change(
+    "人民",
+    filters={"vocab_top_n": 5000, "min_word_length": 2},
+)
 for transition, word_changes in changes.items():
     print(f"{transition}:")
-    print("Words moved towards:", word_changes[:5])  # Top 5 increases
-    print("Words moved away:", word_changes[-5:])   # Top 5 decreases
+    print("Words moved towards:", word_changes[:5])
+    print("Words moved away:", word_changes[-5:])
 ```
 
-<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L603" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_available_targets">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.get_available_targets() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L728" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_available_targets</span>()</code></pre>
 
@@ -484,7 +533,7 @@ Get the list of target words available for semantic change analysis.
 **Returns:**
 List of target words that were specified during model initialization.
 
-<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L621" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_period_vocab_counts">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.get_period_vocab_counts() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L746" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_period_vocab_counts</span>(<span class="sig-param">period</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -500,7 +549,7 @@ If period is specified: Counter object for that specific period.
 **Raises:**
 - `ValueError`: If the specified period is not found in the model.
 
-<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L612" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-get_time_labels">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L737" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_time_labels</span>()</code></pre>
 
@@ -509,7 +558,7 @@ Get the list of time period labels used in the model.
 **Returns:**
 List of time period labels that were specified during model initialization.
 
-<h4 id="temprefword2vec-load">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L706" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-load">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L831" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -530,7 +579,7 @@ restored.
 **Raises:**
 - `ValueError`: If the file doesn't contain TempRefWord2Vec data.
 
-<h4 id="temprefword2vec-save">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L646" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-save">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L771" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -547,7 +596,7 @@ Note: The combined corpus is NOT saved to reduce file size.
 **Parameters:**
 - `path` (str): Path to save the model file.
 
-<h4 id="temprefword2vec-train">qhchina.analytics.tempref_word2vec.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/tempref_word2vec.py#L490" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="temprefword2vec-train">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L586" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train</span>()</code></pre>
 
@@ -562,6 +611,358 @@ from instance attributes set during initialization via `**kwargs`.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
+
+<br>
+
+<h3 id="dynamicword2vec">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L82" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">DynamicWord2Vec</span>(
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">training_mode</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'joint'</span>,
+    <span class="sig-param">temporal_lambda</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.1</span>,
+    <span class="sig-param">temporal_reg_V</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">procrustes_align</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">sampling_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>,
+    <span class="sig-param">_skip_init</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">kwargs</span>
+)</code></pre>
+
+Word2Vec with time-sliced embeddings for diachronic semantic analysis.
+
+Maintains separate embedding matrices U[t] and V[t] for each time slice t
+with a shared vocabulary.  Two training modes are available:
+
+- **joint** (default): All periods train simultaneously with interleaved
+  batches.  Temporal ℓ2 regularization pulls adjacent slices together.
+  Optional Procrustes alignment after training removes residual rotational
+  drift between slices.
+- **sequential**: Each period is trained in order, initialising from the
+  previous period's trained embeddings (Kim et al. 2014).  Alignment is
+  implicit via the initialisation chain; no regularisation or Procrustes
+  is needed.
+
+Architecture:
+    - U: Center/input embeddings [T, vocab_size, vector_size]
+    - V: Context/output embeddings [T, vocab_size, vector_size]
+    - Shared vocabulary across all time slices
+
+**Parameters:**
+- `sentences`: Dictionary mapping time period labels to corpora. Each value must
+  be an iterable of tokenized sentences (untagged).
+  Format: ``{"label1": [["w1", "w2"], ...], "label2": LineSentenceFile("file.txt"), ...}``
+- `training_mode`: ``"joint"`` (default) or ``"sequential"``.
+- `temporal_lambda`: Regularization strength for joint mode (default: 0.1).
+- `temporal_reg_V`: If True, also regularize V in joint mode (default: False).
+- `procrustes_align`: Apply Procrustes alignment after joint training
+  (default: True).  Ignored in sequential mode.
+- `sampling_strategy`: How to sample from corpora during training:
+  - "balanced" (default): Equal tokens from each corpus, stops at smallest corpus.
+  - "proportional": Proportional tokens from each corpus, uses all data.
+- `**kwargs`: Arguments passed to Word2Vec (vector_size, window, epochs, etc.).
+
+**Example:**
+```python
+from qhchina.analytics import DynamicWord2Vec
+
+# Joint training with Procrustes alignment
+model = DynamicWord2Vec(
+    sentences=corpora,
+    training_mode="joint",
+    temporal_lambda=0.1,
+    procrustes_align=True,
+    epochs=5,
+)
+model.train()
+
+# Sequential training (Kim et al. 2014)
+model = DynamicWord2Vec(
+    sentences=corpora,
+    training_mode="sequential",
+    epochs=5,
+)
+model.train()
+```
+
+<h4 id="dynamicword2vec-build_vocab">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.build_vocab() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L232" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Build vocabulary by iterating through all corpora.
+
+Creates a shared vocabulary across all time slices. Word counts are computed
+respecting the sampling strategy to match training data distribution.
+
+**Parameters:**
+- `sentences`: Ignored. DynamicWord2Vec uses internal corpora instead.
+  Accepted for API compatibility with the parent class.
+
+<h4 id="dynamicword2vec-calculate_semantic_change">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.calculate_semantic_change() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L725" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">calculate_semantic_change</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Calculate semantic change by comparing similarity shifts across time periods.
+
+For each transition (t -> t+1), computes how the target word's similarity
+to other words changes. Positive values indicate words that became more
+similar, negative values indicate words that became less similar.
+
+Frequency-based filters (`vocab_top_n`, `min_word_count`) are applied
+**per transition** using only the two adjacent periods, so that only words
+with meaningful training signal in both slices are compared.
+
+**Parameters:**
+- `word`: Target word to analyze.
+- `filters`: Optional dict to restrict which reference words are considered.
+  Supported keys:
+  
+  - ``vocab_top_n`` (int): For each transition, take the top-N most
+    frequent words from each of the two adjacent periods and use
+    their union (at most 2N words per transition).
+  - ``min_word_count`` (int): Minimum occurrences a word must have
+    in **both** adjacent periods to be included in that transition.
+  - ``min_word_length`` (int): Minimum character length of a word.
+  - ``stopwords`` (set): Words to exclude from the reference set.
+  - ``reference_words`` (list/set): Explicit whitelist of reference words.
+
+**Returns:**
+Dict mapping transition names (e.g., "宋_to_明") to lists of
+(word, change) tuples sorted by descending change score.
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary.
+
+**Example:**
+```python
+changes = model.calculate_semantic_change(
+    "民",
+    filters={"vocab_top_n": 500, "min_word_length": 2},
+)
+```
+
+<h4 id="dynamicword2vec-calculate_temporal_drift">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.calculate_temporal_drift() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L691" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">calculate_temporal_drift</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Calculate temporal drift as cosine distances between adjacent time slices.
+
+**Parameters:**
+- `word`: Input word.
+
+**Returns:**
+Array of shape [T-1] where element i is the cosine distance between
+the word's embedding at time i and time i+1.
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary.
+
+<h4 id="dynamicword2vec-get_all_time_vectors">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.get_all_time_vectors() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L615" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">get_all_time_vectors</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">normalize</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
+
+Get vectors for a word across all time periods.
+
+**Parameters:**
+- `word`: Input word.
+- `normalize`: If True, normalize each vector independently.
+
+**Returns:**
+Array of shape [T, vector_size] containing the word's embedding
+at each time slice.
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary.
+
+<h4 id="dynamicword2vec-get_time_labels">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.get_time_labels() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L837" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">get_time_labels</span>()</code></pre>
+
+Get the list of time period labels.
+
+**Returns:**
+List of time period labels in temporal order.
+
+<h4 id="dynamicword2vec-get_vector">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.get_vector() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L580" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">get_vector</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">time_label</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">normalize</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
+
+Get the vector for a word at a specific time period.
+
+**Parameters:**
+- `word`: Input word.
+- `time_label`: Time period label (must be one of the labels from initialization).
+- `normalize`: If True, return the normalized vector (unit length).
+
+**Returns:**
+Word vector as numpy array of shape (vector_size,).
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary or time_label is invalid.
+
+<h4 id="dynamicword2vec-load">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.load() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L897" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Load a DynamicWord2Vec model from a file.
+
+**Parameters:**
+- `path`: Path to load the model from.
+
+**Returns:**
+Loaded DynamicWord2Vec model.
+
+**Raises:**
+- `ValueError`: If the file doesn't contain DynamicWord2Vec data.
+
+<h4 id="dynamicword2vec-most_similar">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.most_similar() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L643" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">time_label</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
+
+Find the topn most similar words to the given word at a specific time period.
+
+**Parameters:**
+- `word`: Input word.
+- `time_label`: Time period label.
+- `topn`: Number of similar words to return.
+- `cross_space`: If False (default), compare U vs U (second-order similarity).
+  If True, compare U vs V (first-order similarity).
+
+**Returns:**
+List of (word, similarity) tuples sorted by descending similarity.
+
+**Raises:**
+- `KeyError`: If word is not in vocabulary or time_label is invalid.
+
+<h4 id="dynamicword2vec-save">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.save() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L846" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Save the DynamicWord2Vec model to a file.
+
+Saves all temporal embeddings, labels, and configuration parameters.
+
+**Parameters:**
+- `path`: Path to save the model.
+
+<h4 id="dynamicword2vec-train">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.train() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L428" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">train</span>()</code></pre>
+
+Train the DynamicWord2Vec model.
+
+Dispatches to joint or sequential training based on `training_mode`.
+
+**Returns:**
+Final loss value if calculate_loss is True, None otherwise.
+
+<br>
+
+<h3 id="balancedsentenceiterator">qhchina.analytics.word2vec.word2vec_utils.BalancedSentenceIterator <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L224" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">BalancedSentenceIterator</span>(
+    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">token_budget</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
+    <span class="sig-param">targets</span><span class="sig-punct">:</span> <span class="sig-type">set[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>
+)</code></pre>
+
+Iterator that streams sentences from multiple corpus sources with configurable sampling.
+
+Used by TempRefWord2Vec for training. Collects sentences from each corpus 
+until a token budget is reached, shuffles them, then yields the sentences.
+
+When `targets` is provided, target words are automatically tagged with their
+corpus label (e.g., "民" from corpus "宋" becomes "民_宋").
+
+**Parameters:**
+- `corpora`: Dictionary mapping labels to sentence iterables (LineSentenceFile 
+  or list[list[str]]).
+- `token_budget`: Target number of tokens to collect before yielding.
+- `targets`: Set of target words to tag with corpus labels.
+- `seed`: Random seed for reproducible sentence shuffling.
+- `strategy`: Sampling strategy - "balanced" or "proportional".
+  - "balanced": Each corpus contributes equal tokens (stops at smallest corpus).
+  - "proportional": Each corpus contributes proportionally to its size (uses all data).
+- `token_counts`: Dictionary mapping labels to token counts for each corpus.
+
+<h4 id="balancedsentenceiterator-reset">qhchina.analytics.word2vec.word2vec_utils.BalancedSentenceIterator.reset() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L282" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">reset</span>()</code></pre>
+
+Reset epoch counter to 0 for reproducible iteration from the start.
+
+<br>
+
+<h3 id="singlecorpustemporaliterator">qhchina.analytics.word2vec.word2vec_utils.SingleCorpusTemporalIterator <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L188" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">SingleCorpusTemporalIterator</span>(
+    <span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">time_idx</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
+    <span class="sig-param">token_limit</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
+)</code></pre>
+
+Streaming iterator over a single corpus that yields :class:`TemporalSentence` objects.
+
+Used by :class:`DynamicWord2Vec` in sequential training mode, where each
+time slice is trained independently.  Streams through the corpus without
+materialising it, respecting an optional token limit.
+
+**Parameters:**
+- `corpus`: Sentence iterable for one period.
+- `time_idx`: Integer time-slice index to attach to every sentence.
+- `token_limit`: Maximum tokens to yield (``None`` = unlimited).
+
+<br>
+
+<h3 id="temporalsentence">qhchina.analytics.word2vec.word2vec_utils.TemporalSentence <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">TemporalSentence</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">time_idx</span><span class="sig-punct">:</span> <span class="sig-type">int</span>)</code></pre>
+
+A sentence (list of tokens) annotated with a time slice index.
+
+Subclasses `list` so it passes through `iter_batches` and the parent
+`Word2Vec` training loop unchanged, while carrying an integer
+`time_idx` that the Cython kernel uses to select the correct
+`U[t]` / `V[t]` embedding slice.
+
+**Parameters:**
+- `tokens`: The tokenized sentence.
+- `time_idx`: Zero-based index of the time slice this sentence belongs to.
+
+<br>
+
+<h3 id="temporalsentenceiterator">qhchina.analytics.word2vec.word2vec_utils.TemporalSentenceIterator <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L59" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">TemporalSentenceIterator</span>(
+    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">label2idx</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, int]</span>,
+    <span class="sig-param">token_budget</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
+    <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>
+)</code></pre>
+
+Streaming iterator that interleaves sentences from multiple corpora with time metadata.
+
+Follows the same balanced/proportional sampling logic as
+:class:`BalancedSentenceIterator` but yields :class:`TemporalSentence`
+objects (`list` subclass with a `time_idx` attribute) instead of
+tagging words.  Only one budget-sized chunk is materialised at a time,
+so memory usage stays constant regardless of corpus size.
+
+**Parameters:**
+- `corpora`: Dict mapping period labels to sentence iterables.
+- `label2idx`: Dict mapping period labels to integer time-slice indices.
+- `token_budget`: Tokens to collect per chunk before shuffling and yielding.
+- `seed`: Random seed for reproducible chunk shuffling.
+- `strategy`: ``"balanced"`` (equal tokens per corpus, stops at smallest)
+  or ``"proportional"`` (all data, proportional contribution).
+- `token_counts`: Dict mapping labels to total token counts per corpus.
+
+<h4 id="temporalsentenceiterator-reset">qhchina.analytics.word2vec.word2vec_utils.TemporalSentenceIterator.reset() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L112" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">reset</span>()</code></pre>
+
+Reset epoch counter for reproducible iteration from the start.
 
 <br>
 

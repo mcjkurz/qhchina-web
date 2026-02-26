@@ -143,6 +143,74 @@
         "anchor": "temprefword2vec-train"
       },
       {
+        "name": "DynamicWord2Vec",
+        "anchor": "dynamicword2vec"
+      },
+      {
+        "name": "DynamicWord2Vec.build_vocab()",
+        "anchor": "dynamicword2vec-build_vocab"
+      },
+      {
+        "name": "DynamicWord2Vec.calculate_semantic_change()",
+        "anchor": "dynamicword2vec-calculate_semantic_change"
+      },
+      {
+        "name": "DynamicWord2Vec.calculate_temporal_drift()",
+        "anchor": "dynamicword2vec-calculate_temporal_drift"
+      },
+      {
+        "name": "DynamicWord2Vec.get_all_time_vectors()",
+        "anchor": "dynamicword2vec-get_all_time_vectors"
+      },
+      {
+        "name": "DynamicWord2Vec.get_time_labels()",
+        "anchor": "dynamicword2vec-get_time_labels"
+      },
+      {
+        "name": "DynamicWord2Vec.get_vector()",
+        "anchor": "dynamicword2vec-get_vector"
+      },
+      {
+        "name": "DynamicWord2Vec.load()",
+        "anchor": "dynamicword2vec-load"
+      },
+      {
+        "name": "DynamicWord2Vec.most_similar()",
+        "anchor": "dynamicword2vec-most_similar"
+      },
+      {
+        "name": "DynamicWord2Vec.save()",
+        "anchor": "dynamicword2vec-save"
+      },
+      {
+        "name": "DynamicWord2Vec.train()",
+        "anchor": "dynamicword2vec-train"
+      },
+      {
+        "name": "BalancedSentenceIterator",
+        "anchor": "balancedsentenceiterator"
+      },
+      {
+        "name": "BalancedSentenceIterator.reset()",
+        "anchor": "balancedsentenceiterator-reset"
+      },
+      {
+        "name": "SingleCorpusTemporalIterator",
+        "anchor": "singlecorpustemporaliterator"
+      },
+      {
+        "name": "TemporalSentence",
+        "anchor": "temporalsentence"
+      },
+      {
+        "name": "TemporalSentenceIterator",
+        "anchor": "temporalsentenceiterator"
+      },
+      {
+        "name": "TemporalSentenceIterator.reset()",
+        "anchor": "temporalsentenceiterator-reset"
+      },
+      {
         "name": "project_2d()",
         "anchor": "project_2d"
       },
