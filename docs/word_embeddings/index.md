@@ -94,7 +94,7 @@ has_examples: True
 
 # Word Embeddings
 
-Word embeddings represent words as dense vectors in a continuous space, where semantically similar words are positioned closer together. These vector representations enable computational analysis of meaning, including finding synonyms, analogies, and measuring semantic similarity. The `qhchina.analytics` module provides Word2Vec implementations for Chinese text analysis, including standard Word2Vec and TempRefWord2Vec for tracking semantic change over time.
+Word embeddings represent words as dense vectors in a continuous space, where semantically similar words are positioned closer together. These vector representations enable computational analysis of meaning, including finding synonyms, analogies, and measuring semantic similarity. The `qhchina.analytics` module provides Word2Vec implementations for Chinese text analysis, including standard `Word2Vec` as well as `TempRefWord2Vec` and `DynamicWord2Vec` for tracking semantic change over time.
 
 ```python
 from qhchina.analytics import Word2Vec
