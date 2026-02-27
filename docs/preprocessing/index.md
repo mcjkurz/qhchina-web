@@ -139,7 +139,7 @@ topics = lda.get_topics(n_words=10)
 
 <!-- API-START -->
 
-<h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L25" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper <a href="#segmentationwrapper" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L25" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SegmentationWrapper</span>(
     <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
@@ -166,13 +166,13 @@ Base segmentation wrapper class that can be extended for different segmentation 
 - `sentence_end_pattern`: Regular expression pattern for sentence endings (default: 
   Chinese and English punctuation).
 
-<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L181" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="#segmentationwrapper-close" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L181" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">close</span>()</code></pre>
 
 Clean up resources. Call this when done with the segmenter.
 
-<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L185" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="#segmentationwrapper-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L185" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -181,7 +181,7 @@ Reset the user dictionary to default state.
 This clears any custom words that were added via user_dict.
 Subclasses should override this method to implement backend-specific reset logic.
 
-<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L208" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="#segmentationwrapper-segment" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L208" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">segment</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -197,7 +197,7 @@ contains tokens for a line, sentence, or chunk respectively
 
 <br>
 
-<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L332" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="#spacysegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L332" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SpacySegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_core_web_sm'</span>,
@@ -234,7 +234,7 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L428" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="#spacysegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L428" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -245,7 +245,7 @@ Note: This resets to an empty user dictionary, not the original state if one was
 
 <br>
 
-<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="#pkusegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">PKUSegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'default'</span>,
@@ -288,7 +288,7 @@ which will reinitialize the segmenter.
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L624" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="#pkusegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L624" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -300,7 +300,7 @@ global state.
 
 <br>
 
-<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L688" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="#jiebasegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L688" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">JiebaSegmenter</span>(
     <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -327,7 +327,7 @@ Segmentation wrapper for Jieba Chinese text segmentation.
   - stopwords: Set of stopwords to exclude
 - `sentence_end_pattern`: Regular expression pattern for sentence endings.
 
-<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L745" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="#jiebasegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L745" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -338,7 +338,7 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
 
 <br>
 
-<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L854" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="#bertsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L854" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">BertSegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -384,7 +384,7 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
 
 <br>
 
-<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1169" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="#llmsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1169" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">LLMSegmenter</span>(
     <span class="sig-param">api_key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
@@ -428,7 +428,7 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 
 <br>
 
-<h3 id="normalizeoptions">qhchina.preprocessing.normalization.NormalizeOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L43" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="normalizeoptions">qhchina.preprocessing.normalization.NormalizeOptions <a href="#normalizeoptions" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L43" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">NormalizeOptions</span>(<span class="sig-param">*args</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
@@ -471,7 +471,7 @@ All keys are optional - only specified options are applied.
 
 <br>
 
-<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1383" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1383" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">create_segmenter</span>(
     <span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'spacy'</span>,
@@ -510,7 +510,7 @@ An instance of a SegmentationWrapper subclass
 
 <br>
 
-<h3 id="normalize">qhchina.preprocessing.normalization.normalize() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L169" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="normalize">qhchina.preprocessing.normalization.normalize() <a href="#normalize" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L169" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">normalize</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">options</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 

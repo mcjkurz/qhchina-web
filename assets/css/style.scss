@@ -2,11 +2,12 @@
 ---
 @import "main";
 
-// Rouge syntax highlighting
-.highlight {
+// Rouge syntax highlighting — applied only to the outer .highlight div,
+// not the nested pre.highlight inside it (which would compound 0.9 × 0.9).
+div.highlight {
   background: #f8f8f8;
   border-radius: 0 3px 3px 0;
-  border: none; // Remove all borders
+  border: none;
   border-left: 3px solid var(--primary-color);
   padding: 10px;
   padding-left: 1rem;
@@ -14,8 +15,16 @@
   overflow-x: auto;
   overflow-y: hidden;
   max-width: 100%;
-  -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  -webkit-overflow-scrolling: touch;
   font-size: 0.9em;
+
+  pre.highlight {
+    font-size: inherit;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 // All monospace elements inherit from body so em-based sizing works uniformly
@@ -66,9 +75,8 @@ pre.signature {
 }
 
 .highlighter-rouge,
-.highlight pre,
-.highlight code,
-pre.highlight,
+div.highlight pre,
+div.highlight code,
 div[class^="language-"] {
   border: none !important;
   padding: 0 !important;
@@ -283,7 +291,7 @@ div[class^="language-"] {
 }
 
 @media (max-width: 576px) {
-  .highlight,
+  div.highlight,
   pre.signature {
     padding: 8px;
     font-size: 0.75em;

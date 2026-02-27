@@ -154,7 +154,7 @@ df = matrix.to_dataframe()
 
 <!-- API-START -->
 
-<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L243" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="filteroptions">qhchina.analytics.collocations.FilterOptions <a href="#filteroptions" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L243" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">FilterOptions</span>(<span class="sig-param">*args</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
@@ -162,7 +162,7 @@ Type definition for filter options in collocation analysis.
 
 <br>
 
-<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="coocmatrix">qhchina.analytics.collocations.CoocMatrix <a href="#coocmatrix" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L39" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">CoocMatrix</span>(
     <span class="sig-param">matrix</span><span class="sig-punct">:</span> <span class="sig-type">scipy.sparse._csr.csr_matrix</span>,
@@ -203,7 +203,7 @@ df = matrix.to_dataframe()
 arr = matrix.to_dense()
 ```
 
-<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L152" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-get">qhchina.analytics.collocations.CoocMatrix.get() <a href="#coocmatrix-get" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L152" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
@@ -217,7 +217,7 @@ Get a co-occurrence count with a default value for missing pairs.
 **Returns:**
 Co-occurrence count, or default if not found.
 
-<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L180" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dataframe">qhchina.analytics.collocations.CoocMatrix.to_dataframe() <a href="#coocmatrix-to_dataframe" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L180" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -228,7 +228,7 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 DataFrame with vocabulary words as both index and columns.
 
-<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L169" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="coocmatrix-to_dense">qhchina.analytics.collocations.CoocMatrix.to_dense() <a href="#coocmatrix-to_dense" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L169" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
@@ -241,7 +241,7 @@ Warning: This may use significant memory for large vocabularies.
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L597" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="#find_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L597" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -338,7 +338,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L917" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="#cooc_matrix" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L917" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
@@ -411,7 +411,7 @@ df = matrix.to_dataframe()
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1138" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="#plot_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1138" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,

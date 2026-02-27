@@ -653,6 +653,30 @@ aside.docs-sidebar {
     border-top: 1px dashed var(--border-color);
   }
   
+  // Permalink anchor for heading
+  .header-link {
+    font-size: 0.7em;
+    font-weight: normal;
+    margin-left: 0.4em;
+    text-decoration: none;
+    color: var(--light-text);
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  
+  h3:hover .header-link,
+  h4:hover .header-link,
+  .header-link:focus {
+    opacity: 1;
+  }
+  
+  .header-link:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
   // Source link styling for API documentation
   .source-link {
     font-size: 0.8em;
@@ -725,6 +749,12 @@ aside.docs-sidebar {
     display: none !important;
   }
   
+  // Permalink: always visible on mobile (no hover)
+  .docs-content .header-link {
+    opacity: 1;
+    font-size: 0.65em;
+  }
+
   // Source link: display on new line on mobile, keep font small
   .docs-content .source-link {
     display: block;
