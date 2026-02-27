@@ -40,6 +40,7 @@ pre.signature {
   padding: 10px;
   padding-left: 1rem;
   border-left: 3px solid var(--primary-color);
+  font-size: 0.9em;
   
   code {
     white-space: pre-wrap !important;
@@ -47,7 +48,7 @@ pre.signature {
     overflow-x: visible !important;
     background: transparent;
     padding: 0;
-    font-size: 0.9em;
+    font-size: inherit;
     
     // Syntax highlighting for signatures (matching site theme)
     .sig-name { color: var(--primary-color); font-weight: bold; }  // function name (same as headers)
@@ -272,6 +273,10 @@ div[class^="language-"] {
   }
   
   pre code {
+    font-size: 0.85em;
+  }
+  
+  pre.signature {
     font-size: 0.85em;
   }
 }
