@@ -47,6 +47,7 @@ pre.signature {
     overflow-x: visible !important;
     background: transparent;
     padding: 0;
+    font-size: 0.9em;
     
     // Syntax highlighting for signatures (matching site theme)
     .sig-name { color: var(--primary-color); font-weight: bold; }  // function name (same as headers)
