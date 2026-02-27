@@ -430,7 +430,7 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 
 <h3 id="normalizeoptions">qhchina.preprocessing.normalization.NormalizeOptions <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/normalization.py#L43" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code><span class="sig-name">NormalizeOptions</span>(<span class="sig-param">args</span>, <span class="sig-param">kwargs</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">NormalizeOptions</span>(<span class="sig-param">*args</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
 Normalization options dictionary.
 
@@ -478,7 +478,7 @@ All keys are optional - only specified options are applied.
     <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
     <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
     <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>,
-    <span class="sig-param">kwargs</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Create a segmenter based on the specified backend.

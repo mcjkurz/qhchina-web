@@ -375,7 +375,7 @@ Final loss value if calculate_loss is True, None otherwise.
     <span class="sig-param">targets</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
     <span class="sig-param">sampling_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>,
     <span class="sig-param">_skip_init</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">kwargs</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Word2Vec with Temporal Referencing (TR) for tracking semantic change.
@@ -624,7 +624,7 @@ Final loss value if calculate_loss is True, None otherwise.
     <span class="sig-param">procrustes_align</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
     <span class="sig-param">sampling_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>,
     <span class="sig-param">_skip_init</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">kwargs</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Word2Vec with time-sliced embeddings for diachronic semantic analysis.
