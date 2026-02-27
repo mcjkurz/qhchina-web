@@ -688,9 +688,9 @@ aside.docs-sidebar {
 
 /* Responsive docs layout */
 @media (max-width: 768px) {
-  // Offset scroll position for anchor links to account for sticky header
+  // Offset scroll position for anchor links to account for sticky sidebar
   .docs-content [id] {
-    scroll-margin-top: 250px;
+    scroll-margin-top: 140px;
   }
   
   .docs-container {
@@ -749,17 +749,21 @@ aside.docs-sidebar {
     display: none !important;
   }
   
+  // Headings: allow long module paths to wrap instead of causing horizontal scroll
+  .docs-content h3[id],
+  .docs-content h4[id] {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  
   // Permalink: always visible on mobile (no hover)
   .docs-content .header-link {
     opacity: 1;
-    font-size: 0.65em;
+    font-size: 0.75em;
   }
 
-  // Source link: display on new line on mobile, keep font small
+  // Source link on mobile: inline next to # link, not on its own line
   .docs-content .source-link {
-    display: block;
-    margin-left: 0;
-    margin-top: 0.25em;
     font-size: 0.75em;
   }
 }
