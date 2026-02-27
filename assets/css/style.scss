@@ -17,6 +17,11 @@
   -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
 }
 
+// All monospace elements inherit from body so em-based sizing works uniformly
+pre, code, kbd, samp {
+  font-size: inherit;
+}
+
 // Ensure code blocks don't overflow their container on mobile
 pre {
   max-width: 100%;
@@ -267,16 +272,9 @@ div[class^="language-"] {
 }
 
 @media (max-width: 576px) {
-  .highlight {
-    padding: 8px;
-    font-size: 0.85em;
-  }
-  
-  pre code {
-    font-size: 0.85em;
-  }
-  
+  .highlight,
   pre.signature {
+    padding: 8px;
     font-size: 0.85em;
   }
 }
