@@ -15,6 +15,7 @@
   overflow-y: hidden;
   max-width: 100%;
   -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+  font-size: 0.9em;
 }
 
 // All monospace elements inherit from body so em-based sizing works uniformly
@@ -212,7 +213,7 @@ div[class^="language-"] {
   margin-left: 1.5rem;
 }
 
-// Code within text - ensure proper display
+// Inline code within text (not inside pre blocks or highlights)
 .docs-content code {
   background-color: #f5f5f5;
   padding: 0.15rem 0.4rem;
@@ -221,12 +222,22 @@ div[class^="language-"] {
   color: #476582;
 }
 
+// Code inside block-level containers should not shrink again
+.docs-content pre code,
+.docs-content .highlight code {
+  font-size: inherit;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
 // Code in headers should be more subtle
 .docs-content h2 code,
 .docs-content h3 code {
   background-color: transparent;
   color: inherit;
   padding: 0;
+  font-size: inherit;
 }
 
 // Better paragraph spacing after lists
@@ -275,6 +286,6 @@ div[class^="language-"] {
   .highlight,
   pre.signature {
     padding: 8px;
-    font-size: 0.85em;
+    font-size: 0.75em;
   }
 }
