@@ -629,7 +629,7 @@ Final loss value if calculate_loss is True, None otherwise.
 
 Word2Vec with time-sliced embeddings for diachronic semantic analysis.
 
-Maintains separate embedding matrices :math:`U^{(t)}` and :math:`V^{(t)}`
+Maintains separate embedding matrices $U^{(t)}$ and $V^{(t)}$
 for each time slice *t* with a shared vocabulary.  Two training modes are
 available:
 
@@ -642,23 +642,23 @@ available:
   implicit via the initialisation chain; no regularisation or Procrustes
   is needed.
 
-Temporal regularization (joint mode):
-    The standard skip-gram loss is augmented with an ℓ₂ penalty that
-    encourages embeddings in adjacent time slices to stay close:
+**Temporal regularization (joint mode):**
+The standard skip-gram loss is augmented with an ℓ₂ penalty that
+encourages embeddings in adjacent time slices to stay close:
 
-    $$\mathcal{L} = \mathcal{L}_{\text{SG}} + \lambda \sum_{t=1}^{T-1} \| U^{(t)} - U^{(t-1)} \|_F^2$$
+$$\mathcal{L} = \mathcal{L}_{\text{SG}} + \lambda \sum_{t=1}^{T-1} \| U^{(t)} - U^{(t-1)} \|_F^2$$
 
-    where $\mathcal{L}_{\text{SG}}$ is the skip-gram negative sampling
-    objective, $\lambda$ is `temporal_lambda`, and $\| \cdot \|_F$
-    is the Frobenius norm.  When `temporal_reg_V=True`, the same penalty
-    is applied to the context matrix $V$.  Regularization is applied once
-    per unique (word, time) pair per batch to avoid frequency-dependent
-    regularization strength.
+where $\mathcal{L}_{\text{SG}}$ is the skip-gram negative sampling
+objective, $\lambda$ is `temporal_lambda`, and $\| \cdot \|_F$
+is the Frobenius norm.  When `temporal_reg_V=True`, the same penalty
+is applied to the context matrix $V$.  Regularization is applied once
+per unique (word, time) pair per batch to avoid frequency-dependent
+regularization strength.
 
-Architecture:
-    - U: Center/input embeddings [T, vocab_size, vector_size]
-    - V: Context/output embeddings [T, vocab_size, vector_size]
-    - Shared vocabulary across all time slices
+**Architecture:**
+- U: Center/input embeddings [T, vocab_size, vector_size]
+- V: Context/output embeddings [T, vocab_size, vector_size]
+- Shared vocabulary across all time slices
 
 **Parameters:**
 - `sentences`: Dictionary mapping time period labels to corpora. Each value must
