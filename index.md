@@ -34,9 +34,9 @@ title: Home
 
 "Quantitative Humanities" is characterized by the following keywords:
 
-- **Experimentation**: probing literary and visual texts with digital tools and statistical methods
+- **Experimentation**: probing and interpreting literary and visual texts with the help of statistical methods
 - **Text-centrism**: considering literary artifacts as more than mere anecdotes reflecting extra-textual forces and ideologies
-- **Quantification**: reinterpreting narrative phenomena as vectors, frequencies, distances, and networks
+- **Quantification**: reconceiving narrative phenomena as vectors, frequencies, distances, and networks
 - **Big Data & Small Data**: reading large corpora, single novels, and tiny paragraphs
 - **Multidisciplinarity**: combining natural language processing with cognitive neuroscience and traditional humanistic methodologies: close reading, genealogy, structuralism, aesthetic theory, narratology, etc.
 - **Limits of computation**: identifying what stories can tell us about the world and ourselves that matrix multiplications cannot
