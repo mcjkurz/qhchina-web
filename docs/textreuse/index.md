@@ -40,8 +40,7 @@ banded edit distance. This allows fuzzy matching (insertions, deletions,
 substitutions) while remaining fast at scale.
 
 Accepts both tokenized input (`list[list[str]]`) and raw strings
-(`list[str]`). For raw strings, each character is treated as a token,
-which is natural for Chinese text.
+(`list[str]`). For raw strings, each character is treated as a token.
 
 **Parameters:**
 - `corpus_a`: First corpus. Either an iterable of tokenized documents
