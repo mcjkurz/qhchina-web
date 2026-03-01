@@ -578,7 +578,7 @@ or corpus position — the standard concordance sort options.
   
   Default is ``'right'``.
 - `separator` (str): String used to join context tokens for display columns.
-  Default ``""`` (direct concatenation, natural for Chinese). Use
+  Default ``""`` (direct concatenation). Use
   ``" "`` for space-segmented text.
 - `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
 - `max_results` (int | None): Maximum number of concordance lines to

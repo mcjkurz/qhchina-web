@@ -19,11 +19,11 @@ Text reuse detection identifies shared or near-duplicate passages across documen
 
 <!-- API-START -->
 
-<h3 id="find_shared_sequences">qhchina.analytics.textreuse.find_shared_sequences() <a href="#find_shared_sequences" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L75" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_shared_sequences">qhchina.analytics.textreuse.find_shared_sequences() <a href="#find_shared_sequences" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L85" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_shared_sequences</span>(
-    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | Iterable[str]</span>,
-    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | Iterable[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | list[list[str]]</span>,
+    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | list[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">n</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
     <span class="sig-param">min_length</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">max_gap</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -39,14 +39,21 @@ merges nearby seeds into passage candidates, then verifies each with
 banded edit distance. This allows fuzzy matching (insertions, deletions,
 substitutions) while remaining fast at scale.
 
-Accepts both tokenized input (`list[list[str]]`) and raw strings
-(`list[str]`). For raw strings, each character is treated as a token.
+Each corpus argument accepts three formats:
+
+- `str` -- a single raw document (each character becomes a token).
+- `list[str]` -- multiple raw documents (each character becomes a token).
+- `list[list[str]]` -- multiple pre-tokenized documents.
+
+To pass a single pre-tokenized document, wrap it in an outer list:
+`[["tok1", "tok2", ...]]`.
 
 **Parameters:**
-- `corpus_a`: First corpus. Either an iterable of tokenized documents
-  (``list[list[str]]``) or raw strings (``list[str]``).
-- `corpus_b`: Second corpus (same format as corpus_a). If None, finds
-  shared sequences within corpus_a (all-pairs comparison).
+- `corpus_a`: First corpus. A raw string, a list of raw strings
+  (``list[str]``), or a list of tokenized documents
+  (``list[list[str]]``).
+- `corpus_b`: Second corpus (same formats as *corpus_a*). If None,
+  finds shared sequences within corpus_a (all-pairs comparison).
 - `n` (int): N-gram size for seeding. Smaller values find more matches
   but are slower. Default 5.
 - `min_length` (int): Minimum passage length (in tokens/characters) to
@@ -71,7 +78,7 @@ pd.DataFrame or list[dict] with columns/keys:
 - **doc_b** (int): Document index in corpus_b (or corpus_a).
 - **pos_a** (int): Start position in document A.
 - **pos_b** (int): Start position in document B.
-- **length** (int): Length of the matched passage (average of
+- **length** (int): Length of the matched passage (maximum of
   len_a and len_b).
 - **similarity** (float): Similarity score (1 - distance/length).
 - **passage_a** (str): Matched text from document A.
@@ -79,10 +86,16 @@ pd.DataFrame or list[dict] with columns/keys:
 
 **Example:**
 ```python
+Compare two corpora of raw strings:
+
 from qhchina.analytics import find_shared_sequences
 texts_a = ["天地玄黄宇宙洪荒", "日月盈昃辰宿列张"]
 texts_b = ["天地玄黄宇宙洪荒日月", "寒来暑往秋收冬藏"]
 find_shared_sequences(texts_a, texts_b, n=3, min_length=5)
+
+Compare two single strings directly:
+
+find_shared_sequences("天地玄黄宇宙洪荒", "天地玄黄宇宙日月", n=3, min_length=5)
 ```
 
 <br>
