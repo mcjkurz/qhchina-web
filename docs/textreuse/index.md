@@ -19,35 +19,32 @@ Text reuse detection identifies shared or near-duplicate passages across documen
 
 <!-- API-START -->
 
-<h3 id="find_shared_sequences">qhchina.analytics.textreuse.find_shared_sequences() <a href="#find_shared_sequences" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L70" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_shared_sequences">qhchina.analytics.textreuse.find_shared_sequences() <a href="#find_shared_sequences" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L69" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_shared_sequences</span>(
-    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
-    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
     <span class="sig-param">n</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
     <span class="sig-param">min_length</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">max_gap</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">min_similarity</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.8</span>,
     <span class="sig-param">max_distance</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">within_documents</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
     <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>
 )</code></pre>
 
-Find shared sequences (text reuse) between two corpora or within one.
+Find shared sequences (text reuse) across a collection of documents.
 
 Uses a seed-and-extend algorithm: finds exact n-gram matches as seeds,
 merges nearby seeds into passage candidates, then verifies each with
 banded edit distance. This allows fuzzy matching (insertions, deletions,
 substitutions) while remaining fast at scale.
 
-Each corpus is a `list[list[str]]` — a list of tokenized documents.
-For character-level analysis of raw strings, convert with
+Each document is a `list[str]` of tokens.  For character-level
+analysis of raw strings, convert with
 `[list(text) for text in raw_texts]`.
 
 **Parameters:**
-- `corpus_a`: First corpus as a list of tokenized documents
-  (``list[list[str]]``).
-- `corpus_b`: Second corpus (same format as *corpus_a*). If None,
-  finds shared sequences within corpus_a (all-pairs comparison).
+- `documents`: List of tokenized documents (``list[list[str]]``).
 - `n` (int): N-gram size for seeding. Smaller values find more matches
   but are slower. Default 5.
 - `min_length` (int): Minimum passage length (in tokens) to report.
@@ -62,13 +59,17 @@ For character-level analysis of raw strings, convert with
 - `max_distance` (int | None): Maximum edit distance for verification.
   If None, derived from ``min_similarity`` and ``min_length``:
   ``int((1 - min_similarity) * min_length)``. Default None.
+- `within_documents` (bool): If True, also detect repeated passages
+  within a single document. If False (default), only compare
+  distinct document pairs.
 - `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
 
 **Returns:**
 pd.DataFrame or list[dict] with columns/keys:
 
-- **doc_a** (int): Document index in corpus_a.
-- **doc_b** (int): Document index in corpus_b (or corpus_a).
+- **doc_a** (int): Index of the first document.
+- **doc_b** (int): Index of the second document (may equal
+  doc_a when ``within_documents=True``).
 - **pos_a** (int): Start position in document A.
 - **pos_b** (int): Start position in document B.
 - **length** (int): Length of the matched passage (maximum of
@@ -82,15 +83,14 @@ pd.DataFrame or list[dict] with columns/keys:
 Character-level comparison of raw strings:
 
 from qhchina.analytics import find_shared_sequences
-corpus_a = [list("天地玄黄宇宙洪荒"), list("日月盈昃辰宿列张")]
-corpus_b = [list("天地玄黄宇宙洪荒日月"), list("寒来暑往秋收冬藏")]
-find_shared_sequences(corpus_a, corpus_b, n=3, min_length=5)
+docs = [list("天地玄黄宇宙洪荒"), list("天地玄黄宇宙日月盈昃")]
+find_shared_sequences(docs, n=3, min_length=5)
 
 Pre-tokenized documents:
 
-doc_a = [["天地", "玄黄", "宇宙", "洪荒", "日月", "盈昃"]]
-doc_b = [["天地", "玄黄", "宇宙", "洪荒", "寒来", "暑往"]]
-find_shared_sequences(doc_a, doc_b, n=2, min_length=3)
+docs = [["天地", "玄黄", "宇宙", "洪荒", "日月", "盈昃"],
+        ["天地", "玄黄", "宇宙", "洪荒", "寒来", "暑往"]]
+find_shared_sequences(docs, n=2, min_length=3)
 ```
 
 <br>
