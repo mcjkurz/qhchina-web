@@ -175,7 +175,7 @@ for transition, word_changes in changes.items():
 <h3 id="word2vec">qhchina.analytics.word2vec.word2vec_base.Word2Vec <a href="#word2vec" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L24" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">Word2Vec</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">vector_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>,
     <span class="sig-param">window</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
     <span class="sig-param">min_word_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
@@ -193,7 +193,7 @@ for transition, word_changes in changes.items():
     <span class="sig-param">epochs</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">batch_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10240</span>,
     <span class="sig-param">workers</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
-    <span class="sig-param">callbacks</span><span class="sig-punct">:</span> <span class="sig-type">list[collections.abc.Callable] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">callbacks</span><span class="sig-punct">:</span> <span class="sig-type">list[Callable] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">calculate_loss</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
     <span class="sig-param">total_examples</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">shuffle</span><span class="sig-punct">:</span> <span class="sig-type">bool | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -263,7 +263,7 @@ similar = model.most_similar('喜欢', topn=5)
 
 <h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.word2vec_base.Word2Vec.build_vocab() <a href="#word2vec-build_vocab" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_base.py#L213" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>)</code></pre>
 
 Build vocabulary from sentences.
 
@@ -371,7 +371,7 @@ Final loss value if calculate_loss is True, None otherwise.
 <h3 id="temprefword2vec">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec <a href="#temprefword2vec" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L127" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">TempRefWord2Vec</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Iterable[list[str]]]</span>,
     <span class="sig-param">targets</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>,
     <span class="sig-param">sampling_strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'balanced'</span>,
     <span class="sig-param">_skip_init</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
@@ -471,7 +471,7 @@ model.most_similar("民_明")
 
 <h4 id="temprefword2vec-build_vocab">qhchina.analytics.word2vec.word2vec_tempref.TempRefWord2Vec.build_vocab() <a href="#temprefword2vec-build_vocab" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_tempref.py#L323" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Build vocabulary by iterating through corpora.
 
@@ -617,7 +617,7 @@ Final loss value if calculate_loss is True, None otherwise.
 <h3 id="dynamicword2vec">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec <a href="#dynamicword2vec" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L83" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">DynamicWord2Vec</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Iterable[list[str]]]</span>,
     <span class="sig-param">training_mode</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'joint'</span>,
     <span class="sig-param">temporal_lambda</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.1</span>,
     <span class="sig-param">temporal_reg_V</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
@@ -710,7 +710,7 @@ model.train()
 
 <h4 id="dynamicword2vec-build_vocab">qhchina.analytics.word2vec.word2vec_dynamic.DynamicWord2Vec.build_vocab() <a href="#dynamicword2vec-build_vocab" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_dynamic.py#L258" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
 Build vocabulary by iterating through all corpora.
 
@@ -884,7 +884,7 @@ Final loss value if calculate_loss is True, None otherwise.
 <h3 id="balancedsentenceiterator">qhchina.analytics.word2vec.word2vec_utils.BalancedSentenceIterator <a href="#balancedsentenceiterator" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L224" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">BalancedSentenceIterator</span>(
-    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Iterable[list[str]]]</span>,
     <span class="sig-param">token_budget</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
     <span class="sig-param">targets</span><span class="sig-punct">:</span> <span class="sig-type">set[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -921,7 +921,7 @@ Reset epoch counter to 0 for reproducible iteration from the start.
 <h3 id="singlecorpustemporaliterator">qhchina.analytics.word2vec.word2vec_utils.SingleCorpusTemporalIterator <a href="#singlecorpustemporaliterator" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L188" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SingleCorpusTemporalIterator</span>(
-    <span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">time_idx</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
     <span class="sig-param">token_limit</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
 )</code></pre>
@@ -959,7 +959,7 @@ Subclasses `list` so it passes through `iter_batches` and the parent
 <h3 id="temporalsentenceiterator">qhchina.analytics.word2vec.word2vec_utils.TemporalSentenceIterator <a href="#temporalsentenceiterator" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/word2vec_utils.py#L59" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">TemporalSentenceIterator</span>(
-    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, collections.abc.Iterable[list[str]]]</span>,
+    <span class="sig-param">corpora</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Iterable[list[str]]]</span>,
     <span class="sig-param">label2idx</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, int]</span>,
     <span class="sig-param">token_budget</span><span class="sig-punct">:</span> <span class="sig-type">int</span>,
     <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,

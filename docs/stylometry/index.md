@@ -639,8 +639,8 @@ DataFrame with columns: doc_id, author, yule_k, token_count, type_count
 <h3 id="compare_corpora">qhchina.analytics.stylometry.compare_corpora() <a href="#compare_corpora" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1983" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">compare_corpora</span>(
-    <span class="sig-param">corpusA</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[str] | collections.abc.Iterable[list[str]]</span>,
-    <span class="sig-param">corpusB</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[str] | collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">corpusA</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str] | Iterable[list[str]]</span>,
+    <span class="sig-param">corpusB</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str] | Iterable[list[str]]</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'fisher'</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -884,7 +884,7 @@ Yule's K value (typically between 50-200 for normal texts)
 <h3 id="type_token_ratio">qhchina.analytics.stylometry.type_token_ratio() <a href="#type_token_ratio" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L196" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">type_token_ratio</span>(
-    <span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[str]</span>,
+    <span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str]</span>,
     <span class="sig-param">variant</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'standard'</span>
 )</code></pre>
 
@@ -925,7 +925,7 @@ type_token_ratio(tokens, variant='root')
 
 <h3 id="mattr">qhchina.analytics.stylometry.mattr() <a href="#mattr" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L256" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code><span class="sig-name">mattr</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[str]</span>, <span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">500</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">mattr</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str]</span>, <span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">500</span>)</code></pre>
 
 Calculate Moving Average Type-Token Ratio (MATTR).
 

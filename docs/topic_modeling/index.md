@@ -411,7 +411,7 @@ Dictionary containing all evaluation metrics
 
 <h4 id="ldagibbssampler-fit">qhchina.analytics.topicmodels.LDAGibbsSampler.fit() <a href="#ldagibbssampler-fit" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L476" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">fit</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">fit</span>(<span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>)</code></pre>
 
 Fit the LDA model to the given documents.
 

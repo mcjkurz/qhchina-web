@@ -22,8 +22,8 @@ Text reuse detection identifies shared or near-duplicate passages across documen
 <h3 id="find_shared_sequences">qhchina.analytics.textreuse.find_shared_sequences() <a href="#find_shared_sequences" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L75" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_shared_sequences</span>(
-    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | collections.abc.Iterable[str]</span>,
-    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]] | collections.abc.Iterable[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | Iterable[str]</span>,
+    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | Iterable[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">n</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
     <span class="sig-param">min_length</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">max_gap</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,

@@ -289,7 +289,7 @@ New CoocMatrix with PPMI float64 values (sparse).
 <h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="#find_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L667" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">target_words</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -386,7 +386,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 <h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="#cooc_matrix" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L987" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
-    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple[int, int] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">min_word_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
@@ -548,7 +548,7 @@ plot_collocates(collocates, show_labels=True, label_top_n=20,
 <h3 id="kwic">qhchina.analytics.collocations.kwic() <a href="#kwic" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1404" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">kwic</span>(
-    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">target</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'right'</span>,
@@ -609,8 +609,8 @@ kwic(sentences, "天", horizon=3)
 <h3 id="compare_collocates">qhchina.analytics.collocations.compare_collocates() <a href="#compare_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1518" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">compare_collocates</span>(
-    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
-    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">collections.abc.Iterable[list[str]]</span>,
+    <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
+    <span class="sig-param">corpus_b</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">target_words</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
