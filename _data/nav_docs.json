@@ -485,12 +485,20 @@
         "anchor": "coocmatrix-get"
       },
       {
+        "name": "CoocMatrix.sum()",
+        "anchor": "coocmatrix-sum"
+      },
+      {
         "name": "CoocMatrix.to_dataframe()",
         "anchor": "coocmatrix-to_dataframe"
       },
       {
         "name": "CoocMatrix.to_dense()",
         "anchor": "coocmatrix-to_dense"
+      },
+      {
+        "name": "CoocMatrix.to_ppmi()",
+        "anchor": "coocmatrix-to_ppmi"
       },
       {
         "name": "find_collocates()",
@@ -503,6 +511,14 @@
       {
         "name": "plot_collocates()",
         "anchor": "plot_collocates"
+      },
+      {
+        "name": "kwic()",
+        "anchor": "kwic"
+      },
+      {
+        "name": "compare_collocates()",
+        "anchor": "compare_collocates"
       }
     ]
   },
