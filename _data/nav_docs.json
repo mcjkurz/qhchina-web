@@ -523,6 +523,16 @@
     ]
   },
   {
+    "name": "Text Reuse",
+    "url": "/docs/textreuse/",
+    "functions": [
+      {
+        "name": "find_shared_sequences()",
+        "anchor": "find_shared_sequences"
+      }
+    ]
+  },
+  {
     "name": "Helpers",
     "url": "/docs/helpers/",
     "functions": [
