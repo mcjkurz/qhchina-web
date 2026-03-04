@@ -144,6 +144,7 @@ topics = lda.get_topics(n_words=10)
 <pre class="signature"><code><span class="sig-name">SegmentationWrapper</span>(
     <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
     <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
+    <span class="sig-param">chunk_overlap</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
@@ -155,6 +156,8 @@ Base segmentation wrapper class that can be extended for different segmentation 
 - `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'. 
   Default is 'document'.
 - `chunk_size`: Size of chunks when using 'chunk' strategy.
+- `chunk_overlap`: Fraction of overlap between consecutive chunks (0.0 to <1.0).
+  Only used when strategy is 'chunk'. Default is 0.0 (no overlap).
 - `filters`: Dictionary of filters to apply during segmentation:
   - stopwords: List or set of stopwords to exclude (converted to set internally)
   - min_word_length: Minimum length of tokens to include (default 1)
@@ -166,13 +169,13 @@ Base segmentation wrapper class that can be extended for different segmentation 
 - `sentence_end_pattern`: Regular expression pattern for sentence endings (default: 
   Chinese and English punctuation).
 
-<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="#segmentationwrapper-close" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L181" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="#segmentationwrapper-close" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">close</span>()</code></pre>
 
 Clean up resources. Call this when done with the segmenter.
 
-<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="#segmentationwrapper-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L185" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="#segmentationwrapper-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L192" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -181,7 +184,7 @@ Reset the user dictionary to default state.
 This clears any custom words that were added via user_dict.
 Subclasses should override this method to implement backend-specific reset logic.
 
-<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="#segmentationwrapper-segment" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L208" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="#segmentationwrapper-segment" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L215" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">segment</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -197,18 +200,14 @@ contains tokens for a line, sentence, or chunk respectively
 
 <br>
 
-<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="#spacysegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L332" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="#spacysegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L336" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SpacySegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_core_web_sm'</span>,
     <span class="sig-param">disable</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">batch_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">200</span>,
     <span class="sig-param">max_doc_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>,
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
-    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Segmentation wrapper for spaCy models.
@@ -224,17 +223,10 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
 - `max_doc_length`: Maximum document length before internal chunking. Documents longer
   than this will be split into chunks for processing to avoid memory issues.
   Default is 100000 characters (~100KB). Set to None to disable chunking.
-- `user_dict`: Custom user dictionary - either a list of words/tuples or path to a 
-  dictionary file.
-- `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'.
-- `chunk_size`: Size of chunks when using 'chunk' strategy.
-- `filters`: Dictionary of filters to apply during segmentation:
-  - min_word_length: Minimum length of tokens to include (default 1)
-  - excluded_pos: Set of POS tags to exclude from token outputs
-  - stopwords: Set of stopwords to exclude
-- `sentence_end_pattern`: Regular expression pattern for sentence endings.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="#spacysegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L428" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="#spacysegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L420" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -245,17 +237,9 @@ Note: This resets to an empty user dictionary, not the original state if one was
 
 <br>
 
-<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="#pkusegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L537" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="#pkusegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L529" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code><span class="sig-name">PKUSegmenter</span>(
-    <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'default'</span>,
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
-    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
-)</code></pre>
+<pre class="signature"><code><span class="sig-name">PKUSegmenter</span>(<span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'default'</span>, <span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
 Segmentation wrapper for PKUSeg Chinese text segmentation.
 
@@ -275,20 +259,11 @@ which will reinitialize the segmenter.
   - 'medicine': Medical domain
   - 'tourism': Tourism domain
   - Or a path to a custom model directory
-- `user_dict`: Custom user dictionary. Can be:
-  - str: Path to a dictionary file (one word per line)
-  - list[str]: List of words
-  - list[Tuple]: List of tuples (only first element/word is used)
 - `pos_tagging`: Whether to include POS tagging in segmentation.
-- `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'.
-- `chunk_size`: Size of chunks when using 'chunk' strategy.
-- `filters`: Dictionary of filters to apply during segmentation:
-  - min_word_length: Minimum length of tokens to include (default 1)
-  - excluded_pos: List of POS tags to exclude (if pos_tagging is True)
-  - stopwords: Set of stopwords to exclude
-- `sentence_end_pattern`: Regular expression pattern for sentence endings.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="#pkusegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L624" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="#pkusegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L602" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -300,34 +275,18 @@ global state.
 
 <br>
 
-<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="#jiebasegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L688" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="#jiebasegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L666" class="source-link" title="View source on GitHub">[source]</a></h3>
 
-<pre class="signature"><code><span class="sig-name">JiebaSegmenter</span>(
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
-    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
-)</code></pre>
+<pre class="signature"><code><span class="sig-name">JiebaSegmenter</span>(<span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
 Segmentation wrapper for Jieba Chinese text segmentation.
 
 **Parameters:**
-- `user_dict`: Custom user dictionary for Jieba. Can be:
-  - str: Path to a dictionary file
-  - list[str]: List of words
-  - list[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
 - `pos_tagging`: Whether to include POS tagging in segmentation.
-- `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'.
-- `chunk_size`: Size of chunks when using 'chunk' strategy.
-- `filters`: Dictionary of filters to apply during segmentation:
-  - min_word_length: Minimum length of tokens to include (default 1)
-  - excluded_pos: List of POS tags to exclude (if pos_tagging is True)
-  - stopwords: Set of stopwords to exclude
-- `sentence_end_pattern`: Regular expression pattern for sentence endings.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="#jiebasegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L745" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="#jiebasegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L709" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -338,7 +297,7 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
 
 <br>
 
-<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="#bertsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L854" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="#bertsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L818" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">BertSegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -349,11 +308,7 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
     <span class="sig-param">device</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">remove_special_tokens</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
     <span class="sig-param">max_sequence_length</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
-    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Segmentation wrapper for BERT-based Chinese word segmentation.
@@ -372,19 +327,12 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
   Default is True, which works for BERT-based models.
 - `max_sequence_length`: Maximum sequence length for BERT models (default 512). If 
   the text is longer than this, it will be split into chunks.
-- `user_dict`: Custom user dictionary (not supported for BERT segmenter, will be ignored
-  with a warning).
-- `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'.
-- `chunk_size`: Size of chunks when using 'chunk' strategy.
-- `filters`: Dictionary of filters to apply during segmentation:
-  - min_word_length: Minimum length of tokens to include (default 1)
-  - excluded_pos: Set of POS tags to exclude from token outputs
-  - stopwords: Set of stopwords to exclude
-- `sentence_end_pattern`: Regular expression pattern for sentence endings.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 <br>
 
-<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="#llmsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1169" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="#llmsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1121" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">LLMSegmenter</span>(
     <span class="sig-param">api_key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
@@ -396,11 +344,7 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
     <span class="sig-param">max_tokens</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">2048</span>,
     <span class="sig-param">retry_patience</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>,
     <span class="sig-param">timeout</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">60.0</span>,
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
-    <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
+    <span class="sig-param">**kwargs</span>
 )</code></pre>
 
 Segmentation wrapper using Language Model APIs like OpenAI.
@@ -416,15 +360,8 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 - `retry_patience`: Number of retries for API calls (default 1, meaning 1 retry = 
   2 total attempts).
 - `timeout`: Timeout in seconds for API calls (default 60.0). Set to None for no timeout.
-- `user_dict`: Custom user dictionary (not supported for LLM segmenter, will be ignored
-  with a warning).
-- `strategy`: Strategy to process texts. Options: 'line', 'sentence', 'chunk', 'document'.
-- `chunk_size`: Size of chunks when using 'chunk' strategy.
-- `filters`: Dictionary of filters to apply during segmentation:
-  - min_word_length: Minimum length of tokens to include (default 1)
-  - excluded_pos: Set of POS tags to exclude from token outputs
-  - stopwords: Set of stopwords to exclude
-- `sentence_end_pattern`: Regular expression pattern for sentence endings.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 <br>
 
@@ -471,12 +408,13 @@ All keys are optional - only specified options are applied.
 
 <br>
 
-<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1383" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1322" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">create_segmenter</span>(
     <span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'spacy'</span>,
     <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
     <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
+    <span class="sig-param">chunk_overlap</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>,
     <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>,
     <span class="sig-param">**kwargs</span>
 )</code></pre>
@@ -487,7 +425,10 @@ Create a segmenter based on the specified backend.
 - `backend`: The segmentation backend to use ('spacy', 'pkuseg', 'jieba', 'bert', 'llm')
 - `strategy`: Strategy to process texts ['line', 'sentence', 'chunk', 'document']
 - `chunk_size`: Size of chunks when using 'chunk' strategy
-- `sentence_end_pattern`: Regular expression pattern for sentence endings (default: Chinese and English punctuation)
+- `chunk_overlap`: Fraction of overlap between consecutive chunks (0.0 to <1.0).
+  Only used when strategy is 'chunk'. Default is 0.0 (no overlap).
+- `sentence_end_pattern`: Regular expression pattern for sentence endings
+  (default: Chinese and English punctuation)
 - `**kwargs`: Additional arguments to pass to the segmenter constructor
   - user_dict: Custom user dictionary. Can be:
       - str: Path to a dictionary file
