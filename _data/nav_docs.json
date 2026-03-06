@@ -557,8 +557,8 @@
         "anchor": "loaded_font"
       },
       {
-        "name": "cache_fonts()",
-        "anchor": "cache_fonts"
+        "name": "download_fonts()",
+        "anchor": "download_fonts"
       },
       {
         "name": "list_remote_fonts()",
