@@ -158,7 +158,15 @@ reader = LineSentenceFile("corpus.txt", limit=1000)
     <span class="sig-param">force_download</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
 )</code></pre>
 
-Load a font for matplotlib.
+Load a font and set it as the active font for matplotlib.
+
+This function:
+1. Downloads the font file if using `remote=` and not already cached
+2. Registers the font with matplotlib's font manager
+3. Sets matplotlib's rcParams to use this font for all subsequent plots
+   (font.family, font.sans-serif or font.serif, axes.unicode_minus)
+
+After calling this function, all matplotlib plots will use the loaded font.
 
 **Parameters:**
 - `remote`: Font filename from qhchina-data repository (e.g., 'NotoSerifTC-Regular.otf').
@@ -168,7 +176,7 @@ Load a font for matplotlib.
   Only applies when using `remote=`. Ignored for `path=`.
 
 **Returns:**
-The font name that was set.
+The font name that was set (e.g., 'Noto Serif TC').
 
 **Raises:**
 - `ValueError`: If both `remote` and `path` are provided, or if file extension is invalid.
@@ -177,10 +185,12 @@ The font name that was set.
 **Example:**
 ```python
 from qhchina.helpers import load_font
+import matplotlib.pyplot as plt
 
-# Load default font
+# Load default font - plots will now render Chinese correctly
 load_font()
 'Noto Sans CJK TC'
+plt.title('中文標題')  # This now works!
 
 # Load specific font from repository
 load_font(remote='NotoSerifTC-Regular.otf')
@@ -197,7 +207,7 @@ load_font(path='/path/to/MyFont.otf')
 
 <br>
 
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="#load_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L246" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="#load_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L256" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_fonts</span>()</code></pre>
 
@@ -219,7 +229,7 @@ plt.title('中文標題')  # Now works!
 
 <br>
 
-<h3 id="get_current_font_name">qhchina.helpers.fonts.get_current_font_name() <a href="#get_current_font_name" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L414" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_current_font_name">qhchina.helpers.fonts.get_current_font_name() <a href="#get_current_font_name" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L424" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_current_font_name</span>()</code></pre>
 
@@ -239,7 +249,7 @@ get_current_font_name()
 
 <br>
 
-<h3 id="get_current_font_path">qhchina.helpers.fonts.get_current_font_path() <a href="#get_current_font_path" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L265" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_current_font_path">qhchina.helpers.fonts.get_current_font_path() <a href="#get_current_font_path" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L275" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_current_font_path</span>()</code></pre>
 
@@ -270,7 +280,7 @@ get_current_font_path()  # Returns path to NotoSerifTC-Regular.otf
 
 <br>
 
-<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="#download_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L305" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="#download_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L315" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">download_fonts</span>(<span class="sig-param">fonts</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -306,7 +316,7 @@ download_fonts(['NotoSerifTC-Regular.otf', 'NotoSerifSC-Regular.otf'])
 
 <br>
 
-<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="#list_remote_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L359" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="#list_remote_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L369" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">list_remote_fonts</span>()</code></pre>
 
@@ -324,7 +334,7 @@ qhchina.list_remote_fonts()
 
 <br>
 
-<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="#list_cached_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L382" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="#list_cached_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L392" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">list_cached_fonts</span>()</code></pre>
 
@@ -338,7 +348,7 @@ List of dicts with font information:
 
 <br>
 
-<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="#clear_cache" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L441" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="#clear_cache" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L451" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">clear_cache</span>()</code></pre>
 
