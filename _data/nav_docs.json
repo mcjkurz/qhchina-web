@@ -541,24 +541,24 @@
         "anchor": "linesentencefile"
       },
       {
+        "name": "load_font()",
+        "anchor": "load_font"
+      },
+      {
         "name": "load_fonts()",
         "anchor": "load_fonts"
       },
       {
-        "name": "set_font()",
-        "anchor": "set_font"
+        "name": "get_current_font_path()",
+        "anchor": "get_current_font_path"
       },
       {
-        "name": "get_font_path()",
-        "anchor": "get_font_path"
+        "name": "loaded_font()",
+        "anchor": "loaded_font"
       },
       {
-        "name": "current_font()",
-        "anchor": "current_font"
-      },
-      {
-        "name": "download_fonts()",
-        "anchor": "download_fonts"
+        "name": "cache_fonts()",
+        "anchor": "cache_fonts"
       },
       {
         "name": "list_remote_fonts()",
