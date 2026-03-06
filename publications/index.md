@@ -16,7 +16,7 @@ Kurzynski, Maciej, ["Cognitive Stylometry: A Computational Study of Defamiliariz
 
 Kurzynski, Maciej, Xiaotong Xu, and Yu Feng, "[The Game of Keys and Queries: Parallelism and Cognitive Geometry in Chinese Regulated Verse](https://www.euppublishing.com/doi/abs/10.3366/ijhac.2025.0355)," *International Journal of Humanities and Arts Computing (IJHAC)* 19, 2025(2): 143-157.
 
-Cai, Zong-qi, Maciej Kurzynski, and Xiaotong Xu, "Good Things Come in Pairs: A Computational Study of Poetic Parallelism in the Six Dynasties," *Journal of Chinese Literature and Culture* (*JCLC*), 2025(2), forthcoming.
+Cai, Zong-qi, Maciej Kurzynski, and Xiaotong Xu, "[Good Things Come in Pairs: A Computational Study of Poetic Parallelism in the Six Dynasties](https://read.dukeupress.edu/jclc/article-abstract/12/2/361/407387/Good-Things-Come-in-Pairs-A-Computational-Study-of)," *Journal of Chinese Literature and Culture* (*JCLC*) 12, 2025(2): 361–384.
 
 Kurzynski, Maciej, ["Poly-Temporal, Multi-Layered: A Techno-Cognitive Theory of Narrative Experience in Literature"](https://euppublishing.com/doi/full/10.3366/ijhac.2025.0343), *International Journal of Humanities and Arts Computing* (IJHAC) 19, 2025(1): 33-48.
 
