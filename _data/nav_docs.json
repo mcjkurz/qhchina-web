@@ -549,12 +549,12 @@
         "anchor": "load_fonts"
       },
       {
-        "name": "get_current_font_path()",
-        "anchor": "get_current_font_path"
+        "name": "get_current_font_name()",
+        "anchor": "get_current_font_name"
       },
       {
-        "name": "loaded_font()",
-        "anchor": "loaded_font"
+        "name": "get_current_font_path()",
+        "anchor": "get_current_font_path"
       },
       {
         "name": "download_fonts()",

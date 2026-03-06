@@ -9,10 +9,10 @@ functions:
     anchor: load_font
   - name: load_fonts()
     anchor: load_fonts
+  - name: get_current_font_name()
+    anchor: get_current_font_name
   - name: get_current_font_path()
     anchor: get_current_font_path
-  - name: loaded_font()
-    anchor: loaded_font
   - name: download_fonts()
     anchor: download_fonts
   - name: list_remote_fonts()
@@ -219,6 +219,26 @@ plt.title('中文標題')  # Now works!
 
 <br>
 
+<h3 id="get_current_font_name">qhchina.helpers.fonts.get_current_font_name() <a href="#get_current_font_name" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L414" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">get_current_font_name</span>()</code></pre>
+
+Get the currently loaded matplotlib font name.
+
+**Returns:**
+The current font name, or None if using matplotlib defaults.
+
+**Example:**
+```python
+from qhchina.helpers import load_font, get_current_font_name
+load_font(remote='NotoSerifTC-Regular.otf')
+'Noto Serif TC'
+get_current_font_name()
+'Noto Serif TC'
+```
+
+<br>
+
 <h3 id="get_current_font_path">qhchina.helpers.fonts.get_current_font_path() <a href="#get_current_font_path" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L265" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_current_font_path</span>()</code></pre>
@@ -246,26 +266,6 @@ wc = WordCloud(font_path=path, ...)
 load_font(remote='NotoSerifTC-Regular.otf')
 'Noto Serif TC'
 get_current_font_path()  # Returns path to NotoSerifTC-Regular.otf
-```
-
-<br>
-
-<h3 id="loaded_font">qhchina.helpers.fonts.loaded_font() <a href="#loaded_font" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L414" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">loaded_font</span>()</code></pre>
-
-Get the currently loaded matplotlib font name.
-
-**Returns:**
-The loaded font name, or None if using matplotlib defaults.
-
-**Example:**
-```python
-from qhchina.helpers import load_font, loaded_font
-load_font(remote='NotoSerifTC-Regular.otf')
-'Noto Serif TC'
-loaded_font()
-'Noto Serif TC'
 ```
 
 <br>
