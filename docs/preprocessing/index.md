@@ -386,6 +386,9 @@ HanLP provides state-of-the-art Chinese word segmentation using transformer mode
 It supports multiple pretrained models for different use cases (coarse/fine-grained,
 ancient Chinese, multilingual), and optionally POS tagging.
 
+As of March 2026, HanLP 2.x is incompatible with transformers>=5.0 (encode_plus
+API changes). Use: pip install "transformers<5.0"
+
 **Parameters:**
 - `model`: Tokenizer model to use. Can be:
   - HanLP enum value (e.g., ``hanlp.pretrained.tok.FINE_ELECTRA_SMALL_ZH``)
@@ -471,7 +474,7 @@ All keys are optional - only specified options are applied.
 
 <br>
 
-<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1624" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1627" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">create_segmenter</span>(
     <span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'spacy'</span>,
@@ -514,7 +517,7 @@ An instance of a SegmentationWrapper subclass
 
 <br>
 
-<h3 id="print_pos_tags">qhchina.preprocessing.segmentation.print_pos_tags() <a href="#print_pos_tags" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1810" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="print_pos_tags">qhchina.preprocessing.segmentation.print_pos_tags() <a href="#print_pos_tags" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1813" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">print_pos_tags</span>(<span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
