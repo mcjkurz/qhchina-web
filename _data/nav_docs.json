@@ -57,12 +57,20 @@
         "anchor": "llmsegmenter"
       },
       {
+        "name": "HanLPSegmenter",
+        "anchor": "hanlpsegmenter"
+      },
+      {
         "name": "NormalizeOptions",
         "anchor": "normalizeoptions"
       },
       {
         "name": "create_segmenter()",
         "anchor": "create_segmenter"
+      },
+      {
+        "name": "print_pos_tags()",
+        "anchor": "print_pos_tags"
       },
       {
         "name": "normalize()",

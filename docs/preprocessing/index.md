@@ -27,10 +27,14 @@ functions:
     anchor: bertsegmenter
   - name: LLMSegmenter
     anchor: llmsegmenter
+  - name: HanLPSegmenter
+    anchor: hanlpsegmenter
   - name: NormalizeOptions
     anchor: normalizeoptions
   - name: create_segmenter()
     anchor: create_segmenter
+  - name: print_pos_tags()
+    anchor: print_pos_tags
   - name: normalize()
     anchor: normalize
 has_examples: True
@@ -139,14 +143,14 @@ topics = lda.get_topics(n_words=10)
 
 <!-- API-START -->
 
-<h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper <a href="#segmentationwrapper" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L25" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="segmentationwrapper">qhchina.preprocessing.segmentation.SegmentationWrapper <a href="#segmentationwrapper" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L28" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SegmentationWrapper</span>(
     <span class="sig-param">strategy</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>,
     <span class="sig-param">chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">512</span>,
     <span class="sig-param">chunk_overlap</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">user_dict</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str | tuple] | dict[str, str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">sentence_end_pattern</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'([。！？\\.!?……]+)'</span>
 )</code></pre>
 
@@ -166,16 +170,17 @@ Base segmentation wrapper class that can be extended for different segmentation 
   - str: Path to a dictionary file
   - list[str]: List of words
   - list[Tuple]: List of tuples like (word, freq, pos) or (word, freq)
+  - dict[str, str]: Dictionary mapping words to POS tags (e.g., {'word': 'n'})
 - `sentence_end_pattern`: Regular expression pattern for sentence endings (default: 
   Chinese and English punctuation).
 
-<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="#segmentationwrapper-close" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L188" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-close">qhchina.preprocessing.segmentation.SegmentationWrapper.close() <a href="#segmentationwrapper-close" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L207" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">close</span>()</code></pre>
 
 Clean up resources. Call this when done with the segmenter.
 
-<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="#segmentationwrapper-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L192" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-reset_user_dict">qhchina.preprocessing.segmentation.SegmentationWrapper.reset_user_dict() <a href="#segmentationwrapper-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L211" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -184,7 +189,7 @@ Reset the user dictionary to default state.
 This clears any custom words that were added via user_dict.
 Subclasses should override this method to implement backend-specific reset logic.
 
-<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="#segmentationwrapper-segment" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L215" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="segmentationwrapper-segment">qhchina.preprocessing.segmentation.SegmentationWrapper.segment() <a href="#segmentationwrapper-segment" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L234" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">segment</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -200,7 +205,7 @@ contains tokens for a line, sentence, or chunk respectively
 
 <br>
 
-<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="#spacysegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L336" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="spacysegmenter">qhchina.preprocessing.segmentation.SpacySegmenter <a href="#spacysegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L355" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">SpacySegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_core_web_sm'</span>,
@@ -226,7 +231,7 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
 - `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="#spacysegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L420" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="spacysegmenter-reset_user_dict">qhchina.preprocessing.segmentation.SpacySegmenter.reset_user_dict() <a href="#spacysegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L439" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -237,7 +242,7 @@ Note: This resets to an empty user dictionary, not the original state if one was
 
 <br>
 
-<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="#pkusegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L529" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="pkusegmenter">qhchina.preprocessing.segmentation.PKUSegmenter <a href="#pkusegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L548" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">PKUSegmenter</span>(<span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'default'</span>, <span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
@@ -263,7 +268,7 @@ which will reinitialize the segmenter.
 - `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="#pkusegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L602" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="pkusegmenter-reset_user_dict">qhchina.preprocessing.segmentation.PKUSegmenter.reset_user_dict() <a href="#pkusegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L621" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -275,7 +280,7 @@ global state.
 
 <br>
 
-<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="#jiebasegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L666" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="jiebasegmenter">qhchina.preprocessing.segmentation.JiebaSegmenter <a href="#jiebasegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L729" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">JiebaSegmenter</span>(<span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">**kwargs</span>)</code></pre>
 
@@ -286,7 +291,7 @@ Segmentation wrapper for Jieba Chinese text segmentation.
 - `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
-<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="#jiebasegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L709" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="jiebasegmenter-reset_user_dict">qhchina.preprocessing.segmentation.JiebaSegmenter.reset_user_dict() <a href="#jiebasegmenter-reset_user_dict" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L772" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">reset_user_dict</span>()</code></pre>
 
@@ -297,7 +302,7 @@ Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
 
 <br>
 
-<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="#bertsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L818" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="bertsegmenter">qhchina.preprocessing.segmentation.BertSegmenter <a href="#bertsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L881" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">BertSegmenter</span>(
     <span class="sig-param">model_name</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -332,7 +337,7 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
 
 <br>
 
-<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="#llmsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1121" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="llmsegmenter">qhchina.preprocessing.segmentation.LLMSegmenter <a href="#llmsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1184" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">LLMSegmenter</span>(
     <span class="sig-param">api_key</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
@@ -362,6 +367,64 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 - `timeout`: Timeout in seconds for API calls (default 60.0). Set to None for no timeout.
 - `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
+
+<br>
+
+<h3 id="hanlpsegmenter">qhchina.preprocessing.segmentation.HanLPSegmenter <a href="#hanlpsegmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1386" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">HanLPSegmenter</span>(
+    <span class="sig-param">model</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">pos_tagging</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">pos_model</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">dict_mode</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'force'</span>,
+    <span class="sig-param">**kwargs</span>
+)</code></pre>
+
+Segmentation wrapper using HanLP 2.x neural tokenizers.
+
+HanLP provides state-of-the-art Chinese word segmentation using transformer models.
+It supports multiple pretrained models for different use cases (coarse/fine-grained,
+ancient Chinese, multilingual), and optionally POS tagging.
+
+**Parameters:**
+- `model`: Tokenizer model to use. Can be:
+  - HanLP enum value (e.g., ``hanlp.pretrained.tok.FINE_ELECTRA_SMALL_ZH``)
+  - String shorthand: 'coarse', 'fine', 'ctb9', 'ctb9_base', 'ancient', 
+    'large', 'multilingual'
+  - Full model name string (e.g., 'CTB9_TOK_ELECTRA_BASE')
+  - Direct URL or path to a model
+  - None for default (COARSE_ELECTRA_SMALL_ZH)
+- `pos_tagging`: Whether to enable POS tagging. When enabled, tokens can be
+  filtered using ``excluded_pos`` in filters. Default is False.
+- `pos_model`: POS tagger model to use when ``pos_tagging=True``. Can be:
+  - HanLP enum value (e.g., ``hanlp.pretrained.pos.CTB9_POS_ELECTRA_SMALL``)
+  - String shorthand: 'ctb9', 'ctb5', 'pku', 'c863'
+  - Full model name string (e.g., 'PKU_POS_ELECTRA_SMALL')
+  - Direct URL or path to a model
+  - None for default (CTB9_POS_ELECTRA_SMALL)
+- `dict_mode`: How to apply user dictionary. Options:
+  - 'force': High-priority dictionary that overrides model predictions
+    (longest-prefix-matching on input text)
+  - 'combine': Low-priority dictionary that combines with model predictions
+    (longest-prefix-matching on output tokens)
+  Default is 'force'.
+- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+  (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
+
+**Example:**
+```python
+import hanlp
+from qhchina.preprocessing import create_segmenter
+# Using HanLP enum directly (recommended)
+seg = create_segmenter("hanlp", model=hanlp.pretrained.tok.FINE_ELECTRA_SMALL_ZH)
+# Using string shorthand
+seg = create_segmenter("hanlp", model="fine")
+# With user dictionary
+seg = create_segmenter("hanlp", user_dict={"自定义词": "n"}, dict_mode="force")
+# With POS tagging and filtering
+seg = create_segmenter("hanlp", pos_tagging=True, 
+                       filters={'excluded_pos': {'PU', 'DEG'}})
+```
 
 <br>
 
@@ -408,7 +471,7 @@ All keys are optional - only specified options are applied.
 
 <br>
 
-<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1322" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="create_segmenter">qhchina.preprocessing.segmentation.create_segmenter() <a href="#create_segmenter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1624" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">create_segmenter</span>(
     <span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'spacy'</span>,
@@ -422,7 +485,7 @@ All keys are optional - only specified options are applied.
 Create a segmenter based on the specified backend.
 
 **Parameters:**
-- `backend`: The segmentation backend to use ('spacy', 'pkuseg', 'jieba', 'bert', 'llm')
+- `backend`: The segmentation backend to use ('spacy', 'pkuseg', 'jieba', 'bert', 'llm', 'hanlp')
 - `strategy`: Strategy to process texts ['line', 'sentence', 'chunk', 'document']
 - `chunk_size`: Size of chunks when using 'chunk' strategy
 - `chunk_overlap`: Fraction of overlap between consecutive chunks (0.0 to <1.0).
@@ -448,6 +511,33 @@ An instance of a SegmentationWrapper subclass
 
 **Raises:**
 - `ValueError`: If the specified backend is not supported
+
+<br>
+
+<h3 id="print_pos_tags">qhchina.preprocessing.segmentation.print_pos_tags() <a href="#print_pos_tags" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L1810" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">print_pos_tags</span>(<span class="sig-param">backend</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
+
+Print POS (Part-of-Speech) tag documentation for segmentation backends.
+
+This function displays the POS tags used by each backend that supports
+POS tagging, helping users understand which tags to use in the
+`excluded_pos` filter.
+
+**Parameters:**
+- `backend`: Specific backend to show tags for. Options:
+  - 'spacy': Universal Dependencies tags
+  - 'jieba': ICTCLAS/北大 tags
+  - 'pkuseg': CTB-style tags
+  - 'hanlp': Chinese Treebank tags (default) or PKU tags
+  - None: Show tags for all backends (default)
+
+**Example:**
+```python
+from qhchina.preprocessing import print_pos_tags
+print_pos_tags('hanlp')  # Show HanLP tags only
+print_pos_tags()  # Show all backends
+```
 
 <br>
 
