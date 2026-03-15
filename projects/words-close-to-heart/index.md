@@ -6,7 +6,7 @@ permalink: /projects/words-close-to-heart/
 
 # Words Close to Heart
 
-## A Techno-Cognitive Approach to Interiority in Modern Chinese Literature
+## Geometries of Empathy from Ming–Qing Novels to Ye Xin’s *Wasted Years*
 
 <img src="heart_pca_3d.png" alt="Words Close to Heart" style="max-width: 75%; height: auto; margin: 2rem auto; display: block;">
 
