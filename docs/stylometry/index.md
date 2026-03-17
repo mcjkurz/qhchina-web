@@ -98,11 +98,12 @@ dist = stylo.distance('鲁迅_1', '沈从文_1')     # Compare two documents (lo
 
 **Authorship Attribution**
 
+The most common use case is predicting who wrote an unknown text. In centroid mode (the default), the model compares the unknown text against averaged author profiles.
+
 ```python
 from qhchina.analytics.stylometry import Stylometry
 
-# Prepare corpus: dict mapping author names to their documents
-# Each document is a list of tokens
+# Prepare corpus: dict mapping author names to lists of tokenized documents
 corpus = {
     'author_a': [
         ['这', '是', '作者', 'A', '的', '第一篇', '文章', '...'],
@@ -115,26 +116,23 @@ corpus = {
 }
 
 # Create and fit the model
-stylo = Stylometry(n_features=100, distance='cosine', mode='centroid')
+stylo = Stylometry(n_features=100, distance='cosine')
 stylo.fit_transform(corpus)
 
 # Predict authorship for an unknown text
-unknown_text = ['他', '终于', '在', '无物', '之', '阵', '中', '老衰', '，', ...]
-results = stylo.predict(unknown_text)  # Returns top 1 author
-for author, distance in results:
-    print(f"{author}: {distance:.4f}")
+unknown_text = ['他', '终于', '在', '无物', '之', '阵', '中', '老衰', '...']
+predicted = stylo.predict_author(unknown_text)
+print(f"Predicted author: {predicted}")
 
-# Get top 3 most similar authors
+# Get ranked results with distances (lower distance = more similar)
 results = stylo.predict(unknown_text, k=3)
 for author, distance in results:
     print(f"{author}: {distance:.4f}")
-
-# Get predicted author directly
-predicted = stylo.predict_author(unknown_text)
-print(f"Predicted author: {predicted}")
 ```
 
 **Finding Similar Documents**
+
+Beyond authorship attribution, you can explore stylistic relationships between documents—useful for discovering influences, detecting plagiarism, or clustering anonymous texts.
 
 ```python
 # Find documents most similar to a specific document (returns similarity by default)
@@ -144,115 +142,36 @@ for doc_id, sim in similar:
 
 # Find documents similar to new text (without adding it to the corpus)
 similar = stylo.most_similar(['这', '是', '新', '文本', '...'], k=3)
-for doc_id, sim in similar:
-    print(f"{doc_id}: {sim:.4f}")
 
-# Compare two specific documents
+# Compare two specific documents directly
 sim = stylo.similarity('author_a_1', 'author_b_1')  # higher = more similar
 dist = stylo.distance('author_a_1', 'author_b_1')   # lower = more similar
-print(f"Similarity: {sim:.4f}, Distance: {dist:.4f}")
-```
-
-**Analyzing Author Profiles**
-
-```python
-# Get feature profile for an author
-profile = stylo.get_author_profile('author_a')
-print("Top distinctive features for author_a:")
-print(profile.head(10))
-
-# Compare features across all authors
-comparison = stylo.get_feature_comparison()
-print("Most variable features across authors:")
-print(comparison.head(10))
-```
-
-**Document Clustering (Unsupervised)**
-
-```python
-from qhchina.analytics.stylometry import Stylometry
-
-# Documents without author labels
-documents = [
-    ['文档', '一', '的', '内容', '...'],
-    ['文档', '二', '的', '内容', '...'],
-    ['文档', '三', '的', '内容', '...'],
-]
-
-# Create model and fit on documents (unsupervised mode)
-stylo = Stylometry(n_features=50, distance='burrows_delta')
-stylo.fit_transform(documents)  # All docs get 'unk' author, IDs: unk_1, unk_2, unk_3
-
-# Visualize documents in 2D space
-stylo.plot(
-    method='pca',
-    title='Document Clustering',
-    filename='clustering.png'
-)
-
-# Create dendrogram
-stylo.dendrogram(
-    method='average',
-    filename='dendrogram.png'
-)
-
-# Find similar documents
-similar = stylo.most_similar('unk_1')
-```
-
-**Supervised Visualization**
-
-```python
-# After fitting on labeled corpus
-stylo.fit_transform(corpus)
-
-# Plot at document level (colored by author)
-stylo.plot(
-    method='pca',
-    level='document',
-    title='Documents by Author',
-    filename='docs_pca.png'
-)
-
-# Plot at author level (one point per author)
-stylo.plot(
-    method='mds',
-    level='author',
-    title='Author Similarity',
-    filename='authors_mds.png'
-)
-
-# Hierarchical clustering of documents
-stylo.dendrogram(
-    method='ward',
-    level='document',
-    filename='doc_dendrogram.png'
-)
 ```
 
 **Instance Mode with k-NN**
+
+When authors have varied writing styles across works, instance mode compares the unknown text against individual documents rather than averaged centroids. This enables k-nearest-neighbor voting.
 
 ```python
 # Use instance mode for k-nearest neighbor attribution
 stylo = Stylometry(n_features=100, distance='cosine', mode='instance')
 stylo.fit_transform(corpus)
 
-# Find the 5 nearest training documents to a disputed text
-results = stylo.predict(unknown_text, k=5)
-for author, distance in results:
-    print(f"{author}: {distance:.4f}")
-
 # Get predicted author via majority vote among 5 nearest neighbors
 predicted = stylo.predict_author(unknown_text, k=5)
 print(f"Predicted author (majority vote): {predicted}")
+
+# Inspect the 5 nearest training documents
+results = stylo.predict(unknown_text, k=5)
+for author, distance in results:
+    print(f"{author}: {distance:.4f}")
 ```
 
 **Corpus Balance Warning**
 
-The module automatically warns when author corpus sizes are highly imbalanced (3x difference or more), as this can skew the Most Frequent Words calculation toward the larger corpus:
+The module automatically warns when author corpus sizes are highly imbalanced (3x difference or more), as this can skew the Most Frequent Words calculation toward the larger corpus.
 
 ```python
-# This will trigger a warning if corpus sizes are imbalanced
 corpus = {
     'prolific_author': [doc1, doc2, doc3, ..., doc100],  # Many documents
     'rare_author': [doc1, doc2],  # Few documents
