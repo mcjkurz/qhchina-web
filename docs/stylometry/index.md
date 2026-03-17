@@ -167,23 +167,6 @@ for author, distance in results:
     print(f"{author}: {distance:.4f}")
 ```
 
-**Corpus Balance Warning**
-
-The module automatically warns when author corpus sizes are highly imbalanced (3x difference or more), as this can skew the Most Frequent Words calculation toward the larger corpus.
-
-```python
-corpus = {
-    'prolific_author': [doc1, doc2, doc3, ..., doc100],  # Many documents
-    'rare_author': [doc1, doc2],  # Few documents
-}
-stylo.fit_transform(corpus)
-# UserWarning: Imbalanced corpus: 'prolific_author' has X tokens while 
-# 'rare_author' has only Y tokens (Z.Zx difference)...
-```
-
-Consider balancing text sizes across authors for more reliable results.
-
-
 ---
 
 ## API Reference
