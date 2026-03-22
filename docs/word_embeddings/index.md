@@ -7,10 +7,14 @@ functions:
     anchor: word2vec
   - name: Word2Vec.build_vocab()
     anchor: word2vec-build_vocab
+  - name: Word2Vec.export()
+    anchor: word2vec-export
   - name: Word2Vec.get_vector()
     anchor: word2vec-get_vector
   - name: Word2Vec.load()
     anchor: word2vec-load
+  - name: Word2Vec.load_vectors()
+    anchor: word2vec-load_vectors
   - name: Word2Vec.most_similar()
     anchor: word2vec-most_similar
   - name: Word2Vec.save()
@@ -25,6 +29,8 @@ functions:
     anchor: temprefword2vec-build_vocab
   - name: TempRefWord2Vec.calculate_semantic_change()
     anchor: temprefword2vec-calculate_semantic_change
+  - name: TempRefWord2Vec.export()
+    anchor: temprefword2vec-export
   - name: TempRefWord2Vec.get_available_targets()
     anchor: temprefword2vec-get_available_targets
   - name: TempRefWord2Vec.get_period_vocab_counts()
@@ -33,6 +39,8 @@ functions:
     anchor: temprefword2vec-get_time_labels
   - name: TempRefWord2Vec.load()
     anchor: temprefword2vec-load
+  - name: TempRefWord2Vec.load_vectors()
+    anchor: temprefword2vec-load_vectors
   - name: TempRefWord2Vec.save()
     anchor: temprefword2vec-save
   - name: TempRefWord2Vec.train()
@@ -45,6 +53,8 @@ functions:
     anchor: dynamicword2vec-calculate_semantic_change
   - name: DynamicWord2Vec.calculate_temporal_drift()
     anchor: dynamicword2vec-calculate_temporal_drift
+  - name: DynamicWord2Vec.export()
+    anchor: dynamicword2vec-export
   - name: DynamicWord2Vec.get_all_time_vectors()
     anchor: dynamicword2vec-get_all_time_vectors
   - name: DynamicWord2Vec.get_time_labels()
@@ -53,6 +63,8 @@ functions:
     anchor: dynamicword2vec-get_vector
   - name: DynamicWord2Vec.load()
     anchor: dynamicword2vec-load
+  - name: DynamicWord2Vec.load_vectors()
+    anchor: dynamicword2vec-load_vectors
   - name: DynamicWord2Vec.most_similar()
     anchor: dynamicword2vec-most_similar
   - name: DynamicWord2Vec.save()
@@ -261,7 +273,7 @@ vector = model['喜欢']
 similar = model.most_similar('喜欢', topn=5)
 ```
 
-<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.base.Word2Vec.build_vocab() <a href="#word2vec-build_vocab" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L213" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-build_vocab">qhchina.analytics.word2vec.base.Word2Vec.build_vocab() <a href="#word2vec-build_vocab" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L216" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">build_vocab</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>)</code></pre>
 
@@ -273,7 +285,46 @@ Build vocabulary from sentences.
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
 
-<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.base.Word2Vec.get_vector() <a href="#word2vec-get_vector" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L936" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-export">qhchina.analytics.word2vec.base.Word2Vec.export() <a href="#word2vec-export" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1260" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">export</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+Export word vectors to external format for interoperability.
+
+Exports only the input embeddings (W matrix). Output embeddings (W_prime)
+and word counts are not exported as external formats don't support them.
+
+**Parameters:**
+- `path`: Output file path.
+- `format`: Export format, one of:
+  - "word2vec": Google word2vec C format (default). Compatible with
+    gensim's ``KeyedVectors.load_word2vec_format()``.
+  - "glove": GloVe text format. No header, space-separated values.
+  - "gensim": Gensim's native KeyedVectors format. Requires gensim.
+- `binary`: For word2vec format only. If True (default), write vectors as
+  binary floats. If False, write as text. Ignored for other formats.
+
+**Raises:**
+- `ValueError`: If format is not recognized.
+- `ImportError`: If format="gensim" and gensim is not installed.
+
+**Example:**
+```python
+# Export to word2vec binary format
+model.export("vectors.bin", format="word2vec", binary=True)
+
+# Export to text format for inspection
+model.export("vectors.txt", format="word2vec", binary=False)
+
+# Export to GloVe format
+model.export("vectors.glove.txt", format="glove")
+
+# Load in gensim
+from gensim.models import KeyedVectors
+kv = KeyedVectors.load_word2vec_format("vectors.bin", binary=True)
+```
+
+<h4 id="word2vec-get_vector">qhchina.analytics.word2vec.base.Word2Vec.get_vector() <a href="#word2vec-get_vector" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1105" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_vector</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">normalize</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -289,7 +340,7 @@ Word vector as numpy array of shape (vector_size,).
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-load">qhchina.analytics.word2vec.base.Word2Vec.load() <a href="#word2vec-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1091" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-load">qhchina.analytics.word2vec.base.Word2Vec.load() <a href="#word2vec-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1352" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -301,7 +352,58 @@ Load a model from a file.
 **Returns:**
 Loaded Word2Vec model.
 
-<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.base.Word2Vec.most_similar() <a href="#word2vec-most_similar" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L985" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-load_vectors">qhchina.analytics.word2vec.base.Word2Vec.load_vectors() <a href="#word2vec-load_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1399" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load_vectors</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+Load word vectors from external format.
+
+Creates a Word2Vec model from externally-trained vectors (e.g., from gensim,
+original word2vec, or GloVe). The loaded model supports inference operations
+(similarity queries, vector access) but lacks output embeddings (W_prime)
+and word counts needed for training.
+
+To continue training on a loaded model, call `train()` with a corpus.
+Use `update_vocab=True` if you want to add new words; otherwise the
+existing vocabulary is preserved. Missing structures (W_prime, word_counts)
+are initialized automatically.
+
+**Parameters:**
+- `path`: Path to the vectors file.
+- `format`: Input format, one of:
+  - "word2vec": Google word2vec C format (default). Compatible with
+    gensim's ``save_word2vec_format()``.
+  - "glove": GloVe text format. No header, space-separated values.
+  - "gensim": Gensim's native KeyedVectors format.
+- `binary`: For word2vec format only. If True (default), expect binary floats.
+  If False, expect text format. Ignored for other formats.
+
+**Returns:**
+Word2Vec model with loaded vectors. The model has:
+- W: Input embeddings loaded from file
+- W_prime: None (not available in external formats)
+- word_counts: Empty (not available in external formats)
+
+**Raises:**
+- `ValueError`: If format is not recognized or file is malformed.
+- `ImportError`: If format="gensim" and gensim is not installed.
+
+**Example:**
+```python
+# Load word2vec binary format
+model = Word2Vec.load_vectors("vectors.bin", format="word2vec", binary=True)
+
+# Load GloVe format
+model = Word2Vec.load_vectors("glove.txt", format="glove")
+
+# Use for similarity queries
+similar = model.most_similar("king", topn=10)
+
+# Enable training by providing a corpus
+model.train(new_sentences, epochs=5, update_vocab=True)
+```
+
+<h4 id="word2vec-most_similar">qhchina.analytics.word2vec.base.Word2Vec.most_similar() <a href="#word2vec-most_similar" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1154" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -320,7 +422,7 @@ List of (word, similarity) tuples sorted by descending similarity.
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-save">qhchina.analytics.word2vec.base.Word2Vec.save() <a href="#word2vec-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1058" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-save">qhchina.analytics.word2vec.base.Word2Vec.save() <a href="#word2vec-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1227" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -333,7 +435,7 @@ needed during training, not inference.
 **Parameters:**
 - `path`: Path to save the model.
 
-<h4 id="word2vec-similarity">qhchina.analytics.word2vec.base.Word2Vec.similarity() <a href="#word2vec-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1023" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-similarity">qhchina.analytics.word2vec.base.Word2Vec.similarity() <a href="#word2vec-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1192" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
@@ -351,20 +453,49 @@ Cosine similarity between the two words (float between -1 and 1).
 **Raises:**
 - `KeyError`: If either word is not in the vocabulary.
 
-<h4 id="word2vec-train">qhchina.analytics.word2vec.base.Word2Vec.train() <a href="#word2vec-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L763" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-train">qhchina.analytics.word2vec.base.Word2Vec.train() <a href="#word2vec-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L866" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">train</span>()</code></pre>
+<pre class="signature"><code><span class="sig-name">train</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">epochs</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">update_vocab</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">reset_lr</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
-Train word2vec model on sentences provided at initialization.
+Train word2vec model on sentences.
 
 Processes sentences in batches using Cython-accelerated training.
 This approach is memory-efficient and works with both lists and iterables.
+
+This method supports incremental training: call it multiple times with
+new data and `update_vocab=True` to expand the vocabulary and continue
+training.
+
+**Parameters:**
+- `sentences`: Iterable of tokenized sentences. If None, uses sentences
+  provided at initialization.
+- `epochs`: Number of training epochs. If None, uses epochs from initialization.
+- `update_vocab`: If True, expand vocabulary with new words from sentences.
+  New words are initialized using the mean of existing embeddings
+  (Hewitt 2021) to preserve the pretrained distribution. Only
+  effective when the model already has a vocabulary.
+- `reset_lr`: If True (default), reset learning rate to ``_initial_alpha``
+  for this training run. If False, continue from current ``alpha``
+  (useful for true continuation of a training run).
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
 
 **Raises:**
-- `ValueError`: If no sentences were provided at initialization.
+- `ValueError`: If no sentences are available (neither passed nor at init).
+
+**Example:**
+```python
+# Initial training
+model = Word2Vec(sentences, epochs=5)
+model.train()
+
+# Continue training on same data
+model.train(epochs=3, reset_lr=False)
+
+# Incremental training with new data
+model.train(new_sentences, epochs=5, update_vocab=True)
+```
 
 <br>
 
@@ -524,6 +655,20 @@ for transition, word_changes in changes.items():
     print("Words moved away:", word_changes[-5:])
 ```
 
+<h4 id="temprefword2vec-export">qhchina.analytics.word2vec.tempref.TempRefWord2Vec.export() <a href="#temprefword2vec-export" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/tempref.py#L918" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">export</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+Export is not supported for TempRefWord2Vec.
+
+TempRefWord2Vec contains temporal metadata (period labels, target words,
+temporal word mappings) that cannot be preserved in standard vector formats.
+
+Use `save()` and `load()` instead to preserve all model data.
+
+**Raises:**
+- `NotImplementedError`: Always raised.
+
 <h4 id="temprefword2vec-get_available_targets">qhchina.analytics.word2vec.tempref.TempRefWord2Vec.get_available_targets() <a href="#temprefword2vec-get_available_targets" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/tempref.py#L725" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_available_targets</span>()</code></pre>
@@ -578,6 +723,20 @@ restored.
 
 **Raises:**
 - `ValueError`: If the file doesn't contain TempRefWord2Vec data.
+
+<h4 id="temprefword2vec-load_vectors">qhchina.analytics.word2vec.tempref.TempRefWord2Vec.load_vectors() <a href="#temprefword2vec-load_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/tempref.py#L936" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load_vectors</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+load_vectors() is not supported for TempRefWord2Vec.
+
+External vector formats don't contain the temporal metadata required
+for TempRefWord2Vec (period labels, target words, temporal mappings).
+
+Use `TempRefWord2Vec.load()` to load a saved TempRefWord2Vec model.
+
+**Raises:**
+- `NotImplementedError`: Always raised.
 
 <h4 id="temprefword2vec-save">qhchina.analytics.word2vec.tempref.TempRefWord2Vec.save() <a href="#temprefword2vec-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/tempref.py#L765" class="source-link" title="View source on GitHub">[source]</a></h4>
 
@@ -780,6 +939,20 @@ the word's embedding at time i and time i+1.
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
+<h4 id="dynamicword2vec-export">qhchina.analytics.word2vec.dynamic.DynamicWord2Vec.export() <a href="#dynamicword2vec-export" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/dynamic.py#L1008" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">export</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+Export is not supported for DynamicWord2Vec.
+
+DynamicWord2Vec contains 3D embedding tensors (U[T, vocab, dim]) and temporal
+metadata that cannot be preserved in standard 2D vector formats.
+
+Use `save()` and `load()` instead to preserve all model data.
+
+**Raises:**
+- `NotImplementedError`: Always raised.
+
 <h4 id="dynamicword2vec-get_all_time_vectors">qhchina.analytics.word2vec.dynamic.DynamicWord2Vec.get_all_time_vectors() <a href="#dynamicword2vec-get_all_time_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/dynamic.py#L638" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">get_all_time_vectors</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">normalize</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
@@ -837,6 +1010,20 @@ Loaded DynamicWord2Vec model.
 
 **Raises:**
 - `ValueError`: If the file doesn't contain DynamicWord2Vec data.
+
+<h4 id="dynamicword2vec-load_vectors">qhchina.analytics.word2vec.dynamic.DynamicWord2Vec.load_vectors() <a href="#dynamicword2vec-load_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/dynamic.py#L1026" class="source-link" title="View source on GitHub">[source]</a></h4>
+
+<pre class="signature"><code><span class="sig-name">load_vectors</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
+
+load_vectors() is not supported for DynamicWord2Vec.
+
+External vector formats contain 2D embeddings, but DynamicWord2Vec requires
+3D tensors (one embedding matrix per time slice) and temporal metadata.
+
+Use `DynamicWord2Vec.load()` to load a saved DynamicWord2Vec model.
+
+**Raises:**
+- `NotImplementedError`: Always raised.
 
 <h4 id="dynamicword2vec-most_similar">qhchina.analytics.word2vec.dynamic.DynamicWord2Vec.most_similar() <a href="#dynamicword2vec-most_similar" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/dynamic.py#L666" class="source-link" title="View source on GitHub">[source]</a></h4>
 

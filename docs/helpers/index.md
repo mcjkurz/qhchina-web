@@ -41,6 +41,16 @@ functions:
     anchor: download_file
   - name: list_remote_corpora()
     anchor: list_remote_corpora
+  - name: iter_batches()
+    anchor: iter_batches
+  - name: build_vocab_from_iter()
+    anchor: build_vocab_from_iter
+  - name: rolling_average()
+    anchor: rolling_average
+  - name: apply_p_value_correction()
+    anchor: apply_p_value_correction
+  - name: validate_filters()
+    anchor: validate_filters
 has_examples: True
 import_from: qhchina.helpers
 include_imported: True
@@ -124,7 +134,7 @@ chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
 
 <!-- API-START -->
 
-<h3 id="linesentencefile">qhchina.utils.LineSentenceFile <a href="#linesentencefile" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/utils.py#L26" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="linesentencefile">qhchina.helpers.texts.LineSentenceFile <a href="#linesentencefile" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L25" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">LineSentenceFile</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">limit</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -374,7 +384,7 @@ Path to ~/.cache/qhchina/fonts/
 
 <br>
 
-<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="#load_text" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L62" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="#load_text" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L235" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_text</span>(<span class="sig-param">filename</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
 
@@ -390,7 +400,7 @@ Loads text from a file.
 
 <br>
 
-<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="#load_texts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L83" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="#load_texts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L256" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_texts</span>(<span class="sig-param">filenames</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
 
@@ -406,7 +416,7 @@ Loads text from multiple files.
 
 <br>
 
-<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="#load_stopwords" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L103" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="#load_stopwords" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L276" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">load_stopwords</span>(<span class="sig-param">language</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_sim'</span>)</code></pre>
 
@@ -430,7 +440,7 @@ Set of stopwords (combined from all matching files)
 
 <br>
 
-<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="#split_into_chunks" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L197" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="#split_into_chunks" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L370" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">split_into_chunks</span>(<span class="sig-param">sequence</span>, <span class="sig-param">chunk_size</span>, <span class="sig-param">overlap</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>)</code></pre>
 
@@ -453,7 +463,7 @@ doesn't divide evenly.
 
 <br>
 
-<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="#get_stopword_languages" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L171" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="#get_stopword_languages" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L344" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">get_stopword_languages</span>()</code></pre>
 
@@ -464,7 +474,7 @@ List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
 
 <br>
 
-<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="#detect_encoding" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L20" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="#detect_encoding" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L193" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">detect_encoding</span>(<span class="sig-param">filename</span>, <span class="sig-param">num_bytes</span> <span class="sig-punct">=</span> <span class="sig-default">10000</span>)</code></pre>
 
@@ -483,7 +493,7 @@ Detects the encoding of a file.
 
 <br>
 
-<h3 id="download_corpus">qhchina.helpers.texts.download_corpus() <a href="#download_corpus" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L245" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="download_corpus">qhchina.helpers.texts.download_corpus() <a href="#download_corpus" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L418" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">download_corpus</span>(
     <span class="sig-param">name</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
@@ -565,7 +575,7 @@ Full workflow with segmentation and analysis::
 
 <br>
 
-<h3 id="download_file">qhchina.helpers.texts.download_file() <a href="#download_file" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L389" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="download_file">qhchina.helpers.texts.download_file() <a href="#download_file" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L562" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">download_file</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">output_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -598,7 +608,7 @@ download_file("corpora/莫言/莫言_丰乳肥臀.txt", output_dir="texts")
 
 <br>
 
-<h3 id="list_remote_corpora">qhchina.helpers.texts.list_remote_corpora() <a href="#list_remote_corpora" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L455" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="list_remote_corpora">qhchina.helpers.texts.list_remote_corpora() <a href="#list_remote_corpora" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L628" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">list_remote_corpora</span>()</code></pre>
 
@@ -617,6 +627,147 @@ from qhchina import list_remote_corpora
 corpora = list_remote_corpora()
 print(corpora)
 ['张爱玲', '沈从文', '莫言', ...]
+```
+
+<br>
+
+<h3 id="iter_batches">qhchina.helpers.texts.iter_batches() <a href="#iter_batches" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L89" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">iter_batches</span>(
+    <span class="sig-param">texts</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
+    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>,
+    <span class="sig-param">max_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>
+)</code></pre>
+
+Yield batches of tokenized texts grouped by total token count.
+
+Streams through the iterable without materializing the full corpus.
+Texts longer than *max_length* are truncated; empty texts are skipped.
+
+**Parameters:**
+- `texts`: Iterable of tokenized texts (sentences or documents).
+- `batch_words`: Target token count per batch.
+- `max_length`: Truncate texts longer than this. None disables truncation.
+
+**Returns:**
+(list[list[str]]) Batches where total tokens <= *batch_words*.
+
+<br>
+
+<h3 id="build_vocab_from_iter">qhchina.helpers.texts.build_vocab_from_iter() <a href="#build_vocab_from_iter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L139" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">build_vocab_from_iter</span>(
+    <span class="sig-param">texts</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
+    <span class="sig-param">max_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>
+)</code></pre>
+
+Build vocabulary statistics by streaming through tokenized texts (pass 1 of 2).
+
+Collects word counts, document-frequency counts, and total text count
+in a single pass. Texts longer than *max_length* are truncated.
+
+**Parameters:**
+- `texts`: Restartable iterable of tokenized texts (sentences or documents).
+- `max_length`: Truncate texts longer than this. None disables truncation.
+
+**Returns:**
+(tuple) (word_counts, doc_counts, n_texts)
+- word_counts (Counter): Total token counts across all texts.
+- doc_counts (Counter): Number of texts each word appears in.
+- n_texts (int): Total number of non-empty texts.
+
+**Raises:**
+- `ValueError`: If the iterable is empty or yields only empty texts.
+
+<br>
+
+<h3 id="rolling_average">qhchina.helpers.stats.rolling_average() <a href="#rolling_average" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L120" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">rolling_average</span>(
+    <span class="sig-param">values</span><span class="sig-punct">:</span> <span class="sig-type">list</span>,
+    <span class="sig-param">window</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">3</span>,
+    <span class="sig-param">edge_handling</span><span class="sig-punct">:</span> <span class="sig-type">Literal['truncate', 'pad_none', 'partial']</span> <span class="sig-punct">=</span> <span class="sig-default">'truncate'</span>
+)</code></pre>
+
+Calculate rolling (moving) average over a list of values.
+
+**Parameters:**
+- `values`: List of numeric values.
+- `window`: Size of the rolling window. Must be positive. Defaults to 3.
+- `edge_handling`: How to handle edges where full window is unavailable.
+  - "truncate": Return shorter list, only full windows (default).
+  - "pad_none": Return same length as input, None for incomplete windows.
+  - "partial": Return same length as input, use partial windows at edges.
+
+**Returns:**
+List of rolling averages.
+
+**Raises:**
+- `ValueError`: If window is less than 1 or greater than len(values).
+
+**Example:**
+```python
+rolling_average([1, 2, 3, 4, 5], window=3)
+[2.0, 3.0, 4.0]
+
+rolling_average([1, 2, 3, 4, 5], window=3, edge_handling="pad_none")
+[None, None, 2.0, 3.0, 4.0]
+
+rolling_average([1, 2, 3, 4, 5], window=3, edge_handling="partial")
+[1.0, 1.5, 2.0, 3.0, 4.0]
+```
+
+<br>
+
+<h3 id="apply_p_value_correction">qhchina.helpers.stats.apply_p_value_correction() <a href="#apply_p_value_correction" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L21" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">apply_p_value_correction</span>(<span class="sig-param">p_values</span><span class="sig-punct">:</span> <span class="sig-type">list[float]</span>, <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
+
+Apply multiple testing correction to a list of p-values.
+
+**Parameters:**
+- `p_values`: List or array of raw p-values.
+- `method`: Correction method. Options:
+  - 'bonferroni': Bonferroni correction (controls family-wise error rate).
+    Adjusted p = p * n_tests, capped at 1.0.
+  - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
+    Generally less conservative than Bonferroni.
+
+**Returns:**
+numpy array of adjusted p-values (same length as input).
+
+**Raises:**
+- `ValueError`: If method is not recognized or p_values is empty.
+
+<br>
+
+<h3 id="validate_filters">qhchina.helpers.stats.validate_filters() <a href="#validate_filters" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L81" class="source-link" title="View source on GitHub">[source]</a></h3>
+
+<pre class="signature"><code><span class="sig-name">validate_filters</span>(
+    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span>,
+    <span class="sig-param">valid_keys</span><span class="sig-punct">:</span> <span class="sig-type">set[str]</span>,
+    <span class="sig-param">context</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'function'</span>
+)</code></pre>
+
+Validate that all filter keys are recognized.
+
+**Parameters:**
+- `filters`: Dictionary of filter parameters to validate.
+- `valid_keys`: Set of valid/recognized filter keys.
+- `context`: String describing the calling context for error messages.
+
+**Raises:**
+- `ValueError`: If filters contains unrecognized keys.
+
+**Example:**
+```python
+validate_filters(
+    {'min_count': 5, 'max_p': 0.05, 'invalid_key': 'value'},
+    {'min_count', 'max_p', 'stopwords'},
+    context='compare_corpora'
+)
+ValueError: Unknown filter keys in compare_corpora: {'invalid_key'}. 
+            Valid keys are: {'max_p', 'min_count', 'stopwords'}
 ```
 
 <br>

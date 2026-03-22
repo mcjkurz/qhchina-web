@@ -91,12 +91,20 @@
         "anchor": "word2vec-build_vocab"
       },
       {
+        "name": "Word2Vec.export()",
+        "anchor": "word2vec-export"
+      },
+      {
         "name": "Word2Vec.get_vector()",
         "anchor": "word2vec-get_vector"
       },
       {
         "name": "Word2Vec.load()",
         "anchor": "word2vec-load"
+      },
+      {
+        "name": "Word2Vec.load_vectors()",
+        "anchor": "word2vec-load_vectors"
       },
       {
         "name": "Word2Vec.most_similar()",
@@ -127,6 +135,10 @@
         "anchor": "temprefword2vec-calculate_semantic_change"
       },
       {
+        "name": "TempRefWord2Vec.export()",
+        "anchor": "temprefword2vec-export"
+      },
+      {
         "name": "TempRefWord2Vec.get_available_targets()",
         "anchor": "temprefword2vec-get_available_targets"
       },
@@ -141,6 +153,10 @@
       {
         "name": "TempRefWord2Vec.load()",
         "anchor": "temprefword2vec-load"
+      },
+      {
+        "name": "TempRefWord2Vec.load_vectors()",
+        "anchor": "temprefword2vec-load_vectors"
       },
       {
         "name": "TempRefWord2Vec.save()",
@@ -167,6 +183,10 @@
         "anchor": "dynamicword2vec-calculate_temporal_drift"
       },
       {
+        "name": "DynamicWord2Vec.export()",
+        "anchor": "dynamicword2vec-export"
+      },
+      {
         "name": "DynamicWord2Vec.get_all_time_vectors()",
         "anchor": "dynamicword2vec-get_all_time_vectors"
       },
@@ -181,6 +201,10 @@
       {
         "name": "DynamicWord2Vec.load()",
         "anchor": "dynamicword2vec-load"
+      },
+      {
+        "name": "DynamicWord2Vec.load_vectors()",
+        "anchor": "dynamicword2vec-load_vectors"
       },
       {
         "name": "DynamicWord2Vec.most_similar()",
@@ -619,6 +643,26 @@
       {
         "name": "list_remote_corpora()",
         "anchor": "list_remote_corpora"
+      },
+      {
+        "name": "iter_batches()",
+        "anchor": "iter_batches"
+      },
+      {
+        "name": "build_vocab_from_iter()",
+        "anchor": "build_vocab_from_iter"
+      },
+      {
+        "name": "rolling_average()",
+        "anchor": "rolling_average"
+      },
+      {
+        "name": "apply_p_value_correction()",
+        "anchor": "apply_p_value_correction"
+      },
+      {
+        "name": "validate_filters()",
+        "anchor": "validate_filters"
       }
     ]
   }
