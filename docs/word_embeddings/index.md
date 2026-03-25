@@ -285,7 +285,7 @@ Build vocabulary from sentences.
 **Raises:**
 - `ValueError`: If sentences is empty or contains no words.
 
-<h4 id="word2vec-export">qhchina.analytics.word2vec.base.Word2Vec.export() <a href="#word2vec-export" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1260" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-export">qhchina.analytics.word2vec.base.Word2Vec.export() <a href="#word2vec-export" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1297" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">export</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
@@ -340,7 +340,7 @@ Word vector as numpy array of shape (vector_size,).
 **Raises:**
 - `KeyError`: If word is not in vocabulary.
 
-<h4 id="word2vec-load">qhchina.analytics.word2vec.base.Word2Vec.load() <a href="#word2vec-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1352" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-load">qhchina.analytics.word2vec.base.Word2Vec.load() <a href="#word2vec-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1389" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -352,7 +352,7 @@ Load a model from a file.
 **Returns:**
 Loaded Word2Vec model.
 
-<h4 id="word2vec-load_vectors">qhchina.analytics.word2vec.base.Word2Vec.load_vectors() <a href="#word2vec-load_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1399" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-load_vectors">qhchina.analytics.word2vec.base.Word2Vec.load_vectors() <a href="#word2vec-load_vectors" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1436" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load_vectors</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">format</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'word2vec'</span>, <span class="sig-param">binary</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
@@ -405,24 +405,40 @@ model.train(new_sentences, epochs=5, update_vocab=True)
 
 <h4 id="word2vec-most_similar">qhchina.analytics.word2vec.base.Word2Vec.most_similar() <a href="#word2vec-most_similar" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1154" class="source-link" title="View source on GitHub">[source]</a></h4>
 
-<pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">word</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
+<pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">query</span><span class="sig-punct">:</span> <span class="sig-type">str | numpy.ndarray</span>, <span class="sig-param">topn</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">exclude</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
-Find the topn most similar words to the given word.
+Find the topn most similar words to the given word or vector.
 
 **Parameters:**
-- `word`: Input word.
+- `query`: Input word (string) or vector (numpy array). When a word is
+  provided, its vector is looked up. When a vector is provided
+  (e.g., from arithmetic operations), it is used directly.
 - `topn`: Number of similar words to return.
-- `cross_space`: If False (default), compare W vs W (second-order similarity).
-  If True, compare W vs W_prime (first-order similarity based on
+- `exclude`: List of words to exclude from results. Useful when doing
+  vector arithmetic to exclude the input words. When query is a
+  word, that word is automatically excluded.
+- `cross_space`: If False (default), compare against W (second-order similarity).
+  If True, compare against W_prime (first-order similarity based on
   direct co-occurrence patterns).
 
 **Returns:**
 List of (word, similarity) tuples sorted by descending similarity.
 
 **Raises:**
-- `KeyError`: If word is not in vocabulary.
+- `KeyError`: If query is a word not in vocabulary.
+- `ValueError`: If query vector has wrong dimensions.
 
-<h4 id="word2vec-save">qhchina.analytics.word2vec.base.Word2Vec.save() <a href="#word2vec-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1227" class="source-link" title="View source on GitHub">[source]</a></h4>
+**Example:**
+```python
+# Find words similar to a single word
+model.most_similar("king", topn=5)
+
+# Vector arithmetic: king - man + woman ≈ queen
+vec = model["king"] - model["man"] + model["woman"]
+model.most_similar(vec, topn=5, exclude=["king", "man", "woman"])
+```
+
+<h4 id="word2vec-save">qhchina.analytics.word2vec.base.Word2Vec.save() <a href="#word2vec-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1264" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -435,7 +451,7 @@ needed during training, not inference.
 **Parameters:**
 - `path`: Path to save the model.
 
-<h4 id="word2vec-similarity">qhchina.analytics.word2vec.base.Word2Vec.similarity() <a href="#word2vec-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1192" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="word2vec-similarity">qhchina.analytics.word2vec.base.Word2Vec.similarity() <a href="#word2vec-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/word2vec/base.py#L1229" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
