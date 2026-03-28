@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const quote = quotes[randomIndex];
     
     // Set quote text
-    document.getElementById('quote-text').textContent = quote.text;
+    document.getElementById('quote-text').innerHTML = quote.text.replace(/\n/g, '<br>');
     
     // Set translation if available
     const translationElement = document.getElementById('quote-translation');
