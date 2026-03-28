@@ -51,13 +51,17 @@ The future to come awaits always in the form of monstrosity.
 
 ## Recent Events
 
-- [Voices from the Past: Retrieval-Augmented Dialogues with Chinese Historical Figures]({{ site.baseurl }}/assets/img/events/Kurzynski-ewha-20260210.png) — Ewha Womans University, Feb 10, 2026
+- [Voices from the Past: Retrieval-Augmented Dialogues with Chinese Historical Figures]({{ site.baseurl }}/assets/img/events/Kurzynski-ewha-20260210.png)<br>
+  Ewha Womans University, Feb 10, 2026
 
-- [Narrative, Cognition, Computation: New Approaches to Chinese Literature and Periodical Studies]({{ site.baseurl }}/assets/img/events/Kurzynski-NUS-20260205.jpg) — National University of Singapore, Feb 5, 2026
+- [Narrative, Cognition, Computation: New Approaches to Chinese Literature and Periodical Studies]({{ site.baseurl }}/assets/img/events/Kurzynski-NUS-20260205.jpg)<br>
+  National University of Singapore, Feb 5, 2026
 
-- [在心旁边：论中国小说中的共情经济]({{ site.baseurl }}/assets/img/events/Kurzynski-PKU-20251121.jpeg) — Peking University, Nov 21, 2025
+- [在心旁边：论中国小说中的共情经济]({{ site.baseurl }}/assets/img/events/Kurzynski-PKU-20251121.jpeg)<br>
+  Peking University, Nov 21, 2025
 
-- [Neurons and Texts: New Frontiers of Chinese Humanities]({{ site.baseurl }}/assets/img/events/NeuronsAndTexts_Poster.png) — Lingnan University, Oct 17–18, 2025
+- [Neurons and Texts: New Frontiers of Chinese Humanities]({{ site.baseurl }}/assets/img/events/NeuronsAndTexts_Poster.png)<br>
+  Lingnan University, Oct 17–18, 2025
 
 <img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
 
