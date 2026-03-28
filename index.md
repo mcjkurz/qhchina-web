@@ -60,6 +60,9 @@ The future to come awaits always in the form of monstrosity.
 - [在心旁边：论中国小说中的共情经济]({{ site.baseurl }}/assets/img/events/Kurzynski-PKU-20251121.jpeg)<br>
   Peking University, Nov 21, 2025
 
+- [Texts as Technologies: Cognitive and Stylistic Insights from Tang Poetry to the Modern Novel]({{ site.baseurl }}/assets/img/events/Kurzynski-Lingnan-20251112.jpeg)<br>
+  Lingnan University, Nov 12, 2025
+
 - [Neurons and Texts: New Frontiers of Chinese Humanities]({{ site.baseurl }}/assets/img/events/NeuronsAndTexts_Poster.png)<br>
   Lingnan University, Oct 17–18, 2025
 
