@@ -49,8 +49,6 @@ This project pursues disciplinary misalignments as sites where the limitations o
 
 The future to come awaits always in the form of monstrosity.
 
-<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
-
 ## Recent Events
 
 - [Voices from the Past: Retrieval-Augmented Dialogues with Chinese Historical Figures]({{ site.baseurl }}/assets/img/events/Kurzynski-ewha-20260210.png) — Ewha Womans University, Feb 10, 2026
@@ -60,6 +58,8 @@ The future to come awaits always in the form of monstrosity.
 - [在心旁边：论中国小说中的共情经济]({{ site.baseurl }}/assets/img/events/Kurzynski-PKU-20251121.jpeg) — Peking University, Nov 21, 2025
 
 - [Neurons and Texts: New Frontiers of Chinese Humanities]({{ site.baseurl }}/assets/img/events/NeuronsAndTexts_Poster.png) — Lingnan University, Oct 17–18, 2025
+
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
 
 ## Random Quote
 
