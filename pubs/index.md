@@ -8,7 +8,7 @@ permalink: /pubs/
 
 ## 2026
 
-Kurzynski, Maciej, "Geometries of Empathy from Ming–Qing Novels to Ye Xin's *Wasted Years* and Beyond," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
+Kurzynski, Maciej, "Words Close to Heart: Geometries of Empathy from Ming–Qing Novels to Ye Xin's *Wasted Years* and Beyond," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
 
 Kurzynski, Maciej, "[From Character to Poem: Nested Contexts and Scalar Limits of Parallelism Detection in Classical Chinese Poetry](https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.488)," *Journal of Open Humanities Data* 12, 2026:34.
 
