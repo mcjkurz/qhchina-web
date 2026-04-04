@@ -75,7 +75,7 @@ permalink: /projects/
     </div>
 </div>
 
----
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
 
 ## Teaching Resources
 
