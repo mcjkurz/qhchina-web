@@ -69,7 +69,7 @@ permalink: /projects/
         <p>Computational perspective on sublime aesthetics; acceleration pattern in Chinese novels</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/projects/historical-figures/">Historical Figures (HistFig)</a></h3>
+        <h3><a href="{{ site.baseurl }}/projects/historical-figures/">Historical Figures</a></h3>
         <p>with <strong>Prof. Du Chunmei</strong></p>
         <p>RAG-enhanced chatbot for simulating dialogues with historical figures</p>
     </div>
