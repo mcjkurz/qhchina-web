@@ -68,4 +68,20 @@ permalink: /projects/
         <h3><a href="{{ site.baseurl }}/projects/sublime-narrative/">The Sublime as a Narrative Technology</a></h3>
         <p>Computational perspective on sublime aesthetics; acceleration pattern in Chinese novels</p>
     </div>
+    <div class="project-card">
+        <h3><a href="{{ site.baseurl }}/projects/historical-figures/">Historical Figures (HistFig)</a></h3>
+        <p>with <strong>Prof. Du Chunmei</strong></p>
+        <p>RAG-enhanced chatbot for simulating dialogues with historical figures</p>
+    </div>
+</div>
+
+---
+
+## Teaching Resources
+
+<div class="projects-grid">
+    <div class="project-card">
+        <h3><a href="https://mcjkurz.github.io/teaching/">Teaching Visualizations</a></h3>
+        <p>Interactive demonstrations of machine learning concepts: cosine similarity, attention mechanisms, softmax temperature, PCA, and more</p>
+    </div>
 </div>
