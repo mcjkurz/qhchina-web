@@ -11,7 +11,7 @@ functions:
 
 # qhChina Package Documentation
 
-A Python toolkit for computational analysis of Chinese texts in humanities research.
+An educational Python toolkit for computational analysis of Chinese texts in humanities research. Under active development.
 
 ## Installation
 
