@@ -30,18 +30,18 @@ title: Home
   <p class="lead">A place where quantitative conceptuality meets Chinese humanities.</p>
 </div>
 
-## What is qh?
+## About qh
 
 "Quantitative Humanities" is characterized by the following keywords:
 
-- **Experimentation**: probing and interpreting literary and visual texts with the help of statistical methods
+- **Experimentation**: probing and interpreting literary and visual texts with statistical methods
 - **Text-centrism**: considering literary artifacts as more than mere anecdotes reflecting extra-textual forces and ideologies
 - **Quantification**: reconceiving narrative phenomena as vectors, frequencies, distances, and networks
 - **Big Data & Small Data**: reading large corpora, single novels, and tiny paragraphs
 - **Multidisciplinarity**: combining natural language processing with cognitive neuroscience and traditional humanistic methodologies: close reading, genealogy, structuralism, aesthetic theory, narratology, etc.
 - **Limits of computation**: identifying what stories can tell us about the world and ourselves that matrix multiplications cannot
 
-## What is China?
+## About China
 
 How to write about "China" (中國) without being "obsessed" (情迷) by it? How to think about the present moment beyond "modernity"? Events that defined national histories and academic fields, however significant from one perspective, might appear from another like storms in a teacup.
 
