@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Perplexity Games
+title: Cognitive Stylometry
 permalink: /projects/cognitive-stylometry/
 ---
 
