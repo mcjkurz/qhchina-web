@@ -38,7 +38,7 @@ title: Home
 - **Text-centrism**: considering literature as more than a series of anecdotes reflecting political forces and ideologies
 - **Quantification**: reconceiving texts as vectors, frequencies, distances, and networks
 - **Big Data & Small Data**: reading large corpora, single novels, and short paragraphs
-- **Multidisciplinarity**: encouraging dialogue between humanistic methodologies, natural language processing, and cognitive neuroscience
+- **Multidisciplinarity**: encouraging dialogue between humanistic theories, natural language processing, and cognitive neuroscience
 - **Beyond computation**: attending to what stories can tell us about the world and ourselves that matrix multiplications alone cannot
 
 ## About China
