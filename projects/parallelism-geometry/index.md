@@ -47,3 +47,4 @@ This paper explores computational approaches for detecting parallelism in classi
 
 Kurzynski, Maciej, Xiaotong Xu, and Yu Feng, "[Vector Poetics: Parallel Couplet Detection in Classical Chinese Poetry](https://aclanthology.org/2024.nlp4dh-1.19/)," *Proceedings of the 4th International Conference on Natural Language Processing for Digital Humanities*, Miami (USA): Association for Computational Linguistics (ACL), pp. 200-208. 
 
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">

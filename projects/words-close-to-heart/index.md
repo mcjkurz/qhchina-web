@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Words Close to Heart
+title: Words Close to Heart - Geometries of Empathy
 permalink: /projects/words-close-to-heart/
 ---
 

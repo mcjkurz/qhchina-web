@@ -13,3 +13,5 @@ HistFig is a simple, AI-enhanced chatbot system for simulating conversations wit
 **Links:**
 - [GitHub Repository](https://github.com/mcjkurz/histfig/)
 - [Blog Post on *The Digital Orientalist*](https://digitalorientalist.com/2025/12/26/voices-from-the-past-retrieval-augmented-dialogues-with-chinese-historical-figures/)
+
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">

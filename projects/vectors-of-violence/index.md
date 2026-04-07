@@ -28,6 +28,8 @@ This paper examines the relationship between violent discourse and emotional int
 
 Kurzynski, Maciej and Aaron Gilkison, ["Revolution + Love: Measuring the Entanglements of State Violence and Emotions in Early PRC"](https://ceur-ws.org/Vol-3834/paper94.pdf), Proceedings of the *Computational Humanities Research Conference* 2024 (CHR 2024), Aarhus, Denmark. CEUR-WS, vol. 38, pp. 1012-1022.
 
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
+
 ## Resources
 
 - [BERT-JFJB-violence-0.1](https://huggingface.co/qhchina/BERT-JFJB-violence-0.1) – *bert-base-chinese* fine-tuned on the *People's Liberation Army Daily* (*Jiefangjun Bao* or *JFJB*) for detecting violent and non-violent content in Chinese texts.
