@@ -56,7 +56,7 @@ permalink: /about/
 
     <p>I am the single author of this website, but my dream is to develop it into a collaborative endeavor in the near future (i.e., I hope that there will be a list of faces here rather than just mine). I call this virtual space a "lab" even now, since I think of this project as a series of experiments rather than attempts to confirm what we already know about Chinese culture and history.</p>
 
-    <p>Quantitative humanities (<strong>qh</strong>) is all about experiments: using digital tools and statistical methods to probe literary and cultural phenomena. The goal of <strong>qh</strong> is not to solve problems but to explore new ways of thinking about texts and how they interact with us, humans. This website showcases some of my endeavors in this direction.</p>
+    <p>Quantitative humanities (<strong>qh</strong>) is all about experiments: using digital tools and statistical methods to probe literary phenomena and play with texts. The goal of <strong>qh</strong> is not to solve problems but to explore new ways of thinking about literature and how it interacts with us, humans. This website showcases some of my endeavors in this direction.</p>
 
     <p>You can contact me at maciej.kurzynski[at]ln.edu.hk.</p>
     <p>All publications (including non-DH ones): <a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a></p>
