@@ -27,7 +27,7 @@ title: Home
 
 <div class="welcome-section">
   <h1>Welcome to qh · china</h1>
-  <p class="lead">A place where quantitative conceptuality meets Chinese humanities.</p>
+  <p class="lead">A place where quantitative conceptuality meets Chinese humanities</p>
 </div>
 
 ## About qh
