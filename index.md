@@ -37,13 +37,13 @@ title: Home
 - **Experimentation**: probing literary and visual narratives with computational methods
 - **Text-centrism**: considering literature as more than a series of anecdotes reflecting (concealing) extra-textual forces and ideologies
 - **Quantification**: reconceiving narrative phenomena as vectors, frequencies, distances, and networks
-- **Big Data & Small Data**: reading large corpora, single novels, and tiny paragraphs
-- **Multidisciplinarity**: combining natural language processing with cognitive neuroscience and traditional humanistic methodologies
+- **Big Data & Small Data**: reading large corpora, single novels, and short paragraphs
+- **Multidisciplinarity**: encouraging dialogue between humanistic methodologies, natural language processing, and cognitive neuroscience
 - **Beyond computation**: attending to what stories can tell us about the world and ourselves that matrix multiplications alone cannot
 
 ## About China
 
-How to write about "China" (中國) without being "obsessed" (情迷) by it? Is it possible to think about the present moment beyond "modernity"? Events that defined national histories and academic fields, however significant from one perspective, might appear from another like storms in a teacup.
+How to write about "China" (中國) without being "obsessed" (情迷) by it? Is it possible to think the present moment beyond "modernity"? Events that defined national histories and academic fields, however significant from one perspective, might appear from another like storms in a teacup.
 
 This project pursues disciplinary misalignments as sites where the limitations of identity-based scholarship come into view. Dominant chronologies, in fact any chronology, persist only so long as the comfort of native intimacies and familiar answers remains unchallenged.
 
