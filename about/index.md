@@ -54,7 +54,7 @@ permalink: /about/
 
     <p>Originally from Wrocław, Poland, I have received my PhD from Stanford University in modern Chinese literature and culture. I had also studied at the University of Warsaw (BA), Université Paris 1 Panthéon-Sorbonne (Erasmus), and Zhejiang University (MA).</p>
 
-    <p>I am the single author of this website, but my dream is to develop it into a collaborative endeavor in the near future (i.e., I hope that there will be a list of faces here rather than just mine). I call this virtual space a "lab" even now, since I think of this project as a series of open-ended experiments rather than attempts to confirm what we already know about Chinese culture and literary history.</p>
+    <p>I am the single author of this website, but my dream is to develop it into a collaborative endeavor in the near future (i.e., I hope that there will be a list of faces here rather than just mine). I call this virtual space a "lab" even now, since I think of this project as a series of open-ended experiments rather than attempts to confirm what we already know about Chinese literary history.</p>
 
     <p>Quantitative humanities (<strong>qh</strong>) puts this into practice: digital tools and statistical methods become ways to probe literary phenomena and play with texts. The goal of <strong>qh</strong> is not to solve problems but to explore new ways of thinking about literature and how it interacts with us, humans. This website showcases some of my endeavors in this direction.</p>
 
