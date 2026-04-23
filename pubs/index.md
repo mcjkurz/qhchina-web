@@ -10,6 +10,10 @@ permalink: /pubs/
 
 Kurzynski, Maciej, "Words Close to Heart: Geometries of Empathy from Ming–Qing Fiction to Ye Xin's *Wasted Years* and Beyond," *Prism: Theory and Modern Chinese Literature* 23.1, special issue *Neurons and Texts: New Frontiers of Chinese Humanities*, forthcoming.
 
+Cai, Zong-qi, Maciej Kurzynski, and Yu Feng, "The Syntactic Art of Tang Pentasyllabic Verse: A Quantitative and Analytical Study," *Prism: Theory and Modern Chinese Literature,* special issue *Neurons and Texts: New Frontiers of Chinese Humanities*, forthcoming.
+
+Kurzynski, Maciej, "Introduction: Neurons and Texts," *Prism: Theory and Modern Chinese Literature* 23.1, special issue *Neurons and Texts: New Frontiers of Chinese Humanities*, forthcoming.
+
 Kurzynski, Maciej, "[From Character to Poem: Nested Contexts and Scalar Limits of Parallelism Detection in Classical Chinese Poetry](https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.488)," *Journal of Open Humanities Data* 12, 2026:34.
 
 ## 2025
