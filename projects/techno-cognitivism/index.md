@@ -14,6 +14,8 @@ This special issue proposes that the study of Chinese literatures and cultures s
 
 Kurzynski, Maciej. "Neurons and Texts: New Frontiers of Chinese Humanities," *Prism: Theory and Modern Chinese Literature* 23.1, introduction to a special issue, forthcoming.
 
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
+
 ### Poly-Temporal, Multi-Layered: A Techno-Cognitive Theory of Narrative Experience in Literature
 
 <img src="main.png" alt="Poly-Temporal, Multi-Layered" style="max-width: 80%; height: auto; margin: 2rem auto; display: block;">
