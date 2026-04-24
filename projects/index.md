@@ -44,7 +44,7 @@ permalink: /projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/techno-cognitivism">Techno-Cognitivism</a></h3>
-        <p>Interdisciplinary theory combining neuroscience and NLP to understand narrative experience and literary interpretation</p>
+        <p>Interdisciplinary humanistic framework combining neuroscience and NLP to understand narrative experience and literary interpretation</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/verbs-chinese-poetry/">Verbs of Chinese Poetry</a></h3>
