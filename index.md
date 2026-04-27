@@ -63,6 +63,9 @@ The future to come awaits always in the form of monstrosity.
 - [Texts as Technologies: Cognitive and Stylistic Insights from Tang Poetry to the Modern Novel]({{ site.baseurl }}/assets/img/events/Kurzynski-Lingnan-20251112.png)<br>
   Lingnan University, Nov 12, 2025
 
+- [向量詩學：以大型語言模型探析《詩經》至唐詩的句法流變與對仗規律]({{ site.baseurl }}/assets/img/events/Kurzynski-ShueYan-20251022.jpeg)<br>
+  Hong Kong Shue Yan University, Oct 22, 2025
+
 - [Neurons and Texts: New Frontiers of Chinese Humanities]({{ site.baseurl }}/assets/img/events/NeuronsAndTexts_Poster.jpg)<br>
   Lingnan University, Oct 17–18, 2025
 
