@@ -27,14 +27,14 @@ title: Home
 
 <div class="welcome-section">
   <h1>Welcome to qh · china</h1>
-  <p class="lead">A place where quantitative conceptuality meets Chinese humanities</p>
+  <p class="lead">A place where quantitative thought meets Chinese humanities</p>
 </div>
 
 ## About qh
 
 "Quantitative Humanities" is defined here by the following keywords:
 
-- **Experimentation**: using computational methods to probe and play with literary and visual narratives
+- **Experimentation**: using computational methods to probe and play with literature and visual narratives
 - **Text-centrism**: considering literature as more than a chronology of anecdotes reflecting external forces and ideologies
 - **Quantification**: reconceiving texts as vectors, frequencies, distances, and networks
 - **Big Data & Small Data**: reading large corpora, single novels, and short paragraphs
