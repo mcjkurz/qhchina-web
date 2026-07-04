@@ -53,10 +53,13 @@ The future to come awaits always in the form of monstrosity.
 
 - [Fiction and Lies: Fourth International Congress of the Association for Studies in Fiction
 and Fictionality]({{ site.baseurl }}/assets/events/Edinburgh-20260610.pdf)<br>
-  University of Edinburgh, June 10-12, 2026
+  University of Edinburgh, Jun 10-12, 2026
+
+- [「重構中國人文傳統：文學觀念與文學史」國際學術研討會]({{ site.baseurl }}/assets/events/Macau-20260608.pdf)<br>
+  University of Macau, Jun 8-9, 2026
 
 - [Resonant Media: Sound, Network, and Communication Technologies ]({{ site.baseurl }}/assets/events/PolyU-20260607.jpg)<br>
-  The Hong Kong Polytechnic University, June 6-7, 2026
+  The Hong Kong Polytechnic University, Jun 6-7, 2026
 
 - [Voices from the Past: Retrieval-Augmented Dialogues with Chinese Historical Figures]({{ site.baseurl }}/assets/events/ewha-20260210.png)<br>
   Ewha Womans University, Feb 10, 2026
