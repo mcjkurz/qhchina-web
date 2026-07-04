@@ -62,7 +62,7 @@ permalink: /projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/words-close-to-heart/">Words Close to Heart</a></h3>
-        <p>Techno-cognitive approach to interiority in modern Chinese literature</p>
+        <p>Techno-cognitive approach to representations of interiority in Chinese literature</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/sublime-narrative/">The Sublime as a Narrative Technology</a></h3>
