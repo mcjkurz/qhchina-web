@@ -27,25 +27,25 @@ title: Home
 
 <div class="welcome-section">
   <h1>Welcome to qh · china</h1>
-  <p class="lead">A place where quantification meets Chinese humanities</p>
+  <p class="lead">Where quantification meets the Chinese humanities</p>
 </div>
 
 ## About qh
 
 "Quantitative Humanities" is defined here by the following keywords:
 
-- **Experimentation**: using computational methods to probe and play with literature and visual narratives
-- **Text-centrism**: considering literature as more than a chronology of anecdotes reflecting external forces and ideologies
-- **Quantification**: reconceiving texts as vectors, frequencies, distances, and networks
-- **Big Data & Small Data**: reading large corpora, single novels, and short paragraphs
-- **Multidisciplinarity**: encouraging dialogue between humanistic perspectives, natural language processing, and cognitive neuroscience
-- **Beyond computation**: attending to what stories can tell us about the world and ourselves that matrix multiplications alone cannot
+- **Experimentation**: using computational methods to probe and play with literary and visual narratives
+- **Text-centrism**: treating literature as a material in its own right rather than a repository of anecdotes reflecting external forces and ideologies
+- **Quantification**: reimagining texts as vectors, frequencies, distances, and networks
+- **Big Data & Small Data**: reading across large corpora, single novels, and short passages
+- **Multidisciplinarity**: participating in dialogue among humanistic inquiry, natural language processing, and cognitive neuroscience
+- **Beyond computation**: attending to what stories reveal about the world and ourselves that matrix multiplications alone cannot
 
 ## About China
 
-How to write about "China" (中國) without being "obsessed" (情迷) by it? How to think the present moment beyond "modernity"? Events that defined national histories and academic fields, however significant from one perspective, might appear from another like storms in a teacup.
+How to write about "China" (中國) without being "obsessed" (情迷) with it? How to think the present moment beyond "modernity"? Events that have defined national histories and academic fields, however significant from one perspective, may appear from another like storms in a teacup.
 
-This project pursues disciplinary misalignments as sites where the limitations of identity-based scholarship come into view. Dominant chronologies, in fact any chronology, will persist only so long as the comfort of native intimacies and familiar answers remains unchallenged.
+This project pursues disciplinary misalignments as sites where the limits of identity-based scholarship come into view. Dominant chronologies—in fact, any chronology—persist only so long as the comfort of native intimacies and familiar answers goes unchallenged.
 
 The future to come awaits always in the form of monstrosity.
 
