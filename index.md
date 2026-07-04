@@ -32,7 +32,7 @@ title: Home
 
 ## About qh
 
-"Quantitative Humanities" is defined here by the following keywords:
+"Quantitative Humanities" is defined here by the following keywords and the tensions between them:
 
 - **Experimentation**: using computational methods to probe and play with literary and visual narratives
 - **Text-centrism**: treating literature as a material in its own right rather than a repository of anecdotes reflecting external forces and ideologies
