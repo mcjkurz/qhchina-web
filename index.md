@@ -35,10 +35,10 @@ title: Home
 "Quantitative Humanities" is defined here by the following keywords and the tensions between them:
 
 - **Experimentation**: using computational methods to probe and play with literary and visual narratives
-- **Text-centrism**: treating literature as a material in its own right rather than a repository of anecdotes reflecting external forces and ideologies
-- **Quantification**: reimagining texts as vectors, frequencies, distances, and networks
+- **Text-materialism**: treating literature as a material in its own right rather than a mere repository of anecdotes reflecting external forces and ideologies
+- **Geometry**: reimagining textual phenomena as vectors, distances, and networks
 - **Big Data & Small Data**: reading across large corpora, single novels, and short passages
-- **Multidisciplinarity**: participating in dialogue among humanistic inquiry, natural language processing, and cognitive neuroscience
+- **Multidisciplinarity**: advancing dialogue among humanistic inquiry, natural language processing, and cognitive neuroscience
 - **Beyond computation**: attending to what stories reveal about the world and ourselves that matrix multiplications alone cannot
 
 ## About China
