@@ -8,7 +8,7 @@ permalink: /pubs/
 
 ## 2026
 
-Kurzynski, Maciej. "Words Close to Heart: Geometries of Empathy from Ming–Qing Fiction to Ye Xin's *Wasted Years* and Beyond," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
+Kurzynski, Maciej. "Words Close to Heart: Geometries of Empathy from Ming–Qing Fiction to Ye Xin's *Wasted Years*," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
 
 Kurzynski, Maciej. "Neurons and Texts: New Frontiers of Chinese Humanities," *Prism: Theory and Modern Chinese Literature* 23.1, introduction to special issue, forthcoming.
 
