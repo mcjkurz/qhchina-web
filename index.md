@@ -32,14 +32,14 @@ title: Home
 
 ## About qh
 
-"Quantitative Humanities" is defined here by the following keywords:
+"Quantitative Humanities" is defined here by the following concepts:
 
 - **Experimentation**: using computational methods to probe and play with literary and visual narratives
 - **Text-materialism**: treating literature as a material in its own right rather than a mere repository of anecdotes reflecting external forces and ideologies
 - **Geometry**: reimagining textual phenomena as vectors, distances, and networks
 - **Big Data & Small Data**: reading across large corpora, single novels, and short passages
 - **Multidisciplinarity**: advancing dialogue among humanistic inquiry, natural language processing, and cognitive neuroscience
-- **Beyond computation**: attending to what stories reveal about the world and ourselves that matrix multiplications alone cannot
+- **Multi-layeredness**: attending to what stories reveal about the world and ourselves that matrix multiplications alone cannot
 
 ## About China
 
