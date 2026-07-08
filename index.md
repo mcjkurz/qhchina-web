@@ -32,7 +32,7 @@ title: Home
 
 ## About qh
 
-"Quantitative Humanities" is defined here by the following keywords and the tensions between them:
+"Quantitative Humanities" is defined here by the following keywords:
 
 - **Experimentation**: using computational methods to probe and play with literary and visual narratives
 - **Text-materialism**: treating literature as a material in its own right rather than a mere repository of anecdotes reflecting external forces and ideologies
