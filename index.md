@@ -45,7 +45,7 @@ Here, quantitative humanities is less a method than a theoretical intervention, 
 
 How to write about "China" (中國) without being "obsessed" (情迷) with it? How to think the present moment beyond "modernity"? Events that have defined national histories and academic fields, however significant from one perspective, may appear from another like storms in a teacup.
 
-This project pursues disciplinary misalignments as sites where the limits of identity-based scholarship come into view. Dominant chronologies—in fact, any chronology—persist only so long as the comfort of native intimacies and familiar answers goes unchallenged.
+This project pursues disciplinary misalignments as sites where the limits of identity-based scholarship come into view. It asks what becomes possible when the chronologies that have traditionally organized literary study, and the cultural intimacies they quietly presume, are displaced so that literature might be read otherwise.
 
 The future to come awaits always in the form of monstrosity.
 
