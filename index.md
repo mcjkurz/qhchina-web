@@ -37,9 +37,9 @@ Here, quantitative humanities is less a method than a theoretical intervention, 
 - **Experimentation**: using computational models to test, estrange, and rework humanistic concepts rather than simply confirm them
 - **Text-Materialism**: treating literary language as an active material that organizes attention, affect, and historical imagination
 - **Cognitive Geometry**: reimagining textual phenomena as relations of proximity, distance, alignment, scale, and distribution
-- **Scale**: moving between corpora, works, passages, verses, and characters
+- **Scale**: moving between corpora, novels, passages, verses, and words
 - **Techno-Cognitivism**: studying literary experience as a layered interaction among textual form, embodied cognition, and historically situated readers
-- **Narrative Technologies**: asking how literary forms coordinate prediction, surprise, empathy, violence, sublimity, and other modes of experience
+- **Narrative Technologies**: asking how recursive literary forms coordinate prediction, surprise, empathy, violence, sublimity, and other modes of experience
 
 ## About China
 
