@@ -22,3 +22,6 @@ venv/
 
 # Test suite
 tests/
+
+# misc files 
+misc/
