@@ -27,19 +27,19 @@ title: Home
 
 <div class="welcome-section">
   <h1>Welcome to qh · china</h1>
-  <p class="lead">Where quantification meets the Chinese humanities</p>
+  <p class="lead">Rethinking Chinese humanities through computation, cognition, and form</p>
 </div>
 
 ## About qh
 
-"Quantitative Humanities" is defined here by the following concepts:
+Here, quantitative humanities is less a method than a theoretical intervention, organized around several recurring concepts:
 
-- **Experimentation**: using computational methods to probe and play with literary and visual narratives
-- **Text-materialism**: treating literature as a material in its own right rather than a mere repository of anecdotes reflecting external forces and ideologies
-- **Geometry**: reimagining textual phenomena as vectors, distances, and networks
-- **Big Data & Small Data**: reading across large corpora, single novels, and short passages
-- **Multidisciplinarity**: advancing dialogue among humanistic inquiry, natural language processing, and cognitive neuroscience
-- **Multi-layeredness**: attending to what stories reveal about the world and ourselves that matrix multiplications alone cannot
+- **Experimentation**: using computational models to test, estrange, and rework humanistic concepts rather than simply confirm them.
+- **Text-Materialism**: treating literary language as an active material that organizes attention, affect, and historical imagination.
+- **Cognitive Geometry**: reimagining textual phenomena as relations of proximity, distance, alignment, scale, and distribution.
+- **Scale**: moving between corpora, works, passages, verses, and characters.
+- **Techno-Cognitivism**: studying literary experience as a layered interaction among textual form, embodied cognition, and historically situated readers.
+- **Narrative Technologies**: asking how literary forms coordinate prediction, surprise, empathy, violence, sublimity, and other modes of experience.
 
 ## About China
 
