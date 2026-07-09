@@ -6,6 +6,8 @@ permalink: /projects/words-close-to-heart/
 
 # Words Close to Heart
 
+This project studies representations of interiority as a spatial and embodied problem: how do texts bring persons, emotions, and historical realities close to the reader's felt sense of self? Focusing on metaphors of the heart, mind, liver, stomach, and other inner organs, it treats empathy as a form of proximity that operates at once on the page, in semantic space, and through the reader's body schema. The larger theoretical aim is to move beyond a simple opposition between continuity and rupture in Chinese histories of emotion by showing how older cardiocentric vocabularies and newer models of mind are repeatedly reorganized in fiction.
+
 ## Geometries of Empathy from Ming–Qing Fiction to Ye Xin’s *Wasted Years*
 
 <img src="heart_pca_3d.png" alt="Words Close to Heart" style="max-width: 75%; height: auto; margin: 2rem auto; display: block;">

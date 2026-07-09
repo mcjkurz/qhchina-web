@@ -44,12 +44,12 @@ permalink: /projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/techno-cognitivism">Techno-Cognitivism</a></h3>
-        <p>A theory of literary meaning as a layered interaction among textual form, embodied cognition, historical context, and computational models of narrative experience.</p>
+        <p>A theory of literary meaning as a layered interaction among textual form, embodied cognition, and historical context, inspired by computational models of narrative experience.</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/verbs-chinese-poetry/">Verbs of Chinese Poetry</a></h3>
         <p>with <strong>Prof. Zong-qi Cai</strong></p>
-        <p>A study of predicate verb position as a formal engine of rhythm, attention, and semantic compression in classical Chinese poetry, from pre-Qin tetrasyllabic verse to Tang regulated poetry.</p>
+        <p>A study of predicate verbs as eye-words of classical Chinese poetry, tracing how syntax organizes rhythm, attention, semantic compression, and poetic imagination.</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/projects/cognitive-stylometry/">Cognitive Stylometry</a></h3>
