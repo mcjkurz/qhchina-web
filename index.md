@@ -58,7 +58,7 @@ and Fictionality]({{ site.baseurl }}/assets/events/Edinburgh-20260610.pdf)<br>
 - [「重構中國人文傳統：文學觀念與文學史」國際學術研討會]({{ site.baseurl }}/assets/events/Macau-20260608.pdf)<br>
   University of Macau, Jun 8-9, 2026
 
-- [Resonant Media: Sound, Network, and Communication Technologies ]({{ site.baseurl }}/assets/events/PolyU-20260607.jpg)<br>
+- [Resonant Media: Sound, Network, and Communication Technologies]({{ site.baseurl }}/assets/events/PolyU-20260607.jpg)<br>
   The Hong Kong Polytechnic University, Jun 6-7, 2026
 
 - [Voices from the Past: Retrieval-Augmented Dialogues with Chinese Historical Figures]({{ site.baseurl }}/assets/events/ewha-20260210.png)<br>

@@ -552,7 +552,7 @@ Note:
 
 Interpreting Results:
     `most_similar()` on temporal variants (e.g., "民_宋") might return
-    suboptimal results given that temporal variants are only trained on period-specificsubsets of data.
+    suboptimal results given that temporal variants are only trained on period-specific subsets of data.
     Use `calculate_semantic_change()` instead, which compares similarity shifts
     across periods to reveal genuine semantic drift.
 
