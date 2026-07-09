@@ -6,6 +6,8 @@ permalink: /projects/verbs-chinese-poetry/
 
 # Verbs of Chinese Poetry
 
+The position of a predicate verb in a Chinese poetic line is a small formal choice with large theoretical consequences. This project studies predicate verbs as anchors of rhythm, attention, and semantic compression, showing how shifts in syntax reorganize the relation between image, event, and emotion across the history of classical poetry. Computational annotation makes these patterns visible at scale, but the guiding question remains literary: how do changing verbal structures allow short poetic forms to carry increasingly complex worlds of meaning?
+
 ## Publications
 
 ### The Syntactic Art of Tang Pentasyllabic Verse: A Quantitative and Analytical Study

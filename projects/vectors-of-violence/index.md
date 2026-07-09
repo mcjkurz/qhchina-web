@@ -6,6 +6,8 @@ permalink: /projects/vectors-of-violence/
 
 # Vectors of Violence
 
+Violence in official discourse is not only represented; it is distributed across agents, emotions, institutions, and imagined enemies. This project studies the *People's Liberation Army Daily* as a system for allocating legitimacy and affect, asking how state power becomes thinkable through recurring patterns of language. Text mining and machine learning make the distribution measurable, but the theoretical focus is on the mechanisms by which violent sentiment is attached to particular figures, topics, and historical moments.
+
 ## Publications
 
 ### Vectors of Violence: Legitimation and Distribution of State Power in the *People's Liberation Army Daily* (*Jiefangjun Bao*), 1956-1989

@@ -6,7 +6,7 @@ permalink: /projects/cognitive-stylometry/
 
 # Cognitive Stylometry
 
-Language models predict the next word by learning statistical patterns from their training data. This project uses perplexity (a measure of prediction difficulty) to study style as a tension between expectation and surprise. By comparing how predictable different texts are to models fine-tuned on specific corpora, we can expose the mechanisms through which different forms of discourse constrain or liberate imagination.
+Cognitive stylometry begins from the idea that style is a managed relation between expectation and surprise. Because language models learn what kinds of words and phrases are likely to follow from a given context, their errors and uncertainties can be used to model historically situated habits of reading. This project uses perplexity to study how discourse constrains or expands imagination: propaganda lowers uncertainty by repeating sanctioned patterns, while literature renews perception by opening multiple meaningful paths through language.
 
 ## Publications
 

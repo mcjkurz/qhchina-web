@@ -5,7 +5,7 @@ permalink: /projects/parallelism-geometry/
 ---
 # The Geometry of Parallelism
 
-Many poetic phenomena invite geometric interpretations. In language models, for example, the underlying geometry is detectable and measurable as patterns of alignment within a semantic space, much as symbolic-metric relationships are measurable on textual surfaces. This project focuses on parallelism in classical Chinese poetry, reconceiving this important structural feature as a discovery and articulation of latent symmetries within our conceptual world.
+Parallelism is not only a formal rule of Chinese regulated verse; it is a way of discovering and creating order in conceptual space. This project treats paired poetic lines as experiments in cognitive geometry, where syntax, semantics, tone, and rhythm align to reveal latent symmetries among otherwise distant domains of experience. By combining traditional poetics with language-model analysis, the project asks how literary form organizes comparison, how scale shapes interpretation, and how vector representations can make visible the conceptual architecture of parallel thought.
 
 ## Publications
 

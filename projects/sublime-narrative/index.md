@@ -6,7 +6,7 @@ permalink: /projects/sublime-narrative/
 
 # The Sublime as a Narrative Technology
 
-Words transmit not only semantic meaning but also affective energy. Drawing on cognitive science and computational criticism, this project conceptualizes the sublime as a synchronized distribution of two distinct vocabularies within a narrative. A steady accumulation of words describing powerful natural phenomena activates the reader's kinaesthetic involvement; this progression is in turn strategically entangled with the narrative's plot-specific terms to culminate in a powerful, boundary-crossing experience.
+The sublime can be understood as a narrative technology: a patterned sequence that organizes motion, boundary, and affect into an experience of scale. In modern Chinese fiction, this technology works by accumulating vocabularies of powerful natural phenomena and synchronizing them with plot-specific terms until the narrative arrives at a moment of crossing or release. Computational criticism helps detect these distributed patterns, but the central claim is aesthetic and cognitive: sublime experience is produced through the timed coordination of language, embodiment, and narrative form.
 
 ## Publications
 

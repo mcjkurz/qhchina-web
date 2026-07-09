@@ -6,6 +6,8 @@ permalink: /projects/techno-cognitivism/
 
 # Techno-Cognitivism
 
+Techno-cognitivism is a framework for studying literature as an interaction among textual form, embodied cognition, historical mediation, and computational modeling. Rather than treating digital methods as external tools applied to stable objects, this project asks how neural, linguistic, and algorithmic models can clarify the layered processes through which literary meaning is produced and received. Its central claim is theoretical: narrative experience unfolds across multiple temporal and cognitive scales, from local sensory-affective cues to broad cultural structures of interpretation.
+
 ## Publications
 
 ### Neurons and Texts: New Frontiers of Chinese Humanities
