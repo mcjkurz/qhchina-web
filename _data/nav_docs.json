@@ -215,6 +215,10 @@
         "anchor": "dynamicword2vec-save"
       },
       {
+        "name": "DynamicWord2Vec.similarity()",
+        "anchor": "dynamicword2vec-similarity"
+      },
+      {
         "name": "DynamicWord2Vec.train()",
         "anchor": "dynamicword2vec-train"
       },

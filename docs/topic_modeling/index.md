@@ -263,7 +263,7 @@ Latent Dirichlet Allocation with Gibbs sampling implementation.
 - `beta`: Dirichlet prior for topic-word distributions (float). If None, uses the 
   heuristic 1/n_topics from Griffiths and Steyvers (2004).
 - `iterations`: Number of Gibbs sampling iterations, excluding burnin.
-- `burnin`: Number of initial iterations to run before hyperparameter estimation 
+- `burnin`: Number of initial iterations to run before hyperparameters estimation 
   (default 0).
 - `random_state`: Random seed for reproducibility.
 - `log_interval`: Calculate perplexity and print results every log_interval iterations.

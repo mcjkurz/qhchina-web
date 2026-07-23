@@ -286,7 +286,7 @@ New CoocMatrix with PPMI float64 values (sparse).
 
 <br>
 
-<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="#find_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L668" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="find_collocates">qhchina.analytics.collocations.find_collocates() <a href="#find_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L676" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -316,8 +316,10 @@ restartable generator classes all work; single-use generators do not.
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
-  token. 'sentence' considers whole sentences as context units (horizon not 
-  applicable). Default is 'window'.
+  token. In window mode, contingency tables follow Evert (2008):
+  for each target word, positions whose token equals the target are excluded
+  from the sample space. 'sentence' considers whole sentences as context
+  units (horizon not applicable). Default is 'window'.
 - `horizon` (int | tuple | None): Context window size relative to the target 
   word. Only applicable when method='window'. Must be None when method='sentence'.
   - int: Symmetric window (e.g., 5 means 5 words on each side of target)
@@ -383,7 +385,7 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 <br>
 
-<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="#cooc_matrix" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L988" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="cooc_matrix">qhchina.analytics.collocations.cooc_matrix() <a href="#cooc_matrix" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1005" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -456,7 +458,7 @@ df = matrix.to_dataframe()
 
 <br>
 
-<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="#plot_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1209" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="plot_collocates">qhchina.analytics.collocations.plot_collocates() <a href="#plot_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1226" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">plot_collocates</span>(
     <span class="sig-param">collocates</span><span class="sig-punct">:</span> <span class="sig-type">list[dict] | pandas.core.frame.DataFrame</span>,
@@ -545,7 +547,7 @@ plot_collocates(collocates, show_labels=True, label_top_n=20,
 
 <br>
 
-<h3 id="kwic">qhchina.analytics.collocations.kwic() <a href="#kwic" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1405" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="kwic">qhchina.analytics.collocations.kwic() <a href="#kwic" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1422" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">kwic</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -606,7 +608,7 @@ kwic(sentences, "天", horizon=3)
 
 <br>
 
-<h3 id="compare_collocates">qhchina.analytics.collocations.compare_collocates() <a href="#compare_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1519" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="compare_collocates">qhchina.analytics.collocations.compare_collocates() <a href="#compare_collocates" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1536" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">compare_collocates</span>(
     <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
