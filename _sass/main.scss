@@ -385,10 +385,11 @@ main {
 
 /* Home page recent events scroll container */
 .events-scroll {
-  position: relative;
-  max-height: 12rem;
+  display: block;
+  height: 12rem;
   overflow-y: scroll;
   padding-right: 0.4rem;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
 }
@@ -400,17 +401,6 @@ main {
 .events-scroll::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 999px;
-}
-
-.events-scroll::after {
-  content: "";
-  position: sticky;
-  bottom: 0;
-  display: block;
-  height: 2rem;
-  margin-top: -2rem;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 80%);
 }
 
 .events-scroll ul {
