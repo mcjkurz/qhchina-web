@@ -50,7 +50,6 @@ permalink: /about/
     <img src="{{ site.baseurl }}/assets/img/kurzynski_pic.png" alt="Maciej Kurzynski" />
   </div>
   <div class="bio-text">
-    <br>
     <p>My name is Maciej Kurzynski (馬傑 / 马杰), and I am an assistant professor of Chinese and digital humanities at Lingnan University, Hong Kong.</p>
 
     <p>Originally from Wrocław, Poland, I received my PhD from Stanford University in modern Chinese literature and culture. I also studied at the University of Warsaw (BA), Université Paris 1 Panthéon-Sorbonne (Erasmus), and Zhejiang University (MA).</p>
