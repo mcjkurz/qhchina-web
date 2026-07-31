@@ -53,6 +53,14 @@ Base segmentation wrapper class that can be extended for different segmentation 
 Clean up resources. Call this when done with the segmenter.
 
 
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SegmentationWrapper
+
+instance = SegmentationWrapper()
+result = instance.close()
+```
+
 ### `SegmentationWrapper.reset_user_dict()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L215)
@@ -64,6 +72,14 @@ Reset the user dictionary to default state.
 This clears any custom words that were added via user_dict.
 Subclasses should override this method to implement backend-specific reset logic.
 
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SegmentationWrapper
+
+instance = SegmentationWrapper()
+result = instance.reset_user_dict()
+```
 
 ### `SegmentationWrapper.segment()`
 
@@ -80,3 +96,12 @@ Segment text into tokens based on the selected strategy.
 If strategy is 'document': A single list of tokens
 If strategy is 'line', 'sentence', or 'chunk': A list of lists, where each inner list
 contains tokens for a line, sentence, or chunk respectively
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SegmentationWrapper
+
+instance = SegmentationWrapper()
+result = instance.segment(text=...)
+```

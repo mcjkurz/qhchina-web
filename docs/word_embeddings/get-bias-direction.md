@@ -10,7 +10,7 @@ api_category_permalink: "/docs/word_embeddings/"
 
 Part of **Word Embeddings** (`qhchina.analytics.vectors.get_bias_direction`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L130)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L141)
 
 <pre class="signature"><code><span class="sig-name">get_bias_direction</span>(
     <span class="sig-param">anchors</span><span class="sig-punct">:</span> <span class="sig-type">tuple[numpy.ndarray, numpy.ndarray] | list[tuple[numpy.ndarray, numpy.ndarray]]</span>
@@ -28,3 +28,13 @@ positive and negative anchor pairs.
 
 **Returns:**
 (numpy.ndarray) The bias direction vector (normalized).
+
+**Example:**
+```python
+import numpy as np
+from qhchina.analytics.vectors import get_bias_direction
+
+pos = np.array([0.8, 0.2, 0.1])
+neg = np.array([0.1, 0.7, 0.2])
+direction = get_bias_direction((pos, neg))
+```

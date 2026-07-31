@@ -10,7 +10,7 @@ api_category_permalink: "/docs/word_embeddings/"
 
 Part of **Word Embeddings** (`qhchina.analytics.vectors.calculate_bias`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L163)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L182)
 
 <pre class="signature"><code><span class="sig-name">calculate_bias</span>(
     <span class="sig-param">anchors</span><span class="sig-punct">:</span> <span class="sig-type">tuple[str, str] | list[tuple[str, str]]</span>,
@@ -28,3 +28,19 @@ Calculate bias scores for target words along an axis defined by anchor pairs.
 
 **Returns:**
 (numpy.ndarray) Bias scores (dot products) for each target word.
+
+**Example:**
+```python
+import numpy as np
+from qhchina.analytics.vectors import calculate_bias
+
+vectors = {
+    "king": np.array([0.9, 0.2, 0.1]),
+    "queen": np.array([0.8, 0.1, 0.2]),
+    "man": np.array([0.7, 0.4, 0.1]),
+    "woman": np.array([0.6, 0.2, 0.3]),
+    "doctor": np.array([0.5, 0.6, 0.2]),
+    "nurse": np.array([0.4, 0.3, 0.5]),
+}
+scores = calculate_bias(("man", "woman"), ["doctor", "nurse"], vectors)
+```

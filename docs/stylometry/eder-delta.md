@@ -22,3 +22,11 @@ giving more weight to larger differences. It also normalizes by vector length.
 Formula: $\Delta_E = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (a_i - b_i)^2}$
 
 Reference: Eder, M. (2013). "Mind your corpus: systematic errors in authorship attribution"
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import eder_delta
+
+result = eder_delta(vec_a=..., vec_b=...)
+```

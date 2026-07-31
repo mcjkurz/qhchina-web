@@ -22,3 +22,11 @@ Compute Euclidean (L2) distance between two vectors.
 
 **Returns:**
 (float) Square root of sum of squared differences.
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import euclidean_distance
+
+result = euclidean_distance(vec_a=..., vec_b=...)
+```

@@ -26,3 +26,11 @@ Lower values indicate more similar writing styles.
 
 **Returns:**
 (float) Burrows' Delta distance (lower = more similar).
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import burrows_delta
+
+result = burrows_delta(vec_a=..., vec_b=...)
+```

@@ -50,3 +50,11 @@ An instance of a SegmentationWrapper subclass
 
 **Raises:**
 - `ValueError`: If the specified backend is not supported
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import create_segmenter
+
+result = create_segmenter()
+```

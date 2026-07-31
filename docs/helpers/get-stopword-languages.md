@@ -18,3 +18,11 @@ Get all available stopword language codes.
 
 **Returns:**
 List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import get_stopword_languages
+
+result = get_stopword_languages()
+```

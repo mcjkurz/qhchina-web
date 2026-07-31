@@ -26,3 +26,11 @@ Detects the encoding of a file.
 
 **Raises:**
 - `ImportError`: If chardet is not installed.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import detect_encoding
+
+result = detect_encoding(filename=...)
+```

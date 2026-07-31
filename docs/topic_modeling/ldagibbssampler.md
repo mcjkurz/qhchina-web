@@ -123,6 +123,14 @@ Tuple of:
 - List of coherence values for each topic
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.coherence_npmi()
+```
+
 ### `LDAGibbsSampler.coherence_umass()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1122)
@@ -148,6 +156,14 @@ Tuple of:
 - List of coherence values for each topic
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.coherence_umass()
+```
+
 ### `LDAGibbsSampler.document_similarity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1008)
@@ -169,6 +185,14 @@ Calculate similarity between two documents based on their topic distributions.
 Similarity/distance value based on chosen metric
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.document_similarity(doc_i=..., doc_j=...)
+```
+
 ### `LDAGibbsSampler.document_similarity_matrix()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1030)
@@ -184,6 +208,14 @@ Calculate pairwise similarity/distance between documents.
 **Returns:**
 Square matrix with pairwise similarities/distances
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.document_similarity_matrix()
+```
 
 ### `LDAGibbsSampler.evaluate()`
 
@@ -204,6 +236,14 @@ and topic diversity.
 Dictionary containing all evaluation metrics
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.evaluate()
+```
+
 ### `LDAGibbsSampler.fit()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L476)
@@ -216,6 +256,14 @@ Fit the LDA model to the given documents.
 - `documents`: Iterable of tokenized documents (each document is a list of tokens).
   Can be a list or any other iterable.
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.fit(documents=...)
+```
 
 ### `LDAGibbsSampler.get_document_topics()`
 
@@ -233,6 +281,14 @@ Get topic distribution for a specific document.
 List of (topic_id, probability) tuples
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.get_document_topics(doc_id=...)
+```
+
 ### `LDAGibbsSampler.get_top_documents()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L874)
@@ -249,6 +305,14 @@ Get the top n documents for a specific topic.
 List of (document_id, probability) tuples, sorted by probability in descending order
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.get_top_documents(topic_id=...)
+```
+
 ### `LDAGibbsSampler.get_topic_distribution()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L596)
@@ -260,6 +324,14 @@ Get overall topic distribution across the corpus.
 **Returns:**
 Array of topic probabilities
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.get_topic_distribution()
+```
 
 ### `LDAGibbsSampler.get_topic_words()`
 
@@ -277,6 +349,14 @@ Get the top n words for a specific topic.
 List of (word, probability) tuples, sorted by probability in descending order
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.get_topic_words(topic_id=...)
+```
+
 ### `LDAGibbsSampler.get_topics()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L560)
@@ -291,6 +371,14 @@ Get the top words for each topic along with their probabilities.
 **Returns:**
 List of topics, each containing a list of (word, probability) tuples
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.get_topics()
+```
 
 ### `LDAGibbsSampler.inference()`
 
@@ -308,6 +396,14 @@ Infer topic distribution for a new document.
 Topic distribution for the document
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.inference(new_doc=...)
+```
+
 ### `LDAGibbsSampler.initialize()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L251)
@@ -319,6 +415,14 @@ Initialize data structures for Gibbs sampling.
 **Parameters:**
 - `docs_as_ids`: Documents with tokens as integer IDs
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.initialize(docs_as_ids=...)
+```
 
 ### `LDAGibbsSampler.load()`
 
@@ -335,6 +439,14 @@ Load a model from a file.
 Loaded LDA model
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.load(filepath=...)
+```
+
 ### `LDAGibbsSampler.perplexity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L516)
@@ -346,6 +458,14 @@ Calculate perplexity of the model on the training data.
 **Returns:**
 Perplexity value (lower is better)
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.perplexity()
+```
 
 ### `LDAGibbsSampler.plot_topic_words()`
 
@@ -365,6 +485,14 @@ Plot the top words for each topic as a bar chart.
 - `orientation`: "horizontal" (words on x-axis, probabilities on y-axis) or 
   "vertical" (probabilities on x-axis, words on y-axis with highest at top)
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.plot_topic_words()
+```
 
 ### `LDAGibbsSampler.preprocess()`
 
@@ -386,6 +514,14 @@ Tuple containing:
 - id_to_word: Mapping from integer IDs to words
 
 
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.preprocess(documents=...)
+```
+
 ### `LDAGibbsSampler.run_gibbs_sampling()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L340)
@@ -396,6 +532,14 @@ Run Gibbs sampling for the specified number of iterations.
 
 Uses Cython if available and enabled.
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.run_gibbs_sampling()
+```
 
 ### `LDAGibbsSampler.save()`
 
@@ -408,6 +552,14 @@ Save the model to a file.
 **Parameters:**
 - `filepath`: Path to save the model
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.save(filepath=...)
+```
 
 ### `LDAGibbsSampler.topic_correlation_matrix()`
 
@@ -423,6 +575,14 @@ Calculate pairwise similarity/distance between all topics.
 **Returns:**
 Square matrix of shape (n_topics, n_topics) with pairwise similarities/distances
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.topic_correlation_matrix()
+```
 
 ### `LDAGibbsSampler.topic_similarity()`
 
@@ -444,6 +604,14 @@ Calculate similarity between two topics.
 **Returns:**
 Similarity/distance value based on chosen metric
 
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.topic_similarity(topic_i=..., topic_j=...)
+```
 
 ### `LDAGibbsSampler.train_multiple()`
 
@@ -534,3 +702,12 @@ Documents are automatically colored by dominant topic, or by k-means clusters if
 
 **Returns:**
 2D coordinates array of shape (n_docs, 2) if format='static', None if format='html'
+
+
+**Example:**
+```python
+from qhchina.analytics.topicmodels import LDAGibbsSampler
+
+instance = LDAGibbsSampler()
+result = instance.visualize_documents()
+```

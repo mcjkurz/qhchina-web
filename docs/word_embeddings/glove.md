@@ -90,6 +90,14 @@ Load a previously saved GloVe model from pickle.
 - `ValueError`: if `model_type` in the file is not `"glove"`.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.glove.base import GloVe
+
+instance = GloVe()
+result = instance.load(path=...)
+```
+
 ### `GloVe.save()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L687)
@@ -102,6 +110,14 @@ Stores model configuration, vocabulary statistics, trainable parameters,
 and AdaGrad state so training can continue after `load()`.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.glove.base import GloVe
+
+instance = GloVe()
+result = instance.save(path=...)
+```
+
 ### `GloVe.similarity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L678)
@@ -109,6 +125,14 @@ and AdaGrad state so training can continue after `load()`.
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
 No documentation provided.
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.glove.base import GloVe
+
+instance = GloVe()
+result = instance.similarity(word1=..., word2=...)
+```
 
 ### `GloVe.train()`
 
@@ -138,3 +162,12 @@ Memory behavior:
 
 **Returns:**
 Average epoch loss when `calculate_loss=True`; otherwise `None`.
+
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.glove.base import GloVe
+
+instance = GloVe()
+result = instance.train()
+```

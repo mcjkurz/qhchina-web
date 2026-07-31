@@ -3,10 +3,6 @@ layout: "docs_with_sidebar"
 title: "Collocation Analysis"
 permalink: "/docs/collocations/"
 functions:
-  - name: "FilterOptions"
-    anchor: "filteroptions"
-    url: "/docs/collocations/filteroptions/"
-    summary: "Type definition for filter options in collocation analysis."
   - name: "CoocMatrix"
     anchor: "coocmatrix"
     url: "/docs/collocations/coocmatrix/"
@@ -170,7 +166,6 @@ df = matrix.to_dataframe()
 
 Select a symbol to view full documentation:
 
-- [`FilterOptions`](/docs/collocations/filteroptions/) - Type definition for filter options in collocation analysis.
 - [`CoocMatrix`](/docs/collocations/coocmatrix/) - Co-occurrence matrix with numpy-like indexing by word or index.
 - [`find_collocates()`](/docs/collocations/find-collocates/) - Find collocates for target words in a corpus of sentences.
 - [`cooc_matrix()`](/docs/collocations/cooc-matrix/) - Calculate a co-occurrence matrix from a corpus of documents.

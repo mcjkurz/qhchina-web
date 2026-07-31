@@ -18,3 +18,11 @@ Get the font cache directory path.
 
 **Returns:**
 Path to ~/.cache/qhchina/fonts/
+
+
+**Example:**
+```python
+from qhchina.helpers.fonts import get_cache_dir
+
+result = get_cache_dir()
+```

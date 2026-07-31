@@ -47,3 +47,16 @@ Projects high-dimensional vectors into 2D using PCA, t-SNE, or UMAP and visualiz
   Default is False.
 - `n_neighbors` (int): Number of neighbors for UMAP. Default is 15.
 - `min_dist` (float): Minimum distance between points for UMAP. Default is 0.1.
+
+**Example:**
+```python
+import numpy as np
+from qhchina.analytics.vectors import project_2d
+
+vectors = {
+    "economy": np.array([0.2, 0.1, 0.4, 0.7]),
+    "trade": np.array([0.3, 0.2, 0.5, 0.6]),
+    "agriculture": np.array([0.8, 0.6, 0.1, 0.2]),
+}
+project_2d(vectors, method="pca", title="Semantic projection")
+```

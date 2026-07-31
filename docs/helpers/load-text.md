@@ -23,3 +23,11 @@ Loads text from a file.
 
 **Returns:**
 (str) The text content of the file.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import load_text
+
+result = load_text(filename=...)
+```

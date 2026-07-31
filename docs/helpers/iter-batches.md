@@ -30,3 +30,11 @@ Texts longer than *max_length* are truncated; empty texts are skipped.
 
 **Returns:**
 (list[list[str]]) Batches where total tokens <= *batch_words*.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import iter_batches
+
+result = iter_batches(texts=...)
+```

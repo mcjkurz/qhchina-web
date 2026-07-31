@@ -50,3 +50,12 @@ Reset the user dictionary by reinitializing PKUSeg without a user dict.
 Note: PKUSeg doesn't support dynamic dictionary updates, so we reinitialize
 the entire segmenter. This is different from Jieba where we can reset the
 global state.
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import PKUSegmenter
+
+instance = PKUSegmenter()
+result = instance.reset_user_dict()
+```

@@ -10,7 +10,7 @@ api_category_permalink: "/docs/word_embeddings/"
 
 Part of **Word Embeddings** (`qhchina.analytics.vectors.project_bias`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L196)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/vectors.py#L229)
 
 <pre class="signature"><code><span class="sig-name">project_bias</span>(
     <span class="sig-param">x</span><span class="sig-punct">:</span> <span class="sig-type">tuple[str, str] | list[tuple[str, str]]</span>,
@@ -48,3 +48,25 @@ Projects words onto:
   Default is False.
 - `disperse_y` (bool): Whether to add random y-dispersion for 1D plots. 
   Default is False.
+
+**Example:**
+```python
+import numpy as np
+from qhchina.analytics.vectors import project_bias
+
+vectors = {
+    "man": np.array([0.8, 0.2, 0.1]),
+    "woman": np.array([0.5, 0.3, 0.2]),
+    "science": np.array([0.7, 0.8, 0.4]),
+    "art": np.array([0.3, 0.6, 0.9]),
+    "doctor": np.array([0.6, 0.7, 0.3]),
+    "poet": np.array([0.2, 0.5, 0.8]),
+}
+project_bias(
+    x=("man", "woman"),
+    y=("science", "art"),
+    targets=["doctor", "poet"],
+    word_vectors=vectors,
+    title="Bias projection",
+)
+```

@@ -123,6 +123,14 @@ respecting the sampling strategy to match training data distribution.
   Accepted for API compatibility with the parent class.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.build_vocab()
+```
+
 ### `DynamicWord2Vec.calculate_semantic_change()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L905)
@@ -188,6 +196,14 @@ the word's embedding at time i and time i+1.
 - `KeyError`: If word is not in vocabulary.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.calculate_temporal_drift(word=...)
+```
+
 ### `DynamicWord2Vec.export()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1183)
@@ -204,6 +220,14 @@ Use `save()` and `load()` instead to preserve all model data.
 **Raises:**
 - `NotImplementedError`: Always raised.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.export(path=...)
+```
 
 ### `DynamicWord2Vec.get_all_time_vectors()`
 
@@ -225,6 +249,14 @@ at each time slice.
 - `KeyError`: If word is not in vocabulary.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.get_all_time_vectors(word=...)
+```
+
 ### `DynamicWord2Vec.get_time_labels()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1017)
@@ -236,6 +268,14 @@ Get the list of time period labels.
 **Returns:**
 List of time period labels in temporal order.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.get_time_labels()
+```
 
 ### `DynamicWord2Vec.get_vector()`
 
@@ -257,6 +297,14 @@ Word vector as numpy array of shape (vector_size,).
 - `KeyError`: If word is not in vocabulary or time_label is invalid.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.get_vector(word=..., time_label=...)
+```
+
 ### `DynamicWord2Vec.load()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1086)
@@ -275,6 +323,14 @@ Loaded DynamicWord2Vec model.
 - `ValueError`: If the file doesn't contain DynamicWord2Vec data.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.load(path=...)
+```
+
 ### `DynamicWord2Vec.load_vectors()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1201)
@@ -291,6 +347,14 @@ Use `DynamicWord2Vec.load()` to load a saved DynamicWord2Vec model.
 **Raises:**
 - `NotImplementedError`: Always raised.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.load_vectors(path=...)
+```
 
 ### `DynamicWord2Vec.most_similar()`
 
@@ -314,6 +378,14 @@ List of (word, similarity) tuples sorted by descending similarity.
 - `KeyError`: If word is not in vocabulary or time_label is invalid.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.most_similar(word=..., time_label=...)
+```
+
 ### `DynamicWord2Vec.save()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1026)
@@ -328,6 +400,14 @@ Saves all temporal embeddings, labels, and configuration parameters.
 - `path`: Path to save the model.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.save(path=...)
+```
+
 ### `DynamicWord2Vec.similarity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L773)
@@ -336,6 +416,14 @@ Saves all temporal embeddings, labels, and configuration parameters.
 
 Calculate similarity within one explicitly selected time slice.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.similarity(word1=..., word2=..., time_label=...)
+```
 
 ### `DynamicWord2Vec.train()`
 
@@ -357,3 +445,12 @@ Dispatches to joint or sequential training based on `training_mode`.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
+
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
+
+instance = DynamicWord2Vec(sentences=...)
+result = instance.train()
+```

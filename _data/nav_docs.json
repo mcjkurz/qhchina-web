@@ -51,12 +51,6 @@
         "summary": "Segmentation wrapper using HanLP 2.x neural tokenizers."
       },
       {
-        "name": "NormalizeOptions",
-        "anchor": "normalizeoptions",
-        "url": "/docs/preprocessing/normalizeoptions/",
-        "summary": "Normalization options dictionary."
-      },
-      {
         "name": "create_segmenter()",
         "anchor": "create-segmenter",
         "url": "/docs/preprocessing/create-segmenter/",
@@ -242,12 +236,6 @@
     "name": "Collocations",
     "url": "/docs/collocations/",
     "functions": [
-      {
-        "name": "FilterOptions",
-        "anchor": "filteroptions",
-        "url": "/docs/collocations/filteroptions/",
-        "summary": "Type definition for filter options in collocation analysis."
-      },
       {
         "name": "CoocMatrix",
         "anchor": "coocmatrix",

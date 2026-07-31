@@ -66,3 +66,11 @@ pd.DataFrame or list[dict] with columns/keys:
 - **status** (str): One of `'strengthened'`, `'weakened'`,
   `'appeared'` (only in B), `'disappeared'` (only in A),
   or `'stable'`.
+
+
+**Example:**
+```python
+from qhchina.analytics.collocations import compare_collocates
+
+result = compare_collocates(corpus_a=..., corpus_b=..., target_words=...)
+```

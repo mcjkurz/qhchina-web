@@ -29,3 +29,11 @@ times count of words with that frequency)
 
 **Returns:**
 Yule's K value (typically between 50-200 for normal texts)
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import compute_yule_k
+
+result = compute_yule_k(tokens=...)
+```

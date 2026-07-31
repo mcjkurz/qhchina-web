@@ -18,3 +18,11 @@ Compute relative frequencies for a list of items (tokens or n-grams).
 
 **Returns:**
 Dict mapping each unique item to its relative frequency (count / total)
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import get_relative_frequencies
+
+result = get_relative_frequencies(items=...)
+```

@@ -114,6 +114,14 @@ Build vocabulary from sentences.
 - `ValueError`: If sentences is empty or contains no words.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.base import Word2Vec
+
+instance = Word2Vec()
+result = instance.build_vocab(sentences=...)
+```
+
 ### `Word2Vec.export()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1347)
@@ -175,6 +183,14 @@ Word vector as numpy array of shape (vector_size,).
 - `KeyError`: If word is not in vocabulary.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.base import Word2Vec
+
+instance = Word2Vec()
+result = instance.get_vector(word=...)
+```
+
 ### `Word2Vec.load()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1439)
@@ -189,6 +205,14 @@ Load a model from a file.
 **Returns:**
 Loaded Word2Vec model.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.base import Word2Vec
+
+instance = Word2Vec()
+result = instance.load(path=...)
+```
 
 ### `Word2Vec.load_vectors()`
 
@@ -298,6 +322,14 @@ needed during training, not inference.
 - `path`: Path to save the model.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.base import Word2Vec
+
+instance = Word2Vec()
+result = instance.save(path=...)
+```
+
 ### `Word2Vec.similarity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1279)
@@ -318,6 +350,14 @@ Cosine similarity between the two words (float between -1 and 1).
 **Raises:**
 - `KeyError`: If either word is not in the vocabulary.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.base import Word2Vec
+
+instance = Word2Vec()
+result = instance.similarity(word1=..., word2=...)
+```
 
 ### `Word2Vec.train()`
 

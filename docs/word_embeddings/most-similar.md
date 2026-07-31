@@ -21,3 +21,11 @@ Part of **Word Embeddings** (`qhchina.analytics._vector_ops.most_similar`).
 )</code></pre>
 
 Find vectors most similar to target_vector using selected metric.
+
+
+**Example:**
+```python
+from qhchina.analytics._vector_ops import most_similar
+
+result = most_similar(target_vector=..., vectors=...)
+```

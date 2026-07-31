@@ -23,3 +23,11 @@ Loads text from multiple files.
 
 **Returns:**
 (list) A list of text contents from the files.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import load_texts
+
+result = load_texts(filenames=...)
+```

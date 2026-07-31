@@ -30,3 +30,11 @@ doesn't divide evenly.
 
 **Raises:**
 - `ValueError`: If overlap is not between 0 and 1, or if chunk_size is not positive.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import split_into_chunks
+
+result = split_into_chunks(sequence=..., chunk_size=...)
+```

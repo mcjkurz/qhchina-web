@@ -31,10 +31,6 @@ functions:
     anchor: "hanlpsegmenter"
     url: "/docs/preprocessing/hanlpsegmenter/"
     summary: "Segmentation wrapper using HanLP 2.x neural tokenizers."
-  - name: "NormalizeOptions"
-    anchor: "normalizeoptions"
-    url: "/docs/preprocessing/normalizeoptions/"
-    summary: "Normalization options dictionary."
   - name: "create_segmenter()"
     anchor: "create-segmenter"
     url: "/docs/preprocessing/create-segmenter/"
@@ -164,7 +160,6 @@ Select a symbol to view full documentation:
 - [`BertSegmenter`](/docs/preprocessing/bertsegmenter/) - Segmentation wrapper for BERT-based Chinese word segmentation.
 - [`LLMSegmenter`](/docs/preprocessing/llmsegmenter/) - Segmentation wrapper using Language Model APIs like OpenAI.
 - [`HanLPSegmenter`](/docs/preprocessing/hanlpsegmenter/) - Segmentation wrapper using HanLP 2.x neural tokenizers.
-- [`NormalizeOptions`](/docs/preprocessing/normalizeoptions/) - Normalization options dictionary.
 - [`create_segmenter()`](/docs/preprocessing/create-segmenter/) - Create a segmenter based on the specified backend.
 - [`print_pos_tags()`](/docs/preprocessing/print-pos-tags/) - Print POS (Part-of-Speech) tag documentation for segmentation backends.
 - [`normalize()`](/docs/preprocessing/normalize/) - Normalize Chinese text with specified options.

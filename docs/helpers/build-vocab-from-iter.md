@@ -34,3 +34,11 @@ in a single pass. Texts longer than *max_length* are truncated.
 
 **Raises:**
 - `ValueError`: If the iterable is empty or yields only empty texts.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import build_vocab_from_iter
+
+result = build_vocab_from_iter(texts=...)
+```

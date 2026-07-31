@@ -15,3 +15,11 @@ Part of **Word Embeddings** (`qhchina.analytics._vector_ops.cosine_distance`).
 <pre class="signature"><code><span class="sig-name">cosine_distance</span>(<span class="sig-param">v1</span><span class="sig-punct">:</span> <span class="sig-type">np.ndarray | list[float]</span>, <span class="sig-param">v2</span><span class="sig-punct">:</span> <span class="sig-type">np.ndarray | list[float]</span>)</code></pre>
 
 Compute cosine distance between vectors (1 - cosine_similarity).
+
+
+**Example:**
+```python
+from qhchina.analytics._vector_ops import cosine_distance
+
+result = cosine_distance(v1=..., v2=...)
+```

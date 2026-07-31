@@ -22,3 +22,11 @@ Compute cosine similarity between vectors.
 If v1 and v2 are single vectors, computes similarity between them.
 If either is a matrix of vectors, uses sklearn's implementation.
 Returns 0.0 if either vector has zero norm.
+
+
+**Example:**
+```python
+from qhchina.analytics._vector_ops import cosine_similarity
+
+result = cosine_similarity(v1=..., v2=...)
+```

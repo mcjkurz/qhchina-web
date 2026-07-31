@@ -34,3 +34,12 @@ Reset Jieba's dictionary to default state.
 
 This reinitializes Jieba, clearing any custom words that were added.
 Note: Jieba uses a global state, so this affects all JiebaSegmenter instances.
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import JiebaSegmenter
+
+instance = JiebaSegmenter()
+result = instance.reset_user_dict()
+```

@@ -21,3 +21,11 @@ List of dicts with font information:
 [{'file': 'NotoSansTCSC-Regular.otf', 'font_name': 'Noto Sans CJK TC', 
   'path': '/Users/.../.cache/qhchina/fonts/NotoSansTCSC-Regular.otf', 
   'size_mb': 16.5}, ...]
+
+
+**Example:**
+```python
+from qhchina.helpers.fonts import list_cached_fonts
+
+result = list_cached_fonts()
+```

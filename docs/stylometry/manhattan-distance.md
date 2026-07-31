@@ -22,3 +22,11 @@ Compute Manhattan (L1) distance between two vectors.
 
 **Returns:**
 (float) Sum of absolute differences between corresponding elements.
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import manhattan_distance
+
+result = manhattan_distance(vec_a=..., vec_b=...)
+```

@@ -31,3 +31,11 @@ Set of stopwords (combined from all matching files)
 
 **Raises:**
 - `ValueError`: If no matching stopwords files are found.
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import load_stopwords
+
+result = load_stopwords()
+```

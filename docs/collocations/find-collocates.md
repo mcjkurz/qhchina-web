@@ -106,3 +106,11 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 - **obs_global** (int): Total occurrences of the collocate in the corpus.
 - **p_value** (float): P-value from Fisher's exact test.
 - **adjusted_p_value** (float, optional): Present only if `correction` is set.
+
+
+**Example:**
+```python
+from qhchina.analytics.collocations import find_collocates
+
+result = find_collocates(sentences=..., target_words=...)
+```

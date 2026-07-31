@@ -17,3 +17,11 @@ Part of **Word Embeddings** (`qhchina.analytics._vector_ops.align_vectors`).
 Align source vectors with target vectors using Procrustes analysis.
 
 Returns a tuple of (aligned_vectors, transformation_matrix).
+
+
+**Example:**
+```python
+from qhchina.analytics._vector_ops import align_vectors
+
+result = align_vectors(source_vectors=..., target_vectors=...)
+```

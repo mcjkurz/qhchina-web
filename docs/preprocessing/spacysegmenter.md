@@ -49,3 +49,12 @@ Reset the spaCy tokenizer's user dictionary.
 
 This clears any custom words that were added via pkuseg_update_user_dict.
 Note: This resets to an empty user dictionary, not the original state if one was loaded.
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SpacySegmenter
+
+instance = SpacySegmenter()
+result = instance.reset_user_dict()
+```

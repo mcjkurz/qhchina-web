@@ -130,6 +130,14 @@ in a single pass through the corpora, then adds temporal base words.
   Accepted for API compatibility with the parent class.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.build_vocab()
+```
+
 ### `TempRefWord2Vec.calculate_semantic_change()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L794)
@@ -192,6 +200,14 @@ Use `save()` and `load()` instead to preserve all model data.
 - `NotImplementedError`: Always raised.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.export(path=...)
+```
+
 ### `TempRefWord2Vec.get_available_targets()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L898)
@@ -203,6 +219,14 @@ Get the list of target words available for semantic change analysis.
 **Returns:**
 List of target words that were specified during model initialization.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.get_available_targets()
+```
 
 ### `TempRefWord2Vec.get_period_vocab_counts()`
 
@@ -223,6 +247,14 @@ If period is specified: Counter object for that specific period.
 - `ValueError`: If the specified period is not found in the model.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.get_period_vocab_counts()
+```
+
 ### `TempRefWord2Vec.get_time_labels()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L907)
@@ -234,6 +266,14 @@ Get the list of time period labels used in the model.
 **Returns:**
 List of time period labels that were specified during model initialization.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.get_time_labels()
+```
 
 ### `TempRefWord2Vec.load()`
 
@@ -259,6 +299,14 @@ restored.
 - `ValueError`: If the file doesn't contain TempRefWord2Vec data.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.load(path=...)
+```
+
 ### `TempRefWord2Vec.load_vectors()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L1128)
@@ -275,6 +323,14 @@ Use `TempRefWord2Vec.load()` to load a saved TempRefWord2Vec model.
 **Raises:**
 - `NotImplementedError`: Always raised.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.load_vectors(path=...)
+```
 
 ### `TempRefWord2Vec.save()`
 
@@ -295,6 +351,14 @@ Note: The combined corpus is NOT saved to reduce file size.
 **Parameters:**
 - `path` (str): Path to save the model file.
 
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.save(path=...)
+```
 
 ### `TempRefWord2Vec.train()`
 
@@ -321,3 +385,12 @@ from instance attributes set during initialization via `**kwargs`.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
+
+
+**Example:**
+```python
+from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
+
+instance = TempRefWord2Vec(sentences=..., targets=...)
+result = instance.train()
+```

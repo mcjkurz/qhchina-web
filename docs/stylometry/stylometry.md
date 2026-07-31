@@ -174,6 +174,14 @@ Visualize hierarchical clustering as a dendrogram.
 None if show=True, otherwise dict with 'fig', 'ax', and dendrogram data.
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.dendrogram()
+```
+
 ### `Stylometry.distance()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1539)
@@ -182,6 +190,14 @@ None if show=True, otherwise dict with 'fig', 'ax', and dendrogram data.
 
 Compute the distance between two documents. Lower = more similar.
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.distance(a=..., b=...)
+```
 
 ### `Stylometry.distance_matrix()`
 
@@ -198,6 +214,14 @@ Compute pairwise distance matrix from fitted data.
 **Returns:**
 (distance_matrix, labels)
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.distance_matrix()
+```
 
 ### `Stylometry.fit_transform()`
 
@@ -217,6 +241,14 @@ Fit the model on a corpus and transform documents to feature vectors.
   the same label are grouped together.
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.fit_transform(corpus=...)
+```
+
 ### `Stylometry.get_author_profile()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1704)
@@ -228,6 +260,14 @@ Get the feature values for a specific author.
 Returns a DataFrame with 'feature' and 'value' columns, sorted by value descending.
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.get_author_profile(author=...)
+```
+
 ### `Stylometry.get_feature_comparison()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1722)
@@ -238,6 +278,14 @@ Get a comparison table of feature values across all fitted authors.
 
 Returns a DataFrame with one column per author plus a 'variance' column.
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.get_feature_comparison()
+```
 
 ### `Stylometry.hierarchical_clustering()`
 
@@ -257,6 +305,14 @@ Perform hierarchical clustering on fitted data.
 (linkage_matrix, labels)
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.hierarchical_clustering()
+```
+
 ### `Stylometry.most_similar()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1486)
@@ -274,6 +330,14 @@ Find the most similar documents to a query.
 **Returns:**
 List of (doc_id, value) tuples sorted by similarity (most similar first).
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.most_similar(query=...)
+```
 
 ### `Stylometry.plot()`
 
@@ -313,6 +377,14 @@ Create a 2D scatter plot of documents or authors.
 None if show=True, otherwise (fig, ax) tuple.
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.plot()
+```
+
 ### `Stylometry.predict()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1004)
@@ -333,6 +405,14 @@ List of (author, score) tuples.
 - For 'svm': score is probability (higher = more likely)
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.predict(text=...)
+```
+
 ### `Stylometry.predict_author()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1104)
@@ -352,6 +432,14 @@ Convenience method to get just the predicted author name.
 Predicted author name (str).
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.predict_author(text=...)
+```
+
 ### `Stylometry.predict_confidence()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1137)
@@ -365,6 +453,14 @@ Abstracts away the difference between delta (distance) and SVM (probability).
 **Returns:**
 List of (author, confidence) tuples where confidence is 0-1, higher = more likely.
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.predict_confidence(text=...)
+```
 
 ### `Stylometry.rolling_delta()`
 
@@ -428,6 +524,14 @@ print(results[['position', 'distance']])
 Compute the similarity between two documents. Higher = more similar.
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.similarity(a=..., b=...)
+```
+
 ### `Stylometry.transform()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L939)
@@ -445,6 +549,14 @@ Transform a tokenized text to a feature vector using fitted features.
 Feature vector (numpy array)
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.transform(tokens=...)
+```
+
 ### `Stylometry.vocabulary_stats()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1677)
@@ -455,3 +567,12 @@ Get vocabulary richness statistics for all fitted documents.
 
 **Returns:**
 DataFrame with columns: doc_id, author, yule_k, token_count, type_count
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.vocabulary_stats()
+```

@@ -71,6 +71,14 @@ Get a co-occurrence count with a default value for missing pairs.
 Co-occurrence count, or default if not found.
 
 
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+result = instance.get(row_key=..., col_key=...)
+```
+
 ### `CoocMatrix.sum()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L229)
@@ -89,6 +97,14 @@ Sum co-occurrence counts along an axis.
 int for total sum, or 1-D numpy array of shape `(V,)`.
 
 
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+result = instance.sum()
+```
+
 ### `CoocMatrix.to_dataframe()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L184)
@@ -103,6 +119,14 @@ Warning: This may use significant memory for large vocabularies.
 DataFrame with vocabulary words as both index and columns.
 
 
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+result = instance.to_dataframe()
+```
+
 ### `CoocMatrix.to_dense()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L173)
@@ -116,6 +140,14 @@ Warning: This may use significant memory for large vocabularies.
 **Returns:**
 2D numpy array of shape (vocab_size, vocab_size).
 
+
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+result = instance.to_dense()
+```
 
 ### `CoocMatrix.to_ppmi()`
 
@@ -140,3 +172,12 @@ frequent contexts (Levy et al., 2015).
 
 **Returns:**
 New CoocMatrix with PPMI float64 values (sparse).
+
+
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+result = instance.to_ppmi()
+```

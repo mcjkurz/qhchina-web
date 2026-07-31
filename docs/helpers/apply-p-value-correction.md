@@ -29,3 +29,11 @@ numpy array of adjusted p-values (same length as input).
 
 **Raises:**
 - `ValueError`: If method is not recognized or p_values is empty.
+
+
+**Example:**
+```python
+from qhchina.helpers.stats import apply_p_value_correction
+
+result = apply_p_value_correction(p_values=..., method=...)
+```
