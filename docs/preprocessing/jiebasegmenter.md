@@ -18,7 +18,7 @@ Segmentation wrapper for Jieba Chinese text segmentation.
 
 **Parameters:**
 - `pos_tagging`: Whether to include POS tagging in segmentation.
-- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/)
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 

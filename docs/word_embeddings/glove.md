@@ -38,7 +38,7 @@ Part of **Word Embeddings** (`qhchina.analytics.embeddings.glove.base.GloVe`).
 
 Global Vectors (GloVe) model with sparse co-occurrence training.
 
-This implementation follows the same high-level API shape as `Word2Vec`
+This implementation follows the same high-level API shape as [`Word2Vec`](/docs/word_embeddings/word2vec/)
 (explicit `train()`, vector querying, pickle save/load), while optimizing
 a GloVe weighted least-squares objective with AdaGrad updates in Cython.
 

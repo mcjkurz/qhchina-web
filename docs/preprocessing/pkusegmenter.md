@@ -33,7 +33,7 @@ which will reinitialize the segmenter.
   - 'tourism': Tourism domain
   - Or a path to a custom model directory
 - `pos_tagging`: Whether to include POS tagging in segmentation.
-- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/)
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 

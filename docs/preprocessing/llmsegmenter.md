@@ -38,7 +38,7 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 - `retry_patience`: Number of retries for API calls (default 1, meaning 1 retry = 
   2 total attempts).
 - `timeout`: Timeout in seconds for API calls (default 60.0). Set to None for no timeout.
-- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/)
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 

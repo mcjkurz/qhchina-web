@@ -51,7 +51,7 @@ API changes). Use: pip install "transformers<5.0"
   - 'combine': Low-priority dictionary that combines with model predictions
     (longest-prefix-matching on output tokens)
   Default is 'force'.
-- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/)
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 **Example:**

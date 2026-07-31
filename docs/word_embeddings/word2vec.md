@@ -50,7 +50,7 @@ to begin training.
 **Parameters:**
 - `sentences`: Iterable of tokenized sentences, where each sentence is a list of
   string tokens. Must be restartable (can be iterated multiple times).
-  For streaming from a file, use `LineSentenceFile`.
+  For streaming from a file, use [`LineSentenceFile`](/docs/helpers/linesentencefile/).
 - `vector_size` (int): Dimensionality of the word vectors (default: 100).
 - `window` (int): Maximum distance between the current and predicted word (default: 5).
 - `min_word_count` (int): Ignores all words with frequency lower than this (default: 5).
