@@ -223,6 +223,26 @@
         "anchor": "dynamicword2vec-train"
       },
       {
+        "name": "GloVe",
+        "anchor": "glove"
+      },
+      {
+        "name": "GloVe.load()",
+        "anchor": "glove-load"
+      },
+      {
+        "name": "GloVe.save()",
+        "anchor": "glove-save"
+      },
+      {
+        "name": "GloVe.similarity()",
+        "anchor": "glove-similarity"
+      },
+      {
+        "name": "GloVe.train()",
+        "anchor": "glove-train"
+      },
+      {
         "name": "BalancedSentenceIterator",
         "anchor": "balancedsentenceiterator"
       },
