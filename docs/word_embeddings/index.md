@@ -1155,15 +1155,33 @@ Two co-occurrence backends are available:
   files and trains from a streaming k-way merge without materializing the
   full sparse matrix.
 
-Notes:
-    - Base (single-corpus) GloVe only.
-    - `workers` is accepted for API consistency, but training updates are
-      currently executed as one shared update stream.
-    - Vectors returned by `get_vector`/`most_similar` come from either
-      `(W + W_tilde) / 2` (default) or `W` only when
-      `combine_vectors=False`.
+**Parameters:**
+- `sentences`: Restartable iterable of tokenized sentences.
+- `vector_size`: Embedding dimensionality.
+- `window`: Symmetric context window radius.
+- `min_word_count`: Minimum token frequency for vocabulary inclusion.
+- `max_vocab_size`: Optional cap on retained vocabulary size.
+- `seed`: RNG seed for deterministic initialization/training order.
+- `alpha`: Learning rate for AdaGrad updates.
+- `min_alpha`: Accepted for API compatibility (not used for internal
+  GloVe decay schedule).
+- `epochs`: Number of full passes over co-occurrence pairs.
+- `workers`: Accepted for compatibility with Word2Vec API.
+- `verbose`: If True, logs progress and backend details.
+- `calculate_loss`: If True, ``train()`` returns average epoch loss.
+- `mode`: ``"in_memory"`` or ``"disk"`` co-occurrence backend.
+- `x_max`: GloVe weighting cutoff in ``f(x)``.
+- `power`: GloVe weighting exponent in ``f(x)``.
+- `min_cooc_count`: Drop co-occurrence pairs below this weight.
+- `shard_sentence_count`: In disk mode, flush local pair map every N
+  sentences.
+- `cooc_train_chunk_size`: Number of merged pairs passed per Cython
+  update chunk in disk mode.
+- `max_cooc_entries_in_memory`: Safety cap for local pair-map size.
+- `combine_vectors`: If True, expose ``(W + W_tilde)/2`` as ``self.W``;
+  otherwise expose ``W`` only.
 
-<h4 id="glove-load">qhchina.analytics.embeddings.glove.base.GloVe.load() <a href="#glove-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L706" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="glove-load">qhchina.analytics.embeddings.glove.base.GloVe.load() <a href="#glove-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L732" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -1172,7 +1190,7 @@ Load a previously saved GloVe model from pickle.
 **Raises:**
 - `ValueError`: if ``model_type`` in the file is not ``"glove"``.
 
-<h4 id="glove-save">qhchina.analytics.embeddings.glove.base.GloVe.save() <a href="#glove-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L661" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="glove-save">qhchina.analytics.embeddings.glove.base.GloVe.save() <a href="#glove-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L687" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -1181,11 +1199,11 @@ Persist full GloVe state including optimizer accumulators.
 Stores model configuration, vocabulary statistics, trainable parameters,
 and AdaGrad state so training can continue after `load()`.
 
-<h4 id="glove-similarity">qhchina.analytics.embeddings.glove.base.GloVe.similarity() <a href="#glove-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L652" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="glove-similarity">qhchina.analytics.embeddings.glove.base.GloVe.similarity() <a href="#glove-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L678" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
-<h4 id="glove-train">qhchina.analytics.embeddings.glove.base.GloVe.train() <a href="#glove-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L507" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="glove-train">qhchina.analytics.embeddings.glove.base.GloVe.train() <a href="#glove-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L533" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">epochs</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">update_vocab</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">reset_lr</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
