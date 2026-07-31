@@ -662,6 +662,22 @@ aside.docs-sidebar {
   max-width: 100% !important;
   order: 2 !important;
   width: auto !important;
+
+  // Keep markdown list bullets vertically aligned with text,
+  // especially for wrapped API index entries.
+  ul,
+  ol {
+    padding-left: 1.4rem;
+  }
+
+  li {
+    margin: 0.2rem 0;
+    line-height: 1.65;
+  }
+
+  li > p {
+    margin: 0;
+  }
   
   // API function/class documentation styling
   h3[id] {
