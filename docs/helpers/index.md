@@ -1,59 +1,107 @@
 ---
-layout: docs_with_sidebar
-title: Helper Utilities
-permalink: /docs/helpers/
+layout: "docs_with_sidebar"
+title: "Helper Utilities"
+permalink: "/docs/helpers/"
 functions:
-  - name: LineSentenceFile
-    anchor: linesentencefile
-  - name: load_font()
-    anchor: load_font
-  - name: load_fonts()
-    anchor: load_fonts
-  - name: get_current_font_name()
-    anchor: get_current_font_name
-  - name: get_current_font_path()
-    anchor: get_current_font_path
-  - name: download_fonts()
-    anchor: download_fonts
-  - name: list_remote_fonts()
-    anchor: list_remote_fonts
-  - name: list_cached_fonts()
-    anchor: list_cached_fonts
-  - name: clear_cache()
-    anchor: clear_cache
-  - name: get_cache_dir()
-    anchor: get_cache_dir
-  - name: load_text()
-    anchor: load_text
-  - name: load_texts()
-    anchor: load_texts
-  - name: load_stopwords()
-    anchor: load_stopwords
-  - name: split_into_chunks()
-    anchor: split_into_chunks
-  - name: get_stopword_languages()
-    anchor: get_stopword_languages
-  - name: detect_encoding()
-    anchor: detect_encoding
-  - name: download_corpus()
-    anchor: download_corpus
-  - name: download_file()
-    anchor: download_file
-  - name: list_remote_corpora()
-    anchor: list_remote_corpora
-  - name: iter_batches()
-    anchor: iter_batches
-  - name: build_vocab_from_iter()
-    anchor: build_vocab_from_iter
-  - name: rolling_average()
-    anchor: rolling_average
-  - name: apply_p_value_correction()
-    anchor: apply_p_value_correction
-  - name: validate_filters()
-    anchor: validate_filters
-has_examples: True
-import_from: qhchina.helpers
-include_imported: True
+  - name: "LineSentenceFile"
+    anchor: "linesentencefile"
+    url: "/docs/helpers/linesentencefile/"
+    summary: "Restartable iterable that streams sentences from a text file."
+  - name: "load_font()"
+    anchor: "load-font"
+    url: "/docs/helpers/load-font/"
+    summary: "Load a font and set it as the active font for matplotlib."
+  - name: "load_fonts()"
+    anchor: "load-fonts"
+    url: "/docs/helpers/load-fonts/"
+    summary: "Load the default CJK font for matplotlib."
+  - name: "get_current_font_name()"
+    anchor: "get-current-font-name"
+    url: "/docs/helpers/get-current-font-name/"
+    summary: "Get the currently loaded matplotlib font name."
+  - name: "get_current_font_path()"
+    anchor: "get-current-font-path"
+    url: "/docs/helpers/get-current-font-path/"
+    summary: "Get the file path of the currently loaded font."
+  - name: "download_fonts()"
+    anchor: "download-fonts"
+    url: "/docs/helpers/download-fonts/"
+    summary: "Pre-download font files from the qhchina-data repository."
+  - name: "list_remote_fonts()"
+    anchor: "list-remote-fonts"
+    url: "/docs/helpers/list-remote-fonts/"
+    summary: "Query GitHub for available fonts in the qhchina-data repository."
+  - name: "list_cached_fonts()"
+    anchor: "list-cached-fonts"
+    url: "/docs/helpers/list-cached-fonts/"
+    summary: "List fonts currently in the local cache."
+  - name: "clear_cache()"
+    anchor: "clear-cache"
+    url: "/docs/helpers/clear-cache/"
+    summary: "Remove all cached fonts."
+  - name: "get_cache_dir()"
+    anchor: "get-cache-dir"
+    url: "/docs/helpers/get-cache-dir/"
+    summary: "Get the font cache directory path."
+  - name: "load_text()"
+    anchor: "load-text"
+    url: "/docs/helpers/load-text/"
+    summary: "Loads text from a file."
+  - name: "load_texts()"
+    anchor: "load-texts"
+    url: "/docs/helpers/load-texts/"
+    summary: "Loads text from multiple files."
+  - name: "load_stopwords()"
+    anchor: "load-stopwords"
+    url: "/docs/helpers/load-stopwords/"
+    summary: "Load stopwords from a file for the specified language."
+  - name: "split_into_chunks()"
+    anchor: "split-into-chunks"
+    url: "/docs/helpers/split-into-chunks/"
+    summary: "Splits text or a list of tokens into chunks with optional overlap between consecutive chunks."
+  - name: "get_stopword_languages()"
+    anchor: "get-stopword-languages"
+    url: "/docs/helpers/get-stopword-languages/"
+    summary: "Get all available stopword language codes."
+  - name: "detect_encoding()"
+    anchor: "detect-encoding"
+    url: "/docs/helpers/detect-encoding/"
+    summary: "Detects the encoding of a file."
+  - name: "download_corpus()"
+    anchor: "download-corpus"
+    url: "/docs/helpers/download-corpus/"
+    summary: "Download a corpus folder from the qhchina-data GitHub repository."
+  - name: "download_file()"
+    anchor: "download-file"
+    url: "/docs/helpers/download-file/"
+    summary: "Download a single file from the qhchina-data GitHub repository."
+  - name: "list_remote_corpora()"
+    anchor: "list-remote-corpora"
+    url: "/docs/helpers/list-remote-corpora/"
+    summary: "List available corpora in the qhchina-data GitHub repository."
+  - name: "iter_batches()"
+    anchor: "iter-batches"
+    url: "/docs/helpers/iter-batches/"
+    summary: "Yield batches of tokenized texts grouped by total token count."
+  - name: "build_vocab_from_iter()"
+    anchor: "build-vocab-from-iter"
+    url: "/docs/helpers/build-vocab-from-iter/"
+    summary: "Build vocabulary statistics by streaming through tokenized texts (pass 1 of 2)."
+  - name: "rolling_average()"
+    anchor: "rolling-average"
+    url: "/docs/helpers/rolling-average/"
+    summary: "Calculate rolling (moving) average over a list of values."
+  - name: "apply_p_value_correction()"
+    anchor: "apply-p-value-correction"
+    url: "/docs/helpers/apply-p-value-correction/"
+    summary: "Apply multiple testing correction to a list of p-values."
+  - name: "validate_filters()"
+    anchor: "validate-filters"
+    url: "/docs/helpers/validate-filters/"
+    summary: "Validate that all filter keys are recognized."
+has_examples: true
+import_from: "qhchina.helpers"
+include_imported: true
 ---
 
 # Helper Utilities
@@ -134,642 +182,33 @@ chunks = split_into_chunks(text, chunk_size=1000, overlap=0.1)
 
 <!-- API-START -->
 
-<h3 id="linesentencefile">qhchina.helpers.texts.LineSentenceFile <a href="#linesentencefile" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L25" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">LineSentenceFile</span>(<span class="sig-param">filepath</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">limit</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
-
-Restartable iterable that streams sentences from a text file.
-
-Enables memory-efficient training on large corpora by reading sentences 
-directly from disk. File format is one sentence per line, with tokens 
-separated by spaces.
-
-**Parameters:**
-- `filepath`: Path to the corpus file.
-- `limit`: Maximum number of sentences to read. None reads the entire file.
-
-**Example:**
-```python
-reader = LineSentenceFile("corpus.txt")
-for sentence in reader:
-    print(sentence)
-
-# Read only the first 1000 sentences
-reader = LineSentenceFile("corpus.txt", limit=1000)
-```
-
-<br>
-
-<h3 id="load_font">qhchina.helpers.fonts.load_font() <a href="#load_font" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L183" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">load_font</span>(
-    <span class="sig-param">remote</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str | pathlib._local.Path | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">force_download</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
-)</code></pre>
-
-Load a font and set it as the active font for matplotlib.
-
-This function:
-1. Downloads the font file if using `remote=` and not already cached
-2. Registers the font with matplotlib's font manager
-3. Sets matplotlib's rcParams to use this font for all subsequent plots
-   (font.family, font.sans-serif or font.serif, axes.unicode_minus)
-
-After calling this function, all matplotlib plots will use the loaded font.
-
-**Parameters:**
-- `remote`: Font filename from qhchina-data repository (e.g., 'NotoSerifTC-Regular.otf').
-  Uses cache if available, downloads otherwise.
-- `path`: Path to a local font file.
-- `force_download`: If True, re-download from repository even if cached.
-  Only applies when using `remote=`. Ignored for `path=`.
-
-**Returns:**
-The font name that was set (e.g., 'Noto Serif TC').
-
-**Raises:**
-- `ValueError`: If both `remote` and `path` are provided, or if file extension is invalid.
-- `FileNotFoundError`: If local `path` does not exist.
-
-**Example:**
-```python
-from qhchina.helpers import load_font
-import matplotlib.pyplot as plt
-
-# Load default font - plots will now render Chinese correctly
-load_font()
-'Noto Sans CJK TC'
-plt.title('中文標題')  # This now works!
-
-# Load specific font from repository
-load_font(remote='NotoSerifTC-Regular.otf')
-'Noto Serif TC'
-
-# Force re-download
-load_font(remote='NotoSerifTC-Regular.otf', force_download=True)
-'Noto Serif TC'
-
-# Load local font file
-load_font(path='/path/to/MyFont.otf')
-'My Font'
-```
-
-<br>
-
-<h3 id="load_fonts">qhchina.helpers.fonts.load_fonts() <a href="#load_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L260" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">load_fonts</span>()</code></pre>
-
-Load the default CJK font for matplotlib.
-
-This is a convenience function for backward compatibility.
-Equivalent to calling `load_font()` with no arguments.
-
-**Returns:**
-The font name that was set (e.g., 'Noto Sans CJK TC')
-
-**Example:**
-```python
-from qhchina.helpers import load_fonts
-load_fonts()
-'Noto Sans CJK TC'
-plt.title('中文標題')  # Now works!
-```
-
-<br>
-
-<h3 id="get_current_font_name">qhchina.helpers.fonts.get_current_font_name() <a href="#get_current_font_name" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L428" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">get_current_font_name</span>()</code></pre>
-
-Get the currently loaded matplotlib font name.
-
-**Returns:**
-The current font name, or None if using matplotlib defaults.
-
-**Example:**
-```python
-from qhchina.helpers import load_font, get_current_font_name
-load_font(remote='NotoSerifTC-Regular.otf')
-'Noto Serif TC'
-get_current_font_name()
-'Noto Serif TC'
-```
-
-<br>
-
-<h3 id="get_current_font_path">qhchina.helpers.fonts.get_current_font_path() <a href="#get_current_font_path" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L279" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">get_current_font_path</span>()</code></pre>
-
-Get the file path of the currently loaded font.
-
-This is useful for tools like WordCloud that require a font file path
-rather than a font name.
-
-**Returns:**
-Absolute path to the currently loaded font file.
-
-**Raises:**
-- `RuntimeError`: If no font has been loaded via load_font() yet.
-
-**Example:**
-```python
-from qhchina.helpers import load_font, get_current_font_path
-
-load_font()  # Load default font
-'Noto Sans CJK TC'
-path = get_current_font_path()
-wc = WordCloud(font_path=path, ...)
-
-load_font(remote='NotoSerifTC-Regular.otf')
-'Noto Serif TC'
-get_current_font_path()  # Returns path to NotoSerifTC-Regular.otf
-```
-
-<br>
-
-<h3 id="download_fonts">qhchina.helpers.fonts.download_fonts() <a href="#download_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L319" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">download_fonts</span>(<span class="sig-param">fonts</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
-
-Pre-download font files from the qhchina-data repository.
-
-Use this to download fonts for offline use. The fonts are downloaded
-but not set as the active matplotlib font. To download and activate
-a font, use `load_font()` instead.
-
-**Parameters:**
-- `fonts`: List of font file names to download. If None, downloads ALL available fonts.
-
-**Returns:**
-Dict mapping file names to font names:
-{'NotoSerifTC-Regular.otf': 'Noto Serif TC', ...}
-
-**Raises:**
-- `TypeError`: If fonts is not a list or None.
-- `ValueError`: If any font file has an invalid extension.
-
-**Example:**
-```python
-from qhchina.helpers import download_fonts
-
-# Download all fonts
-download_fonts()
-{'NotoSansTCSC-Regular.otf': 'Noto Sans CJK TC', ...}
-
-# Download specific fonts
-download_fonts(['NotoSerifTC-Regular.otf', 'NotoSerifSC-Regular.otf'])
-{'NotoSerifTC-Regular.otf': 'Noto Serif TC', ...}
-```
-
-<br>
-
-<h3 id="list_remote_fonts">qhchina.helpers.fonts.list_remote_fonts() <a href="#list_remote_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L373" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">list_remote_fonts</span>()</code></pre>
-
-Query GitHub for available fonts in the qhchina-data repository.
-
-**Returns:**
-List of dicts with font information:
-[{'file': 'NotoSansTCSC-Regular.otf', 'size': 17279824, 'size_mb': 16.5}, ...]
-
-**Example:**
-```python
-qhchina.list_remote_fonts()
-[{'file': 'NotoSansTCSC-Regular.otf', 'size': 17279824, 'size_mb': 16.5}, ...]
-```
-
-<br>
-
-<h3 id="list_cached_fonts">qhchina.helpers.fonts.list_cached_fonts() <a href="#list_cached_fonts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L396" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">list_cached_fonts</span>()</code></pre>
-
-List fonts currently in the local cache.
-
-**Returns:**
-List of dicts with font information:
-[{'file': 'NotoSansTCSC-Regular.otf', 'font_name': 'Noto Sans CJK TC', 
-  'path': '/Users/.../.cache/qhchina/fonts/NotoSansTCSC-Regular.otf', 
-  'size_mb': 16.5}, ...]
-
-<br>
-
-<h3 id="clear_cache">qhchina.helpers.fonts.clear_cache() <a href="#clear_cache" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L455" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">clear_cache</span>()</code></pre>
-
-Remove all cached fonts.
-
-**Example:**
-```python
-qhchina.clear_cache()
-qhchina.list_cached_fonts()
-[]
-```
-
-<br>
-
-<h3 id="get_cache_dir">qhchina.helpers.fonts.get_cache_dir() <a href="#get_cache_dir" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L52" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">get_cache_dir</span>()</code></pre>
-
-Get the font cache directory path.
-
-**Returns:**
-Path to ~/.cache/qhchina/fonts/
-
-<br>
-
-<h3 id="load_text">qhchina.helpers.texts.load_text() <a href="#load_text" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L235" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">load_text</span>(<span class="sig-param">filename</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
-
-Loads text from a file.
-
-**Parameters:**
-- `filename` (str): The filename to load text from.
-- `encoding` (str): The encoding of the file. Default is "utf-8".
-  Use "auto" to automatically detect the encoding.
-
-**Returns:**
-(str) The text content of the file.
-
-<br>
-
-<h3 id="load_texts">qhchina.helpers.texts.load_texts() <a href="#load_texts" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L256" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">load_texts</span>(<span class="sig-param">filenames</span>, <span class="sig-param">encoding</span> <span class="sig-punct">=</span> <span class="sig-default">'utf-8'</span>)</code></pre>
-
-Loads text from multiple files.
-
-**Parameters:**
-- `filenames` (list): A list of filenames to load text from.
-- `encoding` (str): The encoding of the files. Default is "utf-8".
-  Use "auto" to automatically detect encoding for each file.
-
-**Returns:**
-(list) A list of text contents from the files.
-
-<br>
-
-<h3 id="load_stopwords">qhchina.helpers.texts.load_stopwords() <a href="#load_stopwords" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L276" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">load_stopwords</span>(<span class="sig-param">language</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'zh_sim'</span>)</code></pre>
-
-Load stopwords from a file for the specified language.
-
-Supports prefix matching: if the language code doesn't match an exact file,
-all files starting with that prefix will be loaded and combined.
-
-**Parameters:**
-- `language`: Language code or prefix (default: "zh_sim" for simplified Chinese).
-  - Exact match: "zh_sim" loads zh_sim.txt only
-  - Prefix match: "zh" loads all files starting with "zh" (zh_sim, zh_tr, zh_cl_sim, zh_cl_tr)
-  - Prefix match: "zh_cl" loads zh_cl_sim.txt and zh_cl_tr.txt
-  Use get_stopword_languages() to see available options.
-
-**Returns:**
-Set of stopwords (combined from all matching files)
-
-**Raises:**
-- `ValueError`: If no matching stopwords files are found.
-
-<br>
-
-<h3 id="split_into_chunks">qhchina.helpers.texts.split_into_chunks() <a href="#split_into_chunks" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L370" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">split_into_chunks</span>(<span class="sig-param">sequence</span>, <span class="sig-param">chunk_size</span>, <span class="sig-param">overlap</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>)</code></pre>
-
-Splits text or a list of tokens into chunks with optional overlap between consecutive chunks.
-
-**Parameters:**
-- `sequence` (str or list): The text string or list of tokens to be split.
-- `chunk_size` (int): The size of each chunk (characters for text, items for lists).
-- `overlap` (float): The fraction of overlap between consecutive chunks (0.0 to 1.0).
-  Default is 0.0 (no overlap).
-
-**Returns:**
-(list) A list of chunks. If input is a string, each chunk is a string.
-If input is a list, each chunk is a list of tokens.
-Note: The last chunk may be smaller than chunk_size if the sequence
-doesn't divide evenly.
-
-**Raises:**
-- `ValueError`: If overlap is not between 0 and 1, or if chunk_size is not positive.
-
-<br>
-
-<h3 id="get_stopword_languages">qhchina.helpers.texts.get_stopword_languages() <a href="#get_stopword_languages" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L344" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">get_stopword_languages</span>()</code></pre>
-
-Get all available stopword language codes.
-
-**Returns:**
-List of available language codes (e.g., ['zh_sim', 'zh_cl_sim', 'zh_cl_tr'])
-
-<br>
-
-<h3 id="detect_encoding">qhchina.helpers.texts.detect_encoding() <a href="#detect_encoding" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L193" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">detect_encoding</span>(<span class="sig-param">filename</span>, <span class="sig-param">num_bytes</span> <span class="sig-punct">=</span> <span class="sig-default">10000</span>)</code></pre>
-
-Detects the encoding of a file.
-
-**Parameters:**
-- `filename` (str): The path to the file.
-- `num_bytes` (int): Number of bytes to read for detection. Default is 10000.
-  Larger values may be more accurate but slower.
-
-**Returns:**
-(str) The detected encoding (e.g., 'utf-8', 'gb2312', 'gbk', 'big5').
-
-**Raises:**
-- `ImportError`: If chardet is not installed.
-
-<br>
-
-<h3 id="download_corpus">qhchina.helpers.texts.download_corpus() <a href="#download_corpus" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L418" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">download_corpus</span>(
-    <span class="sig-param">name</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,
-    <span class="sig-param">parent_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">show_progress</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>
-)</code></pre>
-
-Download a corpus folder from the qhchina-data GitHub repository.
-
-Downloads all .txt files from the specified corpus folder and saves them
-to a local directory.
-
-**Parameters:**
-- `name`: Corpus name (e.g., "张爱玲", "songshi"). This corresponds to a 
-  folder name under ``corpora/`` in the qhchina-data repository.
-- `parent_dir`: Parent directory where the corpus folder will be created.
-  If None (default), uses the current working directory.
-- `show_progress`: If True (default), display a progress bar showing
-  cumulative kilobytes downloaded.
-      
-
-**Raises:**
-- `ImportError`: If requests is not installed.
-- `ValueError`: If the corpus is not found or contains no .txt files.
-- `requests.RequestException`: If the download fails.
-
-**Example:**
-```python
-Basic usage::
-
-    from qhchina import download_corpus
-    
-    # Download to current directory
-    download_corpus("张爱玲")
-    # Creates ./张爱玲/张爱玲_倾城之恋.txt, ./张爱玲/张爱玲_金锁记.txt, ...
-    
-    # Download to a specific parent directory
-    download_corpus("张爱玲", parent_dir="corpora")
-    # Creates ./corpora/张爱玲/...
-
-Full workflow with segmentation and analysis::
-
-    import os
-    from qhchina import download_corpus, load_stopwords
-    from qhchina.preprocessing import create_segmenter
-    from qhchina.analytics import compare_corpora
-    
-    # Download two corpora
-    download_corpus("莫言", parent_dir="corpora")
-    download_corpus("张爱玲", parent_dir="corpora")
-    
-    # Set up segmenter with stopwords
-    stopwords = load_stopwords("zh")
-    segmenter = create_segmenter(
-        backend="jieba", 
-        strategy="sentence",
-        filters={"stopwords": stopwords}
-    )
-    
-    # Load and segment texts
-    moyan_sentences = []
-    for filename in os.listdir("corpora/莫言"):
-        if filename.endswith(".txt"):
-            with open(f"corpora/莫言/{filename}", encoding="utf-8") as f:
-                moyan_sentences.extend(segmenter.segment(f.read()))
-    
-    zal_sentences = []
-    for filename in os.listdir("corpora/张爱玲"):
-        if filename.endswith(".txt"):
-            with open(f"corpora/张爱玲/{filename}", encoding="utf-8") as f:
-                zal_sentences.extend(segmenter.segment(f.read()))
-    
-    # Compare the two corpora using Fisher's exact test
-    results = compare_corpora(
-        moyan_sentences, zal_sentences,
-        filters={"min_count": 5, "max_p": 0.05}
-    )
-```
-
-<br>
-
-<h3 id="download_file">qhchina.helpers.texts.download_file() <a href="#download_file" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L566" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">download_file</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">output_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
-
-Download a single file from the qhchina-data GitHub repository.
-
-**Parameters:**
-- `path`: Path to the file in the repository (e.g., "corpora/莫言/莫言_丰乳肥臀.txt",
-  "fonts/NotoSerifSC-Regular.otf"). The path is relative to the repository root.
-- `output_dir`: Directory where the file will be saved. If None (default),
-  uses the current working directory.
-      
-
-**Raises:**
-- `ImportError`: If requests is not installed.
-- `ValueError`: If the file is not found.
-- `requests.RequestException`: If the download fails.
-
-**Example:**
-```python
-from qhchina import download_file
-
-# Download to current directory
-download_file("corpora/莫言/莫言_丰乳肥臀.txt")
-# Creates ./莫言_丰乳肥臀.txt
-
-# Download to a specific directory
-download_file("corpora/莫言/莫言_丰乳肥臀.txt", output_dir="texts")
-# Creates ./texts/莫言_丰乳肥臀.txt
-```
-
-<br>
-
-<h3 id="list_remote_corpora">qhchina.helpers.texts.list_remote_corpora() <a href="#list_remote_corpora" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L636" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">list_remote_corpora</span>()</code></pre>
-
-List available corpora in the qhchina-data GitHub repository.
-
-**Returns:**
-List of corpus names (folder names under ``corpora/``).
-
-**Raises:**
-- `ImportError`: If requests is not installed.
-- `requests.RequestException`: If the API request fails.
-
-**Example:**
-```python
-from qhchina import list_remote_corpora
-corpora = list_remote_corpora()
-print(corpora)
-['张爱玲', '沈从文', '莫言', ...]
-```
-
-<br>
-
-<h3 id="iter_batches">qhchina.helpers.texts.iter_batches() <a href="#iter_batches" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L89" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">iter_batches</span>(
-    <span class="sig-param">texts</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
-    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>,
-    <span class="sig-param">max_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>
-)</code></pre>
-
-Yield batches of tokenized texts grouped by total token count.
-
-Streams through the iterable without materializing the full corpus.
-Texts longer than *max_length* are truncated; empty texts are skipped.
-
-**Parameters:**
-- `texts`: Iterable of tokenized texts (sentences or documents).
-- `batch_words`: Target token count per batch.
-- `max_length`: Truncate texts longer than this. None disables truncation.
-
-**Returns:**
-(list[list[str]]) Batches where total tokens <= *batch_words*.
-
-<br>
-
-<h3 id="build_vocab_from_iter">qhchina.helpers.texts.build_vocab_from_iter() <a href="#build_vocab_from_iter" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L139" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">build_vocab_from_iter</span>(
-    <span class="sig-param">texts</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
-    <span class="sig-param">max_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>
-)</code></pre>
-
-Build vocabulary statistics by streaming through tokenized texts (pass 1 of 2).
-
-Collects word counts, document-frequency counts, and total text count
-in a single pass. Texts longer than *max_length* are truncated.
-
-**Parameters:**
-- `texts`: Restartable iterable of tokenized texts (sentences or documents).
-- `max_length`: Truncate texts longer than this. None disables truncation.
-
-**Returns:**
-(tuple) (word_counts, doc_counts, n_texts)
-- word_counts (Counter): Total token counts across all texts.
-- doc_counts (Counter): Number of texts each word appears in.
-- n_texts (int): Total number of non-empty texts.
-
-**Raises:**
-- `ValueError`: If the iterable is empty or yields only empty texts.
-
-<br>
-
-<h3 id="rolling_average">qhchina.helpers.stats.rolling_average() <a href="#rolling_average" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L120" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">rolling_average</span>(
-    <span class="sig-param">values</span><span class="sig-punct">:</span> <span class="sig-type">list</span>,
-    <span class="sig-param">window</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">3</span>,
-    <span class="sig-param">edge_handling</span><span class="sig-punct">:</span> <span class="sig-type">Literal['truncate', 'pad_none', 'partial']</span> <span class="sig-punct">=</span> <span class="sig-default">'truncate'</span>
-)</code></pre>
-
-Calculate rolling (moving) average over a list of values.
-
-**Parameters:**
-- `values`: List of numeric values.
-- `window`: Size of the rolling window. Must be positive. Defaults to 3.
-- `edge_handling`: How to handle edges where full window is unavailable.
-  - "truncate": Return shorter list, only full windows (default).
-  - "pad_none": Return same length as input, None for incomplete windows.
-  - "partial": Return same length as input, use partial windows at edges.
-
-**Returns:**
-List of rolling averages.
-
-**Raises:**
-- `ValueError`: If window is less than 1 or greater than len(values).
-
-**Example:**
-```python
-rolling_average([1, 2, 3, 4, 5], window=3)
-[2.0, 3.0, 4.0]
-
-rolling_average([1, 2, 3, 4, 5], window=3, edge_handling="pad_none")
-[None, None, 2.0, 3.0, 4.0]
-
-rolling_average([1, 2, 3, 4, 5], window=3, edge_handling="partial")
-[1.0, 1.5, 2.0, 3.0, 4.0]
-```
-
-<br>
-
-<h3 id="apply_p_value_correction">qhchina.helpers.stats.apply_p_value_correction() <a href="#apply_p_value_correction" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L21" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">apply_p_value_correction</span>(<span class="sig-param">p_values</span><span class="sig-punct">:</span> <span class="sig-type">list[float]</span>, <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
-
-Apply multiple testing correction to a list of p-values.
-
-**Parameters:**
-- `p_values`: List or array of raw p-values.
-- `method`: Correction method. Options:
-  - 'bonferroni': Bonferroni correction (controls family-wise error rate).
-    Adjusted p = p * n_tests, capped at 1.0.
-  - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
-    Generally less conservative than Bonferroni.
-
-**Returns:**
-numpy array of adjusted p-values (same length as input).
-
-**Raises:**
-- `ValueError`: If method is not recognized or p_values is empty.
-
-<br>
-
-<h3 id="validate_filters">qhchina.helpers.stats.validate_filters() <a href="#validate_filters" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/stats.py#L81" class="source-link" title="View source on GitHub">[source]</a></h3>
-
-<pre class="signature"><code><span class="sig-name">validate_filters</span>(
-    <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, Any] | None</span>,
-    <span class="sig-param">valid_keys</span><span class="sig-punct">:</span> <span class="sig-type">set[str]</span>,
-    <span class="sig-param">context</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'function'</span>
-)</code></pre>
-
-Validate that all filter keys are recognized.
-
-**Parameters:**
-- `filters`: Dictionary of filter parameters to validate.
-- `valid_keys`: Set of valid/recognized filter keys.
-- `context`: String describing the calling context for error messages.
-
-**Raises:**
-- `ValueError`: If filters contains unrecognized keys.
-
-**Example:**
-```python
-validate_filters(
-    {'min_count': 5, 'max_p': 0.05, 'invalid_key': 'value'},
-    {'min_count', 'max_p', 'stopwords'},
-    context='compare_corpora'
-)
-ValueError: Unknown filter keys in compare_corpora: {'invalid_key'}. 
-            Valid keys are: {'max_p', 'min_count', 'stopwords'}
-```
-
-<br>
+### API Index
+
+Select a symbol to view full documentation:
+
+- [`LineSentenceFile`](/docs/helpers/linesentencefile/) - Restartable iterable that streams sentences from a text file.
+- [`load_font()`](/docs/helpers/load-font/) - Load a font and set it as the active font for matplotlib.
+- [`load_fonts()`](/docs/helpers/load-fonts/) - Load the default CJK font for matplotlib.
+- [`get_current_font_name()`](/docs/helpers/get-current-font-name/) - Get the currently loaded matplotlib font name.
+- [`get_current_font_path()`](/docs/helpers/get-current-font-path/) - Get the file path of the currently loaded font.
+- [`download_fonts()`](/docs/helpers/download-fonts/) - Pre-download font files from the qhchina-data repository.
+- [`list_remote_fonts()`](/docs/helpers/list-remote-fonts/) - Query GitHub for available fonts in the qhchina-data repository.
+- [`list_cached_fonts()`](/docs/helpers/list-cached-fonts/) - List fonts currently in the local cache.
+- [`clear_cache()`](/docs/helpers/clear-cache/) - Remove all cached fonts.
+- [`get_cache_dir()`](/docs/helpers/get-cache-dir/) - Get the font cache directory path.
+- [`load_text()`](/docs/helpers/load-text/) - Loads text from a file.
+- [`load_texts()`](/docs/helpers/load-texts/) - Loads text from multiple files.
+- [`load_stopwords()`](/docs/helpers/load-stopwords/) - Load stopwords from a file for the specified language.
+- [`split_into_chunks()`](/docs/helpers/split-into-chunks/) - Splits text or a list of tokens into chunks with optional overlap between consecutive chunks.
+- [`get_stopword_languages()`](/docs/helpers/get-stopword-languages/) - Get all available stopword language codes.
+- [`detect_encoding()`](/docs/helpers/detect-encoding/) - Detects the encoding of a file.
+- [`download_corpus()`](/docs/helpers/download-corpus/) - Download a corpus folder from the qhchina-data GitHub repository.
+- [`download_file()`](/docs/helpers/download-file/) - Download a single file from the qhchina-data GitHub repository.
+- [`list_remote_corpora()`](/docs/helpers/list-remote-corpora/) - List available corpora in the qhchina-data GitHub repository.
+- [`iter_batches()`](/docs/helpers/iter-batches/) - Yield batches of tokenized texts grouped by total token count.
+- [`build_vocab_from_iter()`](/docs/helpers/build-vocab-from-iter/) - Build vocabulary statistics by streaming through tokenized texts (pass 1 of 2).
+- [`rolling_average()`](/docs/helpers/rolling-average/) - Calculate rolling (moving) average over a list of values.
+- [`apply_p_value_correction()`](/docs/helpers/apply-p-value-correction/) - Apply multiple testing correction to a list of p-values.
+- [`validate_filters()`](/docs/helpers/validate-filters/) - Validate that all filter keys are recognized.
 
 <!-- API-END -->

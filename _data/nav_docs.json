@@ -10,71 +10,69 @@
     "functions": [
       {
         "name": "SegmentationWrapper",
-        "anchor": "segmentationwrapper"
-      },
-      {
-        "name": "SegmentationWrapper.close()",
-        "anchor": "segmentationwrapper-close"
-      },
-      {
-        "name": "SegmentationWrapper.reset_user_dict()",
-        "anchor": "segmentationwrapper-reset_user_dict"
-      },
-      {
-        "name": "SegmentationWrapper.segment()",
-        "anchor": "segmentationwrapper-segment"
+        "anchor": "segmentationwrapper",
+        "url": "/docs/preprocessing/segmentationwrapper/",
+        "summary": "Base segmentation wrapper class that can be extended for different segmentation tools."
       },
       {
         "name": "SpacySegmenter",
-        "anchor": "spacysegmenter"
-      },
-      {
-        "name": "SpacySegmenter.reset_user_dict()",
-        "anchor": "spacysegmenter-reset_user_dict"
+        "anchor": "spacysegmenter",
+        "url": "/docs/preprocessing/spacysegmenter/",
+        "summary": "Segmentation wrapper for spaCy models."
       },
       {
         "name": "PKUSegmenter",
-        "anchor": "pkusegmenter"
-      },
-      {
-        "name": "PKUSegmenter.reset_user_dict()",
-        "anchor": "pkusegmenter-reset_user_dict"
+        "anchor": "pkusegmenter",
+        "url": "/docs/preprocessing/pkusegmenter/",
+        "summary": "Segmentation wrapper for PKUSeg Chinese text segmentation."
       },
       {
         "name": "JiebaSegmenter",
-        "anchor": "jiebasegmenter"
-      },
-      {
-        "name": "JiebaSegmenter.reset_user_dict()",
-        "anchor": "jiebasegmenter-reset_user_dict"
+        "anchor": "jiebasegmenter",
+        "url": "/docs/preprocessing/jiebasegmenter/",
+        "summary": "Segmentation wrapper for Jieba Chinese text segmentation."
       },
       {
         "name": "BertSegmenter",
-        "anchor": "bertsegmenter"
+        "anchor": "bertsegmenter",
+        "url": "/docs/preprocessing/bertsegmenter/",
+        "summary": "Segmentation wrapper for BERT-based Chinese word segmentation."
       },
       {
         "name": "LLMSegmenter",
-        "anchor": "llmsegmenter"
+        "anchor": "llmsegmenter",
+        "url": "/docs/preprocessing/llmsegmenter/",
+        "summary": "Segmentation wrapper using Language Model APIs like OpenAI."
       },
       {
         "name": "HanLPSegmenter",
-        "anchor": "hanlpsegmenter"
+        "anchor": "hanlpsegmenter",
+        "url": "/docs/preprocessing/hanlpsegmenter/",
+        "summary": "Segmentation wrapper using HanLP 2.x neural tokenizers."
       },
       {
         "name": "NormalizeOptions",
-        "anchor": "normalizeoptions"
+        "anchor": "normalizeoptions",
+        "url": "/docs/preprocessing/normalizeoptions/",
+        "summary": "Normalization options dictionary."
       },
       {
         "name": "create_segmenter()",
-        "anchor": "create_segmenter"
+        "anchor": "create-segmenter",
+        "url": "/docs/preprocessing/create-segmenter/",
+        "summary": "Create a segmenter based on the specified backend."
       },
       {
         "name": "print_pos_tags()",
-        "anchor": "print_pos_tags"
+        "anchor": "print-pos-tags",
+        "url": "/docs/preprocessing/print-pos-tags/",
+        "summary": "Print POS (Part-of-Speech) tag documentation for segmentation backends."
       },
       {
         "name": "normalize()",
-        "anchor": "normalize"
+        "anchor": "normalize",
+        "url": "/docs/preprocessing/normalize/",
+        "summary": "Normalize Chinese text with specified options."
       }
     ]
   },
@@ -84,219 +82,99 @@
     "functions": [
       {
         "name": "Word2Vec",
-        "anchor": "word2vec"
-      },
-      {
-        "name": "Word2Vec.build_vocab()",
-        "anchor": "word2vec-build_vocab"
-      },
-      {
-        "name": "Word2Vec.export()",
-        "anchor": "word2vec-export"
-      },
-      {
-        "name": "Word2Vec.get_vector()",
-        "anchor": "word2vec-get_vector"
-      },
-      {
-        "name": "Word2Vec.load()",
-        "anchor": "word2vec-load"
-      },
-      {
-        "name": "Word2Vec.load_vectors()",
-        "anchor": "word2vec-load_vectors"
-      },
-      {
-        "name": "Word2Vec.most_similar()",
-        "anchor": "word2vec-most_similar"
-      },
-      {
-        "name": "Word2Vec.save()",
-        "anchor": "word2vec-save"
-      },
-      {
-        "name": "Word2Vec.similarity()",
-        "anchor": "word2vec-similarity"
-      },
-      {
-        "name": "Word2Vec.train()",
-        "anchor": "word2vec-train"
+        "anchor": "word2vec",
+        "url": "/docs/word_embeddings/word2vec/",
+        "summary": "Word2Vec model for learning word embeddings from text."
       },
       {
         "name": "TempRefWord2Vec",
-        "anchor": "temprefword2vec"
-      },
-      {
-        "name": "TempRefWord2Vec.build_vocab()",
-        "anchor": "temprefword2vec-build_vocab"
-      },
-      {
-        "name": "TempRefWord2Vec.calculate_semantic_change()",
-        "anchor": "temprefword2vec-calculate_semantic_change"
-      },
-      {
-        "name": "TempRefWord2Vec.export()",
-        "anchor": "temprefword2vec-export"
-      },
-      {
-        "name": "TempRefWord2Vec.get_available_targets()",
-        "anchor": "temprefword2vec-get_available_targets"
-      },
-      {
-        "name": "TempRefWord2Vec.get_period_vocab_counts()",
-        "anchor": "temprefword2vec-get_period_vocab_counts"
-      },
-      {
-        "name": "TempRefWord2Vec.get_time_labels()",
-        "anchor": "temprefword2vec-get_time_labels"
-      },
-      {
-        "name": "TempRefWord2Vec.load()",
-        "anchor": "temprefword2vec-load"
-      },
-      {
-        "name": "TempRefWord2Vec.load_vectors()",
-        "anchor": "temprefword2vec-load_vectors"
-      },
-      {
-        "name": "TempRefWord2Vec.save()",
-        "anchor": "temprefword2vec-save"
-      },
-      {
-        "name": "TempRefWord2Vec.train()",
-        "anchor": "temprefword2vec-train"
+        "anchor": "temprefword2vec",
+        "url": "/docs/word_embeddings/temprefword2vec/",
+        "summary": "Word2Vec with Temporal Referencing (TR) for tracking semantic change."
       },
       {
         "name": "DynamicWord2Vec",
-        "anchor": "dynamicword2vec"
-      },
-      {
-        "name": "DynamicWord2Vec.build_vocab()",
-        "anchor": "dynamicword2vec-build_vocab"
-      },
-      {
-        "name": "DynamicWord2Vec.calculate_semantic_change()",
-        "anchor": "dynamicword2vec-calculate_semantic_change"
-      },
-      {
-        "name": "DynamicWord2Vec.calculate_temporal_drift()",
-        "anchor": "dynamicword2vec-calculate_temporal_drift"
-      },
-      {
-        "name": "DynamicWord2Vec.export()",
-        "anchor": "dynamicword2vec-export"
-      },
-      {
-        "name": "DynamicWord2Vec.get_all_time_vectors()",
-        "anchor": "dynamicword2vec-get_all_time_vectors"
-      },
-      {
-        "name": "DynamicWord2Vec.get_time_labels()",
-        "anchor": "dynamicword2vec-get_time_labels"
-      },
-      {
-        "name": "DynamicWord2Vec.get_vector()",
-        "anchor": "dynamicword2vec-get_vector"
-      },
-      {
-        "name": "DynamicWord2Vec.load()",
-        "anchor": "dynamicword2vec-load"
-      },
-      {
-        "name": "DynamicWord2Vec.load_vectors()",
-        "anchor": "dynamicword2vec-load_vectors"
-      },
-      {
-        "name": "DynamicWord2Vec.most_similar()",
-        "anchor": "dynamicword2vec-most_similar"
-      },
-      {
-        "name": "DynamicWord2Vec.save()",
-        "anchor": "dynamicword2vec-save"
-      },
-      {
-        "name": "DynamicWord2Vec.similarity()",
-        "anchor": "dynamicword2vec-similarity"
-      },
-      {
-        "name": "DynamicWord2Vec.train()",
-        "anchor": "dynamicword2vec-train"
+        "anchor": "dynamicword2vec",
+        "url": "/docs/word_embeddings/dynamicword2vec/",
+        "summary": "Word2Vec with time-sliced embeddings for diachronic semantic analysis."
       },
       {
         "name": "GloVe",
-        "anchor": "glove"
-      },
-      {
-        "name": "GloVe.load()",
-        "anchor": "glove-load"
-      },
-      {
-        "name": "GloVe.save()",
-        "anchor": "glove-save"
-      },
-      {
-        "name": "GloVe.similarity()",
-        "anchor": "glove-similarity"
-      },
-      {
-        "name": "GloVe.train()",
-        "anchor": "glove-train"
+        "anchor": "glove",
+        "url": "/docs/word_embeddings/glove/",
+        "summary": "Global Vectors (GloVe) model with sparse co-occurrence training."
       },
       {
         "name": "BalancedSentenceIterator",
-        "anchor": "balancedsentenceiterator"
-      },
-      {
-        "name": "BalancedSentenceIterator.reset()",
-        "anchor": "balancedsentenceiterator-reset"
+        "anchor": "balancedsentenceiterator",
+        "url": "/docs/word_embeddings/balancedsentenceiterator/",
+        "summary": "Iterator that streams sentences from multiple corpus sources with configurable sampling."
       },
       {
         "name": "SingleCorpusTemporalIterator",
-        "anchor": "singlecorpustemporaliterator"
+        "anchor": "singlecorpustemporaliterator",
+        "url": "/docs/word_embeddings/singlecorpustemporaliterator/",
+        "summary": "Streaming iterator over a single corpus that yields :class:`TemporalSentence` objects."
       },
       {
         "name": "TemporalSentence",
-        "anchor": "temporalsentence"
+        "anchor": "temporalsentence",
+        "url": "/docs/word_embeddings/temporalsentence/",
+        "summary": "A sentence (list of tokens) annotated with a time slice index."
       },
       {
         "name": "TemporalSentenceIterator",
-        "anchor": "temporalsentenceiterator"
-      },
-      {
-        "name": "TemporalSentenceIterator.reset()",
-        "anchor": "temporalsentenceiterator-reset"
+        "anchor": "temporalsentenceiterator",
+        "url": "/docs/word_embeddings/temporalsentenceiterator/",
+        "summary": "Streaming iterator that interleaves sentences from multiple corpora with time metadata."
       },
       {
         "name": "project_2d()",
-        "anchor": "project_2d"
+        "anchor": "project-2d",
+        "url": "/docs/word_embeddings/project-2d/",
+        "summary": "Projects high-dimensional vectors into 2D using PCA, t-SNE, or UMAP and visualizes them."
       },
       {
         "name": "get_bias_direction()",
-        "anchor": "get_bias_direction"
+        "anchor": "get-bias-direction",
+        "url": "/docs/word_embeddings/get-bias-direction/",
+        "summary": "Compute the direction vector for measuring bias."
       },
       {
         "name": "calculate_bias()",
-        "anchor": "calculate_bias"
+        "anchor": "calculate-bias",
+        "url": "/docs/word_embeddings/calculate-bias/",
+        "summary": "Calculate bias scores for target words along an axis defined by anchor pairs."
       },
       {
         "name": "project_bias()",
-        "anchor": "project_bias"
+        "anchor": "project-bias",
+        "url": "/docs/word_embeddings/project-bias/",
+        "summary": "Plot words on a 1D or 2D chart by projecting them onto bias axes."
       },
       {
         "name": "cosine_similarity()",
-        "anchor": "cosine_similarity"
+        "anchor": "cosine-similarity",
+        "url": "/docs/word_embeddings/cosine-similarity/",
+        "summary": "Compute cosine similarity between vectors."
       },
       {
         "name": "cosine_distance()",
-        "anchor": "cosine_distance"
+        "anchor": "cosine-distance",
+        "url": "/docs/word_embeddings/cosine-distance/",
+        "summary": "Compute cosine distance between vectors (1 - cosine_similarity)."
       },
       {
         "name": "most_similar()",
-        "anchor": "most_similar"
+        "anchor": "most-similar",
+        "url": "/docs/word_embeddings/most-similar/",
+        "summary": "Find vectors most similar to target_vector using selected metric."
       },
       {
         "name": "align_vectors()",
-        "anchor": "align_vectors"
+        "anchor": "align-vectors",
+        "url": "/docs/word_embeddings/align-vectors/",
+        "summary": "Align source vectors with target vectors using Procrustes analysis."
       }
     ]
   },
@@ -306,103 +184,9 @@
     "functions": [
       {
         "name": "LDAGibbsSampler",
-        "anchor": "ldagibbssampler"
-      },
-      {
-        "name": "LDAGibbsSampler.coherence()",
-        "anchor": "ldagibbssampler-coherence"
-      },
-      {
-        "name": "LDAGibbsSampler.coherence_npmi()",
-        "anchor": "ldagibbssampler-coherence_npmi"
-      },
-      {
-        "name": "LDAGibbsSampler.coherence_umass()",
-        "anchor": "ldagibbssampler-coherence_umass"
-      },
-      {
-        "name": "LDAGibbsSampler.document_similarity()",
-        "anchor": "ldagibbssampler-document_similarity"
-      },
-      {
-        "name": "LDAGibbsSampler.document_similarity_matrix()",
-        "anchor": "ldagibbssampler-document_similarity_matrix"
-      },
-      {
-        "name": "LDAGibbsSampler.evaluate()",
-        "anchor": "ldagibbssampler-evaluate"
-      },
-      {
-        "name": "LDAGibbsSampler.fit()",
-        "anchor": "ldagibbssampler-fit"
-      },
-      {
-        "name": "LDAGibbsSampler.get_document_topics()",
-        "anchor": "ldagibbssampler-get_document_topics"
-      },
-      {
-        "name": "LDAGibbsSampler.get_top_documents()",
-        "anchor": "ldagibbssampler-get_top_documents"
-      },
-      {
-        "name": "LDAGibbsSampler.get_topic_distribution()",
-        "anchor": "ldagibbssampler-get_topic_distribution"
-      },
-      {
-        "name": "LDAGibbsSampler.get_topic_words()",
-        "anchor": "ldagibbssampler-get_topic_words"
-      },
-      {
-        "name": "LDAGibbsSampler.get_topics()",
-        "anchor": "ldagibbssampler-get_topics"
-      },
-      {
-        "name": "LDAGibbsSampler.inference()",
-        "anchor": "ldagibbssampler-inference"
-      },
-      {
-        "name": "LDAGibbsSampler.initialize()",
-        "anchor": "ldagibbssampler-initialize"
-      },
-      {
-        "name": "LDAGibbsSampler.load()",
-        "anchor": "ldagibbssampler-load"
-      },
-      {
-        "name": "LDAGibbsSampler.perplexity()",
-        "anchor": "ldagibbssampler-perplexity"
-      },
-      {
-        "name": "LDAGibbsSampler.plot_topic_words()",
-        "anchor": "ldagibbssampler-plot_topic_words"
-      },
-      {
-        "name": "LDAGibbsSampler.preprocess()",
-        "anchor": "ldagibbssampler-preprocess"
-      },
-      {
-        "name": "LDAGibbsSampler.run_gibbs_sampling()",
-        "anchor": "ldagibbssampler-run_gibbs_sampling"
-      },
-      {
-        "name": "LDAGibbsSampler.save()",
-        "anchor": "ldagibbssampler-save"
-      },
-      {
-        "name": "LDAGibbsSampler.topic_correlation_matrix()",
-        "anchor": "ldagibbssampler-topic_correlation_matrix"
-      },
-      {
-        "name": "LDAGibbsSampler.topic_similarity()",
-        "anchor": "ldagibbssampler-topic_similarity"
-      },
-      {
-        "name": "LDAGibbsSampler.train_multiple()",
-        "anchor": "ldagibbssampler-train_multiple"
-      },
-      {
-        "name": "LDAGibbsSampler.visualize_documents()",
-        "anchor": "ldagibbssampler-visualize_documents"
+        "anchor": "ldagibbssampler",
+        "url": "/docs/topic_modeling/ldagibbssampler/",
+        "summary": "Latent Dirichlet Allocation with Gibbs sampling implementation."
       }
     ]
   },
@@ -412,115 +196,69 @@
     "functions": [
       {
         "name": "Stylometry",
-        "anchor": "stylometry"
-      },
-      {
-        "name": "Stylometry.bootstrap_predict()",
-        "anchor": "stylometry-bootstrap_predict"
-      },
-      {
-        "name": "Stylometry.dendrogram()",
-        "anchor": "stylometry-dendrogram"
-      },
-      {
-        "name": "Stylometry.distance()",
-        "anchor": "stylometry-distance"
-      },
-      {
-        "name": "Stylometry.distance_matrix()",
-        "anchor": "stylometry-distance_matrix"
-      },
-      {
-        "name": "Stylometry.fit_transform()",
-        "anchor": "stylometry-fit_transform"
-      },
-      {
-        "name": "Stylometry.get_author_profile()",
-        "anchor": "stylometry-get_author_profile"
-      },
-      {
-        "name": "Stylometry.get_feature_comparison()",
-        "anchor": "stylometry-get_feature_comparison"
-      },
-      {
-        "name": "Stylometry.hierarchical_clustering()",
-        "anchor": "stylometry-hierarchical_clustering"
-      },
-      {
-        "name": "Stylometry.most_similar()",
-        "anchor": "stylometry-most_similar"
-      },
-      {
-        "name": "Stylometry.plot()",
-        "anchor": "stylometry-plot"
-      },
-      {
-        "name": "Stylometry.predict()",
-        "anchor": "stylometry-predict"
-      },
-      {
-        "name": "Stylometry.predict_author()",
-        "anchor": "stylometry-predict_author"
-      },
-      {
-        "name": "Stylometry.predict_confidence()",
-        "anchor": "stylometry-predict_confidence"
-      },
-      {
-        "name": "Stylometry.rolling_delta()",
-        "anchor": "stylometry-rolling_delta"
-      },
-      {
-        "name": "Stylometry.similarity()",
-        "anchor": "stylometry-similarity"
-      },
-      {
-        "name": "Stylometry.transform()",
-        "anchor": "stylometry-transform"
-      },
-      {
-        "name": "Stylometry.vocabulary_stats()",
-        "anchor": "stylometry-vocabulary_stats"
+        "anchor": "stylometry",
+        "url": "/docs/stylometry/stylometry/",
+        "summary": "Stylometry for authorship attribution and document clustering."
       },
       {
         "name": "compare_corpora()",
-        "anchor": "compare_corpora"
+        "anchor": "compare-corpora",
+        "url": "/docs/stylometry/compare-corpora/",
+        "summary": "Compare two corpora to identify statistically significant differences in word usage."
       },
       {
         "name": "extract_mfw()",
-        "anchor": "extract_mfw"
+        "anchor": "extract-mfw",
+        "url": "/docs/stylometry/extract-mfw/",
+        "summary": "Extract the Most Frequent Words (MFW) from a frequency counter."
       },
       {
         "name": "burrows_delta()",
-        "anchor": "burrows_delta"
+        "anchor": "burrows-delta",
+        "url": "/docs/stylometry/burrows-delta/",
+        "summary": "Compute Burrows' Delta distance between two feature vectors."
       },
       {
         "name": "manhattan_distance()",
-        "anchor": "manhattan_distance"
+        "anchor": "manhattan-distance",
+        "url": "/docs/stylometry/manhattan-distance/",
+        "summary": "Compute Manhattan (L1) distance between two vectors."
       },
       {
         "name": "euclidean_distance()",
-        "anchor": "euclidean_distance"
+        "anchor": "euclidean-distance",
+        "url": "/docs/stylometry/euclidean-distance/",
+        "summary": "Compute Euclidean (L2) distance between two vectors."
       },
       {
         "name": "eder_delta()",
-        "anchor": "eder_delta"
+        "anchor": "eder-delta",
+        "url": "/docs/stylometry/eder-delta/",
+        "summary": "Eder's Delta distance: a variation of Burrows' Delta with different weighting."
       },
       {
         "name": "get_relative_frequencies()",
-        "anchor": "get_relative_frequencies"
+        "anchor": "get-relative-frequencies",
+        "url": "/docs/stylometry/get-relative-frequencies/",
+        "summary": "Compute relative frequencies for a list of items (tokens or n-grams)."
       },
       {
         "name": "compute_yule_k()",
-        "anchor": "compute_yule_k"
+        "anchor": "compute-yule-k",
+        "url": "/docs/stylometry/compute-yule-k/",
+        "summary": "Compute Yule's K characteristic for vocabulary richness."
       },
       {
         "name": "type_token_ratio()",
-        "anchor": "type_token_ratio"
+        "anchor": "type-token-ratio",
+        "url": "/docs/stylometry/type-token-ratio/",
+        "summary": "Calculate Type-Token Ratio (TTR) for lexical diversity."
       },
       {
         "name": "mattr()",
-        "anchor": "mattr"
+        "anchor": "mattr",
+        "url": "/docs/stylometry/mattr/",
+        "summary": "Calculate Moving Average Type-Token Ratio (MATTR)."
       }
     ]
   },
@@ -530,51 +268,45 @@
     "functions": [
       {
         "name": "FilterOptions",
-        "anchor": "filteroptions"
+        "anchor": "filteroptions",
+        "url": "/docs/collocations/filteroptions/",
+        "summary": "Type definition for filter options in collocation analysis."
       },
       {
         "name": "CoocMatrix",
-        "anchor": "coocmatrix"
-      },
-      {
-        "name": "CoocMatrix.get()",
-        "anchor": "coocmatrix-get"
-      },
-      {
-        "name": "CoocMatrix.sum()",
-        "anchor": "coocmatrix-sum"
-      },
-      {
-        "name": "CoocMatrix.to_dataframe()",
-        "anchor": "coocmatrix-to_dataframe"
-      },
-      {
-        "name": "CoocMatrix.to_dense()",
-        "anchor": "coocmatrix-to_dense"
-      },
-      {
-        "name": "CoocMatrix.to_ppmi()",
-        "anchor": "coocmatrix-to_ppmi"
+        "anchor": "coocmatrix",
+        "url": "/docs/collocations/coocmatrix/",
+        "summary": "Co-occurrence matrix with numpy-like indexing by word or index."
       },
       {
         "name": "find_collocates()",
-        "anchor": "find_collocates"
+        "anchor": "find-collocates",
+        "url": "/docs/collocations/find-collocates/",
+        "summary": "Find collocates for target words in a corpus of sentences."
       },
       {
         "name": "cooc_matrix()",
-        "anchor": "cooc_matrix"
+        "anchor": "cooc-matrix",
+        "url": "/docs/collocations/cooc-matrix/",
+        "summary": "Calculate a co-occurrence matrix from a corpus of documents."
       },
       {
         "name": "plot_collocates()",
-        "anchor": "plot_collocates"
+        "anchor": "plot-collocates",
+        "url": "/docs/collocations/plot-collocates/",
+        "summary": "Visualize collocation results as a 2D scatter plot."
       },
       {
         "name": "kwic()",
-        "anchor": "kwic"
+        "anchor": "kwic",
+        "url": "/docs/collocations/kwic/",
+        "summary": "Generate a Keywords in Context (KWIC) concordance for target words."
       },
       {
         "name": "compare_collocates()",
-        "anchor": "compare_collocates"
+        "anchor": "compare-collocates",
+        "url": "/docs/collocations/compare-collocates/",
+        "summary": "Compare collocates of target words between two corpora."
       }
     ]
   },
@@ -584,7 +316,9 @@
     "functions": [
       {
         "name": "find_shared_sequences()",
-        "anchor": "find_shared_sequences"
+        "anchor": "find-shared-sequences",
+        "url": "/docs/textreuse/find-shared-sequences/",
+        "summary": "Find shared sequences (text reuse) across a collection of documents."
       }
     ]
   },
@@ -594,99 +328,147 @@
     "functions": [
       {
         "name": "LineSentenceFile",
-        "anchor": "linesentencefile"
+        "anchor": "linesentencefile",
+        "url": "/docs/helpers/linesentencefile/",
+        "summary": "Restartable iterable that streams sentences from a text file."
       },
       {
         "name": "load_font()",
-        "anchor": "load_font"
+        "anchor": "load-font",
+        "url": "/docs/helpers/load-font/",
+        "summary": "Load a font and set it as the active font for matplotlib."
       },
       {
         "name": "load_fonts()",
-        "anchor": "load_fonts"
+        "anchor": "load-fonts",
+        "url": "/docs/helpers/load-fonts/",
+        "summary": "Load the default CJK font for matplotlib."
       },
       {
         "name": "get_current_font_name()",
-        "anchor": "get_current_font_name"
+        "anchor": "get-current-font-name",
+        "url": "/docs/helpers/get-current-font-name/",
+        "summary": "Get the currently loaded matplotlib font name."
       },
       {
         "name": "get_current_font_path()",
-        "anchor": "get_current_font_path"
+        "anchor": "get-current-font-path",
+        "url": "/docs/helpers/get-current-font-path/",
+        "summary": "Get the file path of the currently loaded font."
       },
       {
         "name": "download_fonts()",
-        "anchor": "download_fonts"
+        "anchor": "download-fonts",
+        "url": "/docs/helpers/download-fonts/",
+        "summary": "Pre-download font files from the qhchina-data repository."
       },
       {
         "name": "list_remote_fonts()",
-        "anchor": "list_remote_fonts"
+        "anchor": "list-remote-fonts",
+        "url": "/docs/helpers/list-remote-fonts/",
+        "summary": "Query GitHub for available fonts in the qhchina-data repository."
       },
       {
         "name": "list_cached_fonts()",
-        "anchor": "list_cached_fonts"
+        "anchor": "list-cached-fonts",
+        "url": "/docs/helpers/list-cached-fonts/",
+        "summary": "List fonts currently in the local cache."
       },
       {
         "name": "clear_cache()",
-        "anchor": "clear_cache"
+        "anchor": "clear-cache",
+        "url": "/docs/helpers/clear-cache/",
+        "summary": "Remove all cached fonts."
       },
       {
         "name": "get_cache_dir()",
-        "anchor": "get_cache_dir"
+        "anchor": "get-cache-dir",
+        "url": "/docs/helpers/get-cache-dir/",
+        "summary": "Get the font cache directory path."
       },
       {
         "name": "load_text()",
-        "anchor": "load_text"
+        "anchor": "load-text",
+        "url": "/docs/helpers/load-text/",
+        "summary": "Loads text from a file."
       },
       {
         "name": "load_texts()",
-        "anchor": "load_texts"
+        "anchor": "load-texts",
+        "url": "/docs/helpers/load-texts/",
+        "summary": "Loads text from multiple files."
       },
       {
         "name": "load_stopwords()",
-        "anchor": "load_stopwords"
+        "anchor": "load-stopwords",
+        "url": "/docs/helpers/load-stopwords/",
+        "summary": "Load stopwords from a file for the specified language."
       },
       {
         "name": "split_into_chunks()",
-        "anchor": "split_into_chunks"
+        "anchor": "split-into-chunks",
+        "url": "/docs/helpers/split-into-chunks/",
+        "summary": "Splits text or a list of tokens into chunks with optional overlap between consecutive chunks."
       },
       {
         "name": "get_stopword_languages()",
-        "anchor": "get_stopword_languages"
+        "anchor": "get-stopword-languages",
+        "url": "/docs/helpers/get-stopword-languages/",
+        "summary": "Get all available stopword language codes."
       },
       {
         "name": "detect_encoding()",
-        "anchor": "detect_encoding"
+        "anchor": "detect-encoding",
+        "url": "/docs/helpers/detect-encoding/",
+        "summary": "Detects the encoding of a file."
       },
       {
         "name": "download_corpus()",
-        "anchor": "download_corpus"
+        "anchor": "download-corpus",
+        "url": "/docs/helpers/download-corpus/",
+        "summary": "Download a corpus folder from the qhchina-data GitHub repository."
       },
       {
         "name": "download_file()",
-        "anchor": "download_file"
+        "anchor": "download-file",
+        "url": "/docs/helpers/download-file/",
+        "summary": "Download a single file from the qhchina-data GitHub repository."
       },
       {
         "name": "list_remote_corpora()",
-        "anchor": "list_remote_corpora"
+        "anchor": "list-remote-corpora",
+        "url": "/docs/helpers/list-remote-corpora/",
+        "summary": "List available corpora in the qhchina-data GitHub repository."
       },
       {
         "name": "iter_batches()",
-        "anchor": "iter_batches"
+        "anchor": "iter-batches",
+        "url": "/docs/helpers/iter-batches/",
+        "summary": "Yield batches of tokenized texts grouped by total token count."
       },
       {
         "name": "build_vocab_from_iter()",
-        "anchor": "build_vocab_from_iter"
+        "anchor": "build-vocab-from-iter",
+        "url": "/docs/helpers/build-vocab-from-iter/",
+        "summary": "Build vocabulary statistics by streaming through tokenized texts (pass 1 of 2)."
       },
       {
         "name": "rolling_average()",
-        "anchor": "rolling_average"
+        "anchor": "rolling-average",
+        "url": "/docs/helpers/rolling-average/",
+        "summary": "Calculate rolling (moving) average over a list of values."
       },
       {
         "name": "apply_p_value_correction()",
-        "anchor": "apply_p_value_correction"
+        "anchor": "apply-p-value-correction",
+        "url": "/docs/helpers/apply-p-value-correction/",
+        "summary": "Apply multiple testing correction to a list of p-values."
       },
       {
         "name": "validate_filters()",
-        "anchor": "validate_filters"
+        "anchor": "validate-filters",
+        "url": "/docs/helpers/validate-filters/",
+        "summary": "Validate that all filter keys are recognized."
       }
     ]
   }

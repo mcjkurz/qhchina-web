@@ -74,7 +74,11 @@
                     {% if has_functions %}
                     <ul class="docs-submenu{% unless is_active %} collapsed{% endunless %}" data-category-url="{{ item.url }}">
                       {% for func in item.functions %}
-                        <li><a href="{{ site.baseurl }}{{ item.url }}#{{ func.anchor }}">{{ func.name }}</a></li>
+                        {% if func.url %}
+                          <li><a href="{{ site.baseurl }}{{ func.url }}">{{ func.name }}</a></li>
+                        {% else %}
+                          <li><a href="{{ site.baseurl }}{{ item.url }}#{{ func.anchor }}">{{ func.name }}</a></li>
+                        {% endif %}
                       {% endfor %}
                     </ul>
                     {% endif %}
