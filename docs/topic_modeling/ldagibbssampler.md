@@ -190,7 +190,7 @@ Similarity/distance value based on chosen metric
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.document_similarity(doc_i=..., doc_j=...)
+result = instance.document_similarity(doc_i=0, doc_j=1)
 ```
 
 ### `LDAGibbsSampler.document_similarity_matrix()`
@@ -262,7 +262,7 @@ Fit the LDA model to the given documents.
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.fit(documents=...)
+result = instance.fit(documents=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
 ### `LDAGibbsSampler.get_document_topics()`
@@ -286,7 +286,7 @@ List of (topic_id, probability) tuples
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.get_document_topics(doc_id=...)
+result = instance.get_document_topics(doc_id=0)
 ```
 
 ### `LDAGibbsSampler.get_top_documents()`
@@ -310,7 +310,7 @@ List of (document_id, probability) tuples, sorted by probability in descending o
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.get_top_documents(topic_id=...)
+result = instance.get_top_documents(topic_id=0)
 ```
 
 ### `LDAGibbsSampler.get_topic_distribution()`
@@ -354,7 +354,7 @@ List of (word, probability) tuples, sorted by probability in descending order
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.get_topic_words(topic_id=...)
+result = instance.get_topic_words(topic_id=0)
 ```
 
 ### `LDAGibbsSampler.get_topics()`
@@ -401,7 +401,7 @@ Topic distribution for the document
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.inference(new_doc=...)
+result = instance.inference(new_doc=['城市', '商业', '税收', '流通'])
 ```
 
 ### `LDAGibbsSampler.initialize()`
@@ -421,7 +421,7 @@ Initialize data structures for Gibbs sampling.
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.initialize(docs_as_ids=...)
+result = instance.initialize(docs_as_ids=1)
 ```
 
 ### `LDAGibbsSampler.load()`
@@ -444,7 +444,7 @@ Loaded LDA model
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.load(filepath=...)
+result = instance.load(filepath='example_model.pkl')
 ```
 
 ### `LDAGibbsSampler.perplexity()`
@@ -519,7 +519,7 @@ Tuple containing:
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.preprocess(documents=...)
+result = instance.preprocess(documents=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
 ### `LDAGibbsSampler.run_gibbs_sampling()`
@@ -558,7 +558,7 @@ Save the model to a file.
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.save(filepath=...)
+result = instance.save(filepath='example_model.pkl')
 ```
 
 ### `LDAGibbsSampler.topic_correlation_matrix()`
@@ -610,7 +610,7 @@ Similarity/distance value based on chosen metric
 from qhchina.analytics.topicmodels import LDAGibbsSampler
 
 instance = LDAGibbsSampler()
-result = instance.topic_similarity(topic_i=..., topic_j=...)
+result = instance.topic_similarity(topic_i=0, topic_j=1)
 ```
 
 ### `LDAGibbsSampler.train_multiple()`

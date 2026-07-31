@@ -30,3 +30,11 @@ corpora = list_remote_corpora()
 print(corpora)
 ['张爱玲', '沈从文', '莫言', ...]
 ```
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import list_remote_corpora
+
+result = list_remote_corpora()
+```

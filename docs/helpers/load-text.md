@@ -29,5 +29,5 @@ Loads text from a file.
 ```python
 from qhchina.helpers.texts import load_text
 
-result = load_text(filename=...)
+result = load_text(filename='figure.png')
 ```

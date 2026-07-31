@@ -37,6 +37,13 @@ which will reinitialize the segmenter.
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import PKUSegmenter
+
+model = PKUSegmenter()
+```
+
 ## Methods
 
 ### `PKUSegmenter.reset_user_dict()`

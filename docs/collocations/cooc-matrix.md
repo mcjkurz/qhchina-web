@@ -80,3 +80,11 @@ matrix[["fox", "dog"]]    # 2D submatrix, shape (2, V)
 array([[0, 0, 10, ...], [0, 3, 0, ...]])
 df = matrix.to_dataframe()
 ```
+
+
+**Example:**
+```python
+from qhchina.analytics.collocations import cooc_matrix
+
+result = cooc_matrix(documents=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+```

@@ -26,7 +26,8 @@ Compute Euclidean (L2) distance between two vectors.
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics.stylometry import euclidean_distance
 
-result = euclidean_distance(vec_a=..., vec_b=...)
+result = euclidean_distance(vec_a=np.array([0.6, 0.2, 0.4]), vec_b=np.array([0.6, 0.2, 0.4]))
 ```

@@ -40,5 +40,5 @@ in a single pass. Texts longer than *max_length* are truncated.
 ```python
 from qhchina.helpers.texts import build_vocab_from_iter
 
-result = build_vocab_from_iter(texts=...)
+result = build_vocab_from_iter(texts=['宋代经济发展迅速。', '明代税制多有改革。'])
 ```

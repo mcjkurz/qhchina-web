@@ -713,6 +713,38 @@ aside.docs-sidebar {
     margin-left: 0.5em;
     white-space: nowrap;
   }
+
+  // Collapsible class method sections
+  h3.api-method-toggle {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    padding-left: 1.2rem;
+
+    &::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8em;
+      color: var(--light-text);
+      transition: transform 0.15s ease;
+    }
+
+    &.expanded::before {
+      transform: translateY(-50%) rotate(90deg);
+      color: var(--primary-color);
+    }
+  }
+
+  .api-method-content {
+    margin-left: 0.4rem;
+
+    &.collapsed {
+      display: none;
+    }
+  }
 }
 
 /* Responsive docs layout */

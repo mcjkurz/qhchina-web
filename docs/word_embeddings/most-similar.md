@@ -25,7 +25,11 @@ Find vectors most similar to target_vector using selected metric.
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics._vector_ops import most_similar
 
-result = most_similar(target_vector=..., vectors=...)
+result = most_similar(
+    target_vector=np.array([0.7, 0.2, 0.4]),
+    vectors={'仁': np.array([0.9, 0.2, 0.1]), '义': np.array([0.8, 0.3, 0.2]), '利': np.array([0.2, 0.8, 0.4])}
+)
 ```

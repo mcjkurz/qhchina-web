@@ -119,7 +119,7 @@ Build vocabulary from sentences.
 from qhchina.analytics.embeddings.word2vec.base import Word2Vec
 
 instance = Word2Vec()
-result = instance.build_vocab(sentences=...)
+result = instance.build_vocab(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
 ### `Word2Vec.export()`
@@ -188,7 +188,7 @@ Word vector as numpy array of shape (vector_size,).
 from qhchina.analytics.embeddings.word2vec.base import Word2Vec
 
 instance = Word2Vec()
-result = instance.get_vector(word=...)
+result = instance.get_vector(word='人民')
 ```
 
 ### `Word2Vec.load()`
@@ -211,7 +211,7 @@ Loaded Word2Vec model.
 from qhchina.analytics.embeddings.word2vec.base import Word2Vec
 
 instance = Word2Vec()
-result = instance.load(path=...)
+result = instance.load(path='example_output.bin')
 ```
 
 ### `Word2Vec.load_vectors()`
@@ -327,7 +327,7 @@ needed during training, not inference.
 from qhchina.analytics.embeddings.word2vec.base import Word2Vec
 
 instance = Word2Vec()
-result = instance.save(path=...)
+result = instance.save(path='example_output.bin')
 ```
 
 ### `Word2Vec.similarity()`
@@ -356,7 +356,7 @@ Cosine similarity between the two words (float between -1 and 1).
 from qhchina.analytics.embeddings.word2vec.base import Word2Vec
 
 instance = Word2Vec()
-result = instance.similarity(word1=..., word2=...)
+result = instance.similarity(word1='人民', word2='百姓')
 ```
 
 ### `Word2Vec.train()`

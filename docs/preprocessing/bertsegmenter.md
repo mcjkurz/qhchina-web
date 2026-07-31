@@ -42,3 +42,11 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
   the text is longer than this, it will be split into chunks.
 - `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import BertSegmenter
+
+model = BertSegmenter()
+```

@@ -35,5 +35,5 @@ Yule's K value (typically between 50-200 for normal texts)
 ```python
 from qhchina.analytics.stylometry import compute_yule_k
 
-result = compute_yule_k(tokens=...)
+result = compute_yule_k(tokens=['人民', '经济'])
 ```

@@ -36,5 +36,5 @@ Texts longer than *max_length* are truncated; empty texts are skipped.
 ```python
 from qhchina.helpers.texts import iter_batches
 
-result = iter_batches(texts=...)
+result = iter_batches(texts=['宋代经济发展迅速。', '明代税制多有改革。'])
 ```

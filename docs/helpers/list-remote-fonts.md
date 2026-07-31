@@ -25,3 +25,11 @@ List of dicts with font information:
 qhchina.list_remote_fonts()
 [{'file': 'NotoSansTCSC-Regular.otf', 'size': 17279824, 'size_mb': 16.5}, ...]
 ```
+
+
+**Example:**
+```python
+from qhchina.helpers.fonts import list_remote_fonts
+
+result = list_remote_fonts()
+```

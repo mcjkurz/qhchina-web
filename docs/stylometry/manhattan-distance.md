@@ -26,7 +26,8 @@ Compute Manhattan (L1) distance between two vectors.
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics.stylometry import manhattan_distance
 
-result = manhattan_distance(vec_a=..., vec_b=...)
+result = manhattan_distance(vec_a=np.array([0.6, 0.2, 0.4]), vec_b=np.array([0.6, 0.2, 0.4]))
 ```

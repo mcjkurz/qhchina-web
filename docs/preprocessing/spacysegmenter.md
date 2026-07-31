@@ -37,6 +37,13 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SpacySegmenter
+
+model = SpacySegmenter()
+```
+
 ## Methods
 
 ### `SpacySegmenter.reset_user_dict()`

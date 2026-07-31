@@ -26,7 +26,8 @@ Reference: Eder, M. (2013). "Mind your corpus: systematic errors in authorship a
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics.stylometry import eder_delta
 
-result = eder_delta(vec_a=..., vec_b=...)
+result = eder_delta(vec_a=np.array([0.6, 0.2, 0.4]), vec_b=np.array([0.6, 0.2, 0.4]))
 ```

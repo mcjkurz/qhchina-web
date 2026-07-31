@@ -43,3 +43,11 @@ download_fonts()
 download_fonts(['NotoSerifTC-Regular.otf', 'NotoSerifSC-Regular.otf'])
 {'NotoSerifTC-Regular.otf': 'Noto Serif TC', ...}
 ```
+
+
+**Example:**
+```python
+from qhchina.helpers.fonts import download_fonts
+
+result = download_fonts()
+```

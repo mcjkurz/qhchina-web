@@ -127,7 +127,7 @@ respecting the sampling strategy to match training data distribution.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 result = instance.build_vocab()
 ```
 
@@ -200,8 +200,8 @@ the word's embedding at time i and time i+1.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.calculate_temporal_drift(word=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.calculate_temporal_drift(word='人民')
 ```
 
 ### `DynamicWord2Vec.export()`
@@ -225,8 +225,8 @@ Use `save()` and `load()` instead to preserve all model data.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.export(path=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.export(path='example_output.bin')
 ```
 
 ### `DynamicWord2Vec.get_all_time_vectors()`
@@ -253,8 +253,8 @@ at each time slice.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.get_all_time_vectors(word=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.get_all_time_vectors(word='人民')
 ```
 
 ### `DynamicWord2Vec.get_time_labels()`
@@ -273,7 +273,7 @@ List of time period labels in temporal order.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 result = instance.get_time_labels()
 ```
 
@@ -301,8 +301,8 @@ Word vector as numpy array of shape (vector_size,).
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.get_vector(word=..., time_label=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.get_vector(word='人民', time_label='宋')
 ```
 
 ### `DynamicWord2Vec.load()`
@@ -327,8 +327,8 @@ Loaded DynamicWord2Vec model.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.load(path=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.load(path='example_output.bin')
 ```
 
 ### `DynamicWord2Vec.load_vectors()`
@@ -352,8 +352,8 @@ Use `DynamicWord2Vec.load()` to load a saved DynamicWord2Vec model.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.load_vectors(path=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.load_vectors(path='example_output.bin')
 ```
 
 ### `DynamicWord2Vec.most_similar()`
@@ -382,8 +382,8 @@ List of (word, similarity) tuples sorted by descending similarity.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.most_similar(word=..., time_label=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.most_similar(word='人民', time_label='宋')
 ```
 
 ### `DynamicWord2Vec.save()`
@@ -404,8 +404,8 @@ Saves all temporal embeddings, labels, and configuration parameters.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.save(path=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.save(path='example_output.bin')
 ```
 
 ### `DynamicWord2Vec.similarity()`
@@ -421,8 +421,8 @@ Calculate similarity within one explicitly selected time slice.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
-result = instance.similarity(word1=..., word2=..., time_label=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
+result = instance.similarity(word1='人民', word2='百姓', time_label='宋')
 ```
 
 ### `DynamicWord2Vec.train()`
@@ -451,6 +451,6 @@ Final loss value if calculate_loss is True, None otherwise.
 ```python
 from qhchina.analytics.embeddings.word2vec.dynamic import DynamicWord2Vec
 
-instance = DynamicWord2Vec(sentences=...)
+instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 result = instance.train()
 ```

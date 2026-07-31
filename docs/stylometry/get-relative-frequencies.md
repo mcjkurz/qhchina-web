@@ -24,5 +24,5 @@ Dict mapping each unique item to its relative frequency (count / total)
 ```python
 from qhchina.analytics.stylometry import get_relative_frequencies
 
-result = get_relative_frequencies(items=...)
+result = get_relative_frequencies(items=['人民', '经济'])
 ```

@@ -76,6 +76,13 @@ Two co-occurrence backends are available:
   otherwise expose `W` only.
 
 
+**Example:**
+```python
+from qhchina.analytics.embeddings.glove.base import GloVe
+
+model = GloVe()
+```
+
 ## Methods
 
 ### `GloVe.load()`
@@ -95,7 +102,7 @@ Load a previously saved GloVe model from pickle.
 from qhchina.analytics.embeddings.glove.base import GloVe
 
 instance = GloVe()
-result = instance.load(path=...)
+result = instance.load(path='example_output.bin')
 ```
 
 ### `GloVe.save()`
@@ -115,7 +122,7 @@ and AdaGrad state so training can continue after `load()`.
 from qhchina.analytics.embeddings.glove.base import GloVe
 
 instance = GloVe()
-result = instance.save(path=...)
+result = instance.save(path='example_output.bin')
 ```
 
 ### `GloVe.similarity()`
@@ -131,7 +138,7 @@ No documentation provided.
 from qhchina.analytics.embeddings.glove.base import GloVe
 
 instance = GloVe()
-result = instance.similarity(word1=..., word2=...)
+result = instance.similarity(word1='人民', word2='百姓')
 ```
 
 ### `GloVe.train()`

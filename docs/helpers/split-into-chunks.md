@@ -36,5 +36,5 @@ doesn't divide evenly.
 ```python
 from qhchina.helpers.texts import split_into_chunks
 
-result = split_into_chunks(sequence=..., chunk_size=...)
+result = split_into_chunks(sequence='示例', chunk_size='示例')
 ```

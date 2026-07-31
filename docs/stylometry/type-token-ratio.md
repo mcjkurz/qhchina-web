@@ -49,3 +49,11 @@ type_token_ratio(tokens)
 type_token_ratio(tokens, variant='root')
 2.474...
 ```
+
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import type_token_ratio
+
+result = type_token_ratio(tokens='示例')
+```

@@ -29,5 +29,5 @@ Loads text from multiple files.
 ```python
 from qhchina.helpers.texts import load_texts
 
-result = load_texts(filenames=...)
+result = load_texts(filenames='示例')
 ```

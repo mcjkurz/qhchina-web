@@ -38,3 +38,11 @@ load_font(remote='NotoSerifTC-Regular.otf')
 'Noto Serif TC'
 get_current_font_path()  # Returns path to NotoSerifTC-Regular.otf
 ```
+
+
+**Example:**
+```python
+from qhchina.helpers.fonts import get_current_font_path
+
+result = get_current_font_path()
+```

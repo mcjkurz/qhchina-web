@@ -32,5 +32,5 @@ Detects the encoding of a file.
 ```python
 from qhchina.helpers.texts import detect_encoding
 
-result = detect_encoding(filename=...)
+result = detect_encoding(filename='figure.png')
 ```

@@ -19,7 +19,8 @@ Compute cosine distance between vectors (1 - cosine_similarity).
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics._vector_ops import cosine_distance
 
-result = cosine_distance(v1=..., v2=...)
+result = cosine_distance(v1=np.array([0.8, 0.1, 0.3]), v2=np.array([0.8, 0.1, 0.3]))
 ```

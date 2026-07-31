@@ -271,3 +271,89 @@
     initSubmenuToggle();
   }
 })();
+
+/**
+ * Collapsible method sections for class API pages.
+ * Methods are collapsed by default and can be toggled by clicking headings.
+ */
+(function() {
+  'use strict';
+
+  function toggleMethodSection(heading, panel) {
+    const isCollapsed = panel.classList.contains('collapsed');
+    if (isCollapsed) {
+      panel.classList.remove('collapsed');
+      heading.classList.add('expanded');
+      heading.setAttribute('aria-expanded', 'true');
+    } else {
+      panel.classList.add('collapsed');
+      heading.classList.remove('expanded');
+      heading.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function initMethodToggles() {
+    const docsContent = document.querySelector('.docs-content');
+    if (!docsContent) {
+      return;
+    }
+
+    const methodsHeaders = Array.from(docsContent.querySelectorAll('h2'))
+      .filter((header) => header.textContent.trim().toLowerCase() === 'methods');
+
+    if (methodsHeaders.length === 0) {
+      return;
+    }
+
+    methodsHeaders.forEach((methodsHeader) => {
+      let node = methodsHeader.nextElementSibling;
+
+      while (node) {
+        if (node.tagName === 'H1' || node.tagName === 'H2') {
+          break;
+        }
+
+        if (node.tagName === 'H3') {
+          const heading = node;
+          heading.classList.add('api-method-toggle');
+          heading.setAttribute('role', 'button');
+          heading.setAttribute('tabindex', '0');
+          heading.setAttribute('aria-expanded', 'false');
+
+          const panel = document.createElement('div');
+          panel.className = 'api-method-content collapsed';
+          heading.parentNode.insertBefore(panel, heading.nextElementSibling);
+
+          let contentNode = panel.nextElementSibling;
+          while (contentNode && !['H1', 'H2', 'H3'].includes(contentNode.tagName)) {
+            const nextNode = contentNode.nextElementSibling;
+            panel.appendChild(contentNode);
+            contentNode = nextNode;
+          }
+
+          heading.addEventListener('click', function() {
+            toggleMethodSection(heading, panel);
+          });
+
+          heading.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleMethodSection(heading, panel);
+            }
+          });
+
+          node = contentNode;
+          continue;
+        }
+
+        node = node.nextElementSibling;
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMethodToggles);
+  } else {
+    initMethodToggles();
+  }
+})();

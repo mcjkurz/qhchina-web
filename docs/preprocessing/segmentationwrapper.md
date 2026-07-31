@@ -42,6 +42,13 @@ Base segmentation wrapper class that can be extended for different segmentation 
   Chinese and English punctuation).
 
 
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import SegmentationWrapper
+
+model = SegmentationWrapper()
+```
+
 ## Methods
 
 ### `SegmentationWrapper.close()`
@@ -103,5 +110,5 @@ contains tokens for a line, sentence, or chunk respectively
 from qhchina.preprocessing.segmentation import SegmentationWrapper
 
 instance = SegmentationWrapper()
-result = instance.segment(text=...)
+result = instance.segment(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```

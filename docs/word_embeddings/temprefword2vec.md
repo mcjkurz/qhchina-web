@@ -134,7 +134,10 @@ in a single pass through the corpora, then adds temporal base words.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
 result = instance.build_vocab()
 ```
 
@@ -204,8 +207,11 @@ Use `save()` and `load()` instead to preserve all model data.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
-result = instance.export(path=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
+result = instance.export(path='example_output.bin')
 ```
 
 ### `TempRefWord2Vec.get_available_targets()`
@@ -224,7 +230,10 @@ List of target words that were specified during model initialization.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
 result = instance.get_available_targets()
 ```
 
@@ -251,7 +260,10 @@ If period is specified: Counter object for that specific period.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
 result = instance.get_period_vocab_counts()
 ```
 
@@ -271,7 +283,10 @@ List of time period labels that were specified during model initialization.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
 result = instance.get_time_labels()
 ```
 
@@ -303,8 +318,11 @@ restored.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
-result = instance.load(path=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
+result = instance.load(path='example_output.bin')
 ```
 
 ### `TempRefWord2Vec.load_vectors()`
@@ -328,8 +346,11 @@ Use `TempRefWord2Vec.load()` to load a saved TempRefWord2Vec model.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
-result = instance.load_vectors(path=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
+result = instance.load_vectors(path='example_output.bin')
 ```
 
 ### `TempRefWord2Vec.save()`
@@ -356,8 +377,11 @@ Note: The combined corpus is NOT saved to reduce file size.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
-result = instance.save(path=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
+result = instance.save(path='example_output.bin')
 ```
 
 ### `TempRefWord2Vec.train()`
@@ -391,6 +415,9 @@ Final loss value if calculate_loss is True, None otherwise.
 ```python
 from qhchina.analytics.embeddings.word2vec.tempref import TempRefWord2Vec
 
-instance = TempRefWord2Vec(sentences=..., targets=...)
+instance = TempRefWord2Vec(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    targets=['人民', '朝廷', '赋税']
+)
 result = instance.train()
 ```

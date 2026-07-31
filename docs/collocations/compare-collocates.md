@@ -72,5 +72,9 @@ pd.DataFrame or list[dict] with columns/keys:
 ```python
 from qhchina.analytics.collocations import compare_collocates
 
-result = compare_collocates(corpus_a=..., corpus_b=..., target_words=...)
+result = compare_collocates(
+    corpus_a=['人民', '经济'],
+    corpus_b=['人民', '经济'],
+    target_words=['人民', '朝廷', '赋税']
+)
 ```

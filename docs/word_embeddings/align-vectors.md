@@ -21,7 +21,11 @@ Returns a tuple of (aligned_vectors, transformation_matrix).
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics._vector_ops import align_vectors
 
-result = align_vectors(source_vectors=..., target_vectors=...)
+result = align_vectors(
+    source_vectors=np.array([0.8, 0.1, 0.3]),
+    target_vectors=np.array([0.8, 0.1, 0.3])
+)
 ```

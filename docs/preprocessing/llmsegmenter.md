@@ -40,3 +40,11 @@ Segmentation wrapper using Language Model APIs like OpenAI.
 - `timeout`: Timeout in seconds for API calls (default 60.0). Set to None for no timeout.
 - `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
+
+
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import LLMSegmenter
+
+model = LLMSegmenter(api_key='示例', model='示例', endpoint='示例')
+```

@@ -112,5 +112,8 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 ```python
 from qhchina.analytics.collocations import find_collocates
 
-result = find_collocates(sentences=..., target_words=...)
+result = find_collocates(
+    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
+    target_words=['人民', '朝廷', '赋税']
+)
 ```

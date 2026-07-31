@@ -22,6 +22,13 @@ Segmentation wrapper for Jieba Chinese text segmentation.
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 
+**Example:**
+```python
+from qhchina.preprocessing.segmentation import JiebaSegmenter
+
+model = JiebaSegmenter()
+```
+
 ## Methods
 
 ### `JiebaSegmenter.reset_user_dict()`

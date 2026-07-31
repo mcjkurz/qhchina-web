@@ -89,3 +89,11 @@ Full workflow with segmentation and analysis::
         filters={"min_count": 5, "max_p": 0.05}
     )
 ```
+
+
+**Example:**
+```python
+from qhchina.helpers.texts import download_corpus
+
+result = download_corpus(name='示例')
+```

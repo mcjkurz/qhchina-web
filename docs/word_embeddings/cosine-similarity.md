@@ -26,7 +26,8 @@ Returns 0.0 if either vector has zero norm.
 
 **Example:**
 ```python
+import numpy as np
 from qhchina.analytics._vector_ops import cosine_similarity
 
-result = cosine_similarity(v1=..., v2=...)
+result = cosine_similarity(v1=np.array([0.8, 0.1, 0.3]), v2=np.array([0.8, 0.1, 0.3]))
 ```

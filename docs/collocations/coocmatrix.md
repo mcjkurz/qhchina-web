@@ -52,6 +52,13 @@ arr = matrix.to_dense()
 ```
 
 
+**Example:**
+```python
+from qhchina.analytics.collocations import CoocMatrix
+
+model = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
+```
+
 ## Methods
 
 ### `CoocMatrix.get()`
@@ -75,8 +82,8 @@ Co-occurrence count, or default if not found.
 ```python
 from qhchina.analytics.collocations import CoocMatrix
 
-instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
-result = instance.get(row_key=..., col_key=...)
+instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
+result = instance.get(row_key='示例', col_key='示例')
 ```
 
 ### `CoocMatrix.sum()`
@@ -101,7 +108,7 @@ int for total sum, or 1-D numpy array of shape `(V,)`.
 ```python
 from qhchina.analytics.collocations import CoocMatrix
 
-instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
 result = instance.sum()
 ```
 
@@ -123,7 +130,7 @@ DataFrame with vocabulary words as both index and columns.
 ```python
 from qhchina.analytics.collocations import CoocMatrix
 
-instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
 result = instance.to_dataframe()
 ```
 
@@ -145,7 +152,7 @@ Warning: This may use significant memory for large vocabularies.
 ```python
 from qhchina.analytics.collocations import CoocMatrix
 
-instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
 result = instance.to_dense()
 ```
 
@@ -178,6 +185,6 @@ New CoocMatrix with PPMI float64 values (sparse).
 ```python
 from qhchina.analytics.collocations import CoocMatrix
 
-instance = CoocMatrix(matrix=..., vocab_list=..., word_to_index=...)
+instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_index=1)
 result = instance.to_ppmi()
 ```

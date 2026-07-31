@@ -86,6 +86,13 @@ results = stylo.predict(disputed_tokens, k=3)  # [(author, score), ...]
 ```
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+model = Stylometry()
+```
+
 ## Methods
 
 ### `Stylometry.bootstrap_predict()`
@@ -140,6 +147,14 @@ print(f"Confidence: {result['confidence']:.1%}")
 print(f"Vote distribution: {result['distribution']}")
 ```
 
+
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.bootstrap_predict(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
+```
 
 ### `Stylometry.dendrogram()`
 
@@ -196,7 +211,7 @@ Compute the distance between two documents. Lower = more similar.
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.distance(a=..., b=...)
+result = instance.distance(a=['人民', '经济'], b=['人民', '经济'])
 ```
 
 ### `Stylometry.distance_matrix()`
@@ -246,7 +261,7 @@ Fit the model on a corpus and transform documents to feature vectors.
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.fit_transform(corpus=...)
+result = instance.fit_transform(corpus=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
 ### `Stylometry.get_author_profile()`
@@ -265,7 +280,7 @@ Returns a DataFrame with 'feature' and 'value' columns, sorted by value descendi
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.get_author_profile(author=...)
+result = instance.get_author_profile(author='示例')
 ```
 
 ### `Stylometry.get_feature_comparison()`
@@ -336,7 +351,7 @@ List of (doc_id, value) tuples sorted by similarity (most similar first).
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.most_similar(query=...)
+result = instance.most_similar(query='改革')
 ```
 
 ### `Stylometry.plot()`
@@ -410,7 +425,7 @@ List of (author, score) tuples.
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.predict(text=...)
+result = instance.predict(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
 ### `Stylometry.predict_author()`
@@ -437,7 +452,7 @@ Predicted author name (str).
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.predict_author(text=...)
+result = instance.predict_author(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
 ### `Stylometry.predict_confidence()`
@@ -459,7 +474,7 @@ List of (author, confidence) tuples where confidence is 0-1, higher = more likel
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.predict_confidence(text=...)
+result = instance.predict_confidence(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
 ### `Stylometry.rolling_delta()`
@@ -515,6 +530,14 @@ print(results[['position', 'distance']])
 ```
 
 
+**Example:**
+```python
+from qhchina.analytics.stylometry import Stylometry
+
+instance = Stylometry()
+result = instance.rolling_delta(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
+```
+
 ### `Stylometry.similarity()`
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1557)
@@ -529,7 +552,7 @@ Compute the similarity between two documents. Higher = more similar.
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.similarity(a=..., b=...)
+result = instance.similarity(a=['人民', '经济'], b=['人民', '经济'])
 ```
 
 ### `Stylometry.transform()`
@@ -554,7 +577,7 @@ Feature vector (numpy array)
 from qhchina.analytics.stylometry import Stylometry
 
 instance = Stylometry()
-result = instance.transform(tokens=...)
+result = instance.transform(tokens=['人民', '经济'])
 ```
 
 ### `Stylometry.vocabulary_stats()`
