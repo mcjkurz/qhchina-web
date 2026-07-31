@@ -40,5 +40,5 @@ Segmentation wrapper for BERT-based Chinese word segmentation.
   Default is True, which works for BERT-based models.
 - `max_sequence_length`: Maximum sequence length for BERT models (default 512). If 
   the text is longer than this, it will be split into chunks.
-- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).

@@ -31,16 +31,16 @@ API changes). Use: pip install "transformers<5.0"
 
 **Parameters:**
 - `model`: Tokenizer model to use. Can be:
-  - HanLP enum value (e.g., ``hanlp.pretrained.tok.FINE_ELECTRA_SMALL_ZH``)
+  - HanLP enum value (e.g., `hanlp.pretrained.tok.FINE_ELECTRA_SMALL_ZH`)
   - String shorthand: 'coarse', 'fine', 'ctb9', 'ctb9_base', 'ancient', 
     'large', 'multilingual'
   - Full model name string (e.g., 'CTB9_TOK_ELECTRA_BASE')
   - Direct URL or path to a model
   - None for default (COARSE_ELECTRA_SMALL_ZH)
 - `pos_tagging`: Whether to enable POS tagging. When enabled, tokens can be
-  filtered using ``excluded_pos`` in filters. Default is False.
-- `pos_model`: POS tagger model to use when ``pos_tagging=True``. Can be:
-  - HanLP enum value (e.g., ``hanlp.pretrained.pos.CTB9_POS_ELECTRA_SMALL``)
+  filtered using `excluded_pos` in filters. Default is False.
+- `pos_model`: POS tagger model to use when `pos_tagging=True`. Can be:
+  - HanLP enum value (e.g., `hanlp.pretrained.pos.CTB9_POS_ELECTRA_SMALL`)
   - String shorthand: 'ctb9', 'ctb5', 'pku', 'c863'
   - Full model name string (e.g., 'PKU_POS_ELECTRA_SMALL')
   - Direct URL or path to a model
@@ -51,7 +51,7 @@ API changes). Use: pip install "transformers<5.0"
   - 'combine': Low-priority dictionary that combines with model predictions
     (longest-prefix-matching on output tokens)
   Default is 'force'.
-- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 **Example:**

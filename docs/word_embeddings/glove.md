@@ -62,18 +62,18 @@ Two co-occurrence backends are available:
 - `epochs`: Number of full passes over co-occurrence pairs.
 - `workers`: Accepted for compatibility with Word2Vec API.
 - `verbose`: If True, logs progress and backend details.
-- `calculate_loss`: If True, ``train()`` returns average epoch loss.
-- `mode`: ``"in_memory"`` or ``"disk"`` co-occurrence backend.
-- `x_max`: GloVe weighting cutoff in ``f(x)``.
-- `power`: GloVe weighting exponent in ``f(x)``.
+- `calculate_loss`: If True, `train()` returns average epoch loss.
+- `mode`: `"in_memory"` or `"disk"` co-occurrence backend.
+- `x_max`: GloVe weighting cutoff in `f(x)`.
+- `power`: GloVe weighting exponent in `f(x)`.
 - `min_cooc_count`: Drop co-occurrence pairs below this weight.
 - `shard_sentence_count`: In disk mode, flush local pair map every N
   sentences.
 - `cooc_train_chunk_size`: Number of merged pairs passed per Cython
   update chunk in disk mode.
 - `max_cooc_entries_in_memory`: Safety cap for local pair-map size.
-- `combine_vectors`: If True, expose ``(W + W_tilde)/2`` as ``self.W``;
-  otherwise expose ``W`` only.
+- `combine_vectors`: If True, expose `(W + W_tilde)/2` as `self.W`;
+  otherwise expose `W` only.
 
 
 ## Methods
@@ -87,7 +87,7 @@ Two co-occurrence backends are available:
 Load a previously saved GloVe model from pickle.
 
 **Raises:**
-- `ValueError`: if ``model_type`` in the file is not ``"glove"``.
+- `ValueError`: if `model_type` in the file is not `"glove"`.
 
 
 ### `GloVe.save()`
@@ -130,11 +130,11 @@ Memory behavior:
 
 **Parameters:**
 - `sentences`: Optional restartable corpus override.
-- `epochs`: Number of epochs. If None, uses ``self.epochs`` from model
+- `epochs`: Number of epochs. If None, uses `self.epochs` from model
   initialization.
 - `update_vocab`: Not implemented for GloVe (raises when requested on
   initialized vocabulary).
-- `reset_lr`: If True, reset ``alpha`` to constructor value.
+- `reset_lr`: If True, reset `alpha` to constructor value.
 
 **Returns:**
-Average epoch loss when ``calculate_loss=True``; otherwise ``None``.
+Average epoch loss when `calculate_loss=True`; otherwise `None`.

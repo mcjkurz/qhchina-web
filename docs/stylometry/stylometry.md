@@ -35,7 +35,7 @@ comparing authors, and attributing disputed texts. Inspired by the R package
 - `ngram_range` (tuple): Range of n-gram sizes as (min_n, max_n). Default (1, 1) uses
   only unigrams (single tokens). Use (2, 2) for bigrams only, or (1, 2) to pool
   unigrams and bigrams together. When multiple n-gram sizes are pooled, the top
-  ``n_features`` are selected from the combined set ranked by corpus frequency,
+  `n_features` are selected from the combined set ranked by corpus frequency,
   so the final feature set may contain a mix of different n-gram sizes.
 - `transform` (str): Feature transformation method:
   - 'zscore': Z-score normalization (default, recommended for Delta methods)

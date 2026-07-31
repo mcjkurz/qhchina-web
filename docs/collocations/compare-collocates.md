@@ -36,19 +36,19 @@ disappeared between the two corpora.
 - `corpus_b` (Iterable[list[str]]): Second corpus (tokenized sentences).
   Must be restartable.
 - `target_words` (str | list[str]): Target word(s) to compare collocates for.
-- `method` (str): Collocation method (``'window'`` or ``'sentence'``).
-  Default ``'window'``.
+- `method` (str): Collocation method (`'window'` or `'sentence'`).
+  Default `'window'`.
 - `horizon` (int | tuple | None): Context window size. See
-  ``find_collocates`` for details. Default None (uses 5 for
+  `find_collocates` for details. Default None (uses 5 for
   window method).
 - `min_obs` (int): Minimum observed co-occurrence in either corpus for a
   collocate to be included. Default 5.
-- `stable_threshold` (float): Minimum absolute ``log_ratio_change`` for a
-  collocate to be classified as ``'strengthened'`` or ``'weakened'``
-  rather than ``'stable'``. Default 0.1.
+- `stable_threshold` (float): Minimum absolute `log_ratio_change` for a
+  collocate to be classified as `'strengthened'` or `'weakened'`
+  rather than `'stable'`. Default 0.1.
 - `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
-- `**kwargs`: Additional keyword arguments passed to ``find_collocates``
-  (e.g., ``alternative``, ``batch_words``, ``max_sentence_length``).
+- `**kwargs`: Additional keyword arguments passed to `find_collocates`
+  (e.g., `alternative`, `batch_words`, `max_sentence_length`).
 
 **Returns:**
 pd.DataFrame or list[dict] with columns/keys:
@@ -57,12 +57,12 @@ pd.DataFrame or list[dict] with columns/keys:
 - **collocate** (str): The co-occurring word.
 - **ratio_a** (float): Observed/expected ratio in corpus A.
 - **ratio_b** (float): Observed/expected ratio in corpus B.
-- **log_ratio_change** (float): ``log2(ratio_b / ratio_a)``.
+- **log_ratio_change** (float): `log2(ratio_b / ratio_a)`.
   Positive = strengthened in B, negative = weakened in B.
 - **obs_a** (int): Observed count in corpus A.
 - **obs_b** (int): Observed count in corpus B.
 - **p_value_a** (float): P-value in corpus A.
 - **p_value_b** (float): P-value in corpus B.
-- **status** (str): One of ``'strengthened'``, ``'weakened'``,
-  ``'appeared'`` (only in B), ``'disappeared'`` (only in A),
-  or ``'stable'``.
+- **status** (str): One of `'strengthened'`, `'weakened'`,
+  `'appeared'` (only in B), `'disappeared'` (only in A),
+  or `'stable'`.

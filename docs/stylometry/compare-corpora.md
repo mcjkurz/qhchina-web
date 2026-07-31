@@ -41,11 +41,11 @@ Compare two corpora to identify statistically significant differences in word us
   Eligibility filters (applied before testing; define the hypothesis family):
   
   - 'min_count': int or tuple - Minimum count threshold(s), combined
-    with AND semantics. An integer ``n`` requires at least ``n``
-    occurrences in both corpora. A tuple ``(a, b)`` requires at
-    least ``a`` occurrences in corpus A and at least ``b`` in
-    corpus B. Thus ``(5, 0)`` filters only on corpus A, while
-    ``(0, 5)`` filters only on corpus B. Default is 0.
+    with AND semantics. An integer `n` requires at least `n`
+    occurrences in both corpora. A tuple `(a, b)` requires at
+    least `a` occurrences in corpus A and at least `b` in
+    corpus B. Thus `(5, 0)` filters only on corpus A, while
+    `(0, 5)` filters only on corpus B. Default is 0.
   - 'stopwords': list - Words to exclude from results.
   - 'min_word_length': int - Minimum character length for words.
   
@@ -56,16 +56,16 @@ Compare two corpora to identify statistically significant differences in word us
   P-value filters (two mutually exclusive workflows):
   
   - 'max_p': float - Maximum raw p-value threshold. Only valid when 
-    ``correction`` is None. Use for simple unadjusted hypothesis testing.
+    `correction` is None. Use for simple unadjusted hypothesis testing.
   - 'max_adjusted_p': float - Maximum adjusted p-value. Only valid when 
-    ``correction`` is set. Applied after correction is computed.
+    `correction` is set. Applied after correction is computed.
   
-  Using ``max_p`` together with ``correction`` raises a ValueError, because
+  Using `max_p` together with `correction` raises a ValueError, because
   pre-filtering on raw p-values violates the distributional assumptions
   required by multiple testing procedures (BH, Bonferroni).
     
 - `correction` (str): Multiple testing correction method. When set,
-  an ``adjusted_p_value`` column is added to the results. The correction
+  an `adjusted_p_value` column is added to the results. The correction
   is applied after eligibility filters, so only words that pass those
   filters count toward the number of tests.
   
@@ -89,7 +89,7 @@ pandas.DataFrame or list[dict] with columns/keys:
   Present for 'chi2', 'chi2_corrected', and 'log_likelihood' methods.
   Not present for 'fisher' (which has no test statistic).
 - **p_value** (float): Two-sided p-value.
-- **adjusted_p_value** (float, optional): Present only if ``correction`` is set.
+- **adjusted_p_value** (float, optional): Present only if `correction` is set.
 
 **Example:**
 ```python

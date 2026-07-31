@@ -53,7 +53,7 @@ restartable generator classes all work; single-use generators do not.
     (2, 3) finds collocates 2 words left and 3 words right of target.
   - None: Uses default of 5 for 'window' method
 - `filters` (FilterOptions | None): Dictionary of filters to apply to results.
-  All filters (except ``max_adjusted_p``) are applied BEFORE multiple testing 
+  All filters (except `max_adjusted_p`) are applied BEFORE multiple testing 
   correction, defining the "family" of hypotheses being tested. This maximizes 
   statistical power by not correcting for collocates that were never of interest.
   
@@ -73,7 +73,7 @@ restartable generator classes all work; single-use generators do not.
   - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction,
     applied after correction is computed)
 - `correction` (str): Multiple testing correction method. When set,
-  an ``adjusted_p_value`` column is added to the results. The correction
+  an `adjusted_p_value` column is added to the results. The correction
   is applied AFTER all other filters, so only collocates that pass those
   filters count toward the number of tests.
   
@@ -105,4 +105,4 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
   Values > 1 indicate attraction, < 1 indicate repulsion.
 - **obs_global** (int): Total occurrences of the collocate in the corpus.
 - **p_value** (float): P-value from Fisher's exact test.
-- **adjusted_p_value** (float, optional): Present only if ``correction`` is set.
+- **adjusted_p_value** (float, optional): Present only if `correction` is set.

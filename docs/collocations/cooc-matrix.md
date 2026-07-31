@@ -41,7 +41,7 @@ Returns a CoocMatrix object with numpy-like indexing:
 
 **Parameters:**
 - `documents` (Iterable[list[str]]): Iterable of tokenized documents, where
-  each document is a list of tokens. Must be restartable when ``vocab``
+  each document is a list of tokens. Must be restartable when `vocab`
   is not provided (iterated twice).
 - `horizon`: Context window size relative to each word. Only applicable for method='window'.
   If not provided, defaults to 5 for window method. Must not be provided for 

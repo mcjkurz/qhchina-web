@@ -50,7 +50,7 @@ to begin training.
 **Parameters:**
 - `sentences`: Iterable of tokenized sentences, where each sentence is a list of
   string tokens. Must be restartable (can be iterated multiple times).
-  For streaming from a file, use ``LineSentenceFile``.
+  For streaming from a file, use `LineSentenceFile`.
 - `vector_size` (int): Dimensionality of the word vectors (default: 100).
 - `window` (int): Maximum distance between the current and predicted word (default: 5).
 - `min_word_count` (int): Ignores all words with frequency lower than this (default: 5).
@@ -129,7 +129,7 @@ and word counts are not exported as external formats don't support them.
 - `path`: Output file path.
 - `format`: Export format, one of:
   - "word2vec": Google word2vec C format (default). Compatible with
-    gensim's ``KeyedVectors.load_word2vec_format()``.
+    gensim's `KeyedVectors.load_word2vec_format()`.
   - "glove": GloVe text format. No header, space-separated values.
   - "gensim": Gensim's native KeyedVectors format. Requires gensim.
 - `binary`: For word2vec format only. If True (default), write vectors as
@@ -212,7 +212,7 @@ are initialized automatically.
 - `path`: Path to the vectors file.
 - `format`: Input format, one of:
   - "word2vec": Google word2vec C format (default). Compatible with
-    gensim's ``save_word2vec_format()``.
+    gensim's `save_word2vec_format()`.
   - "glove": GloVe text format. No header, space-separated values.
   - "gensim": Gensim's native KeyedVectors format.
 - `binary`: For word2vec format only. If True (default), expect binary floats.
@@ -337,14 +337,14 @@ training.
 **Parameters:**
 - `sentences`: Iterable of tokenized sentences. If None, uses sentences
   provided at initialization.
-- `epochs`: Number of training epochs. If None, uses ``self.epochs`` from
+- `epochs`: Number of training epochs. If None, uses `self.epochs` from
   model initialization.
 - `update_vocab`: If True, expand vocabulary with new words from sentences.
   New words are initialized using the mean of existing embeddings
   (Hewitt 2021) to preserve the pretrained distribution. Only
   effective when the model already has a vocabulary.
-- `reset_lr`: If True (default), reset learning rate to ``_initial_alpha``
-  for this training run. If False, continue from current ``alpha``
+- `reset_lr`: If True (default), reset learning rate to `_initial_alpha`
+  for this training run. If False, continue from current `alpha`
   (useful for true continuation of a training run).
 
 **Returns:**

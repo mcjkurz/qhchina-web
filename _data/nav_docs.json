@@ -105,30 +105,6 @@
         "summary": "Global Vectors (GloVe) model with sparse co-occurrence training."
       },
       {
-        "name": "BalancedSentenceIterator",
-        "anchor": "balancedsentenceiterator",
-        "url": "/docs/word_embeddings/balancedsentenceiterator/",
-        "summary": "Iterator that streams sentences from multiple corpus sources with configurable sampling."
-      },
-      {
-        "name": "SingleCorpusTemporalIterator",
-        "anchor": "singlecorpustemporaliterator",
-        "url": "/docs/word_embeddings/singlecorpustemporaliterator/",
-        "summary": "Streaming iterator over a single corpus that yields :class:`TemporalSentence` objects."
-      },
-      {
-        "name": "TemporalSentence",
-        "anchor": "temporalsentence",
-        "url": "/docs/word_embeddings/temporalsentence/",
-        "summary": "A sentence (list of tokens) annotated with a time slice index."
-      },
-      {
-        "name": "TemporalSentenceIterator",
-        "anchor": "temporalsentenceiterator",
-        "url": "/docs/word_embeddings/temporalsentenceiterator/",
-        "summary": "Streaming iterator that interleaves sentences from multiple corpora with time metadata."
-      },
-      {
         "name": "project_2d()",
         "anchor": "project-2d",
         "url": "/docs/word_embeddings/project-2d/",

@@ -54,7 +54,7 @@ Interpreting Results:
 **Parameters:**
 - `sentences`: Dictionary mapping time period labels to corpora. Each value must
   be an iterable of tokenized sentences.
-  Format: ``{"label1": [["w1", "w2"], ...], "label2": LineSentenceFile("song.txt"), ...}``
+  Format: `{"label1": [["w1", "w2"], ...], "label2": LineSentenceFile("song.txt"), ...}`
 - `targets`: List of target words to trace semantic change.
 - `sampling_strategy`: How to sample from corpora during training:
   - "balanced" (default): Equal tokens from each corpus, stops at smallest corpus.
@@ -148,19 +148,19 @@ periods stored in the model (in the order they were provided at initialisation).
 - `filters`: Optional dict to restrict which reference words are considered.
   Supported keys:
   
-  - ``min_word_count`` (int or tuple): Minimum number of occurrences a
+  - `min_word_count` (int or tuple): Minimum number of occurrences a
     word must have in **each** period to be included. Pass an int to use
     the same threshold for every period, or a tuple whose length equals
     the number of time slices to set per-period thresholds.
-  - ``min_word_length`` (int): Minimum character length of a word.
-  - ``stopwords`` (set): Words to exclude from the reference set.
-  - ``reference_words`` (list/set): Explicit whitelist of reference words.
-  - ``vocab_top_n`` (int): Only consider the union of the top-N most
+  - `min_word_length` (int): Minimum character length of a word.
+  - `stopwords` (set): Words to exclude from the reference set.
+  - `reference_words` (list/set): Explicit whitelist of reference words.
+  - `vocab_top_n` (int): Only consider the union of the top-N most
     frequent words from each period's corpus.
 
 **Returns:**
-Dict mapping transition names (e.g. ``"宋_to_明"``) to lists of
-``(word, change)`` tuples sorted by descending change score.
+Dict mapping transition names (e.g. `"宋_to_明"`) to lists of
+`(word, change)` tuples sorted by descending change score.
 
 **Example:**
 ```python
@@ -314,10 +314,10 @@ from instance attributes set during initialization via `**kwargs`.
 **Parameters:**
 - `sentences`: Optional replacement corpora mapping period labels to corpora.
   Required for models loaded from disk, which do not persist corpora.
-- `epochs`: Number of epochs. If None, uses ``self.epochs`` from model
+- `epochs`: Number of epochs. If None, uses `self.epochs` from model
   initialization.
 - `update_vocab`: Not supported for TempRefWord2Vec. Vocabulary remains fixed.
-- `reset_lr`: If True (default), reset learning rate to initial ``alpha``.
+- `reset_lr`: If True (default), reset learning rate to initial `alpha`.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.

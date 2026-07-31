@@ -25,7 +25,7 @@ to a local directory.
 
 **Parameters:**
 - `name`: Corpus name (e.g., "张爱玲", "songshi"). This corresponds to a 
-  folder name under ``corpora/`` in the qhchina-data repository.
+  folder name under `corpora/` in the qhchina-data repository.
 - `parent_dir`: Parent directory where the corpus folder will be created.
   If None (default), uses the current working directory.
 - `show_progress`: If True (default), display a progress bar showing

@@ -17,7 +17,7 @@ Part of **Helper Utilities** (`qhchina.helpers.texts.list_remote_corpora`).
 List available corpora in the qhchina-data GitHub repository.
 
 **Returns:**
-List of corpus names (folder names under ``corpora/``).
+List of corpus names (folder names under `corpora/`).
 
 **Raises:**
 - `ImportError`: If requests is not installed.

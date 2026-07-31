@@ -33,7 +33,7 @@ corpus and co-trained with downstream statistical components (POS tagging, NER, 
 - `max_doc_length`: Maximum document length before internal chunking. Documents longer
   than this will be split into chunks for processing to avoid memory issues.
   Default is 100000 characters (~100KB). Set to None to disable chunking.
-- `**kwargs`: Base class arguments forwarded to :class:`SegmentationWrapper`
+- `**kwargs`: Base class arguments forwarded to `SegmentationWrapper`
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
 

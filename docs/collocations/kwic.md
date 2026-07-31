@@ -36,15 +36,15 @@ or corpus position — the standard concordance sort options.
 - `horizon` (int): Number of context tokens to show on each side of the
   node. Default is 10.
 - `sort_by` (str): How to sort concordance lines:
-  - ``'right'``: Alphabetically by right context (standard R1 sort).
-  - ``'left'``: Reverse alphabetically by last token of left context
+  - `'right'`: Alphabetically by right context (standard R1 sort).
+  - `'left'`: Reverse alphabetically by last token of left context
     (standard L1 sort).
-  - ``'position'``: Corpus order (by doc_index, then position).
+  - `'position'`: Corpus order (by doc_index, then position).
   
-  Default is ``'right'``.
+  Default is `'right'`.
 - `separator` (str): String used to join context tokens for display columns.
-  Default ``""`` (direct concatenation). Use
-  ``" "`` for space-segmented text.
+  Default `""` (direct concatenation). Use
+  `" "` for space-segmented text.
 - `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
 - `max_results` (int | None): Maximum number of concordance lines to
   return. None for no limit. Default None.
@@ -54,9 +54,9 @@ or corpus position — the standard concordance sort options.
 **Returns:**
 pd.DataFrame or list[dict] with columns/keys:
 
-- **left** (str): Left context joined by ``separator``.
+- **left** (str): Left context joined by `separator`.
 - **node** (str): The keyword.
-- **right** (str): Right context joined by ``separator``.
+- **right** (str): Right context joined by `separator`.
 - **left_tokens** (list[str]): Left context as a token list.
 - **right_tokens** (list[str]): Right context as a token list.
 - **doc_index** (int): Index of the sentence in the corpus.

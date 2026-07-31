@@ -82,11 +82,11 @@ Sum co-occurrence counts along an axis.
 **Parameters:**
 - `axis`: Axis along which to sum.
   - None: Total sum of all entries (scalar int).
-  - 0: Column sums, shape ``(V,)``.
-  - 1: Row sums, shape ``(V,)``.
+  - 0: Column sums, shape `(V,)`.
+  - 1: Row sums, shape `(V,)`.
 
 **Returns:**
-int for total sum, or 1-D numpy array of shape ``(V,)``.
+int for total sum, or 1-D numpy array of shape `(V,)`.
 
 
 ### `CoocMatrix.to_dataframe()`

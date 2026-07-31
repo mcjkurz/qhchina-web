@@ -19,22 +19,6 @@ functions:
     anchor: "glove"
     url: "/docs/word_embeddings/glove/"
     summary: "Global Vectors (GloVe) model with sparse co-occurrence training."
-  - name: "BalancedSentenceIterator"
-    anchor: "balancedsentenceiterator"
-    url: "/docs/word_embeddings/balancedsentenceiterator/"
-    summary: "Iterator that streams sentences from multiple corpus sources with configurable sampling."
-  - name: "SingleCorpusTemporalIterator"
-    anchor: "singlecorpustemporaliterator"
-    url: "/docs/word_embeddings/singlecorpustemporaliterator/"
-    summary: "Streaming iterator over a single corpus that yields :class:`TemporalSentence` objects."
-  - name: "TemporalSentence"
-    anchor: "temporalsentence"
-    url: "/docs/word_embeddings/temporalsentence/"
-    summary: "A sentence (list of tokens) annotated with a time slice index."
-  - name: "TemporalSentenceIterator"
-    anchor: "temporalsentenceiterator"
-    url: "/docs/word_embeddings/temporalsentenceiterator/"
-    summary: "Streaming iterator that interleaves sentences from multiple corpora with time metadata."
   - name: "project_2d()"
     anchor: "project-2d"
     url: "/docs/word_embeddings/project-2d/"
@@ -160,10 +144,6 @@ Select a symbol to view full documentation:
 - [`TempRefWord2Vec`](/docs/word_embeddings/temprefword2vec/) - Word2Vec with Temporal Referencing (TR) for tracking semantic change.
 - [`DynamicWord2Vec`](/docs/word_embeddings/dynamicword2vec/) - Word2Vec with time-sliced embeddings for diachronic semantic analysis.
 - [`GloVe`](/docs/word_embeddings/glove/) - Global Vectors (GloVe) model with sparse co-occurrence training.
-- [`BalancedSentenceIterator`](/docs/word_embeddings/balancedsentenceiterator/) - Iterator that streams sentences from multiple corpus sources with configurable sampling.
-- [`SingleCorpusTemporalIterator`](/docs/word_embeddings/singlecorpustemporaliterator/) - Streaming iterator over a single corpus that yields :class:`TemporalSentence` objects.
-- [`TemporalSentence`](/docs/word_embeddings/temporalsentence/) - A sentence (list of tokens) annotated with a time slice index.
-- [`TemporalSentenceIterator`](/docs/word_embeddings/temporalsentenceiterator/) - Streaming iterator that interleaves sentences from multiple corpora with time metadata.
 - [`project_2d()`](/docs/word_embeddings/project-2d/) - Projects high-dimensional vectors into 2D using PCA, t-SNE, or UMAP and visualizes them.
 - [`get_bias_direction()`](/docs/word_embeddings/get-bias-direction/) - Compute the direction vector for measuring bias.
 - [`calculate_bias()`](/docs/word_embeddings/calculate-bias/) - Calculate bias scores for target words along an axis defined by anchor pairs.

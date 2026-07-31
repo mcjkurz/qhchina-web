@@ -59,8 +59,8 @@ regularization strength.
 **Parameters:**
 - `sentences`: Dictionary mapping time period labels to corpora. Each value must
   be an iterable of tokenized sentences (untagged).
-  Format: ``{"label1": [["w1", "w2"], ...], "label2": LineSentenceFile("file.txt"), ...}``
-- `training_mode`: ``"joint"`` (default) or ``"sequential"``.
+  Format: `{"label1": [["w1", "w2"], ...], "label2": LineSentenceFile("file.txt"), ...}`
+- `training_mode`: `"joint"` (default) or `"sequential"`.
 - `temporal_lambda`: Regularization strength for joint mode (default: 0.1).
 - `temporal_reg_V`: If True, also regularize V in joint mode (default: True).
 - `procrustes_align`: Apply Procrustes alignment after joint training
@@ -144,14 +144,14 @@ with meaningful training signal in both slices are compared.
 - `filters`: Optional dict to restrict which reference words are considered.
   Supported keys:
   
-  - ``vocab_top_n`` (int): For each transition, take the top-N most
+  - `vocab_top_n` (int): For each transition, take the top-N most
     frequent words from each of the two adjacent periods and use
     their union (at most 2N words per transition).
-  - ``min_word_count`` (int): Minimum occurrences a word must have
+  - `min_word_count` (int): Minimum occurrences a word must have
     in **both** adjacent periods to be included in that transition.
-  - ``min_word_length`` (int): Minimum character length of a word.
-  - ``stopwords`` (set): Words to exclude from the reference set.
-  - ``reference_words`` (list/set): Explicit whitelist of reference words.
+  - `min_word_length` (int): Minimum character length of a word.
+  - `stopwords` (set): Words to exclude from the reference set.
+  - `reference_words` (list/set): Explicit whitelist of reference words.
 
 **Returns:**
 Dict mapping transition names (e.g., "宋_to_明") to lists of
@@ -350,10 +350,10 @@ Dispatches to joint or sequential training based on `training_mode`.
 **Parameters:**
 - `sentences`: Optional replacement corpora mapping period labels to corpora.
   Required for models loaded from disk, which do not persist corpora.
-- `epochs`: Number of epochs. If None, uses ``self.epochs`` from model
+- `epochs`: Number of epochs. If None, uses `self.epochs` from model
   initialization.
 - `update_vocab`: Not supported for DynamicWord2Vec. Vocabulary remains fixed.
-- `reset_lr`: If True (default), reset learning rate to initial ``alpha``.
+- `reset_lr`: If True (default), reset learning rate to initial `alpha`.
 
 **Returns:**
 Final loss value if calculate_loss is True, None otherwise.
