@@ -1099,7 +1099,7 @@ Final loss value if calculate_loss is True, None otherwise.
 
 <br>
 
-<h3 id="glove">qhchina.analytics.embeddings.glove.base.GloVe <a href="#glove" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L42" class="source-link" title="View source on GitHub">[source]</a></h3>
+<h3 id="glove">qhchina.analytics.embeddings.glove.base.GloVe <a href="#glove" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L44" class="source-link" title="View source on GitHub">[source]</a></h3>
 
 <pre class="signature"><code><span class="sig-name">GloVe</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
@@ -1119,6 +1119,7 @@ Final loss value if calculate_loss is True, None otherwise.
     <span class="sig-param">power</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.75</span>,
     <span class="sig-param">min_cooc_count</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>,
     <span class="sig-param">shard_sentence_count</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">50000</span>,
+    <span class="sig-param">cooc_train_chunk_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">200000</span>,
     <span class="sig-param">max_cooc_entries_in_memory</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5000000</span>,
     <span class="sig-param">combine_vectors</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
     <span class="sig-param">_skip_init</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
@@ -1126,30 +1127,72 @@ Final loss value if calculate_loss is True, None otherwise.
 
 Global Vectors (GloVe) model with sparse co-occurrence training.
 
-Notes:
-    - This implementation is single-corpus (base) GloVe.
-    - Training currently runs in one update stream even if `workers > 1`.
-    - `mode` controls how co-occurrence statistics are aggregated.
+This implementation follows the same high-level API shape as `Word2Vec`
+(explicit `train()`, vector querying, pickle save/load), while optimizing
+a GloVe weighted least-squares objective with AdaGrad updates in Cython.
 
-<h4 id="glove-load">qhchina.analytics.embeddings.glove.base.GloVe.load() <a href="#glove-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L460" class="source-link" title="View source on GitHub">[source]</a></h4>
+Two co-occurrence backends are available:
+- `mode="in_memory"`: fastest when memory is sufficient; accumulates all
+  sparse pairs in RAM before epoch updates.
+- `mode="disk"`: memory-bounded external aggregation; writes sorted shard
+  files and trains from a streaming k-way merge without materializing the
+  full sparse matrix.
+
+Notes:
+    - Base (single-corpus) GloVe only.
+    - `workers` is accepted for API consistency, but training updates are
+      currently executed as one shared update stream.
+    - Vectors returned by `get_vector`/`most_similar` come from either
+      `(W + W_tilde) / 2` (default) or `W` only when
+      `combine_vectors=False`.
+
+<h4 id="glove-load">qhchina.analytics.embeddings.glove.base.GloVe.load() <a href="#glove-load" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L705" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">load</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
-<h4 id="glove-save">qhchina.analytics.embeddings.glove.base.GloVe.save() <a href="#glove-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L421" class="source-link" title="View source on GitHub">[source]</a></h4>
+Load a previously saved GloVe model from pickle.
+
+**Raises:**
+- `ValueError`: if ``model_type`` in the file is not ``"glove"``.
+
+<h4 id="glove-save">qhchina.analytics.embeddings.glove.base.GloVe.save() <a href="#glove-save" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L660" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">save</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
-Persist full GloVe state including AdaGrad accumulators.
+Persist full GloVe state including optimizer accumulators.
 
-<h4 id="glove-similarity">qhchina.analytics.embeddings.glove.base.GloVe.similarity() <a href="#glove-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L412" class="source-link" title="View source on GitHub">[source]</a></h4>
+Stores model configuration, vocabulary statistics, trainable parameters,
+and AdaGrad state so training can continue after `load()`.
+
+<h4 id="glove-similarity">qhchina.analytics.embeddings.glove.base.GloVe.similarity() <a href="#glove-similarity" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L651" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">word1</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">word2</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">cross_space</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>)</code></pre>
 
-<h4 id="glove-train">qhchina.analytics.embeddings.glove.base.GloVe.train() <a href="#glove-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L312" class="source-link" title="View source on GitHub">[source]</a></h4>
+<h4 id="glove-train">qhchina.analytics.embeddings.glove.base.GloVe.train() <a href="#glove-train" class="header-link" title="Permalink">#</a> <a href="https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L507" class="source-link" title="View source on GitHub">[source]</a></h4>
 
 <pre class="signature"><code><span class="sig-name">train</span>(<span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">epochs</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">update_vocab</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">reset_lr</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
 Train GloVe on a restartable sentence iterable.
+
+Workflow:
+1. Build or reuse vocabulary.
+2. Build weighted co-occurrence pairs via `mode` backend.
+3. Run Cython AdaGrad updates for `epochs` passes.
+
+Memory behavior:
+- `in_memory` keeps all retained sparse pairs in RAM.
+- `disk` writes sorted shards and streams merged pairs by chunk,
+  avoiding full sparse-matrix materialization.
+
+**Parameters:**
+- `sentences`: Optional restartable corpus override.
+- `epochs`: Optional epoch override.
+- `update_vocab`: Not implemented for GloVe (raises when requested on
+  initialized vocabulary).
+- `reset_lr`: If True, reset ``alpha`` to constructor value.
+
+**Returns:**
+Average epoch loss when ``calculate_loss=True``; otherwise ``None``.
 
 <br>
 
