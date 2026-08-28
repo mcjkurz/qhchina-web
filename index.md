@@ -49,7 +49,7 @@ This project pursues disciplinary misalignments as sites where the limits of ide
 
 The future to come awaits always in the form of monstrosity.
 
-## Recent Events
+## Events
 
 {% include recent_events.html %}
 
