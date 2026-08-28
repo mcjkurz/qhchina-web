@@ -421,25 +421,15 @@ main {
 
 .events-scroll ul {
   margin: 0;
-  padding-left: 0;
-  list-style: none;
+  padding-left: 1.2rem;
 }
 
 .events-scroll li {
-  position: relative;
-  padding-left: 1.4rem;
   margin-bottom: 0.85rem;
 }
 
-.events-scroll li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.7rem;
-  width: 0.6rem;
-  height: 0.1rem;
-  background: var(--primary-color);
-  border-radius: 999px;
+.events-scroll li::marker {
+  color: var(--primary-color);
 }
 
 /* Separator image styling */
