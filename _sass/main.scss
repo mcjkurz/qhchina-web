@@ -384,9 +384,25 @@ main {
 }
 
 /* Home page recent events scroll container */
+.events-scroll-wrap {
+  position: relative;
+}
+
+.events-scroll-wrap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.75rem;
+  background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0));
+  pointer-events: none;
+  border-bottom-right-radius: 0.25rem;
+}
+
 .events-scroll {
   display: block;
-  height: 16rem;
+  height: 24rem;
   overflow-y: scroll;
   padding-right: 0.4rem;
   -webkit-overflow-scrolling: touch;
