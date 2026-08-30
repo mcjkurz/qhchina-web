@@ -81,7 +81,7 @@ permalink: /projects/
 
 <div class="projects-grid">
     <div class="project-card">
-        <h3><a href="https://mcjkurz.github.io/teaching/">Teaching Visualizations</a></h3>
+        <h3><a href="https://mcjkurz.github.io/teaching/visualizations/">Teaching Visualizations</a></h3>
         <p>Interactive demonstrations of machine learning concepts: cosine similarity, attention mechanisms, softmax temperature, PCA, etc.</p>
     </div>
 </div>
