@@ -64,7 +64,7 @@ topics = lda.get_topics(n_words=10)
 
 ## Methods
 
-### `LDAGibbsSampler.coherence()`
+### `LDAGibbsSampler.coherence()` {: #ldagibbssampler-coherence }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1243)
 
@@ -98,7 +98,7 @@ print(f"Average NPMI coherence: {avg_coherence:.4f}")
 ```
 
 
-### `LDAGibbsSampler.coherence_npmi()`
+### `LDAGibbsSampler.coherence_npmi()` {: #ldagibbssampler-coherence_npmi }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1181)
 
@@ -131,7 +131,7 @@ instance = LDAGibbsSampler()
 result = instance.coherence_npmi()
 ```
 
-### `LDAGibbsSampler.coherence_umass()`
+### `LDAGibbsSampler.coherence_umass()` {: #ldagibbssampler-coherence_umass }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1122)
 
@@ -164,7 +164,7 @@ instance = LDAGibbsSampler()
 result = instance.coherence_umass()
 ```
 
-### `LDAGibbsSampler.document_similarity()`
+### `LDAGibbsSampler.document_similarity()` {: #ldagibbssampler-document_similarity }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1008)
 
@@ -193,7 +193,7 @@ instance = LDAGibbsSampler()
 result = instance.document_similarity(doc_i=0, doc_j=1)
 ```
 
-### `LDAGibbsSampler.document_similarity_matrix()`
+### `LDAGibbsSampler.document_similarity_matrix()` {: #ldagibbssampler-document_similarity_matrix }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1030)
 
@@ -217,7 +217,7 @@ instance = LDAGibbsSampler()
 result = instance.document_similarity_matrix()
 ```
 
-### `LDAGibbsSampler.evaluate()`
+### `LDAGibbsSampler.evaluate()` {: #ldagibbssampler-evaluate }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1281)
 
@@ -244,7 +244,7 @@ instance = LDAGibbsSampler()
 result = instance.evaluate()
 ```
 
-### `LDAGibbsSampler.fit()`
+### `LDAGibbsSampler.fit()` {: #ldagibbssampler-fit }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L476)
 
@@ -265,7 +265,7 @@ instance = LDAGibbsSampler()
 result = instance.fit(documents=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
-### `LDAGibbsSampler.get_document_topics()`
+### `LDAGibbsSampler.get_document_topics()` {: #ldagibbssampler-get_document_topics }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L580)
 
@@ -289,7 +289,7 @@ instance = LDAGibbsSampler()
 result = instance.get_document_topics(doc_id=0)
 ```
 
-### `LDAGibbsSampler.get_top_documents()`
+### `LDAGibbsSampler.get_top_documents()` {: #ldagibbssampler-get_top_documents }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L874)
 
@@ -313,7 +313,7 @@ instance = LDAGibbsSampler()
 result = instance.get_top_documents(topic_id=0)
 ```
 
-### `LDAGibbsSampler.get_topic_distribution()`
+### `LDAGibbsSampler.get_topic_distribution()` {: #ldagibbssampler-get_topic_distribution }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L596)
 
@@ -333,7 +333,7 @@ instance = LDAGibbsSampler()
 result = instance.get_topic_distribution()
 ```
 
-### `LDAGibbsSampler.get_topic_words()`
+### `LDAGibbsSampler.get_topic_words()` {: #ldagibbssampler-get_topic_words }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L893)
 
@@ -357,7 +357,7 @@ instance = LDAGibbsSampler()
 result = instance.get_topic_words(topic_id=0)
 ```
 
-### `LDAGibbsSampler.get_topics()`
+### `LDAGibbsSampler.get_topics()` {: #ldagibbssampler-get_topics }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L560)
 
@@ -380,7 +380,7 @@ instance = LDAGibbsSampler()
 result = instance.get_topics()
 ```
 
-### `LDAGibbsSampler.inference()`
+### `LDAGibbsSampler.inference()` {: #ldagibbssampler-inference }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L605)
 
@@ -404,7 +404,7 @@ instance = LDAGibbsSampler()
 result = instance.inference(new_doc=['城市', '商业', '税收', '流通'])
 ```
 
-### `LDAGibbsSampler.initialize()`
+### `LDAGibbsSampler.initialize()` {: #ldagibbssampler-initialize }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L251)
 
@@ -424,7 +424,7 @@ instance = LDAGibbsSampler()
 result = instance.initialize(docs_as_ids=1)
 ```
 
-### `LDAGibbsSampler.load()`
+### `LDAGibbsSampler.load()` {: #ldagibbssampler-load }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L792)
 
@@ -447,7 +447,7 @@ instance = LDAGibbsSampler()
 result = instance.load(filepath='example_model.pkl')
 ```
 
-### `LDAGibbsSampler.perplexity()`
+### `LDAGibbsSampler.perplexity()` {: #ldagibbssampler-perplexity }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L516)
 
@@ -467,7 +467,7 @@ instance = LDAGibbsSampler()
 result = instance.perplexity()
 ```
 
-### `LDAGibbsSampler.plot_topic_words()`
+### `LDAGibbsSampler.plot_topic_words()` {: #ldagibbssampler-plot_topic_words }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L664)
 
@@ -494,7 +494,7 @@ instance = LDAGibbsSampler()
 result = instance.plot_topic_words()
 ```
 
-### `LDAGibbsSampler.preprocess()`
+### `LDAGibbsSampler.preprocess()` {: #ldagibbssampler-preprocess }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L183)
 
@@ -522,7 +522,7 @@ instance = LDAGibbsSampler()
 result = instance.preprocess(documents=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
-### `LDAGibbsSampler.run_gibbs_sampling()`
+### `LDAGibbsSampler.run_gibbs_sampling()` {: #ldagibbssampler-run_gibbs_sampling }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L340)
 
@@ -541,7 +541,7 @@ instance = LDAGibbsSampler()
 result = instance.run_gibbs_sampling()
 ```
 
-### `LDAGibbsSampler.save()`
+### `LDAGibbsSampler.save()` {: #ldagibbssampler-save }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L750)
 
@@ -561,7 +561,7 @@ instance = LDAGibbsSampler()
 result = instance.save(filepath='example_model.pkl')
 ```
 
-### `LDAGibbsSampler.topic_correlation_matrix()`
+### `LDAGibbsSampler.topic_correlation_matrix()` {: #ldagibbssampler-topic_correlation_matrix }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L982)
 
@@ -584,7 +584,7 @@ instance = LDAGibbsSampler()
 result = instance.topic_correlation_matrix()
 ```
 
-### `LDAGibbsSampler.topic_similarity()`
+### `LDAGibbsSampler.topic_similarity()` {: #ldagibbssampler-topic_similarity }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L961)
 
@@ -613,7 +613,7 @@ instance = LDAGibbsSampler()
 result = instance.topic_similarity(topic_i=0, topic_j=1)
 ```
 
-### `LDAGibbsSampler.train_multiple()`
+### `LDAGibbsSampler.train_multiple()` {: #ldagibbssampler-train_multiple }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1333)
 
@@ -652,7 +652,7 @@ best_model = results['best_model']
 ```
 
 
-### `LDAGibbsSampler.visualize_documents()`
+### `LDAGibbsSampler.visualize_documents()` {: #ldagibbssampler-visualize_documents }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/topicmodels.py#L1517)
 

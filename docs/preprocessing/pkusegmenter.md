@@ -46,7 +46,7 @@ model = PKUSegmenter()
 
 ## Methods
 
-### `PKUSegmenter.reset_user_dict()`
+### `PKUSegmenter.reset_user_dict()` {: #pkusegmenter-reset_user_dict }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L630)
 

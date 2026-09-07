@@ -15,10 +15,34 @@
         "summary": "Base segmentation wrapper class that can be extended for different segmentation tools."
       },
       {
+        "name": "SegmentationWrapper.close()",
+        "anchor": "segmentationwrapper-close",
+        "url": "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-close",
+        "summary": "Clean up resources. Call this when done with the segmenter."
+      },
+      {
+        "name": "SegmentationWrapper.reset_user_dict()",
+        "anchor": "segmentationwrapper-reset_user_dict",
+        "url": "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-reset_user_dict",
+        "summary": "Reset the user dictionary to default state."
+      },
+      {
+        "name": "SegmentationWrapper.segment()",
+        "anchor": "segmentationwrapper-segment",
+        "url": "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-segment",
+        "summary": "Segment text into tokens based on the selected strategy."
+      },
+      {
         "name": "SpacySegmenter",
         "anchor": "spacysegmenter",
         "url": "/docs/preprocessing/spacysegmenter/",
         "summary": "Segmentation wrapper for spaCy models."
+      },
+      {
+        "name": "SpacySegmenter.reset_user_dict()",
+        "anchor": "spacysegmenter-reset_user_dict",
+        "url": "/docs/preprocessing/spacysegmenter/#spacysegmenter-reset_user_dict",
+        "summary": "Reset the spaCy tokenizer's user dictionary."
       },
       {
         "name": "PKUSegmenter",
@@ -27,10 +51,22 @@
         "summary": "Segmentation wrapper for PKUSeg Chinese text segmentation."
       },
       {
+        "name": "PKUSegmenter.reset_user_dict()",
+        "anchor": "pkusegmenter-reset_user_dict",
+        "url": "/docs/preprocessing/pkusegmenter/#pkusegmenter-reset_user_dict",
+        "summary": "Reset the user dictionary by reinitializing PKUSeg without a user dict."
+      },
+      {
         "name": "JiebaSegmenter",
         "anchor": "jiebasegmenter",
         "url": "/docs/preprocessing/jiebasegmenter/",
         "summary": "Segmentation wrapper for Jieba Chinese text segmentation."
+      },
+      {
+        "name": "JiebaSegmenter.reset_user_dict()",
+        "anchor": "jiebasegmenter-reset_user_dict",
+        "url": "/docs/preprocessing/jiebasegmenter/#jiebasegmenter-reset_user_dict",
+        "summary": "Reset Jieba's dictionary to default state."
       },
       {
         "name": "BertSegmenter",
@@ -81,10 +117,124 @@
         "summary": "Word2Vec model for learning word embeddings from text."
       },
       {
+        "name": "Word2Vec.build_vocab()",
+        "anchor": "word2vec-build_vocab",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-build_vocab",
+        "summary": "Build vocabulary from sentences."
+      },
+      {
+        "name": "Word2Vec.export()",
+        "anchor": "word2vec-export",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-export",
+        "summary": "Export word vectors to external format for interoperability."
+      },
+      {
+        "name": "Word2Vec.get_vector()",
+        "anchor": "word2vec-get_vector",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-get_vector",
+        "summary": "Get the vector for a word."
+      },
+      {
+        "name": "Word2Vec.load()",
+        "anchor": "word2vec-load",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-load",
+        "summary": "Load a model from a file."
+      },
+      {
+        "name": "Word2Vec.load_vectors()",
+        "anchor": "word2vec-load_vectors",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-load_vectors",
+        "summary": "Load word vectors from external format."
+      },
+      {
+        "name": "Word2Vec.most_similar()",
+        "anchor": "word2vec-most_similar",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-most_similar",
+        "summary": "Find the topn most similar words to the given word or vector."
+      },
+      {
+        "name": "Word2Vec.save()",
+        "anchor": "word2vec-save",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-save",
+        "summary": "Save the model to a file."
+      },
+      {
+        "name": "Word2Vec.similarity()",
+        "anchor": "word2vec-similarity",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-similarity",
+        "summary": "Calculate cosine similarity between two words."
+      },
+      {
+        "name": "Word2Vec.train()",
+        "anchor": "word2vec-train",
+        "url": "/docs/word_embeddings/word2vec/#word2vec-train",
+        "summary": "Train word2vec model on sentences."
+      },
+      {
         "name": "TempRefWord2Vec",
         "anchor": "temprefword2vec",
         "url": "/docs/word_embeddings/temprefword2vec/",
         "summary": "Word2Vec with Temporal Referencing (TR) for tracking semantic change."
+      },
+      {
+        "name": "TempRefWord2Vec.build_vocab()",
+        "anchor": "temprefword2vec-build_vocab",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-build_vocab",
+        "summary": "Build vocabulary by iterating through corpora."
+      },
+      {
+        "name": "TempRefWord2Vec.calculate_semantic_change()",
+        "anchor": "temprefword2vec-calculate_semantic_change",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-calculate_semantic_change",
+        "summary": "Calculate semantic change by comparing cosine similarities across time periods."
+      },
+      {
+        "name": "TempRefWord2Vec.export()",
+        "anchor": "temprefword2vec-export",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-export",
+        "summary": "Export is not supported for TempRefWord2Vec."
+      },
+      {
+        "name": "TempRefWord2Vec.get_available_targets()",
+        "anchor": "temprefword2vec-get_available_targets",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-get_available_targets",
+        "summary": "Get the list of target words available for semantic change analysis."
+      },
+      {
+        "name": "TempRefWord2Vec.get_period_vocab_counts()",
+        "anchor": "temprefword2vec-get_period_vocab_counts",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-get_period_vocab_counts",
+        "summary": "Get vocabulary counts for a specific period or all periods."
+      },
+      {
+        "name": "TempRefWord2Vec.get_time_labels()",
+        "anchor": "temprefword2vec-get_time_labels",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-get_time_labels",
+        "summary": "Get the list of time period labels used in the model."
+      },
+      {
+        "name": "TempRefWord2Vec.load()",
+        "anchor": "temprefword2vec-load",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-load",
+        "summary": "Load a TempRefWord2Vec model from a file."
+      },
+      {
+        "name": "TempRefWord2Vec.load_vectors()",
+        "anchor": "temprefword2vec-load_vectors",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-load_vectors",
+        "summary": "load_vectors() is not supported for TempRefWord2Vec."
+      },
+      {
+        "name": "TempRefWord2Vec.save()",
+        "anchor": "temprefword2vec-save",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-save",
+        "summary": "Save the TempRefWord2Vec model to a file, including vocab counts and temporal metadata."
+      },
+      {
+        "name": "TempRefWord2Vec.train()",
+        "anchor": "temprefword2vec-train",
+        "url": "/docs/word_embeddings/temprefword2vec/#temprefword2vec-train",
+        "summary": "Train the TempRefWord2Vec model."
       },
       {
         "name": "DynamicWord2Vec",
@@ -93,10 +243,112 @@
         "summary": "Word2Vec with time-sliced embeddings for diachronic semantic analysis."
       },
       {
+        "name": "DynamicWord2Vec.build_vocab()",
+        "anchor": "dynamicword2vec-build_vocab",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-build_vocab",
+        "summary": "Build vocabulary by iterating through all corpora."
+      },
+      {
+        "name": "DynamicWord2Vec.calculate_semantic_change()",
+        "anchor": "dynamicword2vec-calculate_semantic_change",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-calculate_semantic_change",
+        "summary": "Calculate semantic change by comparing similarity shifts across time periods."
+      },
+      {
+        "name": "DynamicWord2Vec.calculate_temporal_drift()",
+        "anchor": "dynamicword2vec-calculate_temporal_drift",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-calculate_temporal_drift",
+        "summary": "Calculate temporal drift as cosine distances between adjacent time slices."
+      },
+      {
+        "name": "DynamicWord2Vec.export()",
+        "anchor": "dynamicword2vec-export",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-export",
+        "summary": "Export is not supported for DynamicWord2Vec."
+      },
+      {
+        "name": "DynamicWord2Vec.get_all_time_vectors()",
+        "anchor": "dynamicword2vec-get_all_time_vectors",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-get_all_time_vectors",
+        "summary": "Get vectors for a word across all time periods."
+      },
+      {
+        "name": "DynamicWord2Vec.get_time_labels()",
+        "anchor": "dynamicword2vec-get_time_labels",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-get_time_labels",
+        "summary": "Get the list of time period labels."
+      },
+      {
+        "name": "DynamicWord2Vec.get_vector()",
+        "anchor": "dynamicword2vec-get_vector",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-get_vector",
+        "summary": "Get the vector for a word at a specific time period."
+      },
+      {
+        "name": "DynamicWord2Vec.load()",
+        "anchor": "dynamicword2vec-load",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-load",
+        "summary": "Load a DynamicWord2Vec model from a file."
+      },
+      {
+        "name": "DynamicWord2Vec.load_vectors()",
+        "anchor": "dynamicword2vec-load_vectors",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-load_vectors",
+        "summary": "load_vectors() is not supported for DynamicWord2Vec."
+      },
+      {
+        "name": "DynamicWord2Vec.most_similar()",
+        "anchor": "dynamicword2vec-most_similar",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-most_similar",
+        "summary": "Find the topn most similar words to the given word at a specific time period."
+      },
+      {
+        "name": "DynamicWord2Vec.save()",
+        "anchor": "dynamicword2vec-save",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-save",
+        "summary": "Save the DynamicWord2Vec model to a file."
+      },
+      {
+        "name": "DynamicWord2Vec.similarity()",
+        "anchor": "dynamicword2vec-similarity",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-similarity",
+        "summary": "Calculate similarity within one explicitly selected time slice."
+      },
+      {
+        "name": "DynamicWord2Vec.train()",
+        "anchor": "dynamicword2vec-train",
+        "url": "/docs/word_embeddings/dynamicword2vec/#dynamicword2vec-train",
+        "summary": "Train the DynamicWord2Vec model."
+      },
+      {
         "name": "GloVe",
         "anchor": "glove",
         "url": "/docs/word_embeddings/glove/",
         "summary": "Global Vectors (GloVe) model with sparse co-occurrence training."
+      },
+      {
+        "name": "GloVe.load()",
+        "anchor": "glove-load",
+        "url": "/docs/word_embeddings/glove/#glove-load",
+        "summary": "Load a previously saved GloVe model from pickle."
+      },
+      {
+        "name": "GloVe.save()",
+        "anchor": "glove-save",
+        "url": "/docs/word_embeddings/glove/#glove-save",
+        "summary": "Persist full GloVe state including optimizer accumulators."
+      },
+      {
+        "name": "GloVe.similarity()",
+        "anchor": "glove-similarity",
+        "url": "/docs/word_embeddings/glove/#glove-similarity",
+        "summary": "No description available."
+      },
+      {
+        "name": "GloVe.train()",
+        "anchor": "glove-train",
+        "url": "/docs/word_embeddings/glove/#glove-train",
+        "summary": "Train GloVe on a restartable sentence iterable."
       },
       {
         "name": "project_2d()",
@@ -157,6 +409,150 @@
         "anchor": "ldagibbssampler",
         "url": "/docs/topic_modeling/ldagibbssampler/",
         "summary": "Latent Dirichlet Allocation with Gibbs sampling implementation."
+      },
+      {
+        "name": "LDAGibbsSampler.coherence()",
+        "anchor": "ldagibbssampler-coherence",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence",
+        "summary": "Calculate topic coherence using the specified method."
+      },
+      {
+        "name": "LDAGibbsSampler.coherence_npmi()",
+        "anchor": "ldagibbssampler-coherence_npmi",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_npmi",
+        "summary": "Calculate NPMI (Normalized Pointwise Mutual Information) topic coherence."
+      },
+      {
+        "name": "LDAGibbsSampler.coherence_umass()",
+        "anchor": "ldagibbssampler-coherence_umass",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_umass",
+        "summary": "Calculate UMass topic coherence (Mimno et al., 2011)."
+      },
+      {
+        "name": "LDAGibbsSampler.document_similarity()",
+        "anchor": "ldagibbssampler-document_similarity",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity",
+        "summary": "Calculate similarity between two documents based on their topic distributions."
+      },
+      {
+        "name": "LDAGibbsSampler.document_similarity_matrix()",
+        "anchor": "ldagibbssampler-document_similarity_matrix",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity_matrix",
+        "summary": "Calculate pairwise similarity/distance between documents."
+      },
+      {
+        "name": "LDAGibbsSampler.evaluate()",
+        "anchor": "ldagibbssampler-evaluate",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-evaluate",
+        "summary": "Comprehensive evaluation of the topic model."
+      },
+      {
+        "name": "LDAGibbsSampler.fit()",
+        "anchor": "ldagibbssampler-fit",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-fit",
+        "summary": "Fit the LDA model to the given documents."
+      },
+      {
+        "name": "LDAGibbsSampler.get_document_topics()",
+        "anchor": "ldagibbssampler-get_document_topics",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_document_topics",
+        "summary": "Get topic distribution for a specific document."
+      },
+      {
+        "name": "LDAGibbsSampler.get_top_documents()",
+        "anchor": "ldagibbssampler-get_top_documents",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_top_documents",
+        "summary": "Get the top n documents for a specific topic."
+      },
+      {
+        "name": "LDAGibbsSampler.get_topic_distribution()",
+        "anchor": "ldagibbssampler-get_topic_distribution",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_distribution",
+        "summary": "Get overall topic distribution across the corpus."
+      },
+      {
+        "name": "LDAGibbsSampler.get_topic_words()",
+        "anchor": "ldagibbssampler-get_topic_words",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_words",
+        "summary": "Get the top n words for a specific topic."
+      },
+      {
+        "name": "LDAGibbsSampler.get_topics()",
+        "anchor": "ldagibbssampler-get_topics",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topics",
+        "summary": "Get the top words for each topic along with their probabilities."
+      },
+      {
+        "name": "LDAGibbsSampler.inference()",
+        "anchor": "ldagibbssampler-inference",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-inference",
+        "summary": "Infer topic distribution for a new document."
+      },
+      {
+        "name": "LDAGibbsSampler.initialize()",
+        "anchor": "ldagibbssampler-initialize",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-initialize",
+        "summary": "Initialize data structures for Gibbs sampling."
+      },
+      {
+        "name": "LDAGibbsSampler.load()",
+        "anchor": "ldagibbssampler-load",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-load",
+        "summary": "Load a model from a file."
+      },
+      {
+        "name": "LDAGibbsSampler.perplexity()",
+        "anchor": "ldagibbssampler-perplexity",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-perplexity",
+        "summary": "Calculate perplexity of the model on the training data."
+      },
+      {
+        "name": "LDAGibbsSampler.plot_topic_words()",
+        "anchor": "ldagibbssampler-plot_topic_words",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-plot_topic_words",
+        "summary": "Plot the top words for each topic as a bar chart."
+      },
+      {
+        "name": "LDAGibbsSampler.preprocess()",
+        "anchor": "ldagibbssampler-preprocess",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-preprocess",
+        "summary": "Convert token documents to word IDs and build vocabulary."
+      },
+      {
+        "name": "LDAGibbsSampler.run_gibbs_sampling()",
+        "anchor": "ldagibbssampler-run_gibbs_sampling",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-run_gibbs_sampling",
+        "summary": "Run Gibbs sampling for the specified number of iterations."
+      },
+      {
+        "name": "LDAGibbsSampler.save()",
+        "anchor": "ldagibbssampler-save",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-save",
+        "summary": "Save the model to a file."
+      },
+      {
+        "name": "LDAGibbsSampler.topic_correlation_matrix()",
+        "anchor": "ldagibbssampler-topic_correlation_matrix",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_correlation_matrix",
+        "summary": "Calculate pairwise similarity/distance between all topics."
+      },
+      {
+        "name": "LDAGibbsSampler.topic_similarity()",
+        "anchor": "ldagibbssampler-topic_similarity",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_similarity",
+        "summary": "Calculate similarity between two topics."
+      },
+      {
+        "name": "LDAGibbsSampler.train_multiple()",
+        "anchor": "ldagibbssampler-train_multiple",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-train_multiple",
+        "summary": "Train multiple LDA models with different random seeds and analyze robustness."
+      },
+      {
+        "name": "LDAGibbsSampler.visualize_documents()",
+        "anchor": "ldagibbssampler-visualize_documents",
+        "url": "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-visualize_documents",
+        "summary": "Visualize documents in 2D space using dimensionality reduction."
       }
     ]
   },
@@ -169,6 +565,108 @@
         "anchor": "stylometry",
         "url": "/docs/stylometry/stylometry/",
         "summary": "Stylometry for authorship attribution and document clustering."
+      },
+      {
+        "name": "Stylometry.bootstrap_predict()",
+        "anchor": "stylometry-bootstrap_predict",
+        "url": "/docs/stylometry/stylometry/#stylometry-bootstrap_predict",
+        "summary": "Bootstrap analysis for prediction robustness."
+      },
+      {
+        "name": "Stylometry.dendrogram()",
+        "anchor": "stylometry-dendrogram",
+        "url": "/docs/stylometry/stylometry/#stylometry-dendrogram",
+        "summary": "Visualize hierarchical clustering as a dendrogram."
+      },
+      {
+        "name": "Stylometry.distance()",
+        "anchor": "stylometry-distance",
+        "url": "/docs/stylometry/stylometry/#stylometry-distance",
+        "summary": "Compute the distance between two documents. Lower = more similar."
+      },
+      {
+        "name": "Stylometry.distance_matrix()",
+        "anchor": "stylometry-distance_matrix",
+        "url": "/docs/stylometry/stylometry/#stylometry-distance_matrix",
+        "summary": "Compute pairwise distance matrix from fitted data."
+      },
+      {
+        "name": "Stylometry.fit_transform()",
+        "anchor": "stylometry-fit_transform",
+        "url": "/docs/stylometry/stylometry/#stylometry-fit_transform",
+        "summary": "Fit the model on a corpus and transform documents to feature vectors."
+      },
+      {
+        "name": "Stylometry.get_author_profile()",
+        "anchor": "stylometry-get_author_profile",
+        "url": "/docs/stylometry/stylometry/#stylometry-get_author_profile",
+        "summary": "Get the feature values for a specific author."
+      },
+      {
+        "name": "Stylometry.get_feature_comparison()",
+        "anchor": "stylometry-get_feature_comparison",
+        "url": "/docs/stylometry/stylometry/#stylometry-get_feature_comparison",
+        "summary": "Get a comparison table of feature values across all fitted authors."
+      },
+      {
+        "name": "Stylometry.hierarchical_clustering()",
+        "anchor": "stylometry-hierarchical_clustering",
+        "url": "/docs/stylometry/stylometry/#stylometry-hierarchical_clustering",
+        "summary": "Perform hierarchical clustering on fitted data."
+      },
+      {
+        "name": "Stylometry.most_similar()",
+        "anchor": "stylometry-most_similar",
+        "url": "/docs/stylometry/stylometry/#stylometry-most_similar",
+        "summary": "Find the most similar documents to a query."
+      },
+      {
+        "name": "Stylometry.plot()",
+        "anchor": "stylometry-plot",
+        "url": "/docs/stylometry/stylometry/#stylometry-plot",
+        "summary": "Create a 2D scatter plot of documents or authors."
+      },
+      {
+        "name": "Stylometry.predict()",
+        "anchor": "stylometry-predict",
+        "url": "/docs/stylometry/stylometry/#stylometry-predict",
+        "summary": "Predict the most likely author for a tokenized text."
+      },
+      {
+        "name": "Stylometry.predict_author()",
+        "anchor": "stylometry-predict_author",
+        "url": "/docs/stylometry/stylometry/#stylometry-predict_author",
+        "summary": "Convenience method to get just the predicted author name."
+      },
+      {
+        "name": "Stylometry.predict_confidence()",
+        "anchor": "stylometry-predict_confidence",
+        "url": "/docs/stylometry/stylometry/#stylometry-predict_confidence",
+        "summary": "Predict with unified confidence scores (higher = more likely)."
+      },
+      {
+        "name": "Stylometry.rolling_delta()",
+        "anchor": "stylometry-rolling_delta",
+        "url": "/docs/stylometry/stylometry/#stylometry-rolling_delta",
+        "summary": "Rolling window analysis across a long text."
+      },
+      {
+        "name": "Stylometry.similarity()",
+        "anchor": "stylometry-similarity",
+        "url": "/docs/stylometry/stylometry/#stylometry-similarity",
+        "summary": "Compute the similarity between two documents. Higher = more similar."
+      },
+      {
+        "name": "Stylometry.transform()",
+        "anchor": "stylometry-transform",
+        "url": "/docs/stylometry/stylometry/#stylometry-transform",
+        "summary": "Transform a tokenized text to a feature vector using fitted features."
+      },
+      {
+        "name": "Stylometry.vocabulary_stats()",
+        "anchor": "stylometry-vocabulary_stats",
+        "url": "/docs/stylometry/stylometry/#stylometry-vocabulary_stats",
+        "summary": "Get vocabulary richness statistics for all fitted documents."
       },
       {
         "name": "compare_corpora()",
@@ -241,6 +739,36 @@
         "anchor": "coocmatrix",
         "url": "/docs/collocations/coocmatrix/",
         "summary": "Co-occurrence matrix with numpy-like indexing by word or index."
+      },
+      {
+        "name": "CoocMatrix.get()",
+        "anchor": "coocmatrix-get",
+        "url": "/docs/collocations/coocmatrix/#coocmatrix-get",
+        "summary": "Get a co-occurrence count with a default value for missing pairs."
+      },
+      {
+        "name": "CoocMatrix.sum()",
+        "anchor": "coocmatrix-sum",
+        "url": "/docs/collocations/coocmatrix/#coocmatrix-sum",
+        "summary": "Sum co-occurrence counts along an axis."
+      },
+      {
+        "name": "CoocMatrix.to_dataframe()",
+        "anchor": "coocmatrix-to_dataframe",
+        "url": "/docs/collocations/coocmatrix/#coocmatrix-to_dataframe",
+        "summary": "Convert to a pandas DataFrame with word labels."
+      },
+      {
+        "name": "CoocMatrix.to_dense()",
+        "anchor": "coocmatrix-to_dense",
+        "url": "/docs/collocations/coocmatrix/#coocmatrix-to_dense",
+        "summary": "Convert to a dense NumPy array."
+      },
+      {
+        "name": "CoocMatrix.to_ppmi()",
+        "anchor": "coocmatrix-to_ppmi",
+        "url": "/docs/collocations/coocmatrix/#coocmatrix-to_ppmi",
+        "summary": "Convert raw counts to Positive Pointwise Mutual Information."
       },
       {
         "name": "find_collocates()",

@@ -107,7 +107,7 @@ model.train(epochs=5)
 
 ## Methods
 
-### `DynamicWord2Vec.build_vocab()`
+### `DynamicWord2Vec.build_vocab()` {: #dynamicword2vec-build_vocab }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L348)
 
@@ -131,7 +131,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.build_vocab()
 ```
 
-### `DynamicWord2Vec.calculate_semantic_change()`
+### `DynamicWord2Vec.calculate_semantic_change()` {: #dynamicword2vec-calculate_semantic_change }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L905)
 
@@ -177,7 +177,7 @@ changes = model.calculate_semantic_change(
 ```
 
 
-### `DynamicWord2Vec.calculate_temporal_drift()`
+### `DynamicWord2Vec.calculate_temporal_drift()` {: #dynamicword2vec-calculate_temporal_drift }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L871)
 
@@ -204,7 +204,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.calculate_temporal_drift(word='人民')
 ```
 
-### `DynamicWord2Vec.export()`
+### `DynamicWord2Vec.export()` {: #dynamicword2vec-export }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1183)
 
@@ -229,7 +229,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.export(path='example_output.bin')
 ```
 
-### `DynamicWord2Vec.get_all_time_vectors()`
+### `DynamicWord2Vec.get_all_time_vectors()` {: #dynamicword2vec-get_all_time_vectors }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L797)
 
@@ -257,7 +257,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.get_all_time_vectors(word='人民')
 ```
 
-### `DynamicWord2Vec.get_time_labels()`
+### `DynamicWord2Vec.get_time_labels()` {: #dynamicword2vec-get_time_labels }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1017)
 
@@ -277,7 +277,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.get_time_labels()
 ```
 
-### `DynamicWord2Vec.get_vector()`
+### `DynamicWord2Vec.get_vector()` {: #dynamicword2vec-get_vector }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L726)
 
@@ -305,7 +305,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.get_vector(word='人民', time_label='宋')
 ```
 
-### `DynamicWord2Vec.load()`
+### `DynamicWord2Vec.load()` {: #dynamicword2vec-load }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1086)
 
@@ -331,7 +331,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.load(path='example_output.bin')
 ```
 
-### `DynamicWord2Vec.load_vectors()`
+### `DynamicWord2Vec.load_vectors()` {: #dynamicword2vec-load_vectors }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1201)
 
@@ -356,7 +356,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.load_vectors(path='example_output.bin')
 ```
 
-### `DynamicWord2Vec.most_similar()`
+### `DynamicWord2Vec.most_similar()` {: #dynamicword2vec-most_similar }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L825)
 
@@ -386,7 +386,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.most_similar(word='人民', time_label='宋')
 ```
 
-### `DynamicWord2Vec.save()`
+### `DynamicWord2Vec.save()` {: #dynamicword2vec-save }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L1026)
 
@@ -408,7 +408,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.save(path='example_output.bin')
 ```
 
-### `DynamicWord2Vec.similarity()`
+### `DynamicWord2Vec.similarity()` {: #dynamicword2vec-similarity }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L773)
 
@@ -425,7 +425,7 @@ instance = DynamicWord2Vec(sentences=[['宋代', '经济', '繁荣'], ['赋税',
 result = instance.similarity(word1='人民', word2='百姓', time_label='宋')
 ```
 
-### `DynamicWord2Vec.train()`
+### `DynamicWord2Vec.train()` {: #dynamicword2vec-train }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/dynamic.py#L549)
 

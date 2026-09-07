@@ -7,6 +7,102 @@ functions:
     anchor: "ldagibbssampler"
     url: "/docs/topic_modeling/ldagibbssampler/"
     summary: "Latent Dirichlet Allocation with Gibbs sampling implementation."
+  - name: "LDAGibbsSampler.coherence()"
+    anchor: "ldagibbssampler-coherence"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence"
+    summary: "Calculate topic coherence using the specified method."
+  - name: "LDAGibbsSampler.coherence_npmi()"
+    anchor: "ldagibbssampler-coherence_npmi"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_npmi"
+    summary: "Calculate NPMI (Normalized Pointwise Mutual Information) topic coherence."
+  - name: "LDAGibbsSampler.coherence_umass()"
+    anchor: "ldagibbssampler-coherence_umass"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_umass"
+    summary: "Calculate UMass topic coherence (Mimno et al., 2011)."
+  - name: "LDAGibbsSampler.document_similarity()"
+    anchor: "ldagibbssampler-document_similarity"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity"
+    summary: "Calculate similarity between two documents based on their topic distributions."
+  - name: "LDAGibbsSampler.document_similarity_matrix()"
+    anchor: "ldagibbssampler-document_similarity_matrix"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity_matrix"
+    summary: "Calculate pairwise similarity/distance between documents."
+  - name: "LDAGibbsSampler.evaluate()"
+    anchor: "ldagibbssampler-evaluate"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-evaluate"
+    summary: "Comprehensive evaluation of the topic model."
+  - name: "LDAGibbsSampler.fit()"
+    anchor: "ldagibbssampler-fit"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-fit"
+    summary: "Fit the LDA model to the given documents."
+  - name: "LDAGibbsSampler.get_document_topics()"
+    anchor: "ldagibbssampler-get_document_topics"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_document_topics"
+    summary: "Get topic distribution for a specific document."
+  - name: "LDAGibbsSampler.get_top_documents()"
+    anchor: "ldagibbssampler-get_top_documents"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_top_documents"
+    summary: "Get the top n documents for a specific topic."
+  - name: "LDAGibbsSampler.get_topic_distribution()"
+    anchor: "ldagibbssampler-get_topic_distribution"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_distribution"
+    summary: "Get overall topic distribution across the corpus."
+  - name: "LDAGibbsSampler.get_topic_words()"
+    anchor: "ldagibbssampler-get_topic_words"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_words"
+    summary: "Get the top n words for a specific topic."
+  - name: "LDAGibbsSampler.get_topics()"
+    anchor: "ldagibbssampler-get_topics"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topics"
+    summary: "Get the top words for each topic along with their probabilities."
+  - name: "LDAGibbsSampler.inference()"
+    anchor: "ldagibbssampler-inference"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-inference"
+    summary: "Infer topic distribution for a new document."
+  - name: "LDAGibbsSampler.initialize()"
+    anchor: "ldagibbssampler-initialize"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-initialize"
+    summary: "Initialize data structures for Gibbs sampling."
+  - name: "LDAGibbsSampler.load()"
+    anchor: "ldagibbssampler-load"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-load"
+    summary: "Load a model from a file."
+  - name: "LDAGibbsSampler.perplexity()"
+    anchor: "ldagibbssampler-perplexity"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-perplexity"
+    summary: "Calculate perplexity of the model on the training data."
+  - name: "LDAGibbsSampler.plot_topic_words()"
+    anchor: "ldagibbssampler-plot_topic_words"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-plot_topic_words"
+    summary: "Plot the top words for each topic as a bar chart."
+  - name: "LDAGibbsSampler.preprocess()"
+    anchor: "ldagibbssampler-preprocess"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-preprocess"
+    summary: "Convert token documents to word IDs and build vocabulary."
+  - name: "LDAGibbsSampler.run_gibbs_sampling()"
+    anchor: "ldagibbssampler-run_gibbs_sampling"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-run_gibbs_sampling"
+    summary: "Run Gibbs sampling for the specified number of iterations."
+  - name: "LDAGibbsSampler.save()"
+    anchor: "ldagibbssampler-save"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-save"
+    summary: "Save the model to a file."
+  - name: "LDAGibbsSampler.topic_correlation_matrix()"
+    anchor: "ldagibbssampler-topic_correlation_matrix"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_correlation_matrix"
+    summary: "Calculate pairwise similarity/distance between all topics."
+  - name: "LDAGibbsSampler.topic_similarity()"
+    anchor: "ldagibbssampler-topic_similarity"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_similarity"
+    summary: "Calculate similarity between two topics."
+  - name: "LDAGibbsSampler.train_multiple()"
+    anchor: "ldagibbssampler-train_multiple"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-train_multiple"
+    summary: "Train multiple LDA models with different random seeds and analyze robustness."
+  - name: "LDAGibbsSampler.visualize_documents()"
+    anchor: "ldagibbssampler-visualize_documents"
+    url: "/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-visualize_documents"
+    summary: "Visualize documents in 2D space using dimensionality reduction."
 has_examples: true
 import_from: "qhchina.analytics.topicmodels"
 ---
@@ -195,5 +291,29 @@ This is useful for exploring large document collections and interactively focusi
 Select a symbol to view full documentation:
 
 - [`LDAGibbsSampler`](/docs/topic_modeling/ldagibbssampler/) - Latent Dirichlet Allocation with Gibbs sampling implementation.
+- [`LDAGibbsSampler.coherence()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence) - Calculate topic coherence using the specified method.
+- [`LDAGibbsSampler.coherence_npmi()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_npmi) - Calculate NPMI (Normalized Pointwise Mutual Information) topic coherence.
+- [`LDAGibbsSampler.coherence_umass()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-coherence_umass) - Calculate UMass topic coherence (Mimno et al., 2011).
+- [`LDAGibbsSampler.document_similarity()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity) - Calculate similarity between two documents based on their topic distributions.
+- [`LDAGibbsSampler.document_similarity_matrix()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-document_similarity_matrix) - Calculate pairwise similarity/distance between documents.
+- [`LDAGibbsSampler.evaluate()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-evaluate) - Comprehensive evaluation of the topic model.
+- [`LDAGibbsSampler.fit()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-fit) - Fit the LDA model to the given documents.
+- [`LDAGibbsSampler.get_document_topics()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_document_topics) - Get topic distribution for a specific document.
+- [`LDAGibbsSampler.get_top_documents()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_top_documents) - Get the top n documents for a specific topic.
+- [`LDAGibbsSampler.get_topic_distribution()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_distribution) - Get overall topic distribution across the corpus.
+- [`LDAGibbsSampler.get_topic_words()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topic_words) - Get the top n words for a specific topic.
+- [`LDAGibbsSampler.get_topics()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-get_topics) - Get the top words for each topic along with their probabilities.
+- [`LDAGibbsSampler.inference()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-inference) - Infer topic distribution for a new document.
+- [`LDAGibbsSampler.initialize()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-initialize) - Initialize data structures for Gibbs sampling.
+- [`LDAGibbsSampler.load()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-load) - Load a model from a file.
+- [`LDAGibbsSampler.perplexity()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-perplexity) - Calculate perplexity of the model on the training data.
+- [`LDAGibbsSampler.plot_topic_words()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-plot_topic_words) - Plot the top words for each topic as a bar chart.
+- [`LDAGibbsSampler.preprocess()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-preprocess) - Convert token documents to word IDs and build vocabulary.
+- [`LDAGibbsSampler.run_gibbs_sampling()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-run_gibbs_sampling) - Run Gibbs sampling for the specified number of iterations.
+- [`LDAGibbsSampler.save()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-save) - Save the model to a file.
+- [`LDAGibbsSampler.topic_correlation_matrix()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_correlation_matrix) - Calculate pairwise similarity/distance between all topics.
+- [`LDAGibbsSampler.topic_similarity()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-topic_similarity) - Calculate similarity between two topics.
+- [`LDAGibbsSampler.train_multiple()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-train_multiple) - Train multiple LDA models with different random seeds and analyze robustness.
+- [`LDAGibbsSampler.visualize_documents()`](/docs/topic_modeling/ldagibbssampler/#ldagibbssampler-visualize_documents) - Visualize documents in 2D space using dimensionality reduction.
 
 <!-- API-END -->

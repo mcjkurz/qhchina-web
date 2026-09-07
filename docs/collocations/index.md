@@ -7,6 +7,26 @@ functions:
     anchor: "coocmatrix"
     url: "/docs/collocations/coocmatrix/"
     summary: "Co-occurrence matrix with numpy-like indexing by word or index."
+  - name: "CoocMatrix.get()"
+    anchor: "coocmatrix-get"
+    url: "/docs/collocations/coocmatrix/#coocmatrix-get"
+    summary: "Get a co-occurrence count with a default value for missing pairs."
+  - name: "CoocMatrix.sum()"
+    anchor: "coocmatrix-sum"
+    url: "/docs/collocations/coocmatrix/#coocmatrix-sum"
+    summary: "Sum co-occurrence counts along an axis."
+  - name: "CoocMatrix.to_dataframe()"
+    anchor: "coocmatrix-to_dataframe"
+    url: "/docs/collocations/coocmatrix/#coocmatrix-to_dataframe"
+    summary: "Convert to a pandas DataFrame with word labels."
+  - name: "CoocMatrix.to_dense()"
+    anchor: "coocmatrix-to_dense"
+    url: "/docs/collocations/coocmatrix/#coocmatrix-to_dense"
+    summary: "Convert to a dense NumPy array."
+  - name: "CoocMatrix.to_ppmi()"
+    anchor: "coocmatrix-to_ppmi"
+    url: "/docs/collocations/coocmatrix/#coocmatrix-to_ppmi"
+    summary: "Convert raw counts to Positive Pointwise Mutual Information."
   - name: "find_collocates()"
     anchor: "find-collocates"
     url: "/docs/collocations/find-collocates/"
@@ -167,6 +187,11 @@ df = matrix.to_dataframe()
 Select a symbol to view full documentation:
 
 - [`CoocMatrix`](/docs/collocations/coocmatrix/) - Co-occurrence matrix with numpy-like indexing by word or index.
+- [`CoocMatrix.get()`](/docs/collocations/coocmatrix/#coocmatrix-get) - Get a co-occurrence count with a default value for missing pairs.
+- [`CoocMatrix.sum()`](/docs/collocations/coocmatrix/#coocmatrix-sum) - Sum co-occurrence counts along an axis.
+- [`CoocMatrix.to_dataframe()`](/docs/collocations/coocmatrix/#coocmatrix-to_dataframe) - Convert to a pandas DataFrame with word labels.
+- [`CoocMatrix.to_dense()`](/docs/collocations/coocmatrix/#coocmatrix-to_dense) - Convert to a dense NumPy array.
+- [`CoocMatrix.to_ppmi()`](/docs/collocations/coocmatrix/#coocmatrix-to_ppmi) - Convert raw counts to Positive Pointwise Mutual Information.
 - [`find_collocates()`](/docs/collocations/find-collocates/) - Find collocates for target words in a corpus of sentences.
 - [`cooc_matrix()`](/docs/collocations/cooc-matrix/) - Calculate a co-occurrence matrix from a corpus of documents.
 - [`plot_collocates()`](/docs/collocations/plot-collocates/) - Visualize collocation results as a 2D scatter plot.

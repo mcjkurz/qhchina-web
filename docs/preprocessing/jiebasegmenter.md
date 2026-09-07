@@ -31,7 +31,7 @@ model = JiebaSegmenter()
 
 ## Methods
 
-### `JiebaSegmenter.reset_user_dict()`
+### `JiebaSegmenter.reset_user_dict()` {: #jiebasegmenter-reset_user_dict }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L786)
 

@@ -95,7 +95,7 @@ model = Stylometry()
 
 ## Methods
 
-### `Stylometry.bootstrap_predict()`
+### `Stylometry.bootstrap_predict()` {: #stylometry-bootstrap_predict }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1176)
 
@@ -156,7 +156,7 @@ instance = Stylometry()
 result = instance.bootstrap_predict(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
-### `Stylometry.dendrogram()`
+### `Stylometry.dendrogram()` {: #stylometry-dendrogram }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2141)
 
@@ -197,7 +197,7 @@ instance = Stylometry()
 result = instance.dendrogram()
 ```
 
-### `Stylometry.distance()`
+### `Stylometry.distance()` {: #stylometry-distance }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1539)
 
@@ -214,7 +214,7 @@ instance = Stylometry()
 result = instance.distance(a=['人民', '经济'], b=['人民', '经济'])
 ```
 
-### `Stylometry.distance_matrix()`
+### `Stylometry.distance_matrix()` {: #stylometry-distance_matrix }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1608)
 
@@ -238,7 +238,7 @@ instance = Stylometry()
 result = instance.distance_matrix()
 ```
 
-### `Stylometry.fit_transform()`
+### `Stylometry.fit_transform()` {: #stylometry-fit_transform }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L729)
 
@@ -264,7 +264,7 @@ instance = Stylometry()
 result = instance.fit_transform(corpus=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
-### `Stylometry.get_author_profile()`
+### `Stylometry.get_author_profile()` {: #stylometry-get_author_profile }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1704)
 
@@ -283,7 +283,7 @@ instance = Stylometry()
 result = instance.get_author_profile(author='示例')
 ```
 
-### `Stylometry.get_feature_comparison()`
+### `Stylometry.get_feature_comparison()` {: #stylometry-get_feature_comparison }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1722)
 
@@ -302,7 +302,7 @@ instance = Stylometry()
 result = instance.get_feature_comparison()
 ```
 
-### `Stylometry.hierarchical_clustering()`
+### `Stylometry.hierarchical_clustering()` {: #stylometry-hierarchical_clustering }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1629)
 
@@ -328,7 +328,7 @@ instance = Stylometry()
 result = instance.hierarchical_clustering()
 ```
 
-### `Stylometry.most_similar()`
+### `Stylometry.most_similar()` {: #stylometry-most_similar }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1486)
 
@@ -354,7 +354,7 @@ instance = Stylometry()
 result = instance.most_similar(query='改革')
 ```
 
-### `Stylometry.plot()`
+### `Stylometry.plot()` {: #stylometry-plot }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1746)
 
@@ -400,7 +400,7 @@ instance = Stylometry()
 result = instance.plot()
 ```
 
-### `Stylometry.predict()`
+### `Stylometry.predict()` {: #stylometry-predict }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1004)
 
@@ -428,7 +428,7 @@ instance = Stylometry()
 result = instance.predict(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
-### `Stylometry.predict_author()`
+### `Stylometry.predict_author()` {: #stylometry-predict_author }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1104)
 
@@ -455,7 +455,7 @@ instance = Stylometry()
 result = instance.predict_author(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
-### `Stylometry.predict_confidence()`
+### `Stylometry.predict_confidence()` {: #stylometry-predict_confidence }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1137)
 
@@ -477,7 +477,7 @@ instance = Stylometry()
 result = instance.predict_confidence(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
-### `Stylometry.rolling_delta()`
+### `Stylometry.rolling_delta()` {: #stylometry-rolling_delta }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1341)
 
@@ -538,7 +538,7 @@ instance = Stylometry()
 result = instance.rolling_delta(text='宋代商税制度逐渐完善，市镇贸易持续繁荣。')
 ```
 
-### `Stylometry.similarity()`
+### `Stylometry.similarity()` {: #stylometry-similarity }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1557)
 
@@ -555,7 +555,7 @@ instance = Stylometry()
 result = instance.similarity(a=['人民', '经济'], b=['人民', '经济'])
 ```
 
-### `Stylometry.transform()`
+### `Stylometry.transform()` {: #stylometry-transform }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L939)
 
@@ -580,7 +580,7 @@ instance = Stylometry()
 result = instance.transform(tokens=['人民', '经济'])
 ```
 
-### `Stylometry.vocabulary_stats()`
+### `Stylometry.vocabulary_stats()` {: #stylometry-vocabulary_stats }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1677)
 

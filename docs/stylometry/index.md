@@ -7,6 +7,74 @@ functions:
     anchor: "stylometry"
     url: "/docs/stylometry/stylometry/"
     summary: "Stylometry for authorship attribution and document clustering."
+  - name: "Stylometry.bootstrap_predict()"
+    anchor: "stylometry-bootstrap_predict"
+    url: "/docs/stylometry/stylometry/#stylometry-bootstrap_predict"
+    summary: "Bootstrap analysis for prediction robustness."
+  - name: "Stylometry.dendrogram()"
+    anchor: "stylometry-dendrogram"
+    url: "/docs/stylometry/stylometry/#stylometry-dendrogram"
+    summary: "Visualize hierarchical clustering as a dendrogram."
+  - name: "Stylometry.distance()"
+    anchor: "stylometry-distance"
+    url: "/docs/stylometry/stylometry/#stylometry-distance"
+    summary: "Compute the distance between two documents. Lower = more similar."
+  - name: "Stylometry.distance_matrix()"
+    anchor: "stylometry-distance_matrix"
+    url: "/docs/stylometry/stylometry/#stylometry-distance_matrix"
+    summary: "Compute pairwise distance matrix from fitted data."
+  - name: "Stylometry.fit_transform()"
+    anchor: "stylometry-fit_transform"
+    url: "/docs/stylometry/stylometry/#stylometry-fit_transform"
+    summary: "Fit the model on a corpus and transform documents to feature vectors."
+  - name: "Stylometry.get_author_profile()"
+    anchor: "stylometry-get_author_profile"
+    url: "/docs/stylometry/stylometry/#stylometry-get_author_profile"
+    summary: "Get the feature values for a specific author."
+  - name: "Stylometry.get_feature_comparison()"
+    anchor: "stylometry-get_feature_comparison"
+    url: "/docs/stylometry/stylometry/#stylometry-get_feature_comparison"
+    summary: "Get a comparison table of feature values across all fitted authors."
+  - name: "Stylometry.hierarchical_clustering()"
+    anchor: "stylometry-hierarchical_clustering"
+    url: "/docs/stylometry/stylometry/#stylometry-hierarchical_clustering"
+    summary: "Perform hierarchical clustering on fitted data."
+  - name: "Stylometry.most_similar()"
+    anchor: "stylometry-most_similar"
+    url: "/docs/stylometry/stylometry/#stylometry-most_similar"
+    summary: "Find the most similar documents to a query."
+  - name: "Stylometry.plot()"
+    anchor: "stylometry-plot"
+    url: "/docs/stylometry/stylometry/#stylometry-plot"
+    summary: "Create a 2D scatter plot of documents or authors."
+  - name: "Stylometry.predict()"
+    anchor: "stylometry-predict"
+    url: "/docs/stylometry/stylometry/#stylometry-predict"
+    summary: "Predict the most likely author for a tokenized text."
+  - name: "Stylometry.predict_author()"
+    anchor: "stylometry-predict_author"
+    url: "/docs/stylometry/stylometry/#stylometry-predict_author"
+    summary: "Convenience method to get just the predicted author name."
+  - name: "Stylometry.predict_confidence()"
+    anchor: "stylometry-predict_confidence"
+    url: "/docs/stylometry/stylometry/#stylometry-predict_confidence"
+    summary: "Predict with unified confidence scores (higher = more likely)."
+  - name: "Stylometry.rolling_delta()"
+    anchor: "stylometry-rolling_delta"
+    url: "/docs/stylometry/stylometry/#stylometry-rolling_delta"
+    summary: "Rolling window analysis across a long text."
+  - name: "Stylometry.similarity()"
+    anchor: "stylometry-similarity"
+    url: "/docs/stylometry/stylometry/#stylometry-similarity"
+    summary: "Compute the similarity between two documents. Higher = more similar."
+  - name: "Stylometry.transform()"
+    anchor: "stylometry-transform"
+    url: "/docs/stylometry/stylometry/#stylometry-transform"
+    summary: "Transform a tokenized text to a feature vector using fitted features."
+  - name: "Stylometry.vocabulary_stats()"
+    anchor: "stylometry-vocabulary_stats"
+    url: "/docs/stylometry/stylometry/#stylometry-vocabulary_stats"
+    summary: "Get vocabulary richness statistics for all fitted documents."
   - name: "compare_corpora()"
     anchor: "compare-corpora"
     url: "/docs/stylometry/compare-corpora/"
@@ -166,6 +234,23 @@ for author, distance in results:
 Select a symbol to view full documentation:
 
 - [`Stylometry`](/docs/stylometry/stylometry/) - Stylometry for authorship attribution and document clustering.
+- [`Stylometry.bootstrap_predict()`](/docs/stylometry/stylometry/#stylometry-bootstrap_predict) - Bootstrap analysis for prediction robustness.
+- [`Stylometry.dendrogram()`](/docs/stylometry/stylometry/#stylometry-dendrogram) - Visualize hierarchical clustering as a dendrogram.
+- [`Stylometry.distance()`](/docs/stylometry/stylometry/#stylometry-distance) - Compute the distance between two documents. Lower = more similar.
+- [`Stylometry.distance_matrix()`](/docs/stylometry/stylometry/#stylometry-distance_matrix) - Compute pairwise distance matrix from fitted data.
+- [`Stylometry.fit_transform()`](/docs/stylometry/stylometry/#stylometry-fit_transform) - Fit the model on a corpus and transform documents to feature vectors.
+- [`Stylometry.get_author_profile()`](/docs/stylometry/stylometry/#stylometry-get_author_profile) - Get the feature values for a specific author.
+- [`Stylometry.get_feature_comparison()`](/docs/stylometry/stylometry/#stylometry-get_feature_comparison) - Get a comparison table of feature values across all fitted authors.
+- [`Stylometry.hierarchical_clustering()`](/docs/stylometry/stylometry/#stylometry-hierarchical_clustering) - Perform hierarchical clustering on fitted data.
+- [`Stylometry.most_similar()`](/docs/stylometry/stylometry/#stylometry-most_similar) - Find the most similar documents to a query.
+- [`Stylometry.plot()`](/docs/stylometry/stylometry/#stylometry-plot) - Create a 2D scatter plot of documents or authors.
+- [`Stylometry.predict()`](/docs/stylometry/stylometry/#stylometry-predict) - Predict the most likely author for a tokenized text.
+- [`Stylometry.predict_author()`](/docs/stylometry/stylometry/#stylometry-predict_author) - Convenience method to get just the predicted author name.
+- [`Stylometry.predict_confidence()`](/docs/stylometry/stylometry/#stylometry-predict_confidence) - Predict with unified confidence scores (higher = more likely).
+- [`Stylometry.rolling_delta()`](/docs/stylometry/stylometry/#stylometry-rolling_delta) - Rolling window analysis across a long text.
+- [`Stylometry.similarity()`](/docs/stylometry/stylometry/#stylometry-similarity) - Compute the similarity between two documents. Higher = more similar.
+- [`Stylometry.transform()`](/docs/stylometry/stylometry/#stylometry-transform) - Transform a tokenized text to a feature vector using fitted features.
+- [`Stylometry.vocabulary_stats()`](/docs/stylometry/stylometry/#stylometry-vocabulary_stats) - Get vocabulary richness statistics for all fitted documents.
 - [`compare_corpora()`](/docs/stylometry/compare-corpora/) - Compare two corpora to identify statistically significant differences in word usage.
 - [`extract_mfw()`](/docs/stylometry/extract-mfw/) - Extract the Most Frequent Words (MFW) from a frequency counter.
 - [`burrows_delta()`](/docs/stylometry/burrows-delta/) - Compute Burrows' Delta distance between two feature vectors.

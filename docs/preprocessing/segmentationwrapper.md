@@ -51,7 +51,7 @@ model = SegmentationWrapper()
 
 ## Methods
 
-### `SegmentationWrapper.close()`
+### `SegmentationWrapper.close()` {: #segmentationwrapper-close }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L211)
 
@@ -68,7 +68,7 @@ instance = SegmentationWrapper()
 result = instance.close()
 ```
 
-### `SegmentationWrapper.reset_user_dict()`
+### `SegmentationWrapper.reset_user_dict()` {: #segmentationwrapper-reset_user_dict }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L215)
 
@@ -88,7 +88,7 @@ instance = SegmentationWrapper()
 result = instance.reset_user_dict()
 ```
 
-### `SegmentationWrapper.segment()`
+### `SegmentationWrapper.segment()` {: #segmentationwrapper-segment }
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L238)
 

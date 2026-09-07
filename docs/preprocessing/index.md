@@ -7,18 +7,42 @@ functions:
     anchor: "segmentationwrapper"
     url: "/docs/preprocessing/segmentationwrapper/"
     summary: "Base segmentation wrapper class that can be extended for different segmentation tools."
+  - name: "SegmentationWrapper.close()"
+    anchor: "segmentationwrapper-close"
+    url: "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-close"
+    summary: "Clean up resources. Call this when done with the segmenter."
+  - name: "SegmentationWrapper.reset_user_dict()"
+    anchor: "segmentationwrapper-reset_user_dict"
+    url: "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-reset_user_dict"
+    summary: "Reset the user dictionary to default state."
+  - name: "SegmentationWrapper.segment()"
+    anchor: "segmentationwrapper-segment"
+    url: "/docs/preprocessing/segmentationwrapper/#segmentationwrapper-segment"
+    summary: "Segment text into tokens based on the selected strategy."
   - name: "SpacySegmenter"
     anchor: "spacysegmenter"
     url: "/docs/preprocessing/spacysegmenter/"
     summary: "Segmentation wrapper for spaCy models."
+  - name: "SpacySegmenter.reset_user_dict()"
+    anchor: "spacysegmenter-reset_user_dict"
+    url: "/docs/preprocessing/spacysegmenter/#spacysegmenter-reset_user_dict"
+    summary: "Reset the spaCy tokenizer's user dictionary."
   - name: "PKUSegmenter"
     anchor: "pkusegmenter"
     url: "/docs/preprocessing/pkusegmenter/"
     summary: "Segmentation wrapper for PKUSeg Chinese text segmentation."
+  - name: "PKUSegmenter.reset_user_dict()"
+    anchor: "pkusegmenter-reset_user_dict"
+    url: "/docs/preprocessing/pkusegmenter/#pkusegmenter-reset_user_dict"
+    summary: "Reset the user dictionary by reinitializing PKUSeg without a user dict."
   - name: "JiebaSegmenter"
     anchor: "jiebasegmenter"
     url: "/docs/preprocessing/jiebasegmenter/"
     summary: "Segmentation wrapper for Jieba Chinese text segmentation."
+  - name: "JiebaSegmenter.reset_user_dict()"
+    anchor: "jiebasegmenter-reset_user_dict"
+    url: "/docs/preprocessing/jiebasegmenter/#jiebasegmenter-reset_user_dict"
+    summary: "Reset Jieba's dictionary to default state."
   - name: "BertSegmenter"
     anchor: "bertsegmenter"
     url: "/docs/preprocessing/bertsegmenter/"
@@ -154,9 +178,15 @@ topics = lda.get_topics(n_words=10)
 Select a symbol to view full documentation:
 
 - [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/) - Base segmentation wrapper class that can be extended for different segmentation tools.
+- [`SegmentationWrapper.close()`](/docs/preprocessing/segmentationwrapper/#segmentationwrapper-close) - Clean up resources. Call this when done with the segmenter.
+- [`SegmentationWrapper.reset_user_dict()`](/docs/preprocessing/segmentationwrapper/#segmentationwrapper-reset_user_dict) - Reset the user dictionary to default state.
+- [`SegmentationWrapper.segment()`](/docs/preprocessing/segmentationwrapper/#segmentationwrapper-segment) - Segment text into tokens based on the selected strategy.
 - [`SpacySegmenter`](/docs/preprocessing/spacysegmenter/) - Segmentation wrapper for spaCy models.
+- [`SpacySegmenter.reset_user_dict()`](/docs/preprocessing/spacysegmenter/#spacysegmenter-reset_user_dict) - Reset the spaCy tokenizer's user dictionary.
 - [`PKUSegmenter`](/docs/preprocessing/pkusegmenter/) - Segmentation wrapper for PKUSeg Chinese text segmentation.
+- [`PKUSegmenter.reset_user_dict()`](/docs/preprocessing/pkusegmenter/#pkusegmenter-reset_user_dict) - Reset the user dictionary by reinitializing PKUSeg without a user dict.
 - [`JiebaSegmenter`](/docs/preprocessing/jiebasegmenter/) - Segmentation wrapper for Jieba Chinese text segmentation.
+- [`JiebaSegmenter.reset_user_dict()`](/docs/preprocessing/jiebasegmenter/#jiebasegmenter-reset_user_dict) - Reset Jieba's dictionary to default state.
 - [`BertSegmenter`](/docs/preprocessing/bertsegmenter/) - Segmentation wrapper for BERT-based Chinese word segmentation.
 - [`LLMSegmenter`](/docs/preprocessing/llmsegmenter/) - Segmentation wrapper using Language Model APIs like OpenAI.
 - [`HanLPSegmenter`](/docs/preprocessing/hanlpsegmenter/) - Segmentation wrapper using HanLP 2.x neural tokenizers.
