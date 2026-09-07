@@ -756,7 +756,7 @@ aside.docs-sidebar {
     align-items: center;
     gap: 0.35rem;
     cursor: pointer;
-    user-select: none;
+    user-select: text;
     padding-left: 0;
 
     &::before {
@@ -910,7 +910,9 @@ aside.docs-sidebar {
   position: absolute;
   top: 100%;
   left: 0;
-  right: 0;
+  width: max-content;
+  min-width: 100%;
+  max-width: 90vw;
   background: white;
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -928,6 +930,7 @@ aside.docs-sidebar {
 .search-result-item {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   padding: calc(0.5 * var(--spacing-unit)) calc(0.75 * var(--spacing-unit));
   text-decoration: none;
   border-bottom: 1px solid var(--border-color);
@@ -947,6 +950,9 @@ aside.docs-sidebar {
   color: var(--primary-color);
   font-weight: 600;
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search-result-module {
