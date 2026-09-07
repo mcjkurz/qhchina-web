@@ -61,7 +61,7 @@ model = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_ind
 
 ## Methods
 
-### `CoocMatrix.get()` {: #coocmatrix-get }
+<h3 id="coocmatrix-get"><code>CoocMatrix.get()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L156)
 
@@ -86,7 +86,7 @@ instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_
 result = instance.get(row_key='示例', col_key='示例')
 ```
 
-### `CoocMatrix.sum()` {: #coocmatrix-sum }
+<h3 id="coocmatrix-sum"><code>CoocMatrix.sum()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L229)
 
@@ -112,7 +112,7 @@ instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_
 result = instance.sum()
 ```
 
-### `CoocMatrix.to_dataframe()` {: #coocmatrix-to_dataframe }
+<h3 id="coocmatrix-to_dataframe"><code>CoocMatrix.to_dataframe()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L184)
 
@@ -134,7 +134,7 @@ instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_
 result = instance.to_dataframe()
 ```
 
-### `CoocMatrix.to_dense()` {: #coocmatrix-to_dense }
+<h3 id="coocmatrix-to_dense"><code>CoocMatrix.to_dense()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L173)
 
@@ -156,7 +156,7 @@ instance = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_
 result = instance.to_dense()
 ```
 
-### `CoocMatrix.to_ppmi()` {: #coocmatrix-to_ppmi }
+<h3 id="coocmatrix-to_ppmi"><code>CoocMatrix.to_ppmi()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L249)
 

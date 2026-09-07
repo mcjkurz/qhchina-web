@@ -99,7 +99,7 @@ similar = model.most_similar('喜欢', topn=5)
 
 ## Methods
 
-### `Word2Vec.build_vocab()` {: #word2vec-build_vocab }
+<h3 id="word2vec-build_vocab"><code>Word2Vec.build_vocab()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L235)
 
@@ -122,7 +122,7 @@ instance = Word2Vec()
 result = instance.build_vocab(sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']])
 ```
 
-### `Word2Vec.export()` {: #word2vec-export }
+<h3 id="word2vec-export"><code>Word2Vec.export()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1347)
 
@@ -164,7 +164,7 @@ kv = KeyedVectors.load_word2vec_format("vectors.bin", binary=True)
 ```
 
 
-### `Word2Vec.get_vector()` {: #word2vec-get_vector }
+<h3 id="word2vec-get_vector"><code>Word2Vec.get_vector()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1155)
 
@@ -191,7 +191,7 @@ instance = Word2Vec()
 result = instance.get_vector(word='人民')
 ```
 
-### `Word2Vec.load()` {: #word2vec-load }
+<h3 id="word2vec-load"><code>Word2Vec.load()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1439)
 
@@ -214,7 +214,7 @@ instance = Word2Vec()
 result = instance.load(path='example_output.bin')
 ```
 
-### `Word2Vec.load_vectors()` {: #word2vec-load_vectors }
+<h3 id="word2vec-load_vectors"><code>Word2Vec.load_vectors()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1486)
 
@@ -268,7 +268,7 @@ model.train(new_sentences, epochs=5, update_vocab=True)
 ```
 
 
-### `Word2Vec.most_similar()` {: #word2vec-most_similar }
+<h3 id="word2vec-most_similar"><code>Word2Vec.most_similar()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1204)
 
@@ -306,7 +306,7 @@ model.most_similar(vec, topn=5, exclude=["king", "man", "woman"])
 ```
 
 
-### `Word2Vec.save()` {: #word2vec-save }
+<h3 id="word2vec-save"><code>Word2Vec.save()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1314)
 
@@ -330,7 +330,7 @@ instance = Word2Vec()
 result = instance.save(path='example_output.bin')
 ```
 
-### `Word2Vec.similarity()` {: #word2vec-similarity }
+<h3 id="word2vec-similarity"><code>Word2Vec.similarity()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L1279)
 
@@ -359,7 +359,7 @@ instance = Word2Vec()
 result = instance.similarity(word1='人民', word2='百姓')
 ```
 
-### `Word2Vec.train()` {: #word2vec-train }
+<h3 id="word2vec-train"><code>Word2Vec.train()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/base.py#L913)
 

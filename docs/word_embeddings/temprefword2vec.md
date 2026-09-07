@@ -114,7 +114,7 @@ model.most_similar("民_明")
 
 ## Methods
 
-### `TempRefWord2Vec.build_vocab()` {: #temprefword2vec-build_vocab }
+<h3 id="temprefword2vec-build_vocab"><code>TempRefWord2Vec.build_vocab()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L450)
 
@@ -141,7 +141,7 @@ instance = TempRefWord2Vec(
 result = instance.build_vocab()
 ```
 
-### `TempRefWord2Vec.calculate_semantic_change()` {: #temprefword2vec-calculate_semantic_change }
+<h3 id="temprefword2vec-calculate_semantic_change"><code>TempRefWord2Vec.calculate_semantic_change()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L794)
 
@@ -186,7 +186,7 @@ for transition, word_changes in changes.items():
 ```
 
 
-### `TempRefWord2Vec.export()` {: #temprefword2vec-export }
+<h3 id="temprefword2vec-export"><code>TempRefWord2Vec.export()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L1110)
 
@@ -214,7 +214,7 @@ instance = TempRefWord2Vec(
 result = instance.export(path='example_output.bin')
 ```
 
-### `TempRefWord2Vec.get_available_targets()` {: #temprefword2vec-get_available_targets }
+<h3 id="temprefword2vec-get_available_targets"><code>TempRefWord2Vec.get_available_targets()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L898)
 
@@ -237,7 +237,7 @@ instance = TempRefWord2Vec(
 result = instance.get_available_targets()
 ```
 
-### `TempRefWord2Vec.get_period_vocab_counts()` {: #temprefword2vec-get_period_vocab_counts }
+<h3 id="temprefword2vec-get_period_vocab_counts"><code>TempRefWord2Vec.get_period_vocab_counts()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L916)
 
@@ -267,7 +267,7 @@ instance = TempRefWord2Vec(
 result = instance.get_period_vocab_counts()
 ```
 
-### `TempRefWord2Vec.get_time_labels()` {: #temprefword2vec-get_time_labels }
+<h3 id="temprefword2vec-get_time_labels"><code>TempRefWord2Vec.get_time_labels()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L907)
 
@@ -290,7 +290,7 @@ instance = TempRefWord2Vec(
 result = instance.get_time_labels()
 ```
 
-### `TempRefWord2Vec.load()` {: #temprefword2vec-load }
+<h3 id="temprefword2vec-load"><code>TempRefWord2Vec.load()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L1007)
 
@@ -325,7 +325,7 @@ instance = TempRefWord2Vec(
 result = instance.load(path='example_output.bin')
 ```
 
-### `TempRefWord2Vec.load_vectors()` {: #temprefword2vec-load_vectors }
+<h3 id="temprefword2vec-load_vectors"><code>TempRefWord2Vec.load_vectors()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L1128)
 
@@ -353,7 +353,7 @@ instance = TempRefWord2Vec(
 result = instance.load_vectors(path='example_output.bin')
 ```
 
-### `TempRefWord2Vec.save()` {: #temprefword2vec-save }
+<h3 id="temprefword2vec-save"><code>TempRefWord2Vec.save()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L938)
 
@@ -384,7 +384,7 @@ instance = TempRefWord2Vec(
 result = instance.save(path='example_output.bin')
 ```
 
-### `TempRefWord2Vec.train()` {: #temprefword2vec-train }
+<h3 id="temprefword2vec-train"><code>TempRefWord2Vec.train()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/word2vec/tempref.py#L734)
 

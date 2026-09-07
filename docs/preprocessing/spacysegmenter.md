@@ -46,7 +46,7 @@ model = SpacySegmenter()
 
 ## Methods
 
-### `SpacySegmenter.reset_user_dict()` {: #spacysegmenter-reset_user_dict }
+<h3 id="spacysegmenter-reset_user_dict"><code>SpacySegmenter.reset_user_dict()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/preprocessing/segmentation.py#L443)
 

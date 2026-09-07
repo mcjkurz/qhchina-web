@@ -85,7 +85,7 @@ model = GloVe()
 
 ## Methods
 
-### `GloVe.load()` {: #glove-load }
+<h3 id="glove-load"><code>GloVe.load()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L732)
 
@@ -105,7 +105,7 @@ instance = GloVe()
 result = instance.load(path='example_output.bin')
 ```
 
-### `GloVe.save()` {: #glove-save }
+<h3 id="glove-save"><code>GloVe.save()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L687)
 
@@ -125,7 +125,7 @@ instance = GloVe()
 result = instance.save(path='example_output.bin')
 ```
 
-### `GloVe.similarity()` {: #glove-similarity }
+<h3 id="glove-similarity"><code>GloVe.similarity()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L678)
 
@@ -141,7 +141,7 @@ instance = GloVe()
 result = instance.similarity(word1='人民', word2='百姓')
 ```
 
-### `GloVe.train()` {: #glove-train }
+<h3 id="glove-train"><code>GloVe.train()</code></h3>
 
 [View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/embeddings/glove/base.py#L533)
 
