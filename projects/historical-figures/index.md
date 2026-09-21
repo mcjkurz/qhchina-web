@@ -2,6 +2,7 @@
 layout: default
 title: Historical Figures (HistFig)
 permalink: /projects/historical-figures/
+ref: project-historical-figures
 ---
 
 # Historical Figures (HistFig)

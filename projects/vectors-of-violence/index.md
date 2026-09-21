@@ -2,6 +2,7 @@
 layout: default
 title: Vectors of Violence
 permalink: /projects/vectors-of-violence/
+ref: project-vectors-of-violence
 ---
 
 # Vectors of Violence

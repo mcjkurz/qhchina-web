@@ -1,6 +1,6 @@
 <div class="footer-content">
   <div class="footer-section">
-    <p>&copy; {{ site.time | date: '%Y' }} qhChina Lab. All rights reserved.</p>
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.data.i18n[page.lang].copyright | default: site.data.i18n.en.copyright }}</p>
   </div>
   
   {% if site.github_username %}

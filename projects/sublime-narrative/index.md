@@ -2,6 +2,7 @@
 layout: default
 title: The Sublime as a Narrative Technology
 permalink: /projects/sublime-narrative/
+ref: project-sublime-narrative
 ---
 
 # The Sublime as a Narrative Technology

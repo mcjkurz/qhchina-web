@@ -2,6 +2,7 @@
 layout: default
 title: The Geometry of Parallelism
 permalink: /projects/parallelism-geometry/
+ref: project-parallelism-geometry
 ---
 # The Geometry of Parallelism
 

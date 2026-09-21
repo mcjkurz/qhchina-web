@@ -1,0 +1,10 @@
+{%- comment -%}
+Finds the counterpart of the current page in the other language (same `ref`).
+Sets `lang_other` and `lang_alt` (nil for pages without a translation, e.g. docs).
+{%- endcomment -%}
+{%- assign lang_alt = nil -%}
+{%- if page.lang == 'zh' -%}{%- assign lang_other = 'en' -%}{%- else -%}{%- assign lang_other = 'zh' -%}{%- endif -%}
+{%- if page.ref -%}
+  {%- assign lang_candidates = site.pages | concat: site.projects | where: "ref", page.ref -%}
+  {%- assign lang_alt = lang_candidates | where: "lang", lang_other | first -%}
+{%- endif -%}

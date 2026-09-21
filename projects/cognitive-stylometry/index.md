@@ -2,6 +2,7 @@
 layout: default
 title: Cognitive Stylometry
 permalink: /projects/cognitive-stylometry/
+ref: project-cognitive-stylometry
 ---
 
 # Cognitive Stylometry

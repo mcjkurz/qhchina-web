@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Publications
-permalink: /pubs/
+title: 論著
+permalink: /zh/pubs/
 ref: pubs
 ---
 
-# Publications
+# 論著
 
 ## 2026
 

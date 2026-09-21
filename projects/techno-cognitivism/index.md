@@ -2,6 +2,7 @@
 layout: default
 title: Poly-Temporal, Multi-Layered
 permalink: /projects/techno-cognitivism/
+ref: project-techno-cognitivism
 ---
 
 # Techno-Cognitivism

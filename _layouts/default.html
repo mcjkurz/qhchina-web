@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="{% if page.lang == 'zh' %}zh-Hant{% else %}en{% endif %}">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,18 @@
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     <link rel="icon" href="{{ '/assets/img/icon.png' | relative_url }}">
+    {% include lang-alt.html %}
+    {% if lang_alt %}
+    <link rel="alternate" hreflang="{{ page.lang }}" href="{{ page.url | absolute_url }}">
+    <link rel="alternate" hreflang="{{ lang_other }}" href="{{ lang_alt.url | absolute_url }}">
+    {% endif %}
     {% include head-custom.html %}
   </head>
   <body>
     <div class="wrapper">
       <header>
         <div class="logo-section">
+          {% include lang-switch.html %}
           {% if site.logo %}
             <a href="{{ "/" | relative_url }}" class="logo-link">
               <img src="{{site.logo | relative_url}}" alt="{{ site.title }}" class="site-logo"/>

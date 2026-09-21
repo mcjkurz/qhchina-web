@@ -2,6 +2,7 @@
 layout: default
 title: Verbs of Chinese Poetry
 permalink: /projects/verbs-chinese-poetry/
+ref: project-verbs-chinese-poetry
 ---
 
 # Verbs of Chinese Poetry

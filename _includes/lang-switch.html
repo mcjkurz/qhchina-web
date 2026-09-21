@@ -1,0 +1,4 @@
+{% include lang-alt.html %}
+{% if lang_alt %}
+<a class="lang-switch" href="{{ lang_alt.url | relative_url }}" hreflang="{{ lang_other }}" lang="{{ lang_other }}">{{ site.data.i18n[lang_other].switch_to }}</a>
+{% endif %}

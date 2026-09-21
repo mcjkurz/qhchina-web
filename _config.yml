@@ -37,6 +37,11 @@ defaults:
       path: ""
     values:
       layout: "default"
+      lang: "en"
+  - scope:
+      path: "zh"
+    values:
+      lang: "zh"
 
 # GitHub metadata
 github_username: mcjkurz
