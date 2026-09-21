@@ -44,7 +44,7 @@ permalink: /zh/projects/
         <p>對仗作為認知幾何：研究中國格律詩如何通過成對詩句、尺度約束與向量表示，在概念空間中發現並創造潛在的對稱。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知主義</a></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a></h3>
         <p>一種文學意義理論：意義源於文本形式、具身認知與歷史語境之間的分層互動，其靈感來自敘事經驗的計算模型。</p>
     </div>
     <div class="project-card">
