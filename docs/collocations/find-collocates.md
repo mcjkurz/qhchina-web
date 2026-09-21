@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L676)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L725)
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -24,6 +24,7 @@ Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocate
     <span class="sig-param">alternative</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'greater'</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'obs_local'</span>,
     <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">pooled</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
     <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>
 )</code></pre>
 
@@ -38,6 +39,7 @@ restartable generator classes all work; single-use generators do not.
 - `sentences` (Iterable[list[str]]): Restartable iterable of tokenized
   sentences (each sentence a list of string tokens).
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
+  By default each target is analysed separately (see `pooled`).
 - `method` (str): Method to use for calculating collocations. Either 'window' or 
   'sentence'. 'window' uses a sliding window of specified horizon around each 
   token. In window mode, contingency tables follow Evert (2008):
@@ -53,9 +55,20 @@ restartable generator classes all work; single-use generators do not.
     (2, 3) finds collocates 2 words left and 3 words right of target.
   - None: Uses default of 5 for 'window' method
 - `filters` (FilterOptions | None): Dictionary of filters to apply to results.
-  All filters (except `max_adjusted_p`) are applied BEFORE multiple testing 
-  correction, defining the "family" of hypotheses being tested. This maximizes 
-  statistical power by not correcting for collocates that were never of interest.
+  Filters are **post-hoc**: they run only AFTER all counts and statistics
+  (`obs_local`, `exp_local`, `obs_global`, contingency tables, p-values)
+  have been computed on the full, unfiltered corpus, and they only remove rows
+  from the finished result. They never change the counts or p-values of the
+  collocates that remain. In particular, `stopwords` are NOT removed from the
+  corpus: they still occupy window positions and count toward totals, they are
+  merely hidden from the output. To exclude words from the counting itself,
+  remove them from `sentences` beforehand. Likewise `min_obs_global` etc.
+  are result filters, not vocabulary cutoffs.
+  
+  Order of operations: all filters except `max_adjusted_p` are applied BEFORE
+  multiple testing correction, defining the "family" of hypotheses being tested
+  (so they reduce the number of tests). `max_adjusted_p` is applied AFTER the
+  correction.
   
   Available filters:
   
@@ -70,12 +83,13 @@ restartable generator classes all work; single-use generators do not.
   - 'min_ratio_local': float - Minimum local frequency ratio (obs/exp)
   - 'max_ratio_local': float - Maximum local frequency ratio (obs/exp)
   - 'max_p': float - Maximum raw p-value threshold
-  - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction,
-    applied after correction is computed)
+  - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction;
+    the only filter applied after the correction is computed)
 - `correction` (str): Multiple testing correction method. When set,
   an `adjusted_p_value` column is added to the results. The correction
-  is applied AFTER all other filters, so only collocates that pass those
-  filters count toward the number of tests.
+  is applied after the (post-hoc) result filters, so only collocates that pass
+  those filters count toward the number of tests. The raw counts and p-values
+  themselves are unaffected by the filters.
   
   - 'bonferroni': Bonferroni correction (conservative, controls family-wise 
     error rate).
@@ -91,6 +105,15 @@ restartable generator classes all work; single-use generators do not.
   observed differs from expected).
 - `sort_by` (str): Field to sort results by. Default is 'obs_local'.
 - `ascending` (bool): Sort direction. Default is False (descending).
+- `pooled` (bool): If True and more than one target word is given, all targets are
+  merged into a single pooled target BEFORE counting, as if every occurrence of
+  any target were the same word. Each context (window position or sentence)
+  is counted once even if several targets occur in it, and the other targets
+  never appear as collocates. In window mode, all target tokens are also
+  excluded from the sample space (Evert 2008). Results contain a single
+  `target` value, 'pooled'. This is not the same as summing the per-target
+  results, which would double-count shared contexts. With a single target it
+  has no effect. Default is False (targets analysed separately).
 - `batch_words` (int): Target number of tokens per processing batch. Larger values
   use more memory but reduce per-batch overhead. Default is 100,000.
 
