@@ -55,20 +55,22 @@ restartable generator classes all work; single-use generators do not.
     (2, 3) finds collocates 2 words left and 3 words right of target.
   - None: Uses default of 5 for 'window' method
 - `filters` (FilterOptions | None): Dictionary of filters to apply to results.
-  Filters are applied after all counts and statistics (`obs_local`,
-  `exp_local`, `obs_global`, contingency tables, p-values) have been
-  computed on the full, unfiltered corpus, and they only remove rows from the
-  finished result. They never change the counts or p-values of the collocates
-  that remain. In particular, `stopwords` are not removed from the corpus:
+  Filters are applied after all counts and raw statistics (`obs_local`,
+  `exp_local`, `obs_global`, `ratio_local`, contingency tables,
+  `p_value`) have been computed on the full, unfiltered corpus, and they only
+  remove rows from the finished result. They never change these values for the
+  collocates that remain. The one value they can affect is `adjusted_p_value`
+  (see `correction`). In particular, `stopwords` are not removed from the corpus:
   they still occupy window positions and count toward totals, and are only
   hidden from the output. To exclude words from the counting itself, remove
   them from `sentences` beforehand. Likewise, `min_obs_global` and the
   other `*_global` filters are result filters, not vocabulary cutoffs.
   
-  Order of operations: every filter except `max_adjusted_p` is applied
-  before the multiple testing correction, and the rows that remain define the
-  "family" of hypotheses being tested (so filters reduce the number of tests).
-  `max_adjusted_p` is applied after the correction.
+  Order of operations: (1) counts and raw p-values are computed for all
+  collocates; (2) every filter except `max_adjusted_p` removes rows;
+  (3) the multiple testing correction, if requested, is computed on the rows
+  that remain; (4) `max_adjusted_p` removes rows based on the adjusted
+  p-values.
   
   Available filters:
   
@@ -87,9 +89,11 @@ restartable generator classes all work; single-use generators do not.
     the only filter applied after the correction is computed)
 - `correction` (str): Multiple testing correction method. When set,
   an `adjusted_p_value` column is added to the results. The correction
-  is applied after the (post-hoc) result filters, so only collocates that pass
-  those filters count toward the number of tests. The raw counts and p-values
-  themselves are unaffected by the filters.
+  is computed after the filters (except `max_adjusted_p`) have removed rows,
+  and only on the rows that remain, so the number of tests is the number of
+  collocates that passed the filters. The same collocate can therefore get a
+  different `adjusted_p_value` with different filters, while `p_value` and
+  the counts stay the same.
   
   - 'bonferroni': Bonferroni correction (conservative, controls family-wise 
     error rate).
