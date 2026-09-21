@@ -40,7 +40,7 @@ permalink: /zh/projects/
 <div class="projects-grid">
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/parallelism-geometry/">對仗與幾何</a></h3>
-        <p>與 <strong>蔡宗齊教授、徐曉彤、馮昱</strong> 合作</p>
+        <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
         <p>對仗作為認知幾何：研究中國格律詩如何通過成對詩句、尺度約束與向量表示，在概念空間中發現並創造潛在的對稱。</p>
     </div>
     <div class="project-card">
@@ -71,7 +71,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">歷史人物</a></h3>
-        <p>與 <strong>杜春梅教授</strong> 合作</p>
+        <p>與 <strong>杜春媚教授</strong> 合作</p>
         <p>一個以史料為根據的AI教學項目，把歷史對話轉化為聲音、證據、闡釋與模擬能動性的問題。</p>
     </div>
 </div>
