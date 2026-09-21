@@ -6,6 +6,6 @@
     <li><a href="{{ p | append: '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>{{ t.about }}</a></li>
     <li><a href="{{ p | append: '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>{{ t.projects }}</a></li>
     <li><a href="{{ p | append: '/pubs/' | relative_url }}" {% if page.url contains '/pubs' %}class="active"{% endif %}>{{ t.pubs }}</a></li>
-    <li><a href="{{ '/docs/' | relative_url }}" {% if page.url contains '/docs' %}class="active"{% endif %}>{{ t.docs }}{% if page.lang == 'zh' %} <small>(EN)</small>{% endif %}</a></li>
+    <li><a href="{{ '/docs/' | relative_url }}" {% if page.url contains '/docs' %}class="active"{% endif %}>{{ t.docs }}</a></li>
   </ul>
 </nav>
