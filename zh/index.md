@@ -34,7 +34,7 @@ permalink: /zh/
 
 ## 關於 qh
 
-在這裡，量化人文（quantitative humanities）與其說是一種方法，不如說是一種理論介入，圍繞幾個反覆出現的概念展開：
+在這裡，計算人文（computational humanities）與其說是一種方法，不如說是一種理論介入，圍繞幾個反覆出現的概念展開：
 
 - **實驗（Experimentation）**：借助計算模型檢驗、陌生化並改寫人文概念，而不只是驗證既有結論
 - **以文本為主（Text Matters）**：視文學語言為能動的物質——組織注意力、情感與歷史想像
