@@ -45,7 +45,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a></h3>
-        <p>一種文學意義理論：意義源於文本形式、具身認知與歷史語境之間的分層互動，其靈感來自敘事經驗的計算模型。</p>
+        <p>一種文學意義理論：意義是文本形式、具身認知與歷史語境之間的分層互動，其靈感來自敘事經驗的計算模型。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a></h3>
@@ -62,7 +62,7 @@ permalink: /zh/projects/
         <p>將國家暴力視為分佈於官方話語之中的情感，追蹤合法性、情感與能動性如何在《解放軍報》中流通。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">貼心之詞</a></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">在心旁邊</a></h3>
         <p>對中國小說中共情與內在性的技術認知研究，連接心之隱喻、語義鄰近與具身的敘事注意力。</p>
     </div>
     <div class="project-card">
@@ -72,7 +72,7 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">歷史人物</a></h3>
         <p>與 <strong>杜春媚教授</strong> 合作</p>
-        <p>一個以史料為根據的AI教學項目，把歷史對話轉化為聲音、證據、闡釋與模擬能動性的問題。</p>
+        <p>一個以史料為根據的AI教學項目，把歷史對話轉化為關乎聲音、證據、闡釋與模擬能動性的問題。</p>
     </div>
 </div>
 
