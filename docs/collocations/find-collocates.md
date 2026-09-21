@@ -55,20 +55,20 @@ restartable generator classes all work; single-use generators do not.
     (2, 3) finds collocates 2 words left and 3 words right of target.
   - None: Uses default of 5 for 'window' method
 - `filters` (FilterOptions | None): Dictionary of filters to apply to results.
-  Filters are **post-hoc**: they run only AFTER all counts and statistics
-  (`obs_local`, `exp_local`, `obs_global`, contingency tables, p-values)
-  have been computed on the full, unfiltered corpus, and they only remove rows
-  from the finished result. They never change the counts or p-values of the
-  collocates that remain. In particular, `stopwords` are NOT removed from the
-  corpus: they still occupy window positions and count toward totals, they are
-  merely hidden from the output. To exclude words from the counting itself,
-  remove them from `sentences` beforehand. Likewise `min_obs_global` etc.
-  are result filters, not vocabulary cutoffs.
+  Filters are applied after all counts and statistics (`obs_local`,
+  `exp_local`, `obs_global`, contingency tables, p-values) have been
+  computed on the full, unfiltered corpus, and they only remove rows from the
+  finished result. They never change the counts or p-values of the collocates
+  that remain. In particular, `stopwords` are not removed from the corpus:
+  they still occupy window positions and count toward totals, and are only
+  hidden from the output. To exclude words from the counting itself, remove
+  them from `sentences` beforehand. Likewise, `min_obs_global` and the
+  other `*_global` filters are result filters, not vocabulary cutoffs.
   
-  Order of operations: all filters except `max_adjusted_p` are applied BEFORE
-  multiple testing correction, defining the "family" of hypotheses being tested
-  (so they reduce the number of tests). `max_adjusted_p` is applied AFTER the
-  correction.
+  Order of operations: every filter except `max_adjusted_p` is applied
+  before the multiple testing correction, and the rows that remain define the
+  "family" of hypotheses being tested (so filters reduce the number of tests).
+  `max_adjusted_p` is applied after the correction.
   
   Available filters:
   
@@ -106,7 +106,7 @@ restartable generator classes all work; single-use generators do not.
 - `sort_by` (str): Field to sort results by. Default is 'obs_local'.
 - `ascending` (bool): Sort direction. Default is False (descending).
 - `pooled` (bool): If True and more than one target word is given, all targets are
-  merged into a single pooled target BEFORE counting, as if every occurrence of
+  merged into a single pooled target before counting, as if every occurrence of
   any target were the same word. Each context (window position or sentence)
   is counted once even if several targets occur in it, and the other targets
   never appear as collocates. In window mode, all target tokens are also
