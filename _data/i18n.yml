@@ -4,7 +4,6 @@ en:
   projects: Projects
   pubs: Publications
   docs: Docs
-  switch_to: 中文
   copyright: "qhChina Lab. All rights reserved."
 zh:
   home: 首頁
@@ -12,5 +11,4 @@ zh:
   projects: 項目
   pubs: 論著
   docs: 文件
-  switch_to: English
   copyright: "qhChina Lab 版權所有。"

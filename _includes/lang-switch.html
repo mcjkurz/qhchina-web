@@ -1,4 +1,15 @@
 {% include lang-alt.html %}
 {% if lang_alt %}
-<a class="lang-switch" href="{{ lang_alt.url | relative_url }}" hreflang="{{ lang_other }}" lang="{{ lang_other }}">{{ site.data.i18n[lang_other].switch_to }}</a>
+  {% assign lang_url = lang_alt.url %}
+{% elsif page.lang == 'zh' %}
+  {% assign lang_url = '/' %}
+{% else %}
+  {% assign lang_url = '/zh/' %}
 {% endif %}
+<div class="lang-switch">
+  {% if page.lang == 'zh' %}
+  <a href="{{ lang_url | relative_url }}" hreflang="en" lang="en">EN</a> / <span aria-current="true">中文</span>
+  {% else %}
+  <span aria-current="true">EN</span> / <a href="{{ lang_url | relative_url }}" hreflang="zh-Hant" lang="zh-Hant">中文</a>
+  {% endif %}
+</div>
