@@ -59,7 +59,7 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vectors-of-violence/">暴力的向量</a></h3>
         <p>與 <strong>Aaron Gilkison</strong> 合作</p>
-        <p>將國家暴力視為分佈於官方話語之中的情感，追蹤合法性、情感與能動性如何在《解放軍報》中流通。</p>
+        <p>將國家暴力視為分佈於官方話語之中的情感，追蹤合法性、情感與行動主體如何在《解放軍報》中流通。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">在心旁邊</a></h3>
@@ -72,7 +72,7 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">歷史人物</a></h3>
         <p>與 <strong>杜春媚教授</strong> 合作</p>
-        <p>一個以史料為根據的AI教學項目，把歷史對話轉化為關乎聲音、證據、闡釋與模擬能動性的問題。</p>
+        <p>一個以史料為根據的AI教學項目，把歷史對話轉化為關乎聲音、證據、闡釋與模擬行動主體的問題。</p>
     </div>
 </div>
 
