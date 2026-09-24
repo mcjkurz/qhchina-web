@@ -41,38 +41,38 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vector-poetics/">向量詩學</a><span class="en-title">Vector Poetics</span></h3>
         <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
-        <p>從向量空間重讀律詩對仗，分析詩句如何在概念的空間裡彼此呼應。</p>
+        <p>用向量空間重讀律詩對仗，看上下句如何在概念的空間裡彼此呼應。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a><span class="en-title">Techno-Cognitivism</span></h3>
-        <p>從編碼與解碼的循環互動，看文學意義如何產生。</p>
+        <p>從文本、身體與歷史三者的互動，看文學意義如何生成。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a><span class="en-title">Verbs of Chinese Poetry</span></h3>
         <p>與 <strong>蔡宗齊教授</strong> 合作</p>
-        <p>從「詩眼」，也就是謂語動詞入手，看句法如何調度節奏、注意與想像。</p>
+        <p>從謂語動詞入手，看句法如何調度節奏、注意與想像。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/cognitive-stylometry/">具身認知與計量文體學</a><span class="en-title">Cognitive Stylometry</span></h3>
-        <p>以困惑度（perplexity）對照，看意識形態的可預測與文學的陌生化。</p>
+        <p>以困惑度（perplexity）對照意識形態的可預測與文學的陌生化。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vectors-of-violence/">暴力的向量</a><span class="en-title">Vectors of Violence</span></h3>
         <p>與 <strong>Aaron Gilkison</strong> 合作</p>
-        <p>追溯《解放軍報》如何在字裡行間，讓合法性、情感與施暴者彼此掛鉤。</p>
+        <p>追蹤《解放軍報》如何在字裡行間，讓合法性、情感與施暴者彼此掛鉤。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">在「心」旁邊</a><span class="en-title">Words Close to Heart</span></h3>
-        <p>心、腦、肝、胃這些內臟，如何把人物的情感拉到讀者身體的近旁。</p>
+        <p>心、腦、肝、胃這些字眼，如何把人物的情感拉到讀者身體的近旁。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/sublime-narrative/">敘事技術與崇高形象</a><span class="en-title">The Sublime as a Narrative Technology</span></h3>
-        <p>視「崇高」為一種敘事技巧，看語言與身體如何協調出撼人的體驗。</p>
+        <p>把「崇高」看作一種敘事手法，看小說如何用動勢、邊界與尺度撼動讀者。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">HistFig 歷史人物</a><span class="en-title">Historical Figures</span></h3>
         <p>與 <strong>杜春媚教授</strong> 合作</p>
-        <p>以史籍為底本的對話實驗，讓學生與文獻訓練而成的歷史人物對話。</p>
+        <p>以史籍為底本的教學實驗，讓學生與文獻訓練出來的歷史人物對話。</p>
     </div>
 </div>
 
