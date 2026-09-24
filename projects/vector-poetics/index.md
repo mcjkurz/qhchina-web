@@ -1,10 +1,10 @@
 ---
 layout: default
-title: The Geometry of Parallelism
-permalink: /projects/parallelism-geometry/
-ref: project-parallelism-geometry
+title: Vector Poetics
+permalink: /projects/vector-poetics/
+ref: project-vector-poetics
 ---
-# The Geometry of Parallelism
+# Vector Poetics
 
 Parallelism is not only a formal rule of Chinese regulated verse; it is a way of discovering and creating order in conceptual space. This project treats paired poetic lines as experiments in cognitive geometry, where syntax, semantics, tone, and rhythm align to reveal latent symmetries among otherwise distant domains of experience. By combining traditional poetics with language-model analysis, the project asks how literary form organizes comparison, how scale shapes interpretation, and how vector representations can make visible the conceptual architecture of parallel thought.
 

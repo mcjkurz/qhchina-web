@@ -39,7 +39,7 @@ ref: projects
 
 <div class="projects-grid">
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/projects/parallelism-geometry/">Parallelism and Geometry</a></h3>
+        <h3><a href="{{ site.baseurl }}/projects/vector-poetics/">Vector Poetics</a></h3>
         <p>with <strong>Prof. Zong-qi Cai</strong>, <strong>Xiaotong Xu</strong>, and <strong>Yu Feng</strong></p>
         <p>Parallelism as cognitive geometry: a study of how Chinese regulated verse discovers and creates latent symmetries in conceptual space through paired lines, scalar constraints, and vector representations.</p>
     </div>
