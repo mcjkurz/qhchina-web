@@ -1,5 +1,5 @@
 /**
- * Simple vanilla JS search for qhchina package documentation.
+ * Simple vanilla JS search for qh · china package documentation.
  * Searches function and class names, displays matching results.
  */
 

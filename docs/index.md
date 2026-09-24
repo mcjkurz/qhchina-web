@@ -9,7 +9,7 @@ functions:
     anchor: global-configuration
 ---
 
-# qhChina Package Documentation
+# qh · china Package Documentation
 
 An educational Python toolkit for computational analysis of Chinese texts in humanities research. Under active development.
 
@@ -78,7 +78,7 @@ The package provides centralized configuration for logging and random number gen
 
 ### Random Seed
 
-Set a global random seed for reproducibility across all qhchina modules:
+Set a global random seed for reproducibility across all qh · china modules:
 
 ```python
 import qhchina
