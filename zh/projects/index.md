@@ -70,7 +70,7 @@ permalink: /zh/projects/
         <p>一種關於崇高的計算理論：崇高是協調現代中國小說中運動、邊界、尺度與情感的敘事機制。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">HistFig（歷史人物）</a><span class="en-title">Historical Figures</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">HistFig 歷史人物</a><span class="en-title">Historical Figures</span></h3>
         <p>與 <strong>杜春媚教授</strong> 合作</p>
         <p>一個以史料為根據的AI教學項目，把歷史對話轉化為關乎聲音、證據、闡釋與模擬行動主體的問題。</p>
     </div>
