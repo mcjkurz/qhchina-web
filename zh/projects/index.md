@@ -54,12 +54,12 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/cognitive-stylometry/">具身認知與計量文體學</a><span class="en-title">Cognitive Stylometry</span></h3>
-        <p>以困惑度（perplexity）對照意識形態的可預測與文學的陌生化。</p>
+        <p>借語言模型的眼光，看文學如何在可預測性與出人意料之間游走。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vectors-of-violence/">暴力的向量</a><span class="en-title">Vectors of Violence</span></h3>
         <p>與 <strong>Aaron Gilkison</strong> 合作</p>
-        <p>追蹤《解放軍報》如何在字裡行間，讓合法性、情感與施暴者彼此掛鉤。</p>
+        <p>以《解放軍報》為材料，看國家暴力如何在官方話語中被賦予情感與合法性。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">在「心」旁邊</a><span class="en-title">Words Close to Heart</span></h3>
@@ -67,7 +67,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/sublime-narrative/">敘事技術與崇高形象</a><span class="en-title">The Sublime as a Narrative Technology</span></h3>
-        <p>把「崇高」看作一種敘事手法，看小說如何用動勢、邊界與尺度撼動讀者。</p>
+        <p>把「崇高」看作一種敘事機制，看現代小說如何調動動勢、邊界、尺度與情感，造出撼人的一刻。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">HistFig 歷史人物</a><span class="en-title">Historical Figures</span></h3>
