@@ -41,7 +41,7 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/parallelism-geometry/">對仗與幾何</a></h3>
         <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
-        <p>對仗作為認知幾何：研究中國格律詩如何通過成對詩句、尺度約束與向量表示，在概念空間中發現並創造潛在的對稱。</p>
+        <p>把對仗視為認知幾何：研究中國格律詩如何透過成對詩句、尺度約束與向量表示，在概念空間中發現並創造潛在的對稱。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a></h3>
