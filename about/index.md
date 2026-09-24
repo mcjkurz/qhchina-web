@@ -55,12 +55,9 @@ ref: about
 
     <p>Originally from Wrocław, Poland, I received my PhD from Stanford University in modern Chinese literature and culture. I also studied at the University of Warsaw (BA), Université Paris 1 Panthéon-Sorbonne (Erasmus), and Zhejiang University (MA).</p>
 
-    <p>I call this virtual space a "lab" even now, since I think of this project as a series of open-ended experiments rather than attempts to confirm what we already know about Chinese literary history.</p>
+    <p><strong>qh china</strong> (quantitative humanities) is a series of open-ended experiments with Chinese literature. We use digital tools and statistical methods to probe literary phenomena and play with texts, not to confirm what we already know, but to find new ways of thinking about literature and how it shapes us.</p>
 
-    <p>Quantitative humanities (<strong>qh</strong>) puts this into practice: digital tools and statistical methods become ways to probe literary phenomena and play with texts. The goal of <strong>qh</strong> is not to solve problems but to explore new ways of thinking about literature and how it interacts with us, humans. This website showcases some of our team's endeavors in this direction.</p>
-
-    <p>You can contact me at maciej.kurzynski[at]ln.edu.hk.</p>
-    <p>All publications (including non-DH ones): <a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a></p>
+    <p>You can contact the PI at maciej.kurzynski[at]ln.edu.hk (<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>).</p>
   </div>
 </div>
 

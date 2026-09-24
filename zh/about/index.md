@@ -55,12 +55,9 @@ permalink: /zh/about/
 
     <p>我來自波蘭弗羅茨瓦夫，在史丹福大學獲得現代中國文學與文化博士學位。此前曾就讀於華沙大學（學士）、巴黎第一大學（先賢祠—索邦）和浙江大學（碩士）。</p>
 
-    <p>所以即便現在，我也稱這個虛擬空間為「實驗室」，因為我把這個項目看作一系列開放式實驗，而不是對既有的中國文學史知識加以印證的嘗試。</p>
+    <p><strong>qh china</strong>（量化人文）是一系列關於中國文學的開放式實驗。我們借助數字工具與統計方法探查文學現象、與文本遊戲，不是為了印證已知，而是為了尋找思考文學、理解文學如何塑造我們的新方式。</p>
 
-    <p>量化人文（<strong>qh</strong>）正是這一想法的落腳點：數字工具與統計方法，成了探查文學現象、與文本遊戲的手段。<strong>qh</strong> 的目標不是解決問題，而是探索新的思路——文學可以如何被思考，文學又如何與我們人類互動。本網站記錄了我們團隊在這條路上的一些努力。</p>
-
-    <p>聯絡方式：maciej.kurzynski[at]ln.edu.hk。</p>
-    <p>全部著述（包括非數字人文著作）：<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a></p>
+    <p>聯絡項目負責人：maciej.kurzynski[at]ln.edu.hk（<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>）。</p>
   </div>
 </div>
 
