@@ -41,11 +41,11 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vector-poetics/">向量詩學</a><span class="en-title">Vector Poetics</span></h3>
         <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
-        <p>從向量空間重讀律詩的對仗，看成對詩句如何在概念的空間裡彼此呼應。</p>
+        <p>從向量空間重讀律詩對仗，分析詩句如何在概念的空間裡彼此呼應。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a><span class="en-title">Techno-Cognitivism</span></h3>
-        <p>文學的意義並非內建於文本，而是形式、感受與情境層層互動的產物。</p>
+        <p>從編碼與解碼的循環互動，看文學意義如何產生。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a><span class="en-title">Verbs of Chinese Poetry</span></h3>
