@@ -55,7 +55,7 @@ ref: about
 
     <p>Originally from Wrocław, Poland, I received my PhD from Stanford University in modern Chinese literature and culture. I also studied at the University of Warsaw (BA), Université Paris 1 Panthéon-Sorbonne (Erasmus), and Zhejiang University (MA).</p>
 
-    <p><strong>qh china</strong> (quantitative humanities china lab) is a series of open-ended experiments with Chinese literature. In our lab, we use digital tools and statistical methods to probe literary phenomena and play with texts, not to confirm what we already know, but to find new ways of thinking about literature and how it shapes us.</p>
+    <p><strong>qh · china</strong> (quantitative humanities china lab) is a series of open-ended experiments with Chinese literature. In our lab, we use digital tools and statistical methods to probe literary phenomena and play with texts, not to confirm what we already know, but to find new ways of thinking about literature and how it shapes us.</p>
 
     <p>You can contact the PI at maciej.kurzynski[at]ln.edu.hk (<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>).</p>
   </div>
@@ -66,7 +66,7 @@ ref: about
 <ul>
   <li><strong>Wang Hanqian (王翰乾)</strong> — Contemporary literary criticism, Hong Kong literature, computational criticism</li>
   <li><strong>Yang Hudi (楊岵荻)</strong> — Theories of literary criticism, Ming-Qing poetics</li>
-  <li><strong>Fan Zheyang (樊哲扬)</strong> — Literary theory, poetics, Wei-Jin and Six Dynasties literature, Wei-Jin <i>xuanxue</i></li>
-  <li><strong>Sun Tianqi (孫天麒)</strong> — Central Plains Mandarin, sound change, phonology, textual exegesis</li>
+  <li><strong>Fan Zheyang (樊哲扬)</strong> — Literary theory, poetics, Wei-Jin and Six Dynasties literature, Wei-Jin Neo-Daoism (<i>xuanxue</i>)</li>
+  <li><strong>Sun Tianqi (孫天麒)</strong> — Central Plains Mandarin, sound change, phonology, lexical philology</li>
   <li><strong>Liu Xirui (劉溪睿)</strong> — Premodern Chinese fiction, modern and contemporary Chinese literature</li>
 </ul>
