@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Poly-Temporal, Multi-Layered
-permalink: /projects/techno-cognitivism/
-ref: project-techno-cognitivism
+title: Techno-Cognition and Narrative Experience
+permalink: /projects/techno-cognition/
+ref: project-techno-cognition
 ---
 
-# Techno-Cognitivism
+# Techno-Cognition and Narrative Experience
 
-Techno-cognitivism is a framework for studying literature as an interaction among textual form, embodied cognition, historical mediation, and computational modeling. Rather than treating digital methods as external tools applied to stable objects, this project asks how neural, linguistic, and algorithmic models can clarify the layered processes through which literary meaning is produced and received. Its central claim is theoretical: narrative experience unfolds across multiple temporal and cognitive scales, from local sensory-affective cues to broad cultural structures of interpretation.
+This project studies literature as an interaction among textual form, embodied cognition, historical mediation, and computational modeling. Rather than treating digital methods as external tools applied to stable objects, it asks how neural, linguistic, and algorithmic models can clarify the layered processes through which literary meaning is produced and received. Its central claim is theoretical: narrative experience unfolds across multiple temporal and cognitive scales, from local sensory-affective cues to broad cultural structures of interpretation.
 
 ## Publications
 

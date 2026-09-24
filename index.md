@@ -39,7 +39,7 @@ Here, quantitative humanities is less a method than a theoretical intervention, 
 - **Text Matters**: treating literature not as a transparent medium or a passive mirror of history, but as an active material that organizes attention, affect, and historical imagination
 - **Cognitive Geometry**: reimagining textual phenomena as relations of proximity, distance, alignment, scale, and distribution
 - **Scale**: moving between corpora, novels, passages, verses, and words
-- **Techno-Cognitivism**: studying literary experience as a layered interaction among textual form, embodied cognition, and historically situated readers
+- **Techno-Cognition**: studying literary experience as a layered interaction among textual form, embodied cognition, and historically situated readers
 - **Narrative Technologies**: asking how recursive literary forms coordinate prediction, surprise, empathy, violence, sublimity, and other modes of experience
 
 ## About China

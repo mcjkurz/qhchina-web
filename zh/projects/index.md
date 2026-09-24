@@ -41,10 +41,10 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vector-poetics/">向量詩學</a><span class="en-title">Vector Poetics</span></h3>
         <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
-        <p>用向量空間重讀律詩對仗，看上下句如何在概念的空間裡彼此呼應。</p>
+        <p>用向量空間重讀律詩對仗，分析上下句如何在概念的空間裡彼此呼應。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a><span class="en-title">Techno-Cognitivism</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognition/">技術、認知與敘事體驗</a><span class="en-title">Techno-Cognition and Narrative Experience</span></h3>
         <p>從文本、身體與歷史三者的互動，看文學意義如何生成。</p>
     </div>
     <div class="project-card">

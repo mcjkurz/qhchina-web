@@ -44,7 +44,7 @@ ref: projects
         <p>Parallelism as cognitive geometry: a study of how Chinese regulated verse discovers and creates latent symmetries in conceptual space through paired lines, scalar constraints, and vector representations.</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/projects/techno-cognitivism">Techno-Cognitivism</a></h3>
+        <h3><a href="{{ site.baseurl }}/projects/techno-cognition/">Techno-Cognition and Narrative Experience</a></h3>
         <p>A theory of literary meaning as a layered interaction among textual form, embodied cognition, and historical context, inspired by computational models of narrative experience.</p>
     </div>
     <div class="project-card">
