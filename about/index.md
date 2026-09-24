@@ -8,7 +8,7 @@ ref: about
 <style>
 .bio-container {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
   margin: 2rem 0;
   flex-wrap: wrap;
