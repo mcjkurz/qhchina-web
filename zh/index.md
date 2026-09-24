@@ -29,7 +29,7 @@ permalink: /zh/
 
 <div class="welcome-section">
   <h1>歡迎來到 qh · china</h1>
-  <p class="lead">以計算、認知與形式重思中國人文學</p>
+  <p class="lead">以計算、認知與形式重思中國人文</p>
 </div>
 
 ## 關於 qh
