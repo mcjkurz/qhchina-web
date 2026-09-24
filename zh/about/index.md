@@ -57,7 +57,7 @@ permalink: /zh/about/
 
     <p><strong>qh · china</strong>（量化人文實驗室）是一系列關於中文文學的開放式實驗。在我們的實驗室裡，我們借助數字工具與統計方法探查文學現象，與文本遊戲，不是為了印證已知，而是為了以新的方式思考文學如何與我們互動。</p>
 
-    <p>聯絡項目負責人：maciej.kurzynski[at]ln.edu.hk（<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>）。</p>
+    <p>聯絡方式：maciej.kurzynski[at]ln.edu.hk（<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>）。</p>
   </div>
 </div>
 
