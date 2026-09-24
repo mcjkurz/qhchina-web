@@ -45,7 +45,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognition/">技術、認知與敘事體驗</a><span class="en-title">Techno-Cognition and Narrative Experience</span></h3>
-        <p>從文本、身體與歷史三者的互動，看文學意義如何生成。</p>
+        <p>從文本、身體與歷史三者的互動，看敘事意義如何生成。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a><span class="en-title">Verbs of Chinese Poetry</span></h3>
@@ -54,7 +54,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/cognitive-stylometry/">具身認知與計量文體學</a><span class="en-title">Cognitive Stylometry</span></h3>
-        <p>借語言模型的眼光，看文學如何在可預測性與出人意料之間游走。</p>
+        <p>借語言模型的眼光，看文字如何在可預測性與出人意料之間游走。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vectors-of-violence/">暴力的向量</a><span class="en-title">Vectors of Violence</span></h3>
