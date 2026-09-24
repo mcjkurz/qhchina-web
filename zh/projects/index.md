@@ -45,7 +45,7 @@ permalink: /zh/projects/
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/techno-cognitivism/">技術認知論</a></h3>
-        <p>一種文學意義理論：意義是文本形式、具身認知與歷史語境之間的分層互動，其靈感來自敘事經驗的計算模型。</p>
+        <p>一種文學意義理論：把意義視為文本形式、具身認知與歷史語境之間的分層互動，其思路源於敘事經驗的計算模型。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a></h3>
@@ -59,7 +59,7 @@ permalink: /zh/projects/
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/vectors-of-violence/">暴力的向量</a></h3>
         <p>與 <strong>Aaron Gilkison</strong> 合作</p>
-        <p>將國家暴力視為分佈於官方話語之中的情感，追蹤合法性、情感與行動主體如何在《解放軍報》中流通。</p>
+        <p>把國家暴力視為遍佈於官方話語的一種情感分佈，追蹤合法性、情感與行動主體如何在《解放軍報》中流通。</p>
     </div>
     <div class="project-card">
         <h3><a href="{{ site.baseurl }}/zh/projects/words-close-to-heart/">在心旁邊</a></h3>
