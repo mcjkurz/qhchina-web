@@ -48,7 +48,7 @@ permalink: /zh/projects/
         <p>一種文學意義理論：把意義視為文本形式、具身認知與歷史語境之間的分層互動，其思路源於敘事經驗的計算模型。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞（詩眼）</a><span class="en-title">Verbs of Chinese Poetry</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/verbs-chinese-poetry/">中國詩歌的動詞</a><span class="en-title">Verbs of Chinese Poetry</span></h3>
         <p>與 <strong>蔡宗齊教授</strong> 合作</p>
         <p>研究作為古典詩歌「詩眼」的謂語動詞，追蹤句法如何組織節奏、注意力、語義壓縮與詩性想像。</p>
     </div>
@@ -66,11 +66,11 @@ permalink: /zh/projects/
         <p>對中國小說中共情與內在性的技術認知研究，連接心之隱喻、語義鄰近與具身的敘事注意力。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/sublime-narrative/">作為敘事技術的崇高</a><span class="en-title">The Sublime as a Narrative Technology</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/sublime-narrative/">敘事技術與崇高形象</a><span class="en-title">The Sublime as a Narrative Technology</span></h3>
         <p>一種關於崇高的計算理論：崇高是協調現代中國小說中運動、邊界、尺度與情感的敘事機制。</p>
     </div>
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">歷史人物（HistFig）</a><span class="en-title">Historical Figures</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/historical-figures/">HistFig（歷史人物）</a><span class="en-title">Historical Figures</span></h3>
         <p>與 <strong>杜春媚教授</strong> 合作</p>
         <p>一個以史料為根據的AI教學項目，把歷史對話轉化為關乎聲音、證據、闡釋與模擬行動主體的問題。</p>
     </div>

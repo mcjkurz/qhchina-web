@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 中國詩歌的動詞（詩眼）
+title: 中國詩歌的動詞
 ref: project-verbs-chinese-poetry
 permalink: /zh/projects/verbs-chinese-poetry/
 ---
 
-# 中國詩歌的動詞（詩眼）
+# 中國詩歌的動詞
 
 <span class="en-title">Verbs of Chinese Poetry</span>
 

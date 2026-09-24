@@ -1,13 +1,11 @@
 ---
 layout: default
-title: 歷史人物（HistFig）
+title: HistFig（歷史人物）
 ref: project-historical-figures
 permalink: /zh/projects/historical-figures/
 ---
 
-# 歷史人物（HistFig）
-
-<span class="en-title">Historical Figures</span>
+# HistFig（歷史人物）
 
 <img src="{{ site.baseurl }}/projects/historical-figures/main.webp" alt="歷史人物（HistFig）" style="max-width: 80%; height: auto; margin: 2rem auto; display: block;">
 

@@ -1,11 +1,11 @@
 ---
 layout: default
-title: 作為敘事技術的崇高
+title: 敘事技術與崇高形象
 ref: project-sublime-narrative
 permalink: /zh/projects/sublime-narrative/
 ---
 
-# 作為敘事技術的崇高
+# 敘事技術與崇高形象
 
 <span class="en-title">The Sublime as a Narrative Technology</span>
 
