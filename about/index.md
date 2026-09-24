@@ -65,8 +65,8 @@ ref: about
 
 <ul>
   <li><strong>Wang Hanqian (王翰乾)</strong> — Contemporary literary criticism, Hong Kong literature, computational criticism</li>
-  <li><strong>Liu Xirui (劉溪睿)</strong> — Premodern Chinese fiction, modern and contemporary Chinese literature</li>
-  <li><strong>Sun Tianqi (孫天麒)</strong> — Central Plains Mandarin, sound change, phonology, textual exegesis</li>
-  <li><strong>Fan Zheyang (樊哲扬)</strong> — Literary theory, poetics, Wei-Jin and Six Dynasties literature, Wei-Jin <i>xuanxue</i></li>
   <li><strong>Yang Hudi (楊岵荻)</strong> — Theories of literary criticism, Ming-Qing poetics</li>
+  <li><strong>Fan Zheyang (樊哲扬)</strong> — Literary theory, poetics, Wei-Jin and Six Dynasties literature, Wei-Jin <i>xuanxue</i></li>
+  <li><strong>Sun Tianqi (孫天麒)</strong> — Central Plains Mandarin, sound change, phonology, textual exegesis</li>
+  <li><strong>Liu Xirui (劉溪睿)</strong> — Premodern Chinese fiction, modern and contemporary Chinese literature</li>
 </ul>
