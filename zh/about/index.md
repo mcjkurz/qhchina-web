@@ -66,7 +66,7 @@ permalink: /zh/about/
 <ul>
   <li><strong>王翰乾</strong> — 當代文學批評、香港文學、計算批評</li>
   <li><strong>楊岵荻</strong> — 文學批評理論、明清詩學</li>
-  <li><strong>樊哲扬</strong> — 文學理論，詩學，魏晉六朝文學，魏晉玄學</li>
-  <li><strong>孫天麒</strong> — 中原官話，語音演變，音系學，字詞考釋</li>
-  <li><strong>劉溪睿</strong> — 中國古代小說，中國現當代文學</li>
+  <li><strong>樊哲扬</strong> — 文學理論、詩學、魏晉六朝文學、魏晉玄學</li>
+  <li><strong>孫天麒</strong> — 中原官話、語音演變、音系學、字詞考釋</li>
+  <li><strong>劉溪睿</strong> — 中國古代小說、中國現當代文學</li>
 </ul>
