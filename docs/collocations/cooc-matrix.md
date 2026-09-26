@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.cooc_matrix`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1113)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1160)
 
 <pre class="signature"><code><span class="sig-name">cooc_matrix</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,

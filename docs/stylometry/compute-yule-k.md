@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.compute_yule_k`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L158)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L197)
 
 <pre class="signature"><code><span class="sig-name">compute_yule_k</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>)</code></pre>
 

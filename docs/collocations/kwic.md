@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.kwic`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1530)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1577)
 
 <pre class="signature"><code><span class="sig-name">kwic</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -18,7 +18,7 @@ Part of **Collocation Analysis** (`qhchina.analytics.collocations.kwic`).
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'right'</span>,
     <span class="sig-param">separator</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">''</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">return_type</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
     <span class="sig-param">max_results</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>
 )</code></pre>
@@ -45,7 +45,9 @@ or corpus position — the standard concordance sort options.
 - `separator` (str): String used to join context tokens for display columns.
   Default `""` (direct concatenation). Use
   `" "` for space-segmented text.
-- `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
+- `return_type` (str): Return type.
+  - `"dataframe"` (default): return a pandas DataFrame.
+  - `"list"`: return a `list[dict]`.
 - `max_results` (int | None): Maximum number of concordance lines to
   return. None for no limit. Default None.
 - `max_sentence_length` (int | None): Truncate sentences longer than this.
@@ -65,6 +67,20 @@ pd.DataFrame or list[dict] with columns/keys:
 **Example:**
 ```python
 from qhchina.analytics import kwic
-sentences = [["天", "下", "大", "乱"], ["天", "命", "不", "可", "违"]]
-kwic(sentences, "天", horizon=3)
+sentences = [
+    ["天", "下", "大", "乱", "民", "不", "聊", "生"],
+    ["天", "命", "不", "可", "违"],
+    ["王", "者", "以", "天", "下", "为", "公"],
+]
+kwic_df = kwic(
+    sentences,
+    target=["天", "天下"],
+    horizon=2,
+    sort_by="right",
+    separator="",
+    return_type="dataframe",
+)
+kwic_df[["left", "node", "right"]].head()
+kwic_rows = kwic(sentences, target="天", horizon=1, return_type="list")
+kwic_rows[:2]
 ```

@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.CoocMatrix`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L42)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L57)
 
 <pre class="signature"><code><span class="sig-name">CoocMatrix</span>(
     <span class="sig-param">matrix</span><span class="sig-punct">:</span> <span class="sig-type">scipy.sparse._csr.csr_matrix</span>,
@@ -63,7 +63,7 @@ model = CoocMatrix(matrix='示例', vocab_list=['人民', '经济'], word_to_ind
 
 <h3 id="coocmatrix-get"><code>CoocMatrix.get()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L156)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L171)
 
 <pre class="signature"><code><span class="sig-name">get</span>(<span class="sig-param">row_key</span>, <span class="sig-param">col_key</span>, <span class="sig-param">default</span><span class="sig-punct">:</span> <span class="sig-type">int | float</span> <span class="sig-punct">=</span> <span class="sig-default">0</span>)</code></pre>
 
@@ -88,7 +88,7 @@ result = instance.get(row_key='示例', col_key='示例')
 
 <h3 id="coocmatrix-sum"><code>CoocMatrix.sum()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L229)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L244)
 
 <pre class="signature"><code><span class="sig-name">sum</span>(<span class="sig-param">axis</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -114,7 +114,7 @@ result = instance.sum()
 
 <h3 id="coocmatrix-to_dataframe"><code>CoocMatrix.to_dataframe()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L184)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L199)
 
 <pre class="signature"><code><span class="sig-name">to_dataframe</span>()</code></pre>
 
@@ -136,7 +136,7 @@ result = instance.to_dataframe()
 
 <h3 id="coocmatrix-to_dense"><code>CoocMatrix.to_dense()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L173)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L188)
 
 <pre class="signature"><code><span class="sig-name">to_dense</span>()</code></pre>
 
@@ -158,7 +158,7 @@ result = instance.to_dense()
 
 <h3 id="coocmatrix-to_ppmi"><code>CoocMatrix.to_ppmi()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L249)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L264)
 
 <pre class="signature"><code><span class="sig-name">to_ppmi</span>(<span class="sig-param">alpha</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.75</span>)</code></pre>
 

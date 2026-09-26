@@ -10,7 +10,7 @@ api_category_permalink: "/docs/textreuse/"
 
 Part of **Text Reuse** (`qhchina.analytics.textreuse.find_shared_sequences`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L69)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/textreuse.py#L106)
 
 <pre class="signature"><code><span class="sig-name">find_shared_sequences</span>(
     <span class="sig-param">documents</span><span class="sig-punct">:</span> <span class="sig-type">list[list[str]]</span>,
@@ -18,7 +18,7 @@ Part of **Text Reuse** (`qhchina.analytics.textreuse.find_shared_sequences`).
     <span class="sig-param">min_length</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>,
     <span class="sig-param">min_similarity</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.8</span>,
     <span class="sig-param">within_documents</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">output</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
     <span class="sig-param">_max_gap</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">_max_distance</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
 )</code></pre>
@@ -46,7 +46,12 @@ analysis of raw strings, convert with
 - `within_documents` (bool): If True, also detect repeated passages
   within a single document. If False (default), only compare
   distinct document pairs.
-- `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
+- `output` (str | None): Output mode.
+  - `"dataframe"` (default): return a pandas DataFrame.
+  - `"list"`: return a `list[dict]`.
+  - File path ending in `.csv`, `.tsv`, `.txt`, or `.json`:
+    write the results to that file and return a pandas DataFrame.
+  - `None`: alias for `"dataframe"`.
 - `_max_gap` (int | None): Maximum gap (in token positions)
   between consecutive seeds to still merge them into one passage.
   Defaults to `n + 1`.  Why: a single substitution destroys

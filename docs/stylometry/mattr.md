@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.mattr`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L256)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L295)
 
 <pre class="signature"><code><span class="sig-name">mattr</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str]</span>, <span class="sig-param">window_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">500</span>)</code></pre>
 

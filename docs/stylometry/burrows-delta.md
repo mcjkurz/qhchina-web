@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.burrows_delta`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L77)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L116)
 
 <pre class="signature"><code><span class="sig-name">burrows_delta</span>(<span class="sig-param">vec_a</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>, <span class="sig-param">vec_b</span><span class="sig-punct">:</span> <span class="sig-type">numpy.ndarray</span>)</code></pre>
 

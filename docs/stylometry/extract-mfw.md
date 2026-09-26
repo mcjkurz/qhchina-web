@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.extract_mfw`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L55)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L94)
 
 <pre class="signature"><code><span class="sig-name">extract_mfw</span>(<span class="sig-param">ngram_counts</span><span class="sig-punct">:</span> <span class="sig-type">collections.Counter</span>, <span class="sig-param">n</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>)</code></pre>
 

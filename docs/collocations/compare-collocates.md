@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.compare_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1644)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1711)
 
 <pre class="signature"><code><span class="sig-name">compare_collocates</span>(
     <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -20,7 +20,7 @@ Part of **Collocation Analysis** (`qhchina.analytics.collocations.compare_colloc
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">min_obs</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5</span>,
     <span class="sig-param">stable_threshold</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.1</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">return_type</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
     <span class="sig-param">**kwargs</span>
 )</code></pre>
 
@@ -46,7 +46,9 @@ disappeared between the two corpora.
 - `stable_threshold` (float): Minimum absolute `log_ratio_change` for a
   collocate to be classified as `'strengthened'` or `'weakened'`
   rather than `'stable'`. Default 0.1.
-- `as_dataframe` (bool): If True, return a pandas DataFrame. Default True.
+- `return_type` (str): Return type.
+  - `"dataframe"` (default): return a pandas DataFrame.
+  - `"list"`: return a `list[dict]`.
 - `**kwargs`: Additional keyword arguments passed to `find_collocates`
   (e.g., `alternative`, `batch_words`, `max_sentence_length`).
 
@@ -67,14 +69,31 @@ pd.DataFrame or list[dict] with columns/keys:
   `'appeared'` (only in B), `'disappeared'` (only in A),
   or `'stable'`.
 
-
 **Example:**
 ```python
-from qhchina.analytics.collocations import compare_collocates
-
-result = compare_collocates(
-    corpus_a=['人民', '经济'],
-    corpus_b=['人民', '经济'],
-    target_words=['人民', '朝廷', '赋税']
+from qhchina.analytics import compare_collocates
+corpus_a = [
+    ["朝廷", "整顿", "赋税", "制度", "人民", "负担"],
+    ["人民", "议论", "赋税", "偏重"],
+    ["朝廷", "强调", "财政", "稳定"],
+]
+corpus_b = [
+    ["朝廷", "改革", "赋税", "制度", "人民", "受益"],
+    ["人民", "支持", "新政", "朝廷"],
+    ["赋税", "趋于", "公平", "民生", "改善"],
+]
+cmp_df = compare_collocates(
+    corpus_a,
+    corpus_b,
+    target_words=["朝廷", "赋税"],
+    method="window",
+    horizon=2,
+    min_obs=1,
+    return_type="dataframe",
 )
+cmp_df[["target", "collocate", "ratio_a", "ratio_b", "status"]].head()
+cmp_rows = compare_collocates(
+    corpus_a, corpus_b, target_words="赋税", min_obs=1, return_type="list"
+)
+cmp_rows[:2]
 ```

@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.Stylometry`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L336)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L375)
 
 <pre class="signature"><code><span class="sig-name">Stylometry</span>(
     <span class="sig-param">n_features</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>,
@@ -97,7 +97,7 @@ model = Stylometry()
 
 <h3 id="stylometry-bootstrap_predict"><code>Stylometry.bootstrap_predict()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1176)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1215)
 
 <pre class="signature"><code><span class="sig-name">bootstrap_predict</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">n_iter</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>, <span class="sig-param">sample_ratio</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.8</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">seed</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -158,7 +158,7 @@ result = instance.bootstrap_predict(text='宋代商税制度逐渐完善，市�
 
 <h3 id="stylometry-dendrogram"><code>Stylometry.dendrogram()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2141)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2180)
 
 <pre class="signature"><code><span class="sig-name">dendrogram</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'average'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">orientation</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'top'</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(12, 8)</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">10</span>, <span class="sig-param">color_threshold</span><span class="sig-punct">:</span> <span class="sig-type">float | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">color_mode</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'clusters'</span>, <span class="sig-param">above_threshold_color</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'C0'</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -199,7 +199,7 @@ result = instance.dendrogram()
 
 <h3 id="stylometry-distance"><code>Stylometry.distance()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1539)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1578)
 
 <pre class="signature"><code><span class="sig-name">distance</span>(<span class="sig-param">a</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">b</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -216,7 +216,7 @@ result = instance.distance(a=['人民', '经济'], b=['人民', '经济'])
 
 <h3 id="stylometry-distance_matrix"><code>Stylometry.distance_matrix()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1608)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1647)
 
 <pre class="signature"><code><span class="sig-name">distance_matrix</span>(<span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -240,7 +240,7 @@ result = instance.distance_matrix()
 
 <h3 id="stylometry-fit_transform"><code>Stylometry.fit_transform()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L729)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L768)
 
 <pre class="signature"><code><span class="sig-name">fit_transform</span>(<span class="sig-param">corpus</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, list[list[str]]] | list[list[str]]</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -266,7 +266,7 @@ result = instance.fit_transform(corpus=[['宋代', '经济', '繁荣'], ['赋税
 
 <h3 id="stylometry-get_author_profile"><code>Stylometry.get_author_profile()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1704)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1743)
 
 <pre class="signature"><code><span class="sig-name">get_author_profile</span>(<span class="sig-param">author</span><span class="sig-punct">:</span> <span class="sig-type">str</span>)</code></pre>
 
@@ -285,7 +285,7 @@ result = instance.get_author_profile(author='示例')
 
 <h3 id="stylometry-get_feature_comparison"><code>Stylometry.get_feature_comparison()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1722)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1761)
 
 <pre class="signature"><code><span class="sig-name">get_feature_comparison</span>()</code></pre>
 
@@ -304,7 +304,7 @@ result = instance.get_feature_comparison()
 
 <h3 id="stylometry-hierarchical_clustering"><code>Stylometry.hierarchical_clustering()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1629)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1668)
 
 <pre class="signature"><code><span class="sig-name">hierarchical_clustering</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'average'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -330,7 +330,7 @@ result = instance.hierarchical_clustering()
 
 <h3 id="stylometry-most_similar"><code>Stylometry.most_similar()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1486)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1525)
 
 <pre class="signature"><code><span class="sig-name">most_similar</span>(<span class="sig-param">query</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">return_distance</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -356,7 +356,7 @@ result = instance.most_similar(query='改革')
 
 <h3 id="stylometry-plot"><code>Stylometry.plot()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1746)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1785)
 
 <pre class="signature"><code><span class="sig-name">plot</span>(<span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'pca'</span>, <span class="sig-param">level</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'document'</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(10, 8)</span>, <span class="sig-param">show_labels</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">labels</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">colors</span><span class="sig-punct">:</span> <span class="sig-type">dict[str, str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">marker_size</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100</span>, <span class="sig-param">fontsize</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">12</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">random_state</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">42</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">show_loadings</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>, <span class="sig-param">n_loadings</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">20</span>, <span class="sig-param">loading_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'pc'</span>, <span class="sig-param">loading_scale</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">1.0</span>, <span class="sig-param">loading_alpha</span><span class="sig-punct">:</span> <span class="sig-type">float</span> <span class="sig-punct">=</span> <span class="sig-default">0.5</span>, <span class="sig-param">loading_color</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'gray'</span>)</code></pre>
 
@@ -402,7 +402,7 @@ result = instance.plot()
 
 <h3 id="stylometry-predict"><code>Stylometry.predict()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1004)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1043)
 
 <pre class="signature"><code><span class="sig-name">predict</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -430,7 +430,7 @@ result = instance.predict(text='宋代商税制度逐渐完善，市镇贸易持
 
 <h3 id="stylometry-predict_author"><code>Stylometry.predict_author()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1104)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1143)
 
 <pre class="signature"><code><span class="sig-name">predict_author</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -457,7 +457,7 @@ result = instance.predict_author(text='宋代商税制度逐渐完善，市镇�
 
 <h3 id="stylometry-predict_confidence"><code>Stylometry.predict_confidence()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1137)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1176)
 
 <pre class="signature"><code><span class="sig-name">predict_confidence</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">k</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1</span>, <span class="sig-param">classifier</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -479,7 +479,7 @@ result = instance.predict_confidence(text='宋代商税制度逐渐完善，市�
 
 <h3 id="stylometry-rolling_delta"><code>Stylometry.rolling_delta()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1341)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1380)
 
 <pre class="signature"><code><span class="sig-name">rolling_delta</span>(<span class="sig-param">text</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">reference</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">window</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">5000</span>, <span class="sig-param">step</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">1000</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">show</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>, <span class="sig-param">figsize</span><span class="sig-punct">:</span> <span class="sig-type">tuple[int, int]</span> <span class="sig-punct">=</span> <span class="sig-default">(12, 6)</span>, <span class="sig-param">title</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>, <span class="sig-param">filename</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -540,7 +540,7 @@ result = instance.rolling_delta(text='宋代商税制度逐渐完善，市镇贸
 
 <h3 id="stylometry-similarity"><code>Stylometry.similarity()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1557)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1596)
 
 <pre class="signature"><code><span class="sig-name">similarity</span>(<span class="sig-param">a</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">b</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>, <span class="sig-param">distance</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 
@@ -557,7 +557,7 @@ result = instance.similarity(a=['人民', '经济'], b=['人民', '经济'])
 
 <h3 id="stylometry-transform"><code>Stylometry.transform()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L939)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L978)
 
 <pre class="signature"><code><span class="sig-name">transform</span>(<span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>, <span class="sig-param">warn_oov</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>)</code></pre>
 
@@ -582,7 +582,7 @@ result = instance.transform(tokens=['人民', '经济'])
 
 <h3 id="stylometry-vocabulary_stats"><code>Stylometry.vocabulary_stats()</code></h3>
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1677)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L1716)
 
 <pre class="signature"><code><span class="sig-name">vocabulary_stats</span>()</code></pre>
 

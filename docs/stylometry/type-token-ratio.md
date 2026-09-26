@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.type_token_ratio`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L196)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L235)
 
 <pre class="signature"><code><span class="sig-name">type_token_ratio</span>(
     <span class="sig-param">tokens</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str]</span>,

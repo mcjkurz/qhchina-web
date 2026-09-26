@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L725)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L740)
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -19,7 +19,7 @@ Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocate
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">qhchina.analytics.collocations.FilterOptions | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">return_type</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
     <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>,
     <span class="sig-param">alternative</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'greater'</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'obs_local'</span>,
@@ -111,7 +111,9 @@ restartable generator classes all work; single-use generators do not.
     error rate).
   - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
   - None: No correction (default).
-- `as_dataframe` (bool): If True, return results as a pandas DataFrame. Default is True.
+- `return_type` (str): Return type.
+  - `"dataframe"` (default): return a pandas DataFrame.
+  - `"list"`: return a `list[dict]`.
 - `max_sentence_length` (int | None): Maximum sentence length. Longer sentences 
   are truncated to avoid memory bloat from outliers. Set to None for no limit.
   Default is 256.
@@ -152,13 +154,30 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 - **p_value** (float): P-value from Fisher's exact test.
 - **adjusted_p_value** (float, optional): Present only if `correction` is set.
 
-
 **Example:**
 ```python
-from qhchina.analytics.collocations import find_collocates
-
-result = find_collocates(
-    sentences=[['宋代', '经济', '繁荣'], ['赋税', '制度', '改革']],
-    target_words=['人民', '朝廷', '赋税']
+from qhchina.analytics import find_collocates
+sentences = [
+    ["宋代", "经济", "繁荣", "人民", "安居"],
+    ["朝廷", "推行", "赋税", "改革", "人民", "受益"],
+    ["赋税", "制度", "调整", "朝廷", "关注", "民生"],
+    ["人民", "议论", "朝廷", "新政"],
+]
+df = find_collocates(
+    sentences=sentences,
+    target_words=["人民", "朝廷", "赋税"],
+    method="window",
+    horizon=2,
+    correction="fdr_bh",
+    filters={"min_obs_local": 1},
+    return_type="dataframe",
 )
+df[["target", "collocate", "obs_local", "p_value"]].head()
+rows = find_collocates(
+    sentences=sentences,
+    target_words="人民",
+    method="sentence",
+    return_type="list",
+)
+rows[:2]
 ```

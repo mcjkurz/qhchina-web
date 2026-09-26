@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.compare_corpora`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2355)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2394)
 
 <pre class="signature"><code><span class="sig-name">compare_corpora</span>(
     <span class="sig-param">corpusA</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str] | Iterable[list[str]]</span>,
@@ -18,7 +18,7 @@ Part of **Stylometry** (`qhchina.analytics.stylometry.compare_corpora`).
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'fisher'</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">dict | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">as_dataframe</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">True</span>,
+    <span class="sig-param">output</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'rel_ratio'</span>,
     <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>
 )</code></pre>
@@ -74,7 +74,12 @@ Compare two corpora to identify statistically significant differences in word us
   - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate,
     recommended for corpus comparison).
   - None: No correction (default).
-- `as_dataframe` (bool): Whether to return a pandas DataFrame.
+- `output` (str | None): Output mode.
+  - `"dataframe"` (default): return a pandas DataFrame.
+  - `"list"`: return a `list[dict]`.
+  - File path ending in `.csv`, `.tsv`, `.txt`, or `.json`:
+    write the results to that file and return a pandas DataFrame.
+  - `None`: alias for `"dataframe"`.
 - `sort_by` (str): Field to sort results by. Default is 'rel_ratio'.
 - `ascending` (bool): Sort direction. Default is False (descending).
 

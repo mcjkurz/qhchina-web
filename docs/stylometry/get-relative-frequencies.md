@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.get_relative_frequencies`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L144)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L183)
 
 <pre class="signature"><code><span class="sig-name">get_relative_frequencies</span>(<span class="sig-param">items</span><span class="sig-punct">:</span> <span class="sig-type">list[str]</span>)</code></pre>
 
