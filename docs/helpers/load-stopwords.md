@@ -20,14 +20,14 @@ Supports prefix matching: if the language code doesn't match an exact file,
 all files starting with that prefix will be loaded and combined.
 
 Available bundled stopword lists:
-    - `zh_sim`: Modern Chinese (Simplified).
-    - `zh_tr`: Modern Chinese (Traditional).
-    - `zh_cl_sim`: Classical Chinese (Simplified script).
-    - `zh_cl_tr`: Classical Chinese (Traditional script).
+- `zh_sim`: Modern Chinese (Simplified).
+- `zh_tr`: Modern Chinese (Traditional).
+- `zh_cl_sim`: Classical Chinese (Simplified script).
+- `zh_cl_tr`: Classical Chinese (Traditional script).
 
 Useful prefixes:
-    - `zh`: Combines all Chinese lists above.
-    - `zh_cl`: Combines both classical lists.
+- `zh`: Combines all Chinese lists above.
+- `zh_cl`: Combines both classical lists.
 
 **Parameters:**
 - `language`: Language code or prefix (default: "zh_sim" for simplified Chinese).
