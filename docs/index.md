@@ -21,14 +21,16 @@ pip install qhchina
 
 ## Modules
 
-- **Preprocessing**: Chinese text segmentation with multiple backends (spaCy, Jieba, BERT, LLM)
+- **Preprocessing**: Chinese text segmentation with multiple backends (spaCy, Jieba, BERT, LLM), plus normalization helpers.
 - **Analytics**: Core analysis tools including:
-  - *Word2Vec*: Word embedding training and temporal semantic change analysis
-  - *Topic Modeling*: LDA with Gibbs sampling for topic discovery
-  - *Stylometry*: Authorship attribution and document clustering
-  - *Collocations*: Statistical collocation analysis and co-occurrence matrices
-- **Educational**: Interactive learning tools and visualizations for basic NLP concepts
-- **Helpers**: Font management, text loading, and utility functions
+  - **Word Embeddings**: `Word2Vec`, `TempRefWord2Vec`, `DynamicWord2Vec`, and `GloVe`.
+  - **Topic Modeling**: `LDAGibbsSampler` with Gibbs sampling and Cython acceleration.
+  - **Stylometry**: Authorship attribution, similarity analysis, and document clustering.
+  - **Collocations**: Statistical collocation analysis, co-occurrence matrices, and collocate comparison across corpora.
+  - **Text Reuse**: Shared sequence detection across documents/corpora.
+  - **Vector Utilities**: Similarity, distance, alignment, and visualization helpers.
+- **Educational**: Interactive learning tools and visualizations for basic NLP concepts.
+- **Helpers**: Font management, text loading, stopword utilities, and corpus download helpers.
 
 ---
 
