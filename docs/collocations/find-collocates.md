@@ -76,14 +76,26 @@ restartable generator classes all work; single-use generators do not.
   
   - 'stopwords': list[str] - Words to exclude from results
   - 'min_word_length': int - Minimum character length for collocates
-  - 'min_obs_local': int - Minimum observed local frequency
-  - 'max_obs_local': int - Maximum observed local frequency
-  - 'min_obs_global': int - Minimum global frequency
-  - 'max_obs_global': int - Maximum global frequency
-  - 'min_exp_local': float - Minimum expected local frequency
-  - 'max_exp_local': float - Maximum expected local frequency
-  - 'min_ratio_local': float - Minimum local frequency ratio (obs/exp)
-  - 'max_ratio_local': float - Maximum local frequency ratio (obs/exp)
+  - 'min_obs_local': int - Minimum observed local co-occurrence count.
+    In `method='window'`, this is the number of target-centered window
+    positions where the collocate is observed. In `method='sentence'`,
+    this is the number of sentences containing both target and collocate.
+  - 'max_obs_local': int - Maximum observed local co-occurrence count
+    (same unit definitions as `min_obs_local`).
+  - 'min_obs_global': int - Minimum global frequency of the collocate.
+    In `method='window'`, this is total token count in the corpus.
+    In `method='sentence'`, this is sentence frequency (number of
+    sentences containing the collocate at least once).
+  - 'max_obs_global': int - Maximum global frequency of the collocate
+    (same unit definitions as `min_obs_global`).
+  - 'min_exp_local': float - Minimum expected local count under the same
+    contingency table definition used by the selected method.
+  - 'max_exp_local': float - Maximum expected local count under the same
+    method-specific contingency table definition.
+  - 'min_ratio_local': float - Minimum local association strength
+    `obs_local / exp_local`.
+  - 'max_ratio_local': float - Maximum local association strength
+    `obs_local / exp_local`.
   - 'max_p': float - Maximum raw p-value threshold
   - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction;
     the only filter applied after the correction is computed)
@@ -126,11 +138,17 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 - **target** (str): The target word.
 - **collocate** (str): The co-occurring word.
-- **obs_local** (int): Observed co-occurrence count (contexts where both appear).
-- **exp_local** (float): Expected co-occurrence count under independence.
+- **obs_local** (int): Observed local co-occurrence count.
+  In `method='window'`, counts target-centered window positions where
+  the collocate appears. In `method='sentence'`, counts sentences that
+  contain both words.
+- **exp_local** (float): Expected local co-occurrence count under
+  independence, computed from the method-specific contingency table.
 - **ratio_local** (float): Ratio of observed to expected (obs_local / exp_local).
   Values > 1 indicate attraction, < 1 indicate repulsion.
-- **obs_global** (int): Total occurrences of the collocate in the corpus.
+- **obs_global** (int): Global collocate frequency. In
+  `method='window'`, token frequency; in `method='sentence'`,
+  sentence frequency.
 - **p_value** (float): P-value from Fisher's exact test.
 - **adjusted_p_value** (float, optional): Present only if `correction` is set.
 

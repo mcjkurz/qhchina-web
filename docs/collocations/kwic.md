@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.kwic`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1512)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1530)
 
 <pre class="signature"><code><span class="sig-name">kwic</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,

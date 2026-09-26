@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.texts.download_corpus`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L418)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L428)
 
 <pre class="signature"><code><span class="sig-name">download_corpus</span>(
     <span class="sig-param">name</span><span class="sig-punct">:</span> <span class="sig-type">str</span>,

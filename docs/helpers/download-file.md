@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.texts.download_file`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L566)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L576)
 
 <pre class="signature"><code><span class="sig-name">download_file</span>(<span class="sig-param">path</span><span class="sig-punct">:</span> <span class="sig-type">str</span>, <span class="sig-param">output_dir</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 

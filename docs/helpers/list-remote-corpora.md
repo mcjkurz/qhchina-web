@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.texts.list_remote_corpora`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L636)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L646)
 
 <pre class="signature"><code><span class="sig-name">list_remote_corpora</span>()</code></pre>
 

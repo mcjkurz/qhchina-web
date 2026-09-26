@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.texts.get_stopword_languages`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L344)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L354)
 
 <pre class="signature"><code><span class="sig-name">get_stopword_languages</span>()</code></pre>
 

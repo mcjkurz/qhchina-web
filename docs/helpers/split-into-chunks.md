@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.texts.split_into_chunks`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L370)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/texts.py#L380)
 
 <pre class="signature"><code><span class="sig-name">split_into_chunks</span>(<span class="sig-param">sequence</span>, <span class="sig-param">chunk_size</span>, <span class="sig-param">overlap</span> <span class="sig-punct">=</span> <span class="sig-default">0.0</span>)</code></pre>
 
