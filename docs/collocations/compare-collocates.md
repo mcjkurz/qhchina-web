@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.compare_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1711)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1713)
 
 <pre class="signature"><code><span class="sig-name">compare_collocates</span>(
     <span class="sig-param">corpus_a</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -91,9 +91,12 @@ cmp_df = compare_collocates(
     min_obs=1,
     return_type="dataframe",
 )
-cmp_df[["target", "collocate", "ratio_a", "ratio_b", "status"]].head()
+comparison_preview = cmp_df[
+    ["target", "collocate", "ratio_a", "ratio_b", "status"]
+].head(10)
+cmp_df.to_csv("collocate_comparison.csv", index=False)
 cmp_rows = compare_collocates(
     corpus_a, corpus_b, target_words="赋税", min_obs=1, return_type="list"
 )
-cmp_rows[:2]
+sample_compare_rows = cmp_rows[:2]
 ```

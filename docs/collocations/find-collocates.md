@@ -172,12 +172,13 @@ df = find_collocates(
     filters={"min_obs_local": 1},
     return_type="dataframe",
 )
-df[["target", "collocate", "obs_local", "p_value"]].head()
+top_collocates = df[["target", "collocate", "obs_local", "p_value"]].head(10)
+df.to_csv("collocates.csv", index=False)
 rows = find_collocates(
     sentences=sentences,
     target_words="人民",
     method="sentence",
     return_type="list",
 )
-rows[:2]
+sample_rows = rows[:2]
 ```

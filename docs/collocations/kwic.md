@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.kwic`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1577)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L1578)
 
 <pre class="signature"><code><span class="sig-name">kwic</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -80,7 +80,8 @@ kwic_df = kwic(
     separator="",
     return_type="dataframe",
 )
-kwic_df[["left", "node", "right"]].head()
+preview = kwic_df[["left", "node", "right"]].head(10)
+kwic_df.to_csv("kwic_lines.csv", index=False)
 kwic_rows = kwic(sentences, target="天", horizon=1, return_type="list")
-kwic_rows[:2]
+sample_kwic_rows = kwic_rows[:2]
 ```
