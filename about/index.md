@@ -60,7 +60,7 @@ ref: about
 
     <p><strong>qh · china</strong> (quantitative humanities china lab) is a series of open-ended experiments with Chinese literature. We use digital tools and statistical methods to probe literary phenomena, play with texts, and find new ways of thinking about stories and how they shape us.</p>
 
-    <p>You can contact me at maciej.kurzynski[at]ln.edu.hk (<a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>).</p>
+    <p>Contact: <a href="https://scholars.ln.edu.hk/en/persons/maciej-kurzynski/">Lingnan Scholars</a>.</p>
   </div>
 </div>
 
