@@ -36,12 +36,13 @@ permalink: /zh/about/
 @media (max-width: 768px) {
   .bio-container {
     flex-direction: column;
+    gap: 1rem;
   }
   
   .bio-image {
     flex: 0 0 auto;
-    width: 160px;
-    max-width: 45%;
+    width: 220px;
+    max-width: 60%;
   }
 }
 </style>
