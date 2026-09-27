@@ -1014,7 +1014,9 @@ aside.docs-sidebar {
   opacity: 0.6;
 }
 
-/* CJK font stack for the Chinese version */
+/* CJK font stack for the Chinese version.
+   Latin fonts come first so characters like ł (Wrocław) render correctly;
+   CJK glyphs fall through to PingFang / JhengHei / Noto. */
 html[lang="zh-Hant"] body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Segoe UI", Roboto, sans-serif;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
 }
