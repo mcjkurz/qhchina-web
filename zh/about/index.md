@@ -39,7 +39,9 @@ permalink: /zh/about/
   }
   
   .bio-image {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
+    width: 160px;
+    max-width: 45%;
   }
 }
 </style>
