@@ -39,7 +39,7 @@ permalink: /zh/projects/
 
 <div class="projects-grid">
     <div class="project-card">
-        <h3><a href="{{ site.baseurl }}/zh/projects/vector-poetics/">向量詩學</a><span class="en-title">Vector Poetics</span></h3>
+        <h3><a href="{{ site.baseurl }}/zh/projects/parallelism-geometry/">對仗與幾何</a><span class="en-title">Geometry of Parallelism</span></h3>
         <p>與 <strong>蔡宗齊教授、徐曉童、馮宇</strong> 合作</p>
         <p>用向量空間重讀律詩對仗，分析上下句如何在概念的空間裡彼此呼應。</p>
     </div>
