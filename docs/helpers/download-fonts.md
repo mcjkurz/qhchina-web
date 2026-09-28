@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.fonts.download_fonts`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L319)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L318)
 
 <pre class="signature"><code><span class="sig-name">download_fonts</span>(<span class="sig-param">fonts</span><span class="sig-punct">:</span> <span class="sig-type">list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>)</code></pre>
 

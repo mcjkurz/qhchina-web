@@ -10,7 +10,7 @@ api_category_permalink: "/docs/stylometry/"
 
 Part of **Stylometry** (`qhchina.analytics.stylometry.compare_corpora`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2394)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/stylometry.py#L2393)
 
 <pre class="signature"><code><span class="sig-name">compare_corpora</span>(
     <span class="sig-param">corpusA</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[str] | Iterable[list[str]]</span>,

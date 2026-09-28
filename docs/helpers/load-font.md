@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.fonts.load_font`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L183)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L182)
 
 <pre class="signature"><code><span class="sig-name">load_font</span>(
     <span class="sig-param">remote</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,

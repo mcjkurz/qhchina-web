@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.fonts.get_current_font_path`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L279)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L278)
 
 <pre class="signature"><code><span class="sig-name">get_current_font_path</span>()</code></pre>
 

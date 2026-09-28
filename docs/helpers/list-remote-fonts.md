@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.fonts.list_remote_fonts`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L373)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L372)
 
 <pre class="signature"><code><span class="sig-name">list_remote_fonts</span>()</code></pre>
 

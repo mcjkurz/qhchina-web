@@ -10,7 +10,7 @@ api_category_permalink: "/docs/helpers/"
 
 Part of **Helper Utilities** (`qhchina.helpers.fonts.clear_cache`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L455)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/helpers/fonts.py#L454)
 
 <pre class="signature"><code><span class="sig-name">clear_cache</span>()</code></pre>
 
