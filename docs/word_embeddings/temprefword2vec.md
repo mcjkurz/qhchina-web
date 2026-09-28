@@ -39,12 +39,6 @@ There are two ways to train the model:
 2. Proportional batch sampling - each batch contains a proportion of
    tokens from each time period; uses all data.
 
-Note:
-    - Only supports Skip-gram (sg=1). CBOW is not supported.
-    - Corpora must be UNTAGGED. Tagging is done automatically during training.
-    - Training does not start automatically. Call `train()` explicitly after
-      initialization.
-
 Interpreting Results:
     `most_similar()` on temporal variants (e.g., "民_宋") might return
     suboptimal results given that temporal variants are only trained on period-specificsubsets of data.
@@ -70,6 +64,13 @@ Interpreting Results:
   - verbose (bool): Log progress (default: False)
   
   Note: sg must be 1 (Skip-gram).
+
+**Note:**
+
+- Only supports Skip-gram (sg=1). CBOW is not supported.
+- Corpora must be UNTAGGED. Tagging is done automatically during training.
+- Training does not start automatically. Call `train()` explicitly after
+  initialization.
 
 **Example:**
 ```python

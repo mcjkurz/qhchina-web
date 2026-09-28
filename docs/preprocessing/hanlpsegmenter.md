@@ -54,6 +54,21 @@ API changes). Use: pip install "transformers<5.0"
 - `**kwargs`: Base class arguments forwarded to [`SegmentationWrapper`](/docs/preprocessing/segmentationwrapper/)
   (strategy, chunk_size, chunk_overlap, filters, user_dict, sentence_end_pattern).
 
+**Note:**
+
+HanLP uses CTB (Chinese Treebank) POS tags by default. Common tags include:
+- NN: common noun
+- NR: proper noun
+- VV: verb
+- VA: predicative adjective
+- AD: adverb
+- P: preposition
+- DEG: associative 的
+- PU: punctuation
+- JJ: noun-modifier (adjective)
+- CD: cardinal number
+- M: measure word
+
 **Example:**
 ```python
 import hanlp

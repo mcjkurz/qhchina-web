@@ -10,122 +10,161 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L864)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L885)
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
     <span class="sig-param">target_words</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str]</span>,
     <span class="sig-param">method</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'window'</span>,
     <span class="sig-param">horizon</span><span class="sig-punct">:</span> <span class="sig-type">int | tuple | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
+    <span class="sig-param">pooled</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
+    <span class="sig-param">measures</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">filters</span><span class="sig-punct">:</span> <span class="sig-type">qhchina.analytics.collocations.FilterOptions | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
     <span class="sig-param">correction</span><span class="sig-punct">:</span> <span class="sig-type">str | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>,
-    <span class="sig-param">return_type</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
-    <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>,
     <span class="sig-param">alternative</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'greater'</span>,
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'obs_local'</span>,
     <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">pooled</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>,
-    <span class="sig-param">measures</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
+    <span class="sig-param">return_type</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'dataframe'</span>,
+    <span class="sig-param">max_sentence_length</span><span class="sig-punct">:</span> <span class="sig-type">int | None</span> <span class="sig-punct">=</span> <span class="sig-default">256</span>,
+    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>
 )</code></pre>
 
 Find collocates for target words in a corpus of sentences.
 
+For each target word, every word that co-occurs with it is scored against a
+2×2 contingency table (Evert 2008) and tested with Fisher's exact test. Optional
+association measures (logDice, MI, t-score, log-likelihood, ...) can be added
+as extra columns.
+
 Processes data in streaming batches to keep memory low even for very large
-corpora. The data is iterated twice (vocabulary building, then counting), 
-so a restartable iterable is required. Lists, file-backed iterators, and 
+corpora. The data is iterated twice (vocabulary building, then counting),
+so a restartable iterable is required. Lists, file-backed iterators, and
 restartable generator classes all work; single-use generators do not.
+
+All arguments after `target_words` are keyword-only.
+
+**Association measures** (`measures`). All measures are computed from the
+same contingency table as `p_value`, using Evert's (2008) notation:
+O11 = `obs_local`, E11 = `exp_local`, R1 = size of the target's context,
+C1 = `obs_global`, N = sample size.
+
+- 'mi': Pointwise mutual information, `log2(O11 / E11)`. Measures
+  how much more often the pair occurs than expected. Strongly favours
+  rare pairs: a collocate seen once or twice can get a very high score.
+- 'mi3': `log2(O11³ / E11)`. MI with more weight on the observed
+  count, which dampens the rare-pair bias. A heuristic: its values
+  have no fixed interpretation (Evert 2008).
+- 'local_mi': `O11 · log2(O11 / E11)`. MI weighted by frequency,
+  favours frequent, strongly associated pairs.
+- 't_score': `(O11 − E11) / √O11`. Favours frequent collocates
+  and is often topped by function words. Good for spotting common
+  patterns, poor at finding rare but tight ones.
+- 'z_score': `(O11 − E11) / √E11`. Sits between MI and t-score;
+  like MI, it inflates rare pairs.
+- 'simple_ll': Simplified log-likelihood,
+  `2 · (O11 · ln(O11 / E11) − (O11 − E11))`. A significance-style
+  score that closely tracks `log_likelihood`.
+- 'log_likelihood': Log-likelihood ratio G² over all four cells of the
+  contingency table (Dunning 1993). A significance-style score that
+  follows a χ² distribution with one degree of freedom
+  (3.84 ≈ p < .05, 10.83 ≈ p < .001, two-sided).
+- 'dice': `2 · f(A,B) / (f(A) + f(B))` with f(A,B) = `obs_local`,
+  f(A) = target frequency, f(B) = `obs_global` (Smadja et al. 1996).
+  High only when the pair accounts for a large share of both words'
+  occurrences. In `method='sentence'` all three are sentence counts
+  and this equals Evert's `2 · O11 / (R1 + C1)`. In `method='window'`
+  f(A) is the target's token frequency (not Evert's R1, the number of
+  window positions), matching the usual definition, so values do not
+  depend on `horizon`. Normally 0 to 1; in window mode it can slightly
+  exceed 1 if the collocate occurs several times around one target
+  occurrence.
+- 'log_dice': `14 + log2(dice)` (Rychlý 2008), the Sketch Engine
+  measure. Maximum is 14 (see the window-mode note under 'dice'); each
+  point lower means half the Dice value. Does not depend on corpus
+  size, so scores can be compared across corpora.
+- 'log_odds_ratio': `ln((O11+½)(O22+½) / ((O12+½)(O21+½)))`. An
+  effect size; the +½ keeps it finite when a cell is 0.
+- 'delta_p': `O11/R1 − O21/(N−R1)`. How much more likely the
+  collocate is inside the target's contexts than outside them.
+  Directional: it is not symmetric between target and collocate.
+- 'dice_evert', 'log_dice_evert': Dice and logDice computed on Evert's
+  contingency table, `2 · O11 / (R1 + C1)` (Evert 2008, Fig. 58.9).
+  Identical to 'dice'/'log_dice' in `method='sentence'`. In
+  `method='window'` R1 is the number of window positions around the
+  target (about 2 · horizon · f(A)), so values are lower than the
+  standard ones and shrink as `horizon` grows, but always stay within
+  0 to 1 (logDice ≤ 14). Not included in `'all'`; request them by name.
+
+Sign conventions: `mi`, `local_mi`, `t_score`, `z_score` and
+`delta_p` are 0 when O11 = E11 and negative when the pair occurs less
+often than expected (O11 < E11); `log_odds_ratio` behaves the same up to
+the small +½ adjustment. `mi3` is not 0 at independence and can stay
+positive for repelled pairs, so use it only for ranking attracted
+collocates. `simple_ll` and `log_likelihood` are by themselves
+two-sided (positive for both attraction and repulsion), so they are
+reported in their one-sided form: multiplied by the sign of
+`O11 − E11`. Take the absolute value to recover the two-sided statistic.
+`dice` and `log_dice` are never negative and do not distinguish
+repulsion. See Evert (2008), *Corpora and Collocations*, for details.
+
+**Filters** (`filters`). Filters are applied after all counts and raw
+statistics (`obs_local`, `exp_local`, `obs_global`, `ratio_local`,
+contingency tables, `p_value`, measures) have been computed on the full,
+unfiltered corpus, and they only remove rows from the finished result. They
+never change these values for the collocates that remain. The one value they
+can affect is `adjusted_p_value` (see `correction`). In particular,
+`stopwords` are not removed from the corpus: they still occupy window
+positions and count toward totals, and are only hidden from the output. To
+exclude words from the counting itself, remove them from `sentences`
+beforehand. Likewise, `min_obs_global` and the other `*_global` filters
+are result filters, not vocabulary cutoffs.
+
+Order of operations: (1) counts and raw p-values are computed for all
+collocates; (2) every filter except `max_adjusted_p` removes rows;
+(3) the multiple testing correction, if requested, is computed on the rows
+that remain; (4) `max_adjusted_p` removes rows based on the adjusted
+p-values.
+
+- 'stopwords': list[str] - Words to exclude from results
+- 'min_word_length': int - Minimum character length for collocates
+- 'min_obs_local': int - Minimum observed local co-occurrence count.
+  In `method='window'`, this is the number of target-centered window
+  positions where the collocate is observed. In `method='sentence'`,
+  this is the number of sentences containing both target and collocate.
+- 'max_obs_local': int - Maximum observed local co-occurrence count
+  (same unit definitions as `min_obs_local`).
+- 'min_obs_global': int - Minimum global frequency of the collocate.
+  In `method='window'`, this is total token count in the corpus.
+  In `method='sentence'`, this is sentence frequency (number of
+  sentences containing the collocate at least once).
+- 'max_obs_global': int - Maximum global frequency of the collocate
+  (same unit definitions as `min_obs_global`).
+- 'min_exp_local': float - Minimum expected local count under the same
+  contingency table definition used by the selected method.
+- 'max_exp_local': float - Maximum expected local count under the same
+  method-specific contingency table definition.
+- 'min_ratio_local': float - Minimum local association strength
+  `obs_local / exp_local`.
+- 'max_ratio_local': float - Maximum local association strength
+  `obs_local / exp_local`.
+- 'max_p': float - Maximum raw p-value threshold
+- 'max_adjusted_p': float - Maximum adjusted p-value (requires correction;
+  the only filter applied after the correction is computed)
 
 **Parameters:**
 - `sentences` (Iterable[list[str]]): Restartable iterable of tokenized
   sentences (each sentence a list of string tokens).
 - `target_words` (str | list[str]): Target word(s) to find collocates for.
   By default each target is analysed separately (see `pooled`).
-- `method` (str): Method to use for calculating collocations. Either 'window' or 
-  'sentence'. 'window' uses a sliding window of specified horizon around each 
-  token. In window mode, contingency tables follow Evert (2008):
-  for each target word, positions whose token equals the target are excluded
-  from the sample space. 'sentence' considers whole sentences as context
-  units (horizon not applicable). Default is 'window'.
-- `horizon` (int | tuple | None): Context window size relative to the target 
-  word. Only applicable when method='window'. Must be None when method='sentence'.
-  - int: Symmetric window (e.g., 5 means 5 words on each side of target)
-  - tuple: Asymmetric window (left, right) specifying how many words to look
-    on each side of the target word: (0, 5) finds collocates up to 5 words to 
-    the RIGHT of target; (5, 0) finds collocates up to 5 words to the LEFT; 
-    (2, 3) finds collocates 2 words left and 3 words right of target.
-  - None: Uses default of 5 for 'window' method
-- `filters` (FilterOptions | None): Dictionary of filters to apply to results.
-  Filters are applied after all counts and raw statistics (`obs_local`,
-  `exp_local`, `obs_global`, `ratio_local`, contingency tables,
-  `p_value`) have been computed on the full, unfiltered corpus, and they only
-  remove rows from the finished result. They never change these values for the
-  collocates that remain. The one value they can affect is `adjusted_p_value`
-  (see `correction`). In particular, `stopwords` are not removed from the corpus:
-  they still occupy window positions and count toward totals, and are only
-  hidden from the output. To exclude words from the counting itself, remove
-  them from `sentences` beforehand. Likewise, `min_obs_global` and the
-  other `*_global` filters are result filters, not vocabulary cutoffs.
-  
-  Order of operations: (1) counts and raw p-values are computed for all
-  collocates; (2) every filter except `max_adjusted_p` removes rows;
-  (3) the multiple testing correction, if requested, is computed on the rows
-  that remain; (4) `max_adjusted_p` removes rows based on the adjusted
-  p-values.
-  
-  Available filters:
-  
-  - 'stopwords': list[str] - Words to exclude from results
-  - 'min_word_length': int - Minimum character length for collocates
-  - 'min_obs_local': int - Minimum observed local co-occurrence count.
-    In `method='window'`, this is the number of target-centered window
-    positions where the collocate is observed. In `method='sentence'`,
-    this is the number of sentences containing both target and collocate.
-  - 'max_obs_local': int - Maximum observed local co-occurrence count
-    (same unit definitions as `min_obs_local`).
-  - 'min_obs_global': int - Minimum global frequency of the collocate.
-    In `method='window'`, this is total token count in the corpus.
-    In `method='sentence'`, this is sentence frequency (number of
-    sentences containing the collocate at least once).
-  - 'max_obs_global': int - Maximum global frequency of the collocate
-    (same unit definitions as `min_obs_global`).
-  - 'min_exp_local': float - Minimum expected local count under the same
-    contingency table definition used by the selected method.
-  - 'max_exp_local': float - Maximum expected local count under the same
-    method-specific contingency table definition.
-  - 'min_ratio_local': float - Minimum local association strength
-    `obs_local / exp_local`.
-  - 'max_ratio_local': float - Maximum local association strength
-    `obs_local / exp_local`.
-  - 'max_p': float - Maximum raw p-value threshold
-  - 'max_adjusted_p': float - Maximum adjusted p-value (requires correction;
-    the only filter applied after the correction is computed)
-- `correction` (str): Multiple testing correction method. When set,
-  an `adjusted_p_value` column is added to the results. The correction
-  is computed after the filters (except `max_adjusted_p`) have removed rows,
-  and only on the rows that remain, so the number of tests is the number of
-  collocates that passed the filters. The same collocate can therefore get a
-  different `adjusted_p_value` with different filters, while `p_value` and
-  the counts stay the same.
-  
-  - 'bonferroni': Bonferroni correction (conservative, controls family-wise 
-    error rate).
-  - 'fdr_bh': Benjamini-Hochberg procedure (controls false discovery rate).
-  - None: No correction (default).
-- `return_type` (str): Return type.
-  - `"dataframe"` (default): return a pandas DataFrame.
-  - `"list"`: return a `list[dict]`.
-- `max_sentence_length` (int | None): Maximum sentence length. Longer sentences 
-  are truncated to avoid memory bloat from outliers. Set to None for no limit.
-  Default is 256.
-- `alternative` (str): Alternative hypothesis for Fisher's exact test. Options are:
-  'greater' (test if observed co-occurrence is greater than expected, default),
-  'less' (test if observed is less than expected), or 'two-sided' (test if 
-  observed differs from expected).
-- `sort_by` (str): Field to sort results by. Default is 'obs_local'. Any
-  association measure (see `measures`) is also accepted; if it was not
-  requested in `measures`, it is computed and added automatically.
-- `ascending` (bool): Sort direction. Default is False (descending).
+- `method` (str): What counts as co-occurrence. 'window' (default) uses a
+  sliding window of `horizon` words around each target; following
+  Evert (2008), positions holding the target itself are excluded from
+  the sample space. 'sentence' uses whole sentences as context units.
+- `horizon` (int | tuple | None): Window size, only for `method='window'`
+  (must be None for 'sentence'). An int gives a symmetric window
+  (5 = five words on each side). A tuple `(left, right)` gives an
+  asymmetric one: (0, 5) looks only to the right of the target, (5, 0)
+  only to the left, (2, 3) two words left and three right. None means 5.
 - `pooled` (bool): If True and more than one target word is given, all targets are
   merged into a single pooled target before counting, as if every occurrence of
   any target were the same word. Each context (window position or sentence)
@@ -135,73 +174,52 @@ restartable generator classes all work; single-use generators do not.
   `target` value, 'pooled'. This is not the same as summing the per-target
   results, which would double-count shared contexts. With a single target it
   has no effect. Default is False (targets analysed separately).
+- `measures` (str | list[str] | None): Association measures to add as extra
+  columns after `p_value`: a list of names, a single name, or 'all'.
+  Names are case-insensitive and hyphens are accepted ('logDice',
+  't-score', 'MI' all work). Available: 'mi', 'mi3', 'local_mi',
+  't_score', 'z_score', 'simple_ll', 'log_likelihood', 'dice',
+  'log_dice', 'log_odds_ratio', 'delta_p', 'dice_evert',
+  'log_dice_evert'. See **Association measures** above. Default None
+  (no extra columns).
+- `filters` (FilterOptions | None): Dictionary of result filters, e.g.
+  `{"min_obs_local": 5, "stopwords": [...]}`. Filters only remove rows;
+  see **Filters** above for all keys and the order of operations.
+  Default None.
+- `correction` (str | None): Multiple testing correction; when set, an
+  `adjusted_p_value` column is added. 'bonferroni' (conservative,
+  controls family-wise error rate) or 'fdr_bh' (Benjamini-Hochberg,
+  controls false discovery rate). The correction is computed only on
+  rows that passed the filters (except `max_adjusted_p`), so the same
+  collocate can get a different `adjusted_p_value` under different
+  filters, while `p_value` and the counts stay the same. Default None.
+- `alternative` (str): Alternative hypothesis for Fisher's exact test.
+  'greater' (default) tests whether the pair co-occurs more often than
+  expected, 'less' whether it co-occurs less often, and 'two-sided'
+  whether it differs in either direction.
+- `sort_by` (str): Field to sort results by. Default is 'obs_local'. Any
+  association measure is also accepted; if it was not requested in
+  `measures`, it is computed and added automatically.
+- `ascending` (bool): Sort direction. Default is False (descending).
+- `return_type` (str): 'dataframe' (default) returns a pandas DataFrame;
+  'list' returns a `list[dict]`.
+- `max_sentence_length` (int | None): Longer sentences are truncated to
+  avoid memory bloat from outliers. None disables truncation.
+  Default is 256.
 - `batch_words` (int): Target number of tokens per processing batch. Larger values
   use more memory but reduce per-batch overhead. Default is 100,000.
-- `measures` (str | list[str] | None): Association measures to add as extra
-  columns, one per measure, after `p_value`. Pass a list of names, a
-  single name, or `'all'`. Names are case-insensitive and hyphens are
-  accepted (`'logDice'`, `'t-score'`, `'MI'` all work). Default None
-  (no extra columns).
-  
-  All measures are computed from the same contingency table as `p_value`,
-  using Evert's (2008) notation: O11 = `obs_local`, E11 = `exp_local`,
-  R1 = size of the target's context, C1 = `obs_global`, N = sample size.
-  
-  - 'mi': Pointwise mutual information, `log2(O11 / E11)`. Measures
-    how much more often the pair occurs than expected. Strongly favours
-    rare pairs: a collocate seen once or twice can get a very high score.
-  - 'mi3': `log2(O11³ / E11)`. MI with more weight on the observed
-    count, which dampens the rare-pair bias. A heuristic: its values
-    have no fixed interpretation (Evert 2008).
-  - 'local_mi': `O11 · log2(O11 / E11)`. MI weighted by frequency,
-    favours frequent, strongly associated pairs.
-  - 't_score': `(O11 − E11) / √O11`. Favours frequent collocates
-    and is often topped by function words. Good for spotting common
-    patterns, poor at finding rare but tight ones.
-  - 'z_score': `(O11 − E11) / √E11`. Sits between MI and t-score;
-    like MI, it inflates rare pairs.
-  - 'simple_ll': Simplified log-likelihood,
-    `2 · (O11 · ln(O11 / E11) − (O11 − E11))`. A significance-style
-    score that closely tracks `log_likelihood`.
-  - 'log_likelihood': Log-likelihood ratio G² over all four cells of the
-    contingency table (Dunning 1993). A significance-style score that
-    follows a χ² distribution with one degree of freedom
-    (3.84 ≈ p < .05, 10.83 ≈ p < .001, two-sided).
-  - 'dice': `2 · O11 / (R1 + C1)`, the share of the target's contexts
-    and the collocate's occurrences that the pair accounts for. Ranges
-    from 0 to 1.
-  - 'log_dice': `14 + log2(dice)` (Rychlý 2008). Maximum is 14; each
-    point lower means half the Dice value. Does not depend on corpus
-    size, so scores can be compared across corpora.
-  - 'log_odds_ratio': `ln((O11+½)(O22+½) / ((O12+½)(O21+½)))`. An
-    effect size; the +½ keeps it finite when a cell is 0.
-  - 'delta_p': `O11/R1 − O21/(N−R1)`. How much more likely the
-    collocate is inside the target's contexts than outside them.
-    Directional: it is not symmetric between target and collocate.
-  
-  Sign conventions: `mi`, `local_mi`, `t_score`, `z_score` and
-  `delta_p` are 0 when O11 = E11 and negative when the pair occurs less
-  often than expected (O11 < E11); `log_odds_ratio` behaves the same up to
-  the small +½ adjustment. `mi3` is not 0 at independence and can stay
-  positive for repelled pairs, so use it only for ranking attracted
-  collocates. `simple_ll` and `log_likelihood` are
-  by themselves two-sided (positive for both attraction and repulsion),
-  so they are reported in their one-sided form: multiplied by the sign of
-  `O11 − E11`. Take the absolute value to recover the two-sided statistic.
-  `dice` and `log_dice` are never negative and do not distinguish
-  repulsion. See Evert (2008), *Corpora and Collocations*, for details.
 
 **Returns:**
 list[dict] | pd.DataFrame: Collocation results with the following fields:
 
 - **target** (str): The target word.
 - **collocate** (str): The co-occurring word.
+- **exp_local** (float): Expected local co-occurrence count under
+  independence, computed from the method-specific contingency table.
 - **obs_local** (int): Observed local co-occurrence count.
   In `method='window'`, counts target-centered window positions where
   the collocate appears. In `method='sentence'`, counts sentences that
   contain both words.
-- **exp_local** (float): Expected local co-occurrence count under
-  independence, computed from the method-specific contingency table.
 - **ratio_local** (float): Ratio of observed to expected (obs_local / exp_local).
   Values > 1 indicate attraction, < 1 indicate repulsion.
 - **obs_global** (int): Global collocate frequency. In

@@ -75,6 +75,15 @@ Two co-occurrence backends are available:
 - `combine_vectors`: If True, expose `(W + W_tilde)/2` as `self.W`;
   otherwise expose `W` only.
 
+**Note:**
+
+* Base (single-corpus) GloVe only.
+* `workers` is accepted for API consistency, but training updates are
+  currently executed as one shared update stream.
+* Vectors returned by `get_vector` and `most_similar` come from
+  either `(W + W_tilde) / 2` (default) or `W` only when
+  `combine_vectors=False`.
+
 
 **Example:**
 ```python

@@ -96,6 +96,11 @@ pandas.DataFrame or list[dict] with columns/keys:
 - **p_value** (float): Two-sided p-value.
 - **adjusted_p_value** (float, optional): Present only if `correction` is set.
 
+**Note:**
+
+Two-sided tests are used because we want to detect whether words are 
+overrepresented in either corpus.
+
 **Example:**
 ```python
 # Compare word usage between two authors:
