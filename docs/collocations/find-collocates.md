@@ -10,7 +10,7 @@ api_category_permalink: "/docs/collocations/"
 
 Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocates`).
 
-[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L740)
+[View source](https://github.com/mcjkurz/qhchina/blob/main/qhchina/analytics/collocations.py#L864)
 
 <pre class="signature"><code><span class="sig-name">find_collocates</span>(
     <span class="sig-param">sentences</span><span class="sig-punct">:</span> <span class="sig-type">Iterable[list[str]]</span>,
@@ -25,7 +25,8 @@ Part of **Collocation Analysis** (`qhchina.analytics.collocations.find_collocate
     <span class="sig-param">sort_by</span><span class="sig-punct">:</span> <span class="sig-type">str</span> <span class="sig-punct">=</span> <span class="sig-default">'obs_local'</span>,
     <span class="sig-param">ascending</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
     <span class="sig-param">pooled</span><span class="sig-punct">:</span> <span class="sig-type">bool</span> <span class="sig-punct">=</span> <span class="sig-default">False</span>,
-    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>
+    <span class="sig-param">batch_words</span><span class="sig-punct">:</span> <span class="sig-type">int</span> <span class="sig-punct">=</span> <span class="sig-default">100000</span>,
+    <span class="sig-param">measures</span><span class="sig-punct">:</span> <span class="sig-type">str | list[str] | None</span> <span class="sig-punct">=</span> <span class="sig-default">None</span>
 )</code></pre>
 
 Find collocates for target words in a corpus of sentences.
@@ -121,7 +122,9 @@ restartable generator classes all work; single-use generators do not.
   'greater' (test if observed co-occurrence is greater than expected, default),
   'less' (test if observed is less than expected), or 'two-sided' (test if 
   observed differs from expected).
-- `sort_by` (str): Field to sort results by. Default is 'obs_local'.
+- `sort_by` (str): Field to sort results by. Default is 'obs_local'. Any
+  association measure (see `measures`) is also accepted; if it was not
+  requested in `measures`, it is computed and added automatically.
 - `ascending` (bool): Sort direction. Default is False (descending).
 - `pooled` (bool): If True and more than one target word is given, all targets are
   merged into a single pooled target before counting, as if every occurrence of
@@ -134,6 +137,59 @@ restartable generator classes all work; single-use generators do not.
   has no effect. Default is False (targets analysed separately).
 - `batch_words` (int): Target number of tokens per processing batch. Larger values
   use more memory but reduce per-batch overhead. Default is 100,000.
+- `measures` (str | list[str] | None): Association measures to add as extra
+  columns, one per measure, after `p_value`. Pass a list of names, a
+  single name, or `'all'`. Names are case-insensitive and hyphens are
+  accepted (`'logDice'`, `'t-score'`, `'MI'` all work). Default None
+  (no extra columns).
+  
+  All measures are computed from the same contingency table as `p_value`,
+  using Evert's (2008) notation: O11 = `obs_local`, E11 = `exp_local`,
+  R1 = size of the target's context, C1 = `obs_global`, N = sample size.
+  
+  - 'mi': Pointwise mutual information, `log2(O11 / E11)`. Measures
+    how much more often the pair occurs than expected. Strongly favours
+    rare pairs: a collocate seen once or twice can get a very high score.
+  - 'mi3': `log2(O11³ / E11)`. MI with more weight on the observed
+    count, which dampens the rare-pair bias. A heuristic: its values
+    have no fixed interpretation (Evert 2008).
+  - 'local_mi': `O11 · log2(O11 / E11)`. MI weighted by frequency,
+    favours frequent, strongly associated pairs.
+  - 't_score': `(O11 − E11) / √O11`. Favours frequent collocates
+    and is often topped by function words. Good for spotting common
+    patterns, poor at finding rare but tight ones.
+  - 'z_score': `(O11 − E11) / √E11`. Sits between MI and t-score;
+    like MI, it inflates rare pairs.
+  - 'simple_ll': Simplified log-likelihood,
+    `2 · (O11 · ln(O11 / E11) − (O11 − E11))`. A significance-style
+    score that closely tracks `log_likelihood`.
+  - 'log_likelihood': Log-likelihood ratio G² over all four cells of the
+    contingency table (Dunning 1993). A significance-style score that
+    follows a χ² distribution with one degree of freedom
+    (3.84 ≈ p < .05, 10.83 ≈ p < .001, two-sided).
+  - 'dice': `2 · O11 / (R1 + C1)`, the share of the target's contexts
+    and the collocate's occurrences that the pair accounts for. Ranges
+    from 0 to 1.
+  - 'log_dice': `14 + log2(dice)` (Rychlý 2008). Maximum is 14; each
+    point lower means half the Dice value. Does not depend on corpus
+    size, so scores can be compared across corpora.
+  - 'log_odds_ratio': `ln((O11+½)(O22+½) / ((O12+½)(O21+½)))`. An
+    effect size; the +½ keeps it finite when a cell is 0.
+  - 'delta_p': `O11/R1 − O21/(N−R1)`. How much more likely the
+    collocate is inside the target's contexts than outside them.
+    Directional: it is not symmetric between target and collocate.
+  
+  Sign conventions: `mi`, `local_mi`, `t_score`, `z_score` and
+  `delta_p` are 0 when O11 = E11 and negative when the pair occurs less
+  often than expected (O11 < E11); `log_odds_ratio` behaves the same up to
+  the small +½ adjustment. `mi3` is not 0 at independence and can stay
+  positive for repelled pairs, so use it only for ranking attracted
+  collocates. `simple_ll` and `log_likelihood` are
+  by themselves two-sided (positive for both attraction and repulsion),
+  so they are reported in their one-sided form: multiplied by the sign of
+  `O11 − E11`. Take the absolute value to recover the two-sided statistic.
+  `dice` and `log_dice` are never negative and do not distinguish
+  repulsion. See Evert (2008), *Corpora and Collocations*, for details.
 
 **Returns:**
 list[dict] | pd.DataFrame: Collocation results with the following fields:
@@ -152,6 +208,9 @@ list[dict] | pd.DataFrame: Collocation results with the following fields:
   `method='window'`, token frequency; in `method='sentence'`,
   sentence frequency.
 - **p_value** (float): P-value from Fisher's exact test.
+- One float field per requested measure (e.g. **log_dice**,
+  **t_score**), present only if `measures` is set or `sort_by`
+  names a measure.
 - **adjusted_p_value** (float, optional): Present only if `correction` is set.
 
 **Example:**
@@ -174,6 +233,10 @@ df = find_collocates(
 )
 top_collocates = df[["target", "collocate", "obs_local", "p_value"]].head(10)
 df.to_csv("collocates.csv", index=False)
+scored = find_collocates(
+    sentences, target_words="人民", horizon=2,
+    measures=["logDice", "t-score", "simple-ll"], sort_by="log_dice",
+)
 rows = find_collocates(
     sentences=sentences,
     target_words="人民",
