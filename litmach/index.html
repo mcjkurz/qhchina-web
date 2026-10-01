@@ -10,7 +10,7 @@
 body { margin:0; font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; color:var(--ink2); line-height:1.65; font-size:17px; -webkit-font-smoothing:antialiased; background:#fff; }
 main { max-width:760px; margin:0 auto; padding:56px 20px 96px; }
 h1 { font-weight:600; font-size:44px; line-height:1.1; color:var(--ink); margin:14px 0 8px; }
-h1 em, h2 em { font-style:italic; color:var(--coral); }
+h1 em, h2 em { font-style:italic; }
 h2 { font-weight:600; font-size:30px; line-height:1.15; color:var(--ink); margin:56px 0 10px; padding-top:22px; border-top:1px solid var(--line); }
 h3 { font-size:15px; font-weight:700; color:var(--ink); margin:30px 0 4px; }
 .lead { font-size:19px; color:var(--ink2); margin:0 0 6px; }
@@ -24,6 +24,9 @@ b, strong { color:var(--ink); }
 .note { border-left:4px solid var(--coral); background:var(--coral-bg); padding:12px 18px; margin:22px 0; font-size:16px; }
 .note.amber { border-color:var(--amber); background:var(--amber-bg); }
 .url { font-family:ui-monospace,"SFMono-Regular","Menlo",monospace; font-size:.9em; }
+.prompt { border:1px solid var(--line); border-radius:8px; margin:18px 0; overflow:hidden; }
+.prompt-label { margin:0; padding:8px 16px; background:var(--panel); font-weight:700; font-size:13px; color:var(--ink); border-bottom:1px solid var(--line); }
+.prompt pre { margin:0; border-radius:0; background:#fff; }
 </style>
 </head>
 <body>
@@ -76,6 +79,43 @@ b, strong { color:var(--ink); }
 <li>Type <code>/models</code> and select <b>GLM-5.3-Flash</b>.</li>
 </ol>
 <p>On your own computer, install it from <a href="https://opencode.ai/download">opencode.ai/download</a>. On Windows, use the <b>desktop app</b>: installing OpenCode in a Windows terminal is a pain. If a terminal says <i>command not found</i> right after installing, open a <b>new</b> terminal; the old one has not noticed the install yet.</p>
+
+<h2>Step 3 · <em>Try</em> a prompt</h2>
+<p>The 红楼梦 (<i>Dream of the Red Chamber</i>) novel is already in your folder as a <code>.txt</code> file. Copy each prompt below in full and paste it into the chat, one at a time, waiting for the agent to finish before sending the next.</p>
+<div class="prompt">
+<p class="prompt-label">Prompt 1</p>
+<pre>The 红楼梦 novel is already in this folder as a .txt file.
+jieba, qhchina, numpy, matplotlib, and scikit-learn are already installed; do not create a virtual environment.
+
+In the root folder, create a Python script (.py) that:
+- loads that file and splits it into 120 chapters (each chapter starts with 第 and a Chinese numeral), for example:
+
+第一回  甄士隐梦幻识通灵　贾雨村风尘怀闺秀
+第八十五回  贾存周报升郎中任　薛文起复惹放流刑
+第一一八回  记微嫌舅兄欺弱女　惊谜语妻妾谏痴人
+
+- tokenizes each chapter with jieba, removing punctuation marks
+- finds the 300 most common words in the novel
+- calculates a z-score for each of those word frequencies in each chapter
+- projects the chapter vectors into 3D with PCA
+- colors chapters 1–80 red and 81–120 blue
+- imports qhchina and calls load_fonts()
+- saves a .png</pre>
+</div>
+<p>When it finishes, check the result by opening the <code>.png</code> file in the file list on the left.</p>
+<p>Once that looks right, paste in the next prompt:</p>
+<div class="prompt">
+<p class="prompt-label">Prompt 2</p>
+<pre>Create an HTML page that lets me rotate and move that 3D PCA projection.
+The page should also show the top 20 positive features and the top 20 negative features
+for the first 80 chapters and for the last 40 chapters. Use plotly (already installed).</pre>
+</div>
+<p>In a Codespace you usually cannot open that HTML directly. Right-click the file on the left and choose <b>Download</b>, then open it in a browser on your own computer.</p>
+<p>Finally, ask the agent to save your work:</p>
+<div class="prompt">
+<p class="prompt-label">Prompt 3</p>
+<pre>Commit all changes with the message "first commit", then push to GitHub.</pre>
+</div>
 
 <div class="note"><b>When you finish:</b> commit and push your work (you can ask the agent to do it for you), then delete your Codespace at <a href="https://github.com/codespaces">github.com/codespaces</a> (<b>…</b> → <b>Delete</b>). Anything you did not push is lost when it is deleted, and an idle Codespace keeps using up your monthly hours.</div>
 </main>
