@@ -98,9 +98,12 @@ details[open] summary::before { content:"▾ "; }
 <pre>Download this file and save it in this folder as 红楼梦.txt:
 https://github.com/mcjkurz/qhchina-data/raw/refs/heads/main/corpora/misc/红楼梦.txt
 
-Set up a Python environment for this project (create a virtual environment if one does not already exist), then install jieba, qhchina, numpy, matplotlib, and scikit-learn.
-
-Then create a Python script (.py) that:
+Set up a Python environment for this project (create a virtual environment if one does not already exist), then install jieba, qhchina, numpy, matplotlib, and scikit-learn.</pre>
+</div>
+<p>Once the file is downloaded and the packages are installed, paste in the next prompt:</p>
+<div class="prompt">
+<p class="prompt-label"><span>Prompt 2</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
+<pre>Create a Python script (.py) that:
 - loads 红楼梦.txt and splits it into 120 chapters (each chapter starts with 第 and a Chinese numeral), for example:
 
 第一回  甄士隐梦幻识通灵　贾雨村风尘怀闺秀
@@ -118,7 +121,7 @@ Then create a Python script (.py) that:
 <p>When it finishes, check the result by opening the <code>.png</code> file in the file list on the left.</p>
 <p>Once that looks right, paste in the next prompt:</p>
 <div class="prompt">
-<p class="prompt-label"><span>Prompt 2</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
+<p class="prompt-label"><span>Prompt 3</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
 <pre>Create an HTML page that lets me rotate and move that 3D PCA projection.
 The page should also show the top 20 positive features and the top 20 negative features
 for the first 80 chapters and for the last 40 chapters. Use plotly (already installed).</pre>
@@ -126,7 +129,7 @@ for the first 80 chapters and for the last 40 chapters. Use plotly (already inst
 <p>In a Codespace you usually cannot open that HTML directly. Right-click the file on the left and choose <b>Download</b>, then open it in a browser on your own computer.</p>
 <p>Finally, ask the agent to save your work:</p>
 <div class="prompt">
-<p class="prompt-label"><span>Prompt 3</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
+<p class="prompt-label"><span>Prompt 4</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
 <pre>Commit all changes with the message "first commit", then push to GitHub.</pre>
 </div>
 
