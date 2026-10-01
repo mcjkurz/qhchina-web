@@ -25,33 +25,39 @@ b, strong { color:var(--ink); }
 .note.amber { border-color:var(--amber); background:var(--amber-bg); }
 .url { font-family:ui-monospace,"SFMono-Regular","Menlo",monospace; font-size:.9em; }
 .prompt { border:1px solid var(--line); border-radius:8px; margin:18px 0; overflow:hidden; }
-.prompt-label { margin:0; padding:8px 16px; background:var(--panel); font-weight:700; font-size:13px; color:var(--ink); border-bottom:1px solid var(--line); }
+.prompt-label { margin:0; padding:8px 16px; background:var(--panel); display:flex; align-items:center; justify-content:space-between; gap:12px; border-bottom:1px solid var(--line); }
+.prompt-label span { font-weight:700; font-size:13px; color:var(--ink); }
 .prompt pre { margin:0; border-radius:0; background:#fff; }
+.copy-btn { font-family:inherit; font-size:12px; font-weight:600; color:var(--ink2); background:#fff; border:1px solid var(--line); border-radius:5px; padding:4px 10px; cursor:pointer; }
+.copy-btn:hover { background:var(--panel); }
+.copy-btn.copied { color:#1a7f37; border-color:#1a7f37; }
+details { border:1px solid var(--line); border-radius:8px; margin:16px 0; padding:4px 18px; }
+details[open] { padding-bottom:16px; }
+details summary { font-size:15px; font-weight:700; color:var(--ink); margin:0; padding:14px 0; cursor:pointer; list-style:none; }
+details summary::-webkit-details-marker { display:none; }
+details summary::before { content:"▸ "; color:var(--mute); }
+details[open] summary::before { content:"▾ "; }
 </style>
 </head>
 <body>
 <main>
-<h1>Set up your <em>AI coding agent</em></h1>
+<h1>Set up your AI coding agent</h1>
 <p class="lead">Accounts, a repository, and an agent connected to a language model. About fifteen minutes.</p>
 <p class="updated">Last updated: Oct 2, 2026</p>
-
-<h2>Two things to choose</h2>
-<p><b>The assistant</b> (the “harness”) is the app you talk to. It reads your files, writes code and runs it. Here we use <b>VS Code with GitHub Copilot</b>; <b>OpenCode</b> (a terminal app, or a desktop app) is an equivalent alternative.</p>
-<p><b>The model</b> does the thinking and runs on someone else’s servers. We bring our own <b>API key</b> for <b>OpenRouter</b> and use the model <b>GLM-5.3-Flash</b>. The assistant is only the messenger; the key connects the two.</p>
-<p>You can change either one later without the other.</p>
-<p>Where do you work? On a <b>school or public computer</b>, use <b>GitHub Codespaces</b> (in the browser). Such machines usually do not let you install Python, Git or VS Code, and everything a Codespace needs is already inside it. On <b>your own computer</b> you can choose freely.</p>
 
 <h2>Step 1 · <em>Accounts</em> and a repository</h2>
 <ol>
 <li><b>A GitHub account.</b> Register at <a href="https://github.com/">github.com</a> with a <b>personal email</b>, not a school address that expires after you leave. Your work lives here.</li>
 <li><b>An API key.</b> Get yours at <a href="https://keyreg.qhchina.org">keyreg.qhchina.org</a>. It allows you to use the external provider (OpenRouter). Keep it private: never paste it into your repository or share it.</li>
-<li><b>Your own copy of the template.</b> Open <a href="https://github.com/mcjkurz/qh-starter">github.com/mcjkurz/qh-starter</a>, press the green <b>Use this template</b> button, and create your own repository. Do not edit the template itself.</li>
+<li><b>Your own copy of the template.</b> Open <a href="https://github.com/mcjkurz/qh-starter">github.com/mcjkurz/qh-starter</a>, press the green <b>Use this template</b> button, and create your own repository under your account. Do not edit the template itself. If you plan to work in Codespaces (in the browser), this is all you need for now. If you plan to work on your own computer instead, you will clone this new repository — not the original template — onto your computer in Step 2.</li>
 </ol>
 <p><b>Worth doing:</b> apply for <a href="https://education.github.com">GitHub Education</a> with your university email. Verified students get up to 180 Codespaces core-hours a month, far more than the free allowance.</p>
 
 <h2>Step 2 · <em>Start</em> the agent</h2>
+<p>Pick the path that matches where you are working.</p>
 
-<h3 id="codespaces">In the browser: GitHub Codespaces</h3>
+<details id="codespaces">
+<summary>In the browser: GitHub Codespaces</summary>
 <p>A Codespace is a computer that runs on GitHub’s servers and that you use through your browser. Nothing is installed on the machine in front of you, and Python and Git are already set up inside it. This is the right choice for school computers, and works just as well on your own.</p>
 <ol>
 <li>Open your new repository → green <b>Code</b> button → <b>Codespaces</b> → <b>Create codespace on main</b>. The first start takes a few minutes.</li>
@@ -60,8 +66,10 @@ b, strong { color:var(--ink); }
 <li>Settings (gear) icon → <b>Add Models</b> → <b>OpenRouter</b> → paste your key.</li>
 <li>Pick <b>GLM-5.3-Flash</b> in the model picker. You are ready.</li>
 </ol>
+</details>
 
-<h3 id="own">On your own computer: VS Code + Copilot</h3>
+<details id="own">
+<summary>On your own computer: VS Code + Copilot</summary>
 <ol>
 <li><b>Install VS Code</b> from <a href="https://code.visualstudio.com/Download">code.visualstudio.com/Download</a>. On Windows, the standard <b>System Installer</b> is fine. On a Mac, open the <code>.dmg</code> and drag <b>Visual Studio Code</b> into <b>Applications</b>.</li>
 <li>Get your repository onto your computer: on the GitHub repository page press the green <b>Code</b> button, copy the address, and run <code>git clone &lt;address&gt;</code> in a terminal. Or press <b>Download ZIP</b> and unzip it. In VS Code, choose <b>File → Open Folder</b> and open that folder.</li>
@@ -70,8 +78,10 @@ b, strong { color:var(--ink); }
 <li>Pick <b>GLM-5.3-Flash</b> in the model picker.</li>
 </ol>
 <p>The first run may complain about missing Python packages. Just ask the agent to install them for you.</p>
+</details>
 
-<h3 id="opencode">Alternative: OpenCode</h3>
+<details id="opencode">
+<summary>Alternative: OpenCode</summary>
 <p>OpenCode works with almost any model provider. In a terminal (in Codespaces the template already has it installed):</p>
 <ol>
 <li>Type <code>opencode</code> and press Enter.</li>
@@ -79,11 +89,12 @@ b, strong { color:var(--ink); }
 <li>Type <code>/models</code> and select <b>GLM-5.3-Flash</b>.</li>
 </ol>
 <p>On your own computer, install it from <a href="https://opencode.ai/download">opencode.ai/download</a>. On Windows, use the <b>desktop app</b>: installing OpenCode in a Windows terminal is a pain. If a terminal says <i>command not found</i> right after installing, open a <b>new</b> terminal; the old one has not noticed the install yet.</p>
+</details>
 
 <h2>Step 3 · <em>Try</em> a prompt</h2>
 <p>The 红楼梦 (<i>Dream of the Red Chamber</i>) novel is already in your folder as a <code>.txt</code> file. Copy each prompt below in full and paste it into the chat, one at a time, waiting for the agent to finish before sending the next.</p>
 <div class="prompt">
-<p class="prompt-label">Prompt 1</p>
+<p class="prompt-label"><span>Prompt 1</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
 <pre>The 红楼梦 novel is already in this folder as a .txt file.
 jieba, qhchina, numpy, matplotlib, and scikit-learn are already installed; do not create a virtual environment.
 
@@ -105,7 +116,7 @@ In the root folder, create a Python script (.py) that:
 <p>When it finishes, check the result by opening the <code>.png</code> file in the file list on the left.</p>
 <p>Once that looks right, paste in the next prompt:</p>
 <div class="prompt">
-<p class="prompt-label">Prompt 2</p>
+<p class="prompt-label"><span>Prompt 2</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
 <pre>Create an HTML page that lets me rotate and move that 3D PCA projection.
 The page should also show the top 20 positive features and the top 20 negative features
 for the first 80 chapters and for the last 40 chapters. Use plotly (already installed).</pre>
@@ -113,11 +124,22 @@ for the first 80 chapters and for the last 40 chapters. Use plotly (already inst
 <p>In a Codespace you usually cannot open that HTML directly. Right-click the file on the left and choose <b>Download</b>, then open it in a browser on your own computer.</p>
 <p>Finally, ask the agent to save your work:</p>
 <div class="prompt">
-<p class="prompt-label">Prompt 3</p>
+<p class="prompt-label"><span>Prompt 3</span><button class="copy-btn" onclick="copyPrompt(this)">Copy</button></p>
 <pre>Commit all changes with the message "first commit", then push to GitHub.</pre>
 </div>
 
 <div class="note"><b>When you finish:</b> commit and push your work (you can ask the agent to do it for you), then delete your Codespace at <a href="https://github.com/codespaces">github.com/codespaces</a> (<b>…</b> → <b>Delete</b>). Anything you did not push is lost when it is deleted, and an idle Codespace keeps using up your monthly hours.</div>
 </main>
+<script>
+function copyPrompt(btn) {
+  var text = btn.closest('.prompt').querySelector('pre').innerText;
+  navigator.clipboard.writeText(text).then(function () {
+    var original = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function () { btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+  });
+}
+</script>
 </body>
 </html>
