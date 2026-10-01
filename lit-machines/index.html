@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up your AI coding agent</title>
+<style>
+:root { --ink:#141413; --ink2:#3d3c38; --mute:#7b7973; --line:#e7e4dd; --panel:#f6f5f1; --coral:#e2472a; --coral-bg:#fdece8; --blue:#2f6fe0; --amber:#c98200; --amber-bg:#fdf4e3; }
+* { box-sizing: border-box; }
+body { margin:0; font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif; color:var(--ink2); line-height:1.65; font-size:17px; -webkit-font-smoothing:antialiased; background:#fff; }
+main { max-width:760px; margin:0 auto; padding:56px 20px 96px; }
+h1 { font-weight:600; font-size:44px; line-height:1.1; color:var(--ink); margin:14px 0 8px; }
+h1 em, h2 em { font-style:italic; color:var(--coral); }
+h2 { font-weight:600; font-size:30px; line-height:1.15; color:var(--ink); margin:56px 0 10px; padding-top:22px; border-top:1px solid var(--line); }
+h3 { font-size:15px; font-weight:700; color:var(--ink); margin:30px 0 4px; }
+.lead { font-size:19px; color:var(--ink2); margin:0 0 6px; }
+.updated { color:var(--mute); font-size:14px; margin:0; }
+ol, ul { padding-left:1.3em; } li { margin:.5em 0; }
+a { color:var(--blue); }
+code, pre { font-family:ui-monospace,"SFMono-Regular","Menlo",monospace; font-size:.88em; }
+code { background:var(--panel); padding:.1em .35em; border-radius:4px; }
+pre { background:var(--panel); padding:12px 16px; border-radius:6px; overflow-x:auto; }
+b, strong { color:var(--ink); }
+.note { border-left:4px solid var(--coral); background:var(--coral-bg); padding:12px 18px; margin:22px 0; font-size:16px; }
+.note.amber { border-color:var(--amber); background:var(--amber-bg); }
+.url { font-family:ui-monospace,"SFMono-Regular","Menlo",monospace; font-size:.9em; }
+</style>
+</head>
+<body>
+<main>
+<h1>Set up your <em>AI coding agent</em></h1>
+<p class="lead">Accounts, a repository, and an agent connected to a language model. About fifteen minutes.</p>
+<p class="updated">Last updated: Oct 2, 2026</p>
+
+<h2>Two things to choose</h2>
+<p><b>The assistant</b> (the “harness”) is the app you talk to. It reads your files, writes code and runs it. Here we use <b>VS Code with GitHub Copilot</b>; <b>OpenCode</b> (a terminal app, or a desktop app) is an equivalent alternative.</p>
+<p><b>The model</b> does the thinking and runs on someone else’s servers. We bring our own <b>API key</b> for <b>OpenRouter</b> and use the model <b>GLM-5.3-Flash</b>. The assistant is only the messenger; the key connects the two.</p>
+<p>You can change either one later without the other.</p>
+<p>Where do you work? On a <b>school or public computer</b>, use <b>GitHub Codespaces</b> (in the browser). Such machines usually do not let you install Python, Git or VS Code, and everything a Codespace needs is already inside it. On <b>your own computer</b> you can choose freely.</p>
+
+<h2>Step 1 · <em>Accounts</em> and a repository</h2>
+<ol>
+<li><b>A GitHub account.</b> Register at <a href="https://github.com/">github.com</a> with a <b>personal email</b>, not a school address that expires after you leave. Your work lives here.</li>
+<li><b>An API key.</b> Get yours at <a href="https://keyreg.qhchina.org">keyreg.qhchina.org</a>. It allows you to use the external provider (OpenRouter). Keep it private: never paste it into your repository or share it.</li>
+<li><b>Your own copy of the template.</b> Open <a href="https://github.com/mcjkurz/qh-starter">github.com/mcjkurz/qh-starter</a>, press the green <b>Use this template</b> button, and create your own repository. Do not edit the template itself.</li>
+</ol>
+<p><b>Worth doing:</b> apply for <a href="https://education.github.com">GitHub Education</a> with your university email. Verified students get up to 180 Codespaces core-hours a month, far more than the free allowance.</p>
+
+<h2>Step 2 · <em>Start</em> the agent</h2>
+
+<h3 id="codespaces">In the browser: GitHub Codespaces</h3>
+<p>A Codespace is a computer that runs on GitHub’s servers and that you use through your browser. Nothing is installed on the machine in front of you, and Python and Git are already set up inside it. This is the right choice for school computers, and works just as well on your own.</p>
+<ol>
+<li>Open your new repository → green <b>Code</b> button → <b>Codespaces</b> → <b>Create codespace on main</b>. The first start takes a few minutes.</li>
+<li>Click the chat icon near the top of the window to open the Chat panel. It is already signed in with your GitHub account.</li>
+<li>Click the model picker at the bottom of the chat box → <b>Other Models</b>.</li>
+<li>Settings (gear) icon → <b>Add Models</b> → <b>OpenRouter</b> → paste your key.</li>
+<li>Pick <b>GLM-5.3-Flash</b> in the model picker. You are ready.</li>
+</ol>
+
+<h3 id="own">On your own computer: VS Code + Copilot</h3>
+<ol>
+<li><b>Install VS Code</b> from <a href="https://code.visualstudio.com/Download">code.visualstudio.com/Download</a>. On Windows, the standard <b>System Installer</b> is fine. On a Mac, open the <code>.dmg</code> and drag <b>Visual Studio Code</b> into <b>Applications</b>.</li>
+<li>Get your repository onto your computer: on the GitHub repository page press the green <b>Code</b> button, copy the address, and run <code>git clone &lt;address&gt;</code> in a terminal. Or press <b>Download ZIP</b> and unzip it. In VS Code, choose <b>File → Open Folder</b> and open that folder.</li>
+<li><b>Activate Copilot (first time only).</b> Click the chat icon near the top of the window. If you do not see it, open the Extensions view (the square-icon button in the left sidebar), search for <b>GitHub Copilot Chat</b> and click <b>Install</b>. Then click <b>Sign in to GitHub</b> in the Chat panel and follow the prompts in your browser. No paid subscription is needed, because your OpenRouter key pays for the model.</li>
+<li><b>Add your key:</b> model picker at the bottom of the chat box → <b>Other Models</b> → gear icon → <b>Add Models</b> → <b>OpenRouter</b> → paste your key.</li>
+<li>Pick <b>GLM-5.3-Flash</b> in the model picker.</li>
+</ol>
+<p>The first run may complain about missing Python packages. Just ask the agent to install them for you.</p>
+
+<h3 id="opencode">Alternative: OpenCode</h3>
+<p>OpenCode works with almost any model provider. In a terminal (in Codespaces the template already has it installed):</p>
+<ol>
+<li>Type <code>opencode</code> and press Enter.</li>
+<li>Type <code>/connect</code>, select <b>OpenRouter</b> and paste your key.</li>
+<li>Type <code>/models</code> and select <b>GLM-5.3-Flash</b>.</li>
+</ol>
+<p>On your own computer, install it from <a href="https://opencode.ai/download">opencode.ai/download</a>. On Windows, use the <b>desktop app</b>: installing OpenCode in a Windows terminal is a pain. If a terminal says <i>command not found</i> right after installing, open a <b>new</b> terminal; the old one has not noticed the install yet.</p>
+
+<div class="note"><b>When you finish:</b> commit and push your work (you can ask the agent to do it for you), then delete your Codespace at <a href="https://github.com/codespaces">github.com/codespaces</a> (<b>…</b> → <b>Delete</b>). Anything you did not push is lost when it is deleted, and an idle Codespace keeps using up your monthly hours.</div>
+</main>
+</body>
+</html>
