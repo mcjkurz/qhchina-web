@@ -54,9 +54,3 @@ permalink: /zh/
 ## 活動
 
 {% include recent_events.html %}
-
-<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
-
-## 隨機引語
-
-{% include random_quote.html %}

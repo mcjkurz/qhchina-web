@@ -53,9 +53,3 @@ The future to come awaits always in the form of monstrosity.
 ## Events
 
 {% include recent_events.html %}
-
-<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
-
-## Random Quote
-
-{% include random_quote.html %}
