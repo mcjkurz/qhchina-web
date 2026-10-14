@@ -11,7 +11,7 @@ ref: pubs
 
 蔡宗齊、馬傑：〈文約意廣：數字人文與《詩經》和《古詩十九首》審美特徵的研究〉，《嶺南學報》復刊二十五輯，第1-27頁。
 
-Kurzynski, Maciej. "Words Close to Heart: Geometries of Empathy in Chinese Literature, from the *Inner Canon* to Ye Xin's *Wasted Years*," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
+Kurzynski, Maciej. "Words Close to Heart: Geometries of Empathy in Chinese Literature, from Classical Thought to Ye Xin's *Wasted Years*," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
 
 Kurzynski, Maciej. "Neurons and Texts: New Frontiers of Chinese Humanities," *Prism: Theory and Modern Chinese Literature* 23.1, introduction to special issue, forthcoming.
 
