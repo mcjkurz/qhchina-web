@@ -9,13 +9,13 @@ ref: pubs
 
 ## 2026
 
-蔡宗齊、馬傑：〈文約意廣：數字人文與《詩經》和《古詩十九首》審美特徵的研究〉，《嶺南學報》復刊二十五輯，第1-27頁。
-
 Kurzynski, Maciej. "Words Close to Heart: Geometries of Empathy in Chinese Literature, from Classical Thought to Ye Xin's *Wasted Years*," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
 
 Kurzynski, Maciej. "Neurons and Texts: New Frontiers of Chinese Humanities," *Prism: Theory and Modern Chinese Literature* 23.1, introduction to special issue, forthcoming.
 
 Cai, Zong-qi, Maciej Kurzynski, and Yu Feng. "The Syntactic Art of Tang Pentasyllabic Verse: A Quantitative and Analytical Study," *Prism: Theory and Modern Chinese Literature* 23.1, forthcoming.
+
+蔡宗齊、馬傑：〈文約意廣：數字人文與《詩經》和《古詩十九首》審美特徵的研究〉，《嶺南學報》復刊二十五輯，第1-27頁。
 
 Kurzynski, Maciej. "[From Character to Poem: Nested Contexts and Scalar Limits of Parallelism Detection in Classical Chinese Poetry](https://openhumanitiesdata.metajnl.com/articles/10.5334/johd.488)," *Journal of Open Humanities Data* 12, 2026:34.
 
