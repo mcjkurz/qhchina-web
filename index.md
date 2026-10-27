@@ -33,7 +33,7 @@ ref: home
 
 How to write about "China" (中國) without being "obsessed" (情迷) with it? How to think the present moment beyond "modernity"? Events that have defined national histories and academic fields, however significant from one perspective, may appear from another like storms in a teacup.
 
-This project pursues disciplinary misalignments as sites where the limits of identity-based scholarship come into view. It asks what becomes possible when the chronologies that have traditionally organized literary study, and the cultural intimacies they quietly presume, are displaced so that literature might be read otherwise. To this end, we understand quantitative humanities as a theoretical intervention organized around several recurring concepts:
+This project pursues disciplinary misalignments as sites where the limits of identity-based scholarship come into view. It asks what becomes possible when the chronologies that have traditionally organized literary study, and the cultural intimacies they quietly presume, are displaced so that literature might be read otherwise. We understand quantitative humanities as a theoretical intervention organized around several recurring concepts:
 
 - **Experimentation**: using computational models to test, estrange, and rework humanistic concepts rather than simply confirm them
 - **Text Matters**: treating literature not as a transparent medium or a mirror of history, but as an active material that organizes attention, affect, and historical imagination
