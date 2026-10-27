@@ -43,6 +43,8 @@ permalink: /zh/
 - **技術認知**：把文學經驗視為表層形式、具身思維，以及身處歷史情境中的讀者之間的多層次互動
 - **敘事技術**：探問嵌套結構如何調動預期、驚奇、共情、暴力、崇高等閱讀體驗
 
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
+
 ## 活動
 
 {% include recent_events.html %}

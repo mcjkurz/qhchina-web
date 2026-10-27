@@ -42,6 +42,8 @@ This project pursues disciplinary misalignments as sites where the limits of ide
 - **Techno-Cognition**: studying literary experience as a layered interaction among textual form, embodied cognition, and historically situated readers
 - **Narrative Technologies**: asking how recursive literary forms coordinate prediction, surprise, empathy, violence, sublimity, and other modes of experience
 
+<img src="{{ site.baseurl }}/assets/img/separator.png" alt="Separator" class="separator">
+
 ## Events
 
 {% include recent_events.html %}
