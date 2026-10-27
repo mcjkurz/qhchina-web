@@ -7,7 +7,7 @@ permalink: /zh/
 
 <style>
 .welcome-section {
-  margin: 1rem 0 2rem;
+  margin: 0 0 2rem;
   text-align: center;
 }
 

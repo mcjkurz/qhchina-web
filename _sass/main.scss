@@ -312,7 +312,11 @@ footer {
 
 main {
   width: 100%;
-  padding: calc(1.5 * var(--spacing-unit)) 0;
+  padding: calc(0.5 * var(--spacing-unit)) 0 calc(1.5 * var(--spacing-unit));
+}
+
+main h1 {
+  margin-top: var(--spacing-unit);
 }
 
 /* Responsive styles */
@@ -453,7 +457,7 @@ img.separator {
 /* Override theme styles that might interfere */
 main.docs-main {
   width: 100% !important;
-  padding: calc(1.5 * var(--spacing-unit)) 0 !important;
+  padding: calc(0.5 * var(--spacing-unit)) 0 calc(1.5 * var(--spacing-unit)) !important;
   display: block !important;
   float: none !important;
   clear: both !important;
